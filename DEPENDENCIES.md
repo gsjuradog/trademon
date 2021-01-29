@@ -1,12 +1,17 @@
 # FRONT END
 
-- redux
-- react-redux
-- rxjs ?
-- redux-observable ?
-- react-router ?
-- react-router-dom
-- sass (< v5)
+### npx create-react-app trademon --template cra-template-pwa-typescript
+
+- redux IN
+
+* react-redux IN
+* rxjs ?
+* redux-observable ?
+* react-router-dom IN
+* sass (< v5) npm i node-sass IN
+* Material UI (+ Roboto Font): IN
+  npm install @material-ui/icons IN
+  npm install @material-ui/styles IN
 
 # BACK END
 
@@ -21,18 +26,18 @@
 # DEV
 
 - Typescript
-- @typescript-eslint/eslint-plugin
-- @typescript-eslint/parser
-- @types/react
-- @types/react-dom
-- @types/react-redux
-- @types/react-router
-- @types/react-router-dom
+- @typescript-eslint/eslint-plugin IN
+- @typescript-eslint/parser IN
+- @types/react IN
+- @types/react-dom IN
+- @types/react-redux IN
+- @types/react-router IN
+- @types/react-router-dom IN
 - nodemon
 - concurrently || npm-run-all
-- commitizen
-- prettier
-- eslint
+- commitizen "npx commitizen init cz-conventional-changelog --save-dev --save-exact" IN
+- prettier "npm i prettier"
+- eslint "npm i eslint eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-react-hooks"
 - eslint-config-prettier
 - eslint-plugin-import
 - eslint-plugin-jsx-a11y
