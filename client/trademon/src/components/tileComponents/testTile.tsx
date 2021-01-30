@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styling/tiles.scss';
 
 
-export default function TestTile() {
+export default function ProfileBanner() {
   return (
 <div className="tile-container-med">
     <div className="title-row">
