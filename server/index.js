@@ -1,24 +1,25 @@
-const fs = require('fs'); 
+const fs = require('fs');
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const cors = require('cors');
+
+require('dotenv').config();
+
+const router = require('./routes');
 
 const app = express();
 const PORT = 3000;
 const HOST = 'localhost';
 
-app.use(
-  cors(),
-  express.json()
-);
+app.use(cors(), express.json(), router);
 
-const typeDefs = gql(fs.readFileSync('./schema.graphql', {encoding: 'utf8'}));
+const typeDefs = gql(fs.readFileSync('./schema.graphql', { encoding: 'utf8' }));
 const resolvers = require('./controllers/resolvers');
 //const context = ({ req }) => ({user: req.user});
 //const apolloServer = new ApolloServer({typeDefs, resolvers, context});
-const apolloServer = new ApolloServer({typeDefs, resolvers});
-apolloServer.applyMiddleware({app, path: '/graphql'});
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 app.listen(PORT, () => {
-  console.log(`Server listening on http://${HOST}:${PORT}`)
-})
+  console.log(`Server listening on http://${HOST}:${PORT}`);
+});
