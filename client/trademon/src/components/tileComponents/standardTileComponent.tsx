@@ -10,16 +10,17 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import '../../styling/globalSCSS.scss';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
+      
     },
     media: {
       height: 0,
@@ -36,12 +37,12 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     avatar: {
-      backgroundColor: red[500],
+      backgroundColor: "primary",
     },
   }),
 );
 
-export default function RecipeReviewCard() {
+export default function StandardTile() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -50,7 +51,7 @@ export default function RecipeReviewCard() {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className='tile'>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>

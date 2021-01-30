@@ -1,0 +1,27 @@
+:root {
+  --color-primary: #075F59;
+  --color-secondary: #BA3F1D;
+  --color-grey-pop: #232026;
+  --color-grey-bg: #1c1c1e;
+  --color-text: #ffffff;
+}
+
+.submit__btn {
+  cursor: pointer;
+  width: 30%;
+  padding: 8px;
+  color: var(--color-primary);
+  font-weight: 600;
+  outline: none;
+  background-color: var(--color-secondary);
+  border: 2px solid var(--color-primary);
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-radius: 5px;
+}
+
+.submit__btn:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+}
