@@ -1,8 +1,11 @@
+const  db = require('../models/index');
+
 const getUser = async (req, res) => {
   try {
     console.log('GET');
-    res.status(200).send('getUser');
-  } catch (e) {
+    const reply = await db.Message.findAll()
+    res.status(200).send(reply);
+  } catch (err) {
     console.log('GET ERROR', err);
     res.status(500).send('GET ERROR');
   }
@@ -11,8 +14,14 @@ const getUser = async (req, res) => {
 const postUser = async (req, res) => {
   try {
     console.log('POST');
-    res.status(200).send('postUser');
-  } catch (e) {}
+    const { author, content } = req.body;
+    console.log(author, content);
+    const reply = await db.Message.create({
+      author: author,
+      content: content
+    })
+    res.status(200).send(reply);
+  } catch (err) {}
   console.log('POST ERROR', err);
   res.status(500).send('POST ERROR');
 };

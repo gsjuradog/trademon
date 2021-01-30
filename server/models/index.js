@@ -11,9 +11,13 @@ const HOST = process.env.DB_TEST_HOST;
 
 const db = {};
 
-const sequelize = new Sequelize(DBNAME, USER, PASSWORD, {
+// const sequelize = new Sequelize(DBNAME, USER, PASSWORD, {
+//   dialect: 'postgres',
+//   host: HOST,
+// });
+
+const sequelize = new Sequelize('trademon', 'postgres', 'd1llon77', {
   dialect: 'postgres',
-  host: HOST,
 });
 
 fs.readdirSync(__dirname)

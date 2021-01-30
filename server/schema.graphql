@@ -5,6 +5,7 @@ type Schema {
 
 type Query {
   user: UserData
+  getPrivateChat: PrivateChat
 }
 
 type Mutation {
@@ -29,18 +30,21 @@ type PokeConstData {
   generation: Int!
 }
 
-# was File
+type Username {
+  username: String!
+}
 
 type UserCredentials {
   id: String!
   email: String!
-  username: String!
+  username: Username!
   password: String!
   signUpDate: Date
 }
 
 type UserData {
-  username: String!
+  userID: String!
+  username: Username!
   trainerID: Int!
   trainerName: String!
   mtgoID: String
@@ -52,35 +56,38 @@ type UserData {
   sellerRating: Int!
   numSellRatings: Int!
   numOfStrikes: Int!
+  PrivateChat: [PrivateChat]
 }
 
-#transHistory: [Transaction]
-#activePosts: [Offering]
+type PrivateChat {
+  chatID: String!
+  seller: Username!
+  buyer: Username!
+  history: [Message]
+}
 
-type Transaction {
-  offerItemId: String!
-  offerItemVariableData: PokeVariableData!
-  buyer: UserData!
-  seller: UserData!
+type Message {
+  messageID: String!
+  from: Username!
+  to: Username!
+  content: String!
   publishDate: Date!
+}
+
+type Trade {
+  tradeId: String!
+  publishDate: Date!
+  numViews: Int
+  expirationDate: Date
+  seller: Username!
   tradeItemID: String!
   tradeItemVariableData: PokeVariableData!
   price: Int!
   tax: Int
-}
-
-type Offering {
-  postId: String!
-  itemId: String!
-  owner: UserData!
-  price: Int!
-  description: String
-  numViews: Int
-  expirationDate: Date
-
-  publishDate: Date!
-
-  variableData: PokeVariableData!
+  buyer: Username!
+  offerItemId: String!
+  offerItemVariableData: PokeVariableData!
+  tradeComplete: Boolean!
 }
 
 type Date {

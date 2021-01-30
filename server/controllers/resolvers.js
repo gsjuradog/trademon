@@ -18,6 +18,12 @@ const Query = {
     console.log('user');
     return testObj;
   },
+
+  getPrivateChat: (root, args, context ) => {
+    
+    return testObj.privateChat
+  }
+
 };
 
 const Mutation = {
