@@ -3,7 +3,7 @@
 export interface Offering {
   //Info for posts regardless of game
   postId:         string,
-  itemId:         number,
+  itemId:         string,
   owner:          string,
   price:          number,
   description:    string,
@@ -72,12 +72,12 @@ export interface UserData {
 }
 
 export interface Transaction {
-  offerItemId:            number,
+  offerItemId:            string,
   offerItemVariableData:  PokeVariableData | MTGVariableData,
   buyer:                  string, //username
   seller:                 string, //username
   publishDate:            Date,
-  tradeItemID?:           number, //If trade, item offered in return
+  tradeItemID?:           string, //If trade, item offered in return
   tradeItemVariableData?: PokeVariableData | MTGVariableData, //If trade, item details offered in return
   price?:                 number,
   tax?:                   number,
