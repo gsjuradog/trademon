@@ -53,7 +53,6 @@ type UserData {
   numSellRatings: Int!
   numOfStrikes: Int!
 }
-
 #transHistory: [Transaction]
 #activePosts: [Offering]
 
