@@ -4,9 +4,85 @@ type Schema {
 }
 
 type Query {
-  user: String
+  user: UserData
 }
 
 type Mutation {
   editUser: String
+}
+
+#TypeDefs
+
+type PokeVariableData {
+  pokeLvl: Int!
+  fastMove: String!
+  chargeMove: String!
+  isShiny: Boolean!
+  appraisal: Int!
+}
+
+type PokeConstData {
+  id: String!
+  name: String!
+  pokeNum: Int!
+  sprite: String
+  generation: Int!
+}
+
+# was File
+
+type UserCredentials {
+  id: String!
+  email: String!
+  username: String!
+  password: String!
+  signUpDate: Date
+}
+
+type UserData {
+  username: String!
+  trainerID: Int!
+  trainerName: String!
+  mtgoID: String
+  mtgoName: String
+  latitude: Int
+  longitude: Int
+  buyerRating: Int!
+  numBuyRatings: Int!
+  sellerRating: Int!
+  numSellRatings: Int!
+  numOfStrikes: Int!
+}
+
+#transHistory: [Transaction]
+#activePosts: [Offering]
+
+type Transaction {
+  offerItemId: String!
+  offerItemVariableData: PokeVariableData!
+  buyer: UserData!
+  seller: UserData!
+  publishDate: Date!
+  tradeItemID: String!
+  tradeItemVariableData: PokeVariableData!
+  price: Int!
+  tax: Int
+}
+
+type Offering {
+  postId: String!
+  itemId: String!
+  owner: UserData!
+  price: Int!
+  description: String
+  numViews: Int
+  expirationDate: Date
+
+  publishDate: Date!
+
+  variableData: PokeVariableData!
+}
+
+type Date {
+  date: Int!
 }
