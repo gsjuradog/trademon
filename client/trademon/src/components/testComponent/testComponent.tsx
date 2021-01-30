@@ -11,7 +11,7 @@ const TestComponent = () => {
   const dispatch = useDispatch();
 
   //To get hold of current state from store, use useSelector hook
-  const testState = useSelector((state:any) => state.test);
+  const testState = useSelector((state:any) => state.testReducer);
 
   const toggle = () => {
     //const action = callAction(1);
