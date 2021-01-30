@@ -14,13 +14,13 @@ export default function TestTile() {
       <img className="sprite-med" src ={'/assets/testSprite.png'}></img>
     </div>
   <div className="info-row">
-    <p>Cp: 2300</p>
+    <p>CP: 2300</p>
     <p>Stars</p>
   </div>
   <div className="seller-row">
     <div className="seller-info">
       <img className="avatar-med" src ={'/assets/avatarIcon.png'}></img>
-      <p>Seller</p>
+      <p className="seller-text">Seller</p>
     </div>
     <p>$1</p>
   </div>
