@@ -12,7 +12,6 @@ export interface Offering {
   publishDate:    Date,
   //comments?
   //variable data from form, relevant to platform
-  itemConstData:  PokeConstData | MTGConstData,
   variableData:   PokeVariableData | MTGVariableData
 }
 export interface PokeVariableData {
@@ -55,8 +54,10 @@ export interface UserCredentials {
 
 export interface UserData {
   username:       string,
-  trainerID:      number,
-  trainerName:    string,
+  trainerID?:     number,
+  trainerName?:   string,
+  mtgoID?:        string,
+  mtgoName?:      string,
   latitude:       number,
   longitude:      number,
   buyerRating:    number,
@@ -71,12 +72,13 @@ export interface UserData {
 }
 
 export interface Transaction {
-  id:           string,
-  buyer:        string, 
-  seller:       string, 
-  price:        number,
-  tax:          number,
-  itemBuyer:    PokeConstData | MTGConstData,
-  itemSeller:   PokeConstData | MTGConstData,
-  publishDate:  Date,
+  offerItemId:            number,
+  offerItemVariableData:  PokeVariableData | MTGVariableData,
+  buyer:                  string, //username
+  seller:                 string, //username
+  publishDate:            Date,
+  tradeItemID?:           number, //If trade, item offered in return
+  tradeItemVariableData?: PokeVariableData | MTGVariableData, //If trade, item details offered in return
+  price?:                 number,
+  tax?:                   number,
 }
