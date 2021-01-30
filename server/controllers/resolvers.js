@@ -10,7 +10,7 @@ const testObj = {
   numBuyRatings: 0,
   sellerRating: 0,
   numSellRatings: 0,
-  numOfStrikes: 0,
+  numOfStrikes: 1,
 };
 
 const Query = {
