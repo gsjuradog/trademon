@@ -1,0 +1,90 @@
+$colorPrimary: #075F59;
+$colorSecondary: #BA3F1D;
+$colorGreyPop: #232026;
+$colorGreyBg: #1c1c1e;
+$colorText: #ffffff;
+$colorShadowLight: rgba(48, 48, 48, 0.85);
+$colorShadowDark: rgba(0, 0, 0, 0.65);
+
+h3{
+  font-size: 17px;
+}
+
+p {
+  font-size: 10px;
+}
+
+.tile-container-med {
+  max-width: 175px;
+  max-height: 175px;
+  height: 175px;
+  height: 175px;
+  background-color: $colorGreyPop;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
+  2px 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+.title-row {
+  display: flex;
+  max-height: 15px;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+.spacer-span {
+  width: 20px
+}
+
+.title-row img {
+  max-width: 15px;
+  max-height: 15px;
+}
+
+.sprite-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.sprite-med {
+  width: 75px;
+  height: 75px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  max-height: 20px;
+  height: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.seller-row {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  max-height: 20px;
+  height: 20px;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.seller-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-med {
+  width: 20px;
+  height: 20px;
+}
