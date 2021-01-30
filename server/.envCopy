@@ -1,0 +1,8 @@
+PORT=
+HOST=
+DB_HOST=
+DB_TITLE=
+DB_PASSWord=
+DB_USER=
+DB_PORT=
+JWTPrivateKey=
