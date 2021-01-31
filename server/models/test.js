@@ -76,5 +76,6 @@ module.exports = (sequelize, DataTypes) => sequelize.define('UserData', {
 }
 ); 
 
-
+//UserData.hasMany(PrivateMesg)
+//PrivateMesg.belongs(UserData)
 
