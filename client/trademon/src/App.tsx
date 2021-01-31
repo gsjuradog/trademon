@@ -5,6 +5,7 @@ import TestTile from './components/tileComponents/testTile';
 import globalTheme from './styling/globalTheme';
 import TestComponent from './components/testComponent/testComponent';
 import { ThemeProvider } from '@material-ui/core';
+import MyProfile from './components/containerComponents/myProfileComponent';
 
 const App = () => {
   return (
@@ -14,9 +15,7 @@ const App = () => {
           <TestComponent />
           <UserRatingComponent />
           <TestTile></TestTile>
-          <TestTile></TestTile>
-          <TestTile></TestTile>
-          <TestTile></TestTile>
+          <MyProfile></MyProfile>
         </ThemeProvider>
       </div>
     </>
