@@ -8,7 +8,10 @@ export default function MiniTile() {
         <img className="sprite-mini" src={'/assets/testSprite.png'}></img>
       </div>
 
-      <div className="mini-tile-text">
+      <div className="mini-tile-info-box">
+        <div className="mini-fave-icon-container">
+          <img src={'/assets/FavIconEmpty.png'} className="watch-list-heart"></img>
+        </div>
         <p>Charmeleon</p>
         <p>Price: $2.99</p>
       </div>

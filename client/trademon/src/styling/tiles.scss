@@ -37,13 +37,15 @@ p {
   padding-right: 15px;
   padding-top: 10px;
 }
+
 .spacer-span {
   width: 20px;
 }
 
-.title-row img {
+.watch-list-heart {
   max-width: 15px;
   max-height: 15px;
+  align-self: flex-end;
 }
 
 .sprite-row {
@@ -119,9 +121,17 @@ p {
   height: 52px;
 }
 
-.mini-tile-text {
-  text-align: left;
+.mini-tile-info-box {
+  text-align: right;
   justify-items: center;
-  margin: 14px 8px;
+  margin: 7px 8px;
   width: 80px;
+  padding-right: 10px;
 }
+
+.mini-fave-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -3px;
+}
+

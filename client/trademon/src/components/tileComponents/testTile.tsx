@@ -8,7 +8,7 @@ export default function ProfileBanner() {
       <div className="title-row">
         <span className="spacer-span"></span>
         <h3>Charmeleon</h3>
-        <img src={'/assets/FavIconEmpty.png'}></img>
+        <img src={'/assets/FavIconEmpty.png'} className="watch-list-heart"></img>
       </div>
       <div className="sprite-row">
         <img className="sprite-med" src={'/assets/testSprite.png'}></img>

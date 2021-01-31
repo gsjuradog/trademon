@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styling/containers.scss';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
 
-export default function miniTileContainer() {
+export default function MiniTileContainer() {
   return (
     <div
       className="container-mini-tiles"

@@ -23,8 +23,16 @@ $colorGreyPop: #232026;
 
 .container-mini-tile-box {
   width: 100%;
+  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 4px 7px;
+}
+
+.platforms-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

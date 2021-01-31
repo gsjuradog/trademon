@@ -9,12 +9,9 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 //****THIS WHOLE FILE NEEDS TO BE MERGED WITH TILES.SCSS & REFACTORED!!!!!!!!!!!!
 
 .my-profile-containers {
-  min-width: 300px;
+  min-width: 200px;
   width: 80%;
   max-width: 400px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: $colorGreyPop;
   border-radius: 30px;
   padding-left: 25px;
@@ -24,28 +21,30 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .banner-container {
-  min-width: 300px;
-  width: 80%;
-  max-width: 400px;
-  display: flex;
+  max-height: 40px;
+  display: flex; 
   justify-content: space-between;
   align-items: center;
-  background-color: $colorGreyPop;
-  border-radius: 30px;
-  padding-left: 25px;
-  padding-right: 25px;
-  box-shadow: -2px -2px 5px $colorShadowLight,
-  2px 2px 5px $colorShadowDark;
-  max-height: 40px;
 }
 
 .watch-list-container {
-  
+  @extend .my-profile-containers;
+  max-height: 300px;
+  height: 300px;
+  margin-top: 10px;
 }
 
 .watch-list-title-row {
   display: flex;
-  justify-content: right;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.watch-list-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 420px;
 }
 
 .img-med {
