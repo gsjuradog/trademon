@@ -3,6 +3,7 @@ import React from 'react';
 //Redux imports
 import { useDispatch, useSelector } from "react-redux";
 import { testAction } from '../../redux/actions/actions';
+import MiniTileContainer from '../containerComponents/miniTileContainer'
 
 import './testComponent.scss';
 
@@ -24,6 +25,8 @@ const TestComponent = () => {
       <h1>Test Component</h1>
       <h3>Test State: {testState}</h3>
       <button onClick={toggle}>CLICK ME!</button>
+      <MiniTileContainer/>
+
     </div>
   )
 }

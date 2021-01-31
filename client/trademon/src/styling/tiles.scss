@@ -1,12 +1,12 @@
-$colorPrimary: #075F59;
-$colorSecondary: #BA3F1D;
+$colorPrimary: #075f59;
+$colorSecondary: #ba3f1d;
 $colorGreyPop: #232026;
 $colorGreyBg: #1c1c1e;
 $colorText: #ffffff;
 $colorShadowLight: rgba(48, 48, 48, 0.85);
 $colorShadowDark: rgba(0, 0, 0, 0.65);
 
-h3{
+h3 {
   font-size: 17px;
 }
 
@@ -25,7 +25,7 @@ p {
   margin: 10px;
   border-radius: 30px;
   box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
-  2px 2px 5px rgba(0, 0, 0, 0.65);
+    2px 2px 5px rgba(0, 0, 0, 0.65);
 }
 
 .title-row {
@@ -38,7 +38,7 @@ p {
   padding-top: 10px;
 }
 .spacer-span {
-  width: 20px
+  width: 20px;
 }
 
 .title-row img {
@@ -87,8 +87,41 @@ p {
   padding-left: 5px;
 }
 
-
 .avatar-med {
   width: 20px;
   height: 20px;
+}
+
+.tile-container-mini {
+  display: grid;
+  grid-template-columns: minmax(50, 30%) 1fr;
+  max-width: 172px;
+  max-height: 80px;
+  width: 175px;
+  height: 80px;
+  background-position: center;
+  background-color: $colorGreyPop;
+  display: flex;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
+    2px 2px 5px rgba(0, 0, 0, 0.65);
+}
+
+.sprite-mini-box {
+  width: 60px;
+  height: 60px;
+  margin: 12px;
+}
+
+.sprite-mini {
+  width: 52px;
+  height: 52px;
+}
+
+.mini-tile-text {
+  text-align: left;
+  justify-items: center;
+  margin: 14px 8px;
+  width: 80px;
 }
