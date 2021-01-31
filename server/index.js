@@ -10,8 +10,10 @@ require('dotenv').config();
 const router = require('./routes');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 const HOST = 'localhost';
+const test = process.env.HOST;
+console.log(test);
 
 app.use(cors(), express.json(), router);
 
@@ -22,11 +24,11 @@ const resolvers = require('./controllers/resolvers');
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-(async () =>{
+(async () => {
   try {
     await db.sequelize.sync();
     app.listen(PORT);
-    console.log(`Server listening on port ${PORT}`); // eslint-disable-line no-console
+    console.log(`Conected to DB, Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (e) {
     console.error('Error connecting to the db', e); // eslint-disable-line no-console
   }

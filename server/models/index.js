@@ -1,22 +1,22 @@
-//require('dotenv').config();
+require('dotenv').config();
 const path = require('path');
 
 const fs = require('fs');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const DBNAME = process.env.DB_TEST_DBNAME;
-const USER = process.env.DB_TEST_USER;
-const PASSWORD = process.env.DB_TEST_PASSWORD;
+const DBNAME = process.env.DB_TEST_TITLE;
+const USER = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASSWORD;
 const HOST = process.env.DB_TEST_HOST;
 
 const db = {};
 
-// const sequelize = new Sequelize(DBNAME, USER, PASSWORD, {
+// const sequelize = new Sequelize('trademon', 'postgres', d1llon77, {
 //   dialect: 'postgres',
-//   host: HOST,
+
 // });
 
-const sequelize = new Sequelize('trademon', 'postgres', 'd1llon77', {
+const sequelize = new Sequelize(`${DBNAME}`, `${USER}`, `${PASSWORD}`, {
   dialect: 'postgres',
 });
 
