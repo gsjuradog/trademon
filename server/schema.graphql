@@ -4,8 +4,9 @@ type Schema {
 }
 
 type Query {
-  user: UserData
-  getPrivateChat: PrivateChat
+  getUserData(user: String!): UserData
+  getPrivateChat(chat: String!): PrivateChat
+  getTrade(trade: String!): Trade
 }
 
 type Mutation {
@@ -56,7 +57,7 @@ type UserData {
   sellerRating: Int!
   numSellRatings: Int!
   numOfStrikes: Int!
-  PrivateChat: [PrivateChat]
+  privatechat: [PrivateChat]
 }
 
 type PrivateChat {
