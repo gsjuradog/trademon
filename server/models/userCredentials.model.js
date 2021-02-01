@@ -1,17 +1,22 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-
-module.exports = (sequelize, DataTypes) =>
-  sequelize.define('userCredentials', {
-    userID: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+module.exports = (sequelize, DataTypes) => {
+  const user = sequelize.define('userCredentials', {
+    // userID: {
+    //   primaryKey: true,
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isEmail: true,
+      },
     },
     username: {
+      primaryKey: true,
+      unique: true,
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -24,8 +29,12 @@ module.exports = (sequelize, DataTypes) =>
       allowNull: false,
     },
 
- 
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
+  user.associate = (model) => {
+    user.hasOne(model.UserData);
+  };
+  return user;
+};

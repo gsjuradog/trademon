@@ -3,11 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const userData = sequelize.define('UserData', {
-    username: {
-      // PRIMARY KEY
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // username = userCredentialUsername ...comes from reference in userCredential
     trainerID: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -57,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true,
     },
+
     // privateChat: {
     //   allowNull: true,
     // },
@@ -66,7 +63,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   userData.associate = (model) => {
-    userData.hasMany(model.PrivateChat);
+    userData.belongsTo(model.userCredentials);
+    userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
   };
 
   return userData;
