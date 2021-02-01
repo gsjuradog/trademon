@@ -179,6 +179,10 @@ p {
   background-color: $colorGreyPop80;
   border-radius: 25px;
   padding: 4px 0px;
+  transition: 150ms;
+}
+.dm-summary-container:hover {
+  background-color: $colorGreyHover;
 }
 
 .dm-summary-text-column {
