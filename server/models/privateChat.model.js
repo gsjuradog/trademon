@@ -2,9 +2,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-
   const privateChat = sequelize.define('PrivateChat', {
-
     // chatID: {
     //   type: DataTypes.INTEGER,
     //   primaryKey: true,
@@ -27,12 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     // },
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
-  })
+  });
 
   privateChat.associate = (model) => {
-    privateChat.hasMany(model.Message)
-  }
-  
+    privateChat.hasMany(model.Message);
+    privateChat.belongsTo(model.UserData);
+  };
 
   return privateChat;
 };

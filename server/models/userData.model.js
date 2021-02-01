@@ -1,11 +1,10 @@
 // 'use strict';
 const { Sequelize, DataTypes } = require('sequelize');
 
-
 module.exports = (sequelize, DataTypes) => {
-
   const userData = sequelize.define('UserData', {
-    username: {  // PRIMARY KEY
+    username: {
+      // PRIMARY KEY
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -59,18 +58,17 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     // privateChat: {
-    //   type: DataTypes.ARRAY(DataTypes.STRING),
     //   allowNull: true,
     // },
-    
+
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
-  })
+  });
 
-  // userData.associate = (model) => {
-  //   userData.hasMany(model.PrivateChat)
-  // }
+  userData.associate = (model) => {
+    userData.hasMany(model.PrivateChat);
+  };
 
-  return userData
+  return userData;
 };
 //privateMesg is array of chatID
