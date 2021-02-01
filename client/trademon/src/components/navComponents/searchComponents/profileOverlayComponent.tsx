@@ -47,7 +47,7 @@ export default function ProfileOverlay(this: any) {
         <Link to="/profile" className="hamburger-links">
           <button className="hamburger-button">My Profile</button>
         </Link>
-        <Link to="/messages" className="hamburger-links">
+        <Link to="/profile" className="hamburger-links">
           <button className="hamburger-button">Settings</button>
         </Link>
         
