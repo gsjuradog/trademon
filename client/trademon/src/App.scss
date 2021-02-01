@@ -5,6 +5,7 @@ $colorSecondary: #ba3f1d;
 $colorGreyPop: #232026;
 $colorGreyBg: #1c1c1e;
 $colorText: #ffffff;
+$colorButtonHover: #dfdfdf;
 $colorShadowLight: rgba(48, 48, 48, 0.85);
 $colorShadowDark: rgba(0, 0, 0, 0.65);
 
@@ -19,6 +20,24 @@ body {
 a {
   text-decoration: none;
   color: $colorText;
+}
+
+* button {
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  color: $colorText;
+  background-color: $colorPrimary;
+  font-weight: 500;
+  padding: 3px 10px;
+  transition: 125ms;
+}
+
+* button:hover {
+  color: $colorPrimary;
+  background-color: $colorButtonHover;
+  box-shadow: 1px 1px 4px 0 rgba(29, 28, 28, 0.55)inset, 
+  -3px -3px 5px 0 rgba(255, 255, 255, 0.85)inset;
 }
 
 select {

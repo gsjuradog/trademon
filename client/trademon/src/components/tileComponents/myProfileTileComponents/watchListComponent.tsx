@@ -20,8 +20,6 @@ export default function WatchList() {
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
       </div>
-    
     </div>
-
   )
 }

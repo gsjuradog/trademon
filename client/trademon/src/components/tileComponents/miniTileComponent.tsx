@@ -3,7 +3,7 @@ import '../../styling/tiles.scss';
 
 export default function MiniTile() {
   return (
-    <a href="/offering/">
+    <a href="/offer/randomID123">
       <div className="mini-tile-container">
         <div className="sprite-mini-box">
           <img className="sprite-mini" src={'/assets/testSprite.png'}></img>
