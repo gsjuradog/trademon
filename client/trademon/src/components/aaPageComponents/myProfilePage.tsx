@@ -9,6 +9,9 @@ export default function MyProfile() {
   return (
     <div>
       <SearchBar></SearchBar>
+      <div className="menu-title">
+        My Profile
+      </div>
       <div className="my-profile-container">
         <ProfileBanner></ProfileBanner>
         <WatchList></WatchList>
