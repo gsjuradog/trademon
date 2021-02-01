@@ -3,15 +3,20 @@ import '../../styling/tiles.scss';
 
 export default function MiniTile() {
   return (
-    <div className="tile-container-mini">
-      <div className="sprite-mini-box">
-        <img className="sprite-mini" src={'/assets/testSprite.png'}></img>
-      </div>
+    <a href="/offering/">
+      <div className="mini-tile-container">
+        <div className="sprite-mini-box">
+          <img className="sprite-mini" src={'/assets/testSprite.png'}></img>
+        </div>
 
-      <div className="mini-tile-text">
-        <p>Charmeleon</p>
-        <p>Price: $2.99</p>
+        <div className="mini-tile-info-box">
+          <div className="mini-fave-icon-container">
+            <img src={'/assets/FavIconEmpty.png'} className="heart"></img>
+          </div>
+          <div className="mini-tile-text">Charmeleon</div>
+          <div className="mini-tile-text">$2.99</div>
+        </div>
       </div>
-    </div>
+    </a>
   );
 }

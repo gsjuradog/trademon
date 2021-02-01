@@ -1,0 +1,69 @@
+$colorPrimary: #075F59;
+$colorSecondary: #BA3F1D;
+$colorGreyPop: #232026;
+$colorGreyBg: #1c1c1e;
+$colorText: #ffffff;
+$colorShadowLight: rgba(48, 48, 48, 0.85);
+$colorShadowDark: rgba(0, 0, 0, 0.65);
+
+
+.my-profile-containers {
+  min-width: 150px;
+  width: 80%;
+  max-width: 80%;
+  background-color: $colorGreyPop;
+  border-radius: 30px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: -2px -2px 5px $colorShadowLight,
+  2px 2px 5px $colorShadowDark;
+}
+
+.banner-container {
+  max-height: 40px;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+}
+
+.watch-list-container {
+  @extend .my-profile-containers;
+  max-height: 300px;
+  height: 175px;
+  margin-top: 10px;
+  overflow: scroll;
+}
+
+.watch-list-title-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding-top: 6px;
+}
+
+.watch-list-flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  overflow: scroll;
+}
+
+.img-med {
+  max-width: 25px;
+  max-height: 25px;
+}
+
+.profile-avatar-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 56px;
+  padding: 4px 0px;
+}
+
+.my-profile-text {
+  font-size: .6em;
+  position: relative;
+  top: 0px;
+}
