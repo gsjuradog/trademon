@@ -22,15 +22,12 @@ export default function ProfileOverlay(this: any) {
 
   return (
     <div className="my-profile-overlay">
-      <a href={'/profile'}>
+      <a href={'/profile'} className="my-profile-overlay-link">
         <div className="prof-overlay-text">User12345</div>
+        <img className="img-med" src ={'/assets/avatarIcon.png'}/>
       </a>
-      <div className="profile-overlay-buttons">
-        <a href={'/profile'}>
-          <img className="img-med" src ={'/assets/avatarIcon.png'}/>
-        </a>
-        <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'}/>
-      </div>
+      <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'}/>
+
       {hamburgVis === true && 
         <div className="hamburger-nav">
         <img onClick={toggleHamburger} className="img-exit" 

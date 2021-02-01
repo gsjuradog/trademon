@@ -9,6 +9,9 @@ export default function DMPage() {
       <div>
         <SearchBar></SearchBar>
       </div>
+      <div className="menu-title">
+        Messages
+      </div>
       <div className="dm-container">
         <DMSummaryTile></DMSummaryTile>
         <DMSummaryTile></DMSummaryTile>
