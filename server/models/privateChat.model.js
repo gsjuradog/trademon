@@ -1,27 +1,28 @@
 // 'use strict';
 const { Sequelize, DataTypes } = require('sequelize');
 
-
 module.exports = (sequelize, DataTypes) =>
-  sequelize.define('PrivateChat', {
- 
-    chatID: {  
-      type: DataTypes.STRING,
+  sequelize.define('PrivateChats', {
+    chatID: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
-    seller: {  
+    seller: {
       type: DataTypes.STRING, //username
       allowNull: false,
     },
-    buyer: {  //username
+    buyer: {
+      //username
       type: DataTypes.STRING,
       allowNull: false,
     },
-    history: {  //array of messages
+    history: {
+      //array of messages
       type: DataTypes.ARRAY(DataTypes.STRING), //[message] the strings are message IDs
       allowNull: true,
     },
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
-

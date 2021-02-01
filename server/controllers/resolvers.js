@@ -1,26 +1,11 @@
 const db = require('../models/index');
 
-const testObj = {
-  username: 'Pikachu',
-  trainerID: 4654654,
-  trainerName: 'Bernie',
-  mtgoID: 'ghfghfghgh',
-  mtgoName: 'ghfghdfhgfghh',
-  latitude: 46546,
-  longitude: 4546,
-  buyerRating: 0,
-  numBuyRatings: 0,
-  sellerRating: 0,
-  numSellRatings: 0,
-  numOfStrikes: 1,
-};
-
 // query ($user: String!){
 //   getUserData(user: $user) {
 //     numOfStrikes
 //     trainerID
 //     username {
-//       username 
+//       username
 //     }
 //   }
 // }
@@ -35,37 +20,46 @@ const Query = {
     return query;
   },
 
-  getPrivateChat: (root, args, context ) => {
+  getPrivateChat: (root, args, context) => {
     const { chatID } = args;
     const query = getChat(chatID);
     return query;
   },
 
   getTrade: (root, args, context) => {
-    const { trade } = args;
+    const { tradeID } = args;
     const query = getTrade(trade);
     return query;
-  }
-
+  },
 };
 
 //Resolvers for GraphQL Queries
 const getUser = async (user) => {
-  const reply = await db.UserData.findOne({where: {
-    username:user
-  }});
+  const reply = await db.UserData.findOne({
+    where: {
+      username: user,
+    },
+  });
   return reply;
-}
+};
 
-const getChat = async (chat) => {
-  //chat database interaction
-  return 'Chat history';
-}
+const getChat = async (chatID) => {
+  const reply = await db.PrivateChat.findOne({
+    where: {
+      chatID: chatID,
+    },
+  });
+  return reply;
+};
 
 const getTrade = async (trade) => {
-  //trade database interaction
-  return 'Trade'
-}
+  const reply = await db.TradeData.findOne({
+    where: {
+      tradeID: tradeID,
+    },
+  });
+  return 'Trade';
+};
 
 //GraphQL Mutations
 const Mutation = {
@@ -76,26 +70,55 @@ const Mutation = {
 
 //Resolvers for GraphQL Mutations
 
-
 //Type Resolvers
 const UserData = {
-  username: (username) => {return username}
-  //need to define privatechat resolver
-}
+  username: (username) => {
+    return username;
+  },
+  privateChat: async (username) => {
+    const reply = await db.PrivateChat.findAll({
+      where: {
+        seller: username,
+        buyer: username,
+      },
+    });
+    return reply;
+  },
+};
 
 const PrivateChat = {
-  //need to define history resolver
-}
+  history: async (chatID) => {
+    const reply = await db.Message.findAll({
+      where: {
+        chatID: chatID,
+      },
+    });
+    return reply;
+  },
+};
 
 const Message = {
-  //need to define from & to resolvers
-}
+  from: async (messageID) => {
+    const reply = await db.Message.findOne({
+      where: {
+        messageID: messageID,
+      },
+    });
+    return reply.from;
+  },
+  to: async (messageID) => {
+    const reply = await db.Message.findOne({
+      where: {
+        messageID: messageID,
+      },
+    });
+    return reply.to;
+  },
+};
 
 const Trade = {
   //need to define tradeItemVariableData resolver
   //need to define offerItemVariableData resolver
-}
-
-
+};
 
 module.exports = { Query, Mutation, UserData, PrivateChat, Message, Trade };

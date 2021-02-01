@@ -1,59 +1,70 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
+const expDate = () => Date.now() + 604800000;
 
 module.exports = (sequelize, DataTypes) =>
   sequelize.define('TradeData', {
     tradeID: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
     publishDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      //allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     numViews: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
+      //allowNull: true,
     },
     expirationDate: {
       type: DataTypes.DATE,
-      allowNull: false,
+      defaultValue: expDate(),
+      allowNull: true,
     },
     seller: {
-      type: DataTypes.STRING,//of type username  FOREIGN KEY
-      allowNull: false,
+      type: DataTypes.STRING, //of type username  FOREIGN KEY
+      allowNull: true,
     },
     tradeItemID: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
-    tradeItemVariableData: { // PokeVariableData!
+    tradeItemVariableData: {
+      // PokeVariableData!
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
-    price: { // PokeVariableData!
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    tax: { // PokeVariableData!
+    price: {
+      // PokeVariableData!
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    buyer: { // username!
+    tax: {
+      // PokeVariableData!
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    buyer: {
+      // username!
       type: DataTypes.STRING,
       allowNull: true,
     },
-    offerItemId: { 
+    offerItemId: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    offerItemVariableData: { //pokevariabledata
+    offerItemVariableData: {
+      //pokevariabledata
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
-    tradeComplete: { 
+    tradeComplete: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
 
     // The timestamp is added automatically by Sequelize

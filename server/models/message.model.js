@@ -1,31 +1,35 @@
- 
- // 'use strict';
+// 'use strict';
 const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) =>
   sequelize.define('Message', {
- 
-    messageID: {  
-      type: DataTypes.STRING,
+    messageID: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
       allowNull: false,
     },
-    from: {  
+    chatID: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    from: {
       type: DataTypes.STRING, //username
       allowNull: false,
     },
-    to: {  
+    to: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    content: {  
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    publishDate: {  //array of messages
+    publishDate: {
+      //array of messages
       type: DataTypes.DATE, //[message] the strings are message IDs
-      allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
-

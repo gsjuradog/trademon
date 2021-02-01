@@ -5,11 +5,10 @@ const createTrade = async (req, res) => {
     console.log('TRADE POST');
     const { seller, tradeItemID } = req.body;
     console.log(seller, tradeItemID);
-    // const reply = await db.UserData.create({
-    //   username: username,
-    //   trainerID: trainerID,
-    //   trainerName: trainerName,
-    // });
+    const reply = await db.TradeData.create({
+      seller: seller,
+      tradeItemID: tradeItemID,
+    });
     res.status(200).send(reply);
   } catch (err) {
     console.log('POST ERROR', err);

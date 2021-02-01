@@ -57,11 +57,11 @@ type UserData {
   sellerRating: Int!
   numSellRatings: Int!
   numOfStrikes: Int!
-  privatechat: [PrivateChat]
+  privateChat: [PrivateChat]
 }
 
 type PrivateChat {
-  chatID: String!
+  chatID: Int!
   seller: Username!
   buyer: Username!
   history: [Message]
@@ -69,6 +69,7 @@ type PrivateChat {
 
 type Message {
   messageID: String!
+  chatID: String!
   from: Username!
   to: Username!
   content: String!
@@ -76,14 +77,14 @@ type Message {
 }
 
 type Trade {
-  tradeId: String!
+  tradeID: Int!
   publishDate: Date!
   numViews: Int
   expirationDate: Date
   seller: Username!
   tradeItemID: String!
   tradeItemVariableData: PokeVariableData!
-  price: Int!
+  price: Int
   tax: Int
   buyer: Username!
   offerItemId: String!
