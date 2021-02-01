@@ -1,21 +1,10 @@
 // 'use strict';
 const { Sequelize, DataTypes } = require('sequelize');
-// module.exports = (sequelize, DataTypes) => sequelize.define('Message', {
-//   author: {
-//     type: DataTypes.STRING,
-//     allowNull: false
-//   },
-//   content: {
-//     type: DataTypes.TEXT,
-//     allowNull: false
-//   }
-//   // The timestamp is added automatically by Sequelize
-//   // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
-// });
+
 
 module.exports = (sequelize, DataTypes) =>
   sequelize.define('UserData', {
-    username: {
+    username: {  // PRIMARY KEY
       type: DataTypes.STRING,
       allowNull: false,
     },

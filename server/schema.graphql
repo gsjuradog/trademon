@@ -36,7 +36,7 @@ type Username {
 }
 
 type UserCredentials {
-  id: String!
+  userID: String!
   email: String!
   username: Username!
   password: String!
