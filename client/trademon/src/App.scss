@@ -1,16 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
+$colorPrimary: #075f59;
+$colorSecondary: #ba3f1d;
+$colorGreyPop: #232026;
+$colorGreyBg: #1c1c1e;
+$colorText: #ffffff;
+$colorShadowLight: rgba(48, 48, 48, 0.85);
+$colorShadowDark: rgba(0, 0, 0, 0.65);
 
-:root {
-  --color-primary: #075F59;
-  --color-secondary: #BA3F1D;
-  --color-grey-pop: #232026;
-  --color-grey-bg: #1c1c1e;
-  --color-text: #ffffff;
-}
+::-webkit-scrollbar {display:none;}
 
 body {
-  background-color: var(--color-grey-bg);
-  color: var(--color-text);
+  background-color: $colorGreyBg;
+  color: $colorText;
   font-family: 'Rubik', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: $colorText;
+}
+
+select {
+  background-color: $colorGreyPop;
+  color: $colorText;
+  border-radius: 25px;
+  height: 17px;
+  font-size: .4em;
+  outline: none;
+  border: none;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+input {
+  background-color: $colorGreyPop;
+  color: $colorText;
+  font-size: .4em;
+  margin-left: 5px;
+  border-radius: 25px;
+  max-width: 80%;
+  width: 60%;
+  min-width: 80px;
+  align-self: center;
+  padding-left: 7px;
+  padding-right: 7px;
+  height: 14.5px;
+  outline: none;
+  border: 3px;
+  border-color: $colorText;
+  
+}
+
+input:hover {
+  cursor: pointer;
 }

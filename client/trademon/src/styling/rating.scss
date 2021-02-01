@@ -1,11 +1,18 @@
-// TODO: align the icons to the bottom of the widget container
+.rating-widget-container {
+  display: flex;
+  align-items: flex-end;
+}
 
+.rating-widget {
+  display: flex;
+  align-items: flex-end;
+}
 .rating-icon-empty {
-  height: 1rem;
-  width: 1rem;
+  height: .7rem;
+  width: .7rem;
 }
 
 .rating-icon-full {
-  height: 1rem;
-  width: 1rem;
+  height: .7rem;
+  width: .7rem;
 }
