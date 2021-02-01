@@ -155,28 +155,9 @@ p {
   margin-top: 5px;
 }
 
-.my-profile-overlay {
-  margin-left: 5px;
-  margin-right: 20px;
-  height: 40px;
-  max-height: 40px;
-  width: 100px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.prof-overlay-text {
-  font-size: .5em;
-  color: $colorText;
-}
-
-.profile-overlay-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 55px;
-  max-width: 55px;
+.img-large {
+  max-width: 30px;
+  max-height: 30px;
 }
 
 .img-med {
@@ -188,3 +169,39 @@ p {
   max-width: 12px;
   max-height: 12px;
 }
+
+.dm-summary-container {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0px;
+  background-color: $colorGreyPop80;
+  border-radius: 25px;
+  padding: 4px 0px;
+  transition: 150ms;
+}
+.dm-summary-container:hover {
+  background-color: $colorGreyHover;
+}
+
+.dm-summary-text-column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.dm-text {
+  font-size: .6em;
+}
+
+.dm-text-item {
+  @extend .dm-text;
+  color: $colorPrimary;
+}
+
+.dm-summary-text {
+  @extend .dm-text;
+  color: rgba(190, 190, 190, 0.856)
+}
+
+

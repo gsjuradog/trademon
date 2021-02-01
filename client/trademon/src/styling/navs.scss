@@ -15,10 +15,26 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   max-width: 75px;
 }
 
+.logo-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: -16px;
+ 
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  opacity: 90%;
+  margin-bottom: -15px;
+  margin-right: 3px;
+}
+
 .platform-text {
   margin-left: 6%;
   font-size: 12px;
   color: $colorText;
+
 }
 
 .nav-row {
@@ -27,6 +43,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   align-items: center;
   justify-content: space-between;
   min-width: 100%;
+  padding-left: 8px;
 }
 .filters-box {
   margin-left: 6%;
@@ -36,4 +53,80 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   width: 100%;
 }
 
+.my-profile-overlay {
+  margin-left: 5px;
+  margin-right: 20px;
+  height: 40px;
+  max-height: 40px;
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
+.prof-overlay-text {
+  font-size: .5em;
+  color: $colorText;
+  margin-top: -3px;
+}
+
+.profile-overlay-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 55px;
+  max-width: 55px;
+}
+
+.img-med {
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.img-small {
+  max-width: 12px;
+  max-height: 12px;
+}
+
+.hamburger-nav {
+  width: 175px;
+  background-color: $colorGreyPop;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.hamburger-img {
+  @extend .img-small;
+  margin-top: -4px;
+}
+
+.hamburger-links {
+  min-width: 91%;
+}
+
+.hamburger-button {
+  width: 100%;
+  margin: 8px 8px;
+  font-size: .6em;
+}
+
+.img-exit {
+  max-width: 15px;
+  max-height: 15px;
+  align-self: flex-end;
+  margin-right: 12px;
+  margin-bottom: 25px;
+}
+
+.dm-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
