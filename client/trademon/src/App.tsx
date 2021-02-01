@@ -5,6 +5,7 @@ import LandingPage from './components/aaPageComponents/landingPage';
 import MyProfile from './components/aaPageComponents/myProfilePage';
 import PokemonGoPage from './components/aaPageComponents/pokemonGoPage'
 import OfferDetailsPage from './components/aaPageComponents/offerDetailsPage'
+import TestPage from './components/testComponent/testComponent';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/"            exact component={LandingPage}/>
           <Route path="/offer/randomID123" component={OfferDetailsPage}/>
           <Route path="/profile"           component={MyProfile}/>
+          <Route path="/test"           component={TestPage}/>
           <Route path="/pokemon-go"        component={PokemonGoPage}/>
         </Switch>
       </div>
