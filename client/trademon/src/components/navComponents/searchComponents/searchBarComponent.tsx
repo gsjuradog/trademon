@@ -1,12 +1,15 @@
 import React from 'react'
 import '../../../styling/navs.scss'
-import ProfileOverlay from '../../tileComponents/myProfileTileComponents/profileOverlayComponent'
+import ProfileOverlay from './profileOverlayComponent'
 
 export default function SearchBar() {
   return (
     <div className="nav-container">
       <a href={'/'}>
-        <div className="platform-text">trademon.io</div>
+        <div className="logo-box">
+          <img className="logo-img" src={'/assets/trademon-logo.png'}/>
+          <div className="platform-text">trademon.io</div>
+        </div>
       </a>
       <div className="nav-row">
         <div className="filters-box">

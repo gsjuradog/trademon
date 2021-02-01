@@ -6,6 +6,8 @@ import MyProfile from './components/aaPageComponents/myProfilePage';
 import PokemonGoPage from './components/aaPageComponents/pokemonGoPage'
 import OfferDetailsPage from './components/aaPageComponents/offerDetailsPage'
 import TestPage from './components/testComponent/testComponent';
+import DMPage from './components/aaPageComponents/dmPage'
+import CreateListingForm from './components/formComponents/createListingForm'
 
 const App = () => {
   return (
@@ -15,7 +17,9 @@ const App = () => {
           <Route path="/"            exact component={LandingPage}/>
           <Route path="/offer/randomID123" component={OfferDetailsPage}/>
           <Route path="/profile"           component={MyProfile}/>
-          <Route path="/test"           component={TestPage}/>
+          <Route path="/create-listing"    component={CreateListingForm}/>
+          <Route path="/messages"          component={DMPage}/>
+          <Route path="/test"              component={TestPage}/>
           <Route path="/pokemon-go"        component={PokemonGoPage}/>
         </Switch>
       </div>
