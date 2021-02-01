@@ -1,17 +1,15 @@
 // 'use strict';
 const { Sequelize, DataTypes } = require('sequelize');
 
-module.exports = (sequelize, DataTypes) =>
-  sequelize.define('Message', {
+module.exports = (sequelize, DataTypes) => {
+
+  const message = sequelize.define('Message', {
+
     messageID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false,
-    },
-    chatID: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     from: {
       type: DataTypes.STRING, //username
@@ -30,6 +28,11 @@ module.exports = (sequelize, DataTypes) =>
       type: DataTypes.DATE, //[message] the strings are message IDs
       defaultValue: DataTypes.NOW,
     },
-    // The timestamp is added automatically by Sequelize
-    // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
-  });
+  })
+
+  message.associate = (model) => {
+    message.belongsTo(model.PrivateChat);
+  }
+
+  return message;
+};

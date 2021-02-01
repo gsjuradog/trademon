@@ -9,6 +9,8 @@ const messageControllers = require('./controllers/messageController');
 
 router.get('/test', testControllers.getUser);
 
+router.get('/getChat/:id', chatControllers.getChat);
+
 router.post('/createUser', userControllers.createUser);
 router.post('/createTrade', tradeControllers.createTrade);
 router.post('/createChat', chatControllers.createChat);

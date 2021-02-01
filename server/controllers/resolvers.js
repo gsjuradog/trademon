@@ -13,6 +13,7 @@ const db = require('../models/index');
 // Query Variable: { "user": "Dan"}
 
 //GraphQL Queries
+
 const Query = {
   getUserData: (root, args, context) => {
     const { user } = args;
@@ -21,16 +22,20 @@ const Query = {
   },
 
   getPrivateChat: (root, args, context) => {
-    const { chatID } = args;
-    const query = getChat(chatID);
+    const { chat } = args;
+    const query = getChat(chat);
     return query;
   },
 
   getTrade: (root, args, context) => {
     const { tradeID } = args;
-    const query = getTrade(trade);
+    const query = getTrade(tradeID);
     return query;
   },
+
+  test: () => {
+    return "Test";
+  }
 };
 
 //Resolvers for GraphQL Queries
@@ -49,6 +54,7 @@ const getChat = async (chatID) => {
       chatID: chatID,
     },
   });
+  console.log(reply);
   return reply;
 };
 
@@ -60,6 +66,25 @@ const getTrade = async (trade) => {
   });
   return 'Trade';
 };
+
+const getMessages = async (chatID) => {
+  const messages = await db.Message.findAll({ 
+    where: {
+      chatID: chatID
+    }
+  })
+  return messages;
+}
+
+const getAllChats = async (userID) => {
+  const user = await db.UserData.findOne({
+    where:{
+      userID:userID
+    }
+  });
+  return user.privatchat;
+}
+
 
 //GraphQL Mutations
 const Mutation = {
@@ -75,22 +100,24 @@ const UserData = {
   username: (username) => {
     return username;
   },
-  privateChat: async (username) => {
-    const reply = await db.PrivateChat.findAll({
-      where: {
-        seller: username,
-        buyer: username,
-      },
-    });
-    return reply;
-  },
+  // privateChat: async (username) => {
+  //   const reply = await db.PrivateChat.findAll({
+  //     where: {
+  //       seller: username,
+  //       buyer: username
+  //     },
+  //   });
+  //   console.log(reply);
+  //   return reply;
+  // },
 };
 
 const PrivateChat = {
-  history: async (chatID) => {
-    const reply = await db.Message.findAll({
+  history: async (username) => {
+    const reply = await db.PrivateChat.findAll({
       where: {
-        chatID: chatID,
+        buyer: username,
+        seller:username
       },
     });
     return reply;
@@ -116,9 +143,12 @@ const Message = {
   },
 };
 
+
 const Trade = {
+  //
   //need to define tradeItemVariableData resolver
   //need to define offerItemVariableData resolver
 };
+
 
 module.exports = { Query, Mutation, UserData, PrivateChat, Message, Trade };

@@ -2,20 +2,10 @@ const db = require('../models/index');
 
 const createChat = async (req, res) => {
   try {
-    console.log('CHAT POST');
-    const { seller, buyer, history, comment } = req.body;
-    console.log(seller, buyer, comment);
-
-    const reply = await db.PrivateChats.create({
+    const { seller, buyer } = req.body;
+    const reply = await db.PrivateChat.create({
       buyer: buyer,
       seller: seller,
-      history: history,
-    });
-    const message = await db.Message.create({
-      from: buyer,
-      to: seller,
-      content: comment,
-      chatID: reply.chatId,
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -24,6 +14,22 @@ const createChat = async (req, res) => {
   }
 };
 
+const getChat = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const reply = await db.Message.findAll({
+      where: {
+        chatID: id
+      }
+    });
+    res.status(200).send(reply);
+  } catch (err) {
+    console.log('GET ERROR', err);
+    res.status(500).send(`GET ERROR: ${err}`);
+  }
+}
+
 module.exports = {
   createChat,
+  getChat
 };

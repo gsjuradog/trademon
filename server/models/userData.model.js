@@ -2,8 +2,9 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 
-module.exports = (sequelize, DataTypes) =>
-  sequelize.define('UserData', {
+module.exports = (sequelize, DataTypes) => {
+
+  const userData = sequelize.define('UserData', {
     username: {  // PRIMARY KEY
       type: DataTypes.STRING,
       allowNull: false,
@@ -57,11 +58,19 @@ module.exports = (sequelize, DataTypes) =>
       defaultValue: 0,
       allowNull: true,
     },
-    privateMesg: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-
+    // privateChat: {
+    //   type: DataTypes.ARRAY(DataTypes.STRING),
+    //   allowNull: true,
+    // },
+    
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
-  });
+  })
+
+  // userData.associate = (model) => {
+  //   userData.hasMany(model.PrivateChat)
+  // }
+
+  return userData
+};
+//privateMesg is array of chatID

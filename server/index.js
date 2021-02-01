@@ -26,7 +26,8 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 (async () => {
   try {
-    await db.sequelize.sync();
+    await db.sequelize.sync({force: true});
+    //await db.sequelize.sync();
     app.listen(PORT);
     console.log(`Conected to DB, Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (e) {
