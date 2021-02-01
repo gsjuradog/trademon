@@ -1,19 +1,19 @@
 import React from 'react'
-import '../../styling/tiles.scss';
-import '../../styling/temp-UserBanner.scss';
-import MiniTileComponent from '../tileComponents/miniTileComponent';
+import '../../../styling/myProf.scss';
+import MiniTileComponent from '../miniTileComponent';
 
-export default function WatchList() {
+export default function MyOffers() {
   return (
     <div className="watch-list-container">
       <div className="watch-list-title-row">
-        <h4>Watch List</h4>
+        <div className="my-profile-text ">My Offers</div>
       </div>
       <div className="watch-list-flexbox">
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
+      
       </div>
     
     </div>

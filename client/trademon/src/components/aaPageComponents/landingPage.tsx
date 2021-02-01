@@ -1,14 +1,16 @@
 import React from 'react'
-import MiniTileContainer from '../containerComponents/miniTileContainer'
+import PlatformContainer from '../containerComponents/platformContainer'
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 
 export default function LandingPage() {
   return (
     <>
-      <SearchBar></SearchBar>
+      <div>
+        <SearchBar></SearchBar>
+      </div>
       <div className="platforms-container">
-        <MiniTileContainer></MiniTileContainer>
-        <MiniTileContainer></MiniTileContainer>
+        <PlatformContainer></PlatformContainer>
+        <PlatformContainer></PlatformContainer>
       </div>
     </>
   )

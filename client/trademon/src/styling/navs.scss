@@ -6,30 +6,34 @@ $colorText: #ffffff;
 $colorShadowLight: rgba(48, 48, 48, 0.85);
 $colorShadowDark: rgba(0, 0, 0, 0.65);
 
-.search-container{
+.nav-container{
   display: flex;
   flex-direction: column;
 }
 
+.nav-container a {
+  max-width: 75px;
+}
+
 .platform-text {
+  margin-left: 6%;
   font-size: 12px;
-  padding-left: 8px;
+  color: $colorText;
 }
 
-.search-field {
-  border-radius: 25px;
-  max-width: 50%;
-  min-width: 350px;
-  align-self: center;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.filters-box {
+.nav-row {
   display: flex;
   align-self: center;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100%;
+}
+.filters-box {
+  margin-left: 6%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
-.select-dropdown {
-  border-radius: 25px;
-}
+
