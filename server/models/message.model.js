@@ -2,9 +2,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-
   const message = sequelize.define('Message', {
-
     messageID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -28,11 +26,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE, //[message] the strings are message IDs
       defaultValue: DataTypes.NOW,
     },
-  })
+  });
 
   message.associate = (model) => {
     message.belongsTo(model.PrivateChat);
-  }
+  };
 
   return message;
 };
