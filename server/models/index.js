@@ -11,7 +11,7 @@ const Sequelize = require('sequelize');
 // plz
 const db = {};
 
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+//const sequelize = new Sequelize(process.env.DATABASE_URL);
 const sequelize = new Sequelize(
   {
     host: HOST,
