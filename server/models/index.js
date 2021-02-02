@@ -11,7 +11,6 @@ const HOST = process.env.DB_TEST_HOST;
 
 const db = {};
 
-//const sequelize = new Sequelize(process.env.DATABASE_URL);
 const sequelize = new Sequelize(
   {
     host: HOST,
@@ -21,10 +20,10 @@ const sequelize = new Sequelize(
     username: USER,
     password: PASSWORD,
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false 
-      }
+      // ssl: {
+      //   require: true,
+      //   rejectUnauthorized: false 
+      // }
     }
   }
 );
