@@ -1,13 +1,31 @@
-import React, { useState }from 'react'
+import React, { useState, useEffect }from 'react'
 import { Link } from 'react-router-dom'
 import '../../../styling/navs.scss'
+import Backdrop from '../../modal/backdrop'
+
+import { gsap } from 'gsap'
 
 export default function ProfileOverlay(this: any) {
 
   const [hamburgVis, setHamburgVis] = useState<boolean>(false)
   const [exitIcon, setExitIcon] = useState<string>('/assets/exit-icon.png')
 
+  // const animateHamburger = () => {
+  //   if (hamburgVis === false) {
+  //     gsap.from('.hamburger-nav', 1, {
+  //      x: 200
+  //     })
+  //    } else if (hamburgVis === true) {
+  //      gsap.to('.hamburger-nav', 1, {
+  //        x: -200
+  //       })
+  //    }
+  //    setTimeout(() => { setHamburgVis(!hamburgVis); }, 1000)
+  // }
+  
+
   const toggleHamburger = () => {
+    //animateHamburger();
     setHamburgVis(!hamburgVis);
     handleMouseLeave();
   }
@@ -20,6 +38,14 @@ export default function ProfileOverlay(this: any) {
     setExitIcon('/assets/exit-icon.png');
   }
 
+  if (hamburgVis) return (
+    <Backdrop
+    toggleHamburger={toggleHamburger}
+    handleMouseEnter={handleMouseEnter}
+    handleMouseLeave={handleMouseLeave}
+    />
+  )
+
   return (
     <div className="my-profile-overlay">
       <a href={'/profile'} className="my-profile-overlay-link">
@@ -27,29 +53,12 @@ export default function ProfileOverlay(this: any) {
         <img className="img-med" src ={'/assets/avatarIcon.png'}/>
       </a>
       <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'}/>
-
-      {hamburgVis === true && 
-        <div className="hamburger-nav">
-        <img onClick={toggleHamburger} className="img-exit" 
-          src={exitIcon}
-          onMouseOver={handleMouseEnter}
-          onMouseOut={handleMouseLeave}
-        />
-        <Link to="/messages" className="hamburger-links">
-          <button className="hamburger-button">Messages</button>
-        </Link>
-        <Link to="/create-listing" className="hamburger-links">
-          <button className="hamburger-button">Create Listing</button>
-        </Link>
-        <Link to="/profile" className="hamburger-links">
-          <button className="hamburger-button">My Profile</button>
-        </Link>
-        <Link to="/profile" className="hamburger-links">
-          <button className="hamburger-button">Settings</button>
-        </Link>
-        
-      </div>
-      }
     </div>
   )
 }
+
+//{hamburgVis === true &&
+
+
+
+

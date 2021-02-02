@@ -83,7 +83,7 @@ const Login = () => {
       
       <div className="overlay-member">
         <h2>Already a member?</h2>
-      <button onClick={panelLeft}>SIGN IN!</button>
+        <button onClick={panelLeft}>SIGN IN!</button>
       </div>
 
   </div>

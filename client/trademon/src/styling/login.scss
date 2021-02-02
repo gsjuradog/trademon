@@ -14,9 +14,9 @@ $colorGreyBg: #1c1c1e;
     align-items: center;
     img {
       width: 150px;
-      margin-right: 2em;
     }
     h1 {
+      margin-left: 2em;
       font-size: 400%;
     }
   }
@@ -94,6 +94,41 @@ $colorGreyBg: #1c1c1e;
         width: 30%;
         height: 3em;
         background-color: $colorGreyBg;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .login-container {
+    .login-banner {
+      h1 {
+        display: none;
+      }
+    }
+    .overlay-create,
+    .overlay-create h2,
+    .overlay-create button,
+    .overlay-member,
+    .overlay-member h2,
+    .overlay-member button,
+    .overlay-panel {
+      display: none;
+    }
+    .panel-container {
+      flex-direction: column;
+      .form-container {
+        form {
+          button {
+            width: 85%;
+            height: 2em;
+          }
+          .login-inputs {
+            input {
+              width: 90%;
+            }
+          }
+        }
       }
     }
   }
