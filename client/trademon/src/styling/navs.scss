@@ -6,9 +6,11 @@ $colorText: #ffffff;
 $colorShadowLight: rgba(48, 48, 48, 0.85);
 $colorShadowDark: rgba(0, 0, 0, 0.65);
 
-.nav-container{
+.nav-container {
   display: flex;
   flex-direction: column;
+  height: 15vh;
+  border: 1px solid white;
 }
 
 .nav-container a {
@@ -19,7 +21,6 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   display: flex;
   align-items: center;
   margin-bottom: -16px;
- 
 }
 
 .logo-img {
@@ -34,7 +35,6 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   margin-left: 6%;
   font-size: 12px;
   color: $colorText;
-
 }
 
 .nav-row {
@@ -64,18 +64,18 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   align-items: center;
 }
 
-.my-profile-overlay-link{
+.my-profile-overlay-link {
   display: flex;
   align-items: center;
   transition: 150ms;
 }
 
-.my-profile-overlay-link:hover{
+.my-profile-overlay-link:hover {
   transform: scale(1.05);
 }
 
 .prof-overlay-text {
-  font-size: .5em;
+  font-size: 0.5em;
   color: $colorText;
   margin-right: 2px;
 }
@@ -104,11 +104,12 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   position: fixed;
   top: 0;
   right: 0;
-  height: 100vh;
+  height: 95vh;
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  opacity: 0;
+  z-index: 20;
 }
 
 .hamburger-img:hover {
@@ -122,7 +123,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 .hamburger-button {
   width: 100%;
   margin: 8px 8px;
-  font-size: .6em;
+  font-size: 0.6em;
 }
 
 .img-exit {

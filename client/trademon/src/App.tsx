@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
+import { Route, BrowserRouter as Router, Switch, Redirect } from "react-router-dom"
 import Login from './components/aaPageComponents/loginPage'
 import LandingPage from './components/aaPageComponents/landingPage';
 import MyProfile from './components/aaPageComponents/myProfilePage';
@@ -25,6 +25,7 @@ const App = () => {
           <Route path="/chat/1234"          component={DMChatPage}/>
           <Route path="/test"              component={TestPage}/>
           <Route path="/pokemon-go"        component={PokemonGoPage}/>
+          <Redirect to="/"/>
         </Switch>
       </div>
     </Router>
