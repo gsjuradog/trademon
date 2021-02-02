@@ -44,7 +44,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL);
 //   }
 // });
 
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 module.exports = db;
