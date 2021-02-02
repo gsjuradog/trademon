@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   pokemonAdded,
   pokemonToggled,
-} from '../../redux/reducers/pokemonsSlice';
+} from '../../store/reducers/pokemonsSlice';
 
 export default function ReduxTestComponent() {
   const pokemon = useSelector((state: any) => state.pokemons);
