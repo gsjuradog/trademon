@@ -7,13 +7,23 @@ const tradeControllers = require('./controllers/tradeController');
 const chatControllers = require('./controllers/chatController');
 const messageControllers = require('./controllers/messageController');
 
+
 router.get('/test', testControllers.getUser);
 
-router.get('/getChat/:id', chatControllers.getChat);
 
+// AUTH RELATED ROUTES
 router.post('/createUser', userControllers.createUser);
-router.post('/createTrade', tradeControllers.createTrade);
+
+
+// DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
 router.post('/createMessage', messageControllers.postMessage);
+router.get('/getChat/:id', chatControllers.getChat);
+
+
+// OFFERS RELATED ROUTES
+router.post('/createTrade', tradeControllers.createTrade);
+router.get('/fetchTrades', tradeControllers.fetchTrades)
+
 
 module.exports = router;

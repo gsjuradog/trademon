@@ -15,56 +15,94 @@ module.exports = (sequelize, DataTypes) => {
       //allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    numViews: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      //allowNull: true,
-    },
     expirationDate: {
       type: DataTypes.DATE,
       defaultValue: expDate(),
       allowNull: true,
     },
+    numViews: {
+      type: DataTypes.INTEGER,
+      defaultValue: 4,
+      //allowNull: true,
+    },
     seller: {
       type: DataTypes.STRING, //of type username  FOREIGN KEY
+      defaultValue: 'seller',
       allowNull: true,
     },
-    tradeItemID: {
+
+    //----------------------
+
+    pokeNum: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    pokeName: {
+      type: DataTypes.STRING, //username
+      allowNull: false,
+    },
+    pokeSprite: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    tradeItemVariableData: {
-      // PokeVariableData!
-      type: DataTypes.STRING,
-      allowNull: true,
+    pokeGen: {
+      type: DataTypes.INTEGER,
+      allowNull: true, //change
+      defaultValue: 2,
     },
+    // -------------------- pokevariable
+    pokeLvl: {
+      type: DataTypes.INTEGER,
+      allowNull: true, //change
+      defaultValue: 100,
+    },
+    fastMove: {
+      type: DataTypes.STRING,
+      allowNull: true, //change
+      defaultValue: 12,
+    },
+    chargeMove: {
+      type: DataTypes.STRING,
+      allowNull: true, //change
+    },
+    isShiny: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true, //change
+      defaultValue: false
+    },
+    appraisal: {
+      type: DataTypes.INTEGER,
+      allowNull: true, ///change
+      defaultValue: 3,
+    },
+
+    // --------------------- PRICE FIELDS
     price: {
       // PokeVariableData!
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 10,
     },
     tax: {
       // PokeVariableData!
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 1,
     },
+    // ------------------------- BUYER FIELDS
     buyer: {
       // username!
       type: DataTypes.STRING,
       allowNull: true,
     },
-    offerItemId: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    offerItemVariableData: {
-      //pokevariabledata ----> Combined in pokemonToTrade with pokeconstants
+    buyersOfferItemId: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     tradeComplete: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
+      defaultValue: false,
     },
 
     // The timestamp is added automatically by Sequelize
@@ -72,7 +110,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   //Trade has two pokemons that are going to be traded, each trade belongs to many users
   trade.associate = (model) => {
-    trade.hasMany(model.PokemonToTrade);
+    // trade.hasMany(model.PokemonToTrade);
     trade.belongsToMany(model.UserData, {
       through: 'Trade_Users',
       as: 'Trade',
@@ -81,3 +119,5 @@ module.exports = (sequelize, DataTypes) => {
 
   return trade;
 };
+
+
