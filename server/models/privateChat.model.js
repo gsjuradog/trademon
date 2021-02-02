@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
     privateChat.hasMany(model.Message);
     privateChat.belongsToMany(model.UserData, {
       through: 'User_Chat',
-      as: 'chats',
     });
   };
 
