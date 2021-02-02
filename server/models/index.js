@@ -13,6 +13,7 @@ const db = {};
 
 const sequelize = new Sequelize(`${DBNAME}`, `${USER}`, `${PASSWORD}`, {
   dialect: 'postgres',
+  host:HOST,
 });
 
 fs.readdirSync(__dirname)
