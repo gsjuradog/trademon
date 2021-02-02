@@ -1,12 +1,4 @@
-$colorPrimary: #075f59;
-$colorSecondary: #ba3f1d;
-$colorGreyPop: #232026;
-$colorGreyPop80: #232026bb;
-$colorGreyHover: #2f2c33;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorShadowLight: rgba(48, 48, 48, 0.85);
-$colorShadowDark: rgba(0, 0, 0, 0.65);
+@import './config';
 
 .std-tile-title-text {
   font-size: 14px;
@@ -116,8 +108,7 @@ p {
   display: flex;
   margin: 7px;
   border-radius: 15px;
-  box-shadow: -2px -2px 5px $colorShadowLight,
-    2px 2px 5px $colorShadowDark;
+  box-shadow: -2px -2px 5px $colorShadowLight, 2px 2px 5px $colorShadowDark;
   transition: 150ms;
 }
 
@@ -130,7 +121,7 @@ p {
   width: 48px;
   height: 48px;
   margin-left: 5px;
-  margin-top: 8px
+  margin-top: 8px;
 }
 
 .sprite-mini {
@@ -153,7 +144,7 @@ p {
 }
 
 .mini-tile-text {
-  font-size: .6em;
+  font-size: 0.6em;
   margin-top: 5px;
 }
 
@@ -173,7 +164,7 @@ p {
 }
 
 .dm-link {
-  width: 60%
+  width: 60%;
 }
 
 .dm-summary-container {
@@ -201,7 +192,7 @@ p {
   margin-left: 5px;
 }
 .dm-text {
-  font-size: .6em;
+  font-size: 0.6em;
 }
 
 .dm-text-item {
@@ -211,7 +202,7 @@ p {
 
 .dm-summary-text {
   @extend .dm-text;
-  color: rgba(190, 190, 190, 0.856)
+  color: rgba(190, 190, 190, 0.856);
 }
 
 .dm-chat-container {
@@ -226,12 +217,11 @@ p {
 .message {
   min-width: 20%;
   max-width: 60%;
-  margin-top: .3em;
-  margin-bottom: .3em;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: -1px -1px 5px $colorShadowLight,
-  1px 1px 5px $colorShadowDark;
+  box-shadow: -1px -1px 5px $colorShadowLight, 1px 1px 5px $colorShadowDark;
   transition-duration: 150ms;
   display: flex;
   flex-direction: column;
@@ -242,11 +232,11 @@ p {
   transform: scale(1.05);
 }
 .dm-text {
-  font-size: .4em;
+  font-size: 0.4em;
 }
 
 .dm-timestamp {
-  font-size: .3em;
+  font-size: 0.3em;
   margin-top: 4px;
 }
 
@@ -267,4 +257,3 @@ p {
 .left:hover {
   background-color: $colorGreyHover;
 }
-

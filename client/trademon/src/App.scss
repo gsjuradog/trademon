@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
-$colorPrimary: #075f59;
-$colorSecondary: #ba3f1d;
-$colorGreyPop: #232026;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorButtonHover: #dfdfdf;
-$colorShadowLight: rgba(48, 48, 48, 0.85);
-$colorShadowDark: rgba(0, 0, 0, 0.65);
+@import './styling/config';
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -32,7 +31,7 @@ a {
   color: $colorText;
   background-color: $colorPrimary;
   font-weight: 500;
-  padding: 3px 10px;
+  padding: 1em;
   transition: 125ms;
 }
 
@@ -47,12 +46,15 @@ select {
   background-color: $colorGreyPop;
   color: $colorText;
   border-radius: 25px;
-  height: 17px;
-  font-size: 0.4em;
+  height: 2.5em;
+  font-size: 1em;
+  font-weight: 800;
   outline: none;
   border: none;
-  padding-left: 3px;
-  padding-right: 3px;
+  padding: 10px;
+  padding-right: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 select:hover {
@@ -61,20 +63,8 @@ select:hover {
 
 input {
   background-color: $colorGreyPop;
+  border-style: none;
   color: $colorText;
-  font-size: 0.4em;
-  margin-left: 5px;
-  border-radius: 25px;
-  max-width: 80%;
-  width: 60%;
-  min-width: 80px;
-  align-self: center;
-  padding-left: 7px;
-  padding-right: 7px;
-  height: 14.5px;
-  outline: none;
-  border: 3px;
-  border-color: $colorText;
 }
 
 input:hover {
