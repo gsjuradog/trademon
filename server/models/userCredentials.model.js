@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const user = sequelize.define('userCredentials', {
+  const userCredentials = sequelize.define('userCredentials', {
     // userID: {
     //   primaryKey: true,
     //   type: DataTypes.STRING,
@@ -20,11 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    signUpDate: {
+    hashed: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -33,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  user.associate = (model) => {
-    user.hasOne(model.UserData);
-  };
-  return user;
+  // userCredentials.associate = (model) => {
+  //   userCredentials.hasOne(model.UserData);
+  // };
+  return userCredentials;
 };
