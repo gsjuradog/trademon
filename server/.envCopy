@@ -1,0 +1,7 @@
+PORT=
+HOST=http:
+DB_TITLE=
+DB_TEST_TITLE=
+DB_PASSWORD=
+DB_USER=
+JWTPrivateKey=
