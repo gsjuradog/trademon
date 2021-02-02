@@ -3,25 +3,25 @@ const db = require('../models/index');
 const createTrade = async (req, res) => {
   try {
     console.log('TRADE POST');
-    const { 
-      numViews, 
-      seller, 
-      pokeNum, 
-      pokeName, 
-      pokeGen, 
-      pokeLvl, 
-      fastMove, 
-      chargeMove, 
-      isShiny, 
-      appraisal, 
-      price, 
-      tax,  
+    const {
+      numViews,
+      seller,
+      pokeNum,
+      pokeName,
+      pokeGen,
+      pokeLvl,
+      fastMove,
+      chargeMove,
+      isShiny,
+      appraisal,
+      price,
+      tax,
     } = req.body;
-    
+
     console.log(seller);
     const reply = await db.TradeData.create({
       numViews: numViews,
-      seller:seller,
+      seller: seller,
       pokeNum: pokeNum,
       pokeName: pokeName,
       pokeGen: pokeGen,
@@ -31,7 +31,7 @@ const createTrade = async (req, res) => {
       isShiny: isShiny,
       appraisal: appraisal,
       price: price,
-      tax: tax
+      tax: tax,
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -50,7 +50,22 @@ const fetchTrades = async (req, res) => {
   }
 };
 
+const fetchTradesByDate = async (req, res) => {
+  try {
+    console.log('Showing recent Trades!');
+    const reply = await db.TradeData.findAll({
+      limit: 2,
+      order: [['publishDate', 'DESC']],
+    });
+    res.status(200).send(reply);
+  } catch (err) {
+    console.log('FETCH ERROR', err);
+    res.status(500).send('FETCH ERROR IN TRADES BY DATE');
+  }
+};
 
 module.exports = {
-  createTrade, fetchTrades
+  createTrade,
+  fetchTrades,
+  fetchTradesByDate,
 };
