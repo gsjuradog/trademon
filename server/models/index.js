@@ -19,9 +19,7 @@ const sequelize = new Sequelize(
     database: DBNAME,
     username: USER,
     password: PASSWORD,
-    extra: {
-      ssl: true
- }
+    ssl: true
   }
 );
 
