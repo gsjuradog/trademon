@@ -11,17 +11,18 @@ const HOST = process.env.DB_TEST_HOST;
 // plz
 const db = {};
 
-const sequelize = new Sequelize(
-  {
-    host: HOST,
-    port: 5432,
-    dialect: 'postgres',
-    database: DBNAME,
-    username: USER,
-    password: PASSWORD,
-    ssl: true
-  }
-);
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+// const sequelize = new Sequelize(
+//   {
+//     host: HOST,
+//     port: 5432,
+//     dialect: 'postgres',
+//     database: DBNAME,
+//     username: USER,
+//     password: PASSWORD,
+//     ssl: true,
+//   }
+// );
 
 fs.readdirSync(__dirname)
   .filter((file) => {
