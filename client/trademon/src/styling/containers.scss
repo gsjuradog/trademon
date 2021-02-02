@@ -1,0 +1,215 @@
+$colorPrimary: #075f59;
+$colorSecondary: #ba3f1d;
+$colorGreyPop: #232026;
+$colorGreyPop80: #232026bb;
+$colorGreyHover: #2f2c33;
+$colorGreyBg: #1c1c1e;
+$colorText: #ffffff;
+$colorShadowLight: rgba(48, 48, 48, 0.85);
+$colorShadowDark: rgba(0, 0, 0, 0.65);
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.platforms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.platform-container {
+  width: 305px;
+  max-width: 305px;
+  height: 300px;
+  max-height: 300px;
+  background-color: $colorGreyPop;
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
+    2px 2px 5px rgba(0, 0, 0, 0.65);
+  background-size: cover;
+  background-position: center;
+}
+
+.platform-container-title {
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 500;
+  padding-top: 15px;
+}
+
+.platform-container-tile-box {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4px 0px;
+}
+
+.search-results {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.my-profile-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.offer-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+
+.item-details-container {
+  @extend .flex-column-center;
+}
+
+.large-sprite-container {
+  @extend .flex-column-center;
+  margin-left: 20px;
+  transition: 150ms;
+}
+
+.large-sprite-container:hover {
+  transform: scale(1.05);
+}
+
+.small-text {
+  font-size: .35em;
+}
+.rating-text {
+  @extend .small-text;
+  margin-top: 6px;
+  margin-bottom: -2px;
+}
+.standard-text {
+  font-size: .6em;
+  margin-top: 3px;
+}
+
+.large-text {
+  position: absolute;
+  z-index: 0;
+  font-size: 6em;
+  opacity: 0.18;
+}
+
+.large-sprite {
+  width: 125px;
+  height: 125px;
+  align-self: center;
+  z-index: 1;
+}
+
+.is-shiny-box {
+  display: flex;
+  max-width: 41px;
+  align-items: center;
+}
+
+.shiny-checkbox {
+  display: inline-block;
+  width: 10px;
+  max-width: 12px;
+  height: 10px;
+  background-color: $colorSecondary;
+  border: 1.5px solid #bbbbbb;
+  background-clip: content-box;
+  border-radius: 3px;
+  margin-left: -30px;
+}
+
+.seller-details-container {
+  @extend .flex-column-center;
+  margin-left: 20px;
+}
+.seller-rating-box {
+  display: flex;
+}
+
+.interest-box {
+  @extend .flex-column-center;
+  width: 60%;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.interest-box button{
+  width: 100%
+}
+
+.interest-stats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.bar-spacer {
+ margin-left: 3px;
+ margin-right: 3px;
+ margin-top: 3px;
+ font-size: .6em;
+}
+
+.menu-title {
+  font-size: .8em;
+  width: 100%;
+  text-align: center;
+}
+
+.dm-chat-title-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dm-sender-info {
+  display: flex;
+  align-items: center;
+}
+
+.dm-back-button {
+  font-size: .5em;
+  transition: 150ms;
+  margin-top: -1px;
+}
+
+.dm-back-button:hover {
+  transform: scale(1.05);
+}
+
+.menu-title-dm {
+  @extend .menu-title;
+  width: fit-content;
+  margin-right: 8px;
+  margin-top: -2px;
+}
+
+.dm-title-avatar-box {
+  display: flex;
+  width: 100%;
+}
+
+.span4 {
+  width: 4px;
+}
+
+.span20 {
+  width: 20px;
+}
+

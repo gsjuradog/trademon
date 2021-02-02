@@ -27,3 +27,10 @@ https://www.mockflow.com/
 https://excalidraw.com/#room=8df040e99e6f05e68360,Xw7Zc4anjbW5FKFzoaeOFw
 https://www.airbnb.com/
 https://pokemondatabase.azurewebsites.net/pokemon
+
+Colors:
+1c1c1e - background dark grey
+232026 - tile pop grey
+EEF4ED - mint cream
+075F59 - deep blue green
+BA3F1D - orange rust

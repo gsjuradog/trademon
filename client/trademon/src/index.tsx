@@ -1,25 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
-//Redux imports
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { allReducers } from './redux/reducers/index';
-
 import './index.scss';
-
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-
-
-//Create Redux store - note extension for Redux Dev Tools in Chrome not working
-const store = createStore(
-  allReducers,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-);
+//Redux imports
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 //<App /> wrapped in Redux context provider
 ReactDOM.render(
@@ -28,7 +16,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
