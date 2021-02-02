@@ -2,8 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 const expDate = () => Date.now() + 604800000;
 
-module.exports = (sequelize, DataTypes) =>
-  sequelize.define('TradeData', {
+module.exports = (sequelize, DataTypes) => {
+  const trade = sequelize.define('TradeData', {
     tradeID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) =>
       allowNull: true,
     },
     offerItemVariableData: {
-      //pokevariabledata
+      //pokevariabledata ----> Combined in pokemonToTrade with pokeconstants
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -70,3 +70,14 @@ module.exports = (sequelize, DataTypes) =>
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
+  //Trade has two pokemons that are going to be traded, each trade belongs to many users
+  trade.associate = (model) => {
+    trade.hasMany(model.PokemonToTrade);
+    trade.belongsToMany(model.UserData, {
+      through: 'Trade_Users',
+      as: 'Trade',
+    });
+  };
+
+  return trade;
+};

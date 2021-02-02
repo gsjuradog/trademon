@@ -29,7 +29,10 @@ module.exports = (sequelize, DataTypes) => {
 
   privateChat.associate = (model) => {
     privateChat.hasMany(model.Message);
-    privateChat.belongsTo(model.UserData);
+    privateChat.belongsToMany(model.UserData, {
+      through: 'User_Chat',
+      as: 'chats',
+    });
   };
 
   return privateChat;
