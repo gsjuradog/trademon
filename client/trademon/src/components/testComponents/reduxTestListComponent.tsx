@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { pokemonListed } from '../../redux/reducers/pokemonsSlice';
+// import { pokemonListed } from '../../store/reducers/pokemonsSlice';
 
 export default function ReduxTestListComponent() {
   const pokemon = useSelector((state: any) => state.pokemons);
@@ -9,7 +9,7 @@ export default function ReduxTestListComponent() {
 
   const handleList = () => {
     console.log('Pokemon List: ', pokemon);
-    dispatch(pokemonListed(Math.floor(Math.random() * 4)));
+    // dispatch(pokemonListed(Math.floor(Math.random() * 4)));
   };
 
   return (

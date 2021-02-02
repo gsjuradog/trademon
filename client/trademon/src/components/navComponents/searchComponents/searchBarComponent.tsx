@@ -1,13 +1,25 @@
-import React from 'react'
-import '../../../styling/navs.scss'
-import ProfileOverlay from './profileOverlayComponent'
+import React from 'react';
+import '../../../styling/navs.scss';
+import ProfileOverlay from './profileOverlayComponent';
+import { searchQuery } from '../../../store/searchSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../store/store';
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
+  const handleSearchKeyPress = (value: string) => {
+    dispatch(searchQuery(value));
+  };
+
   return (
     <div className="nav-container">
       <a href={'/'}>
         <div className="logo-box">
-          <img className="logo-img" src={'/assets/trademon-logo.png'}/>
+          <img
+            alt="logo"
+            className="logo-img"
+            src={'/assets/trademon-logo.png'}
+          />
           <div className="platform-text">trademon.io</div>
         </div>
       </a>
@@ -17,13 +29,18 @@ export default function SearchBar() {
             <option value="Pokemon Go">Pokemon Go</option>
             <option value="MTG: Online">MTG: Online</option>
           </select>
-          <input 
-            type="text" placeholder="Search offers..." 
-            id="search-field" className="search-field" 
+          <input
+            type="text"
+            placeholder="Search offers..."
+            id="search-field"
+            className="search-field"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+              handleSearchKeyPress(e.target.value)
+            }
           />
         </div>
-      <ProfileOverlay></ProfileOverlay>
+        <ProfileOverlay></ProfileOverlay>
       </div>
     </div>
-  )
+  );
 }
