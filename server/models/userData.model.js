@@ -4,6 +4,12 @@ const { Sequelize, DataTypes } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   const userData = sequelize.define('UserData', {
     // username = userCredentialUsername ...comes from reference in userCredential
+    username: {
+      primaryKey: true,
+      unique: true,
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     trainerID: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -62,11 +68,10 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  userData.associate = (model) => {
-    userData.belongsTo(model.userCredentials);
-    userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
-  };
+  // userData.associate = (model) => {
+  //   userData.belongsTo(model.userCredentials);
+  //   userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
+  // };
 
   return userData;
 };
-//privateMesg is array of chatID
