@@ -17,7 +17,7 @@ console.log(test);
 
 app.use(cors(), express.json(), router);
 
-const typeDefs = gql(fs.readFileSync('./schema.graphql', { encoding: 'utf8' }));
+const typeDefs = gql(fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' }));
 const resolvers = require('./controllers/resolvers');
 //const context = ({ req }) => ({user: req.user});
 //const apolloServer = new ApolloServer({typeDefs, resolvers, context});
