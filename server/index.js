@@ -10,7 +10,7 @@ require('dotenv').config();
 const router = require('./routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || process.env.PORTLOCAL || 3001;
 const HOST = 'localhost';
 const test = process.env.HOST;
 console.log(test);
