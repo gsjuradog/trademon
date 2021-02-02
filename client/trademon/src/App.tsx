@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom"
+import Login from './components/aaPageComponents/loginPage'
 import LandingPage from './components/aaPageComponents/landingPage';
 import MyProfile from './components/aaPageComponents/myProfilePage';
 import PokemonGoPage from './components/aaPageComponents/pokemonGoPage'
@@ -16,6 +17,7 @@ const App = () => {
       <div className="App">
         <Switch>
           <Route path="/"            exact component={LandingPage}/>
+          <Route path="/login"             component={Login}/>
           <Route path="/offer/randomID123" component={OfferDetailsPage}/>
           <Route path="/profile"           component={MyProfile}/>
           <Route path="/create-listing"    component={CreateListingForm}/>
