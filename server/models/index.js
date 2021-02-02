@@ -8,7 +8,7 @@ const DBNAME = process.env.DB_TEST_TITLE;
 const USER = process.env.DB_USER;
 const PASSWORD = process.env.DB_PASSWORD;
 const HOST = process.env.DB_TEST_HOST;
-//
+
 const db = {};
 
 //const sequelize = new Sequelize(process.env.DATABASE_URL);
