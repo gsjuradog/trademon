@@ -1,12 +1,4 @@
-$colorPrimary: #075f59;
-$colorSecondary: #ba3f1d;
-$colorGreyPop: #232026;
-$colorGreyPop80: #232026bb;
-$colorGreyHover: #2f2c33;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorShadowLight: rgba(48, 48, 48, 0.85);
-$colorShadowDark: rgba(0, 0, 0, 0.65);
+@import './config';
 
 .flex-column-center {
   display: flex;
@@ -90,7 +82,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .small-text {
-  font-size: .35em;
+  font-size: 0.35em;
 }
 .rating-text {
   @extend .small-text;
@@ -98,7 +90,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   margin-bottom: -2px;
 }
 .standard-text {
-  font-size: .6em;
+  font-size: 0.6em;
   margin-top: 3px;
 }
 
@@ -149,8 +141,8 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   margin-top: 10px;
 }
 
-.interest-box button{
-  width: 100%
+.interest-box button {
+  width: 100%;
 }
 
 .interest-stats {
@@ -160,14 +152,14 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .bar-spacer {
- margin-left: 3px;
- margin-right: 3px;
- margin-top: 3px;
- font-size: .6em;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 3px;
+  font-size: 0.6em;
 }
 
 .menu-title {
-  font-size: .8em;
+  font-size: 0.8em;
   width: 100%;
   text-align: center;
 }
@@ -184,7 +176,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .dm-back-button {
-  font-size: .5em;
+  font-size: 0.5em;
   transition: 150ms;
   margin-top: -1px;
 }
@@ -212,4 +204,3 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 .span20 {
   width: 20px;
 }
-

@@ -1,11 +1,4 @@
-$colorPrimary: #075F59;
-$colorSecondary: #BA3F1D;
-$colorGreyPop: #232026;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorShadowLight: rgba(48, 48, 48, 0.85);
-$colorShadowDark: rgba(0, 0, 0, 0.65);
-
+@import './config';
 
 .my-profile-containers {
   min-width: 150px;
@@ -15,13 +8,12 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   border-radius: 30px;
   padding-left: 25px;
   padding-right: 25px;
-  box-shadow: -2px -2px 5px $colorShadowLight,
-  2px 2px 5px $colorShadowDark;
+  box-shadow: -2px -2px 5px $colorShadowLight, 2px 2px 5px $colorShadowDark;
 }
 
 .banner-container {
   max-height: 40px;
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -63,7 +55,7 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .my-profile-text {
-  font-size: .6em;
+  font-size: 0.6em;
   position: relative;
   top: 0px;
 }

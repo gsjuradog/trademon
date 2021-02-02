@@ -1,7 +1,4 @@
-$colorPrimary: #075f59;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorGreyBg: #1c1c1e;
+@import './config';
 
 .login-container {
   display: flex;
