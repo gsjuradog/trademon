@@ -51,15 +51,49 @@ export const createMessage = (from: String, to: String, content: String, chatID:
     .catch(err => console.log('CREATE MESSAGE ERROR', err))
 }
 
-export const createTrade = (seller: String, buyer: String) => {
+export const getTrades  = () => {
+return fetch(`${endpointURL}/fetchTrades`, {
+  method: 'GET'})
+  .then(res => res.status <= 400? res : Promise.reject(res))
+  .then(res => res.json())
+  .catch((err)=>{
+    console.log(`${err} while fetching trades`)
+  })
+} 
+
+
+export const createTrade = (
+  numViews:number, 
+  seller:string, 
+  pokeNum:number, 
+  pokeName:string, 
+  pokeGen:number, 
+  pokeLvl:number, 
+  fastMove:string, 
+  chargeMove:string, 
+  isShiny:boolean ,
+  appraisal:number, 
+  price:number, 
+  tax:number
+  ) => {
   fetch(`${endpointURL}/createTrade`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-     seller,
-     buyer
+      numViews, 
+      seller, 
+      pokeNum, 
+      pokeName, 
+      pokeGen, 
+      pokeLvl, 
+      fastMove, 
+      chargeMove, 
+      isShiny, 
+      appraisal, 
+      price, 
+      tax,//do we need tax here?
     })
   })
     .then(res => res.json)
