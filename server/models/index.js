@@ -3,11 +3,11 @@ const path = require('path');
 
 const fs = require('fs');
 const Sequelize = require('sequelize');
-// const basename = path.basename(__filename);
-// const DBNAME = process.env.DB_TEST_TITLE;
-// const USER = process.env.DB_USER;
-// const PASSWORD = process.env.DB_PASSWORD;
-// const HOST = process.env.DB_TEST_HOST;
+const basename = path.basename(__filename);
+const DBNAME = process.env.DB_TEST_TITLE;
+const USER = process.env.DB_USER;
+const PASSWORD = process.env.DB_PASSWORD;
+const HOST = process.env.DB_TEST_HOST;
 // plz
 const db = {};
 
