@@ -3,7 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const expDate = () => Date.now() + 604800000;
 
 module.exports = (sequelize, DataTypes) => {
-  const trade = sequelize.define('TradeData', {
+  const mtgotrade = sequelize.define('MtgoTrade', {
     tradeID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     numViews: {
       type: DataTypes.INTEGER,
-      defaultValue: 4,
+      defaultValue: 0,
       //allowNull: true,
     },
     seller: {
@@ -33,65 +33,71 @@ module.exports = (sequelize, DataTypes) => {
 
     //----------------------
 
-    pokeNum: {
+    cardName: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    pokeName: {
+    extraName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    pokeSprite: {
+    cardImage: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    pokeGen: {
-      type: DataTypes.INTEGER,
-      allowNull: true, //change
-      defaultValue: 2,
+    set: {
+      type: DataTypes.STRING,
+      allowNull: true, //change,
     },
-    // -------------------- pokevariable
-    pokeLvl: {
-      type: DataTypes.INTEGER,
-      allowNull: true, //change
-      defaultValue: 100,
+    setName: {
+      type: DataTypes.STRING,
+      allowNull: true, ///change
     },
-    fastMove: {
+    convertedManaCost: {
+      type: DataTypes.FLOAT,
+      allowNull: true, //change
+    },
+
+    manaCost: {
+      type: DataTypes.STRING, //'{3}{W}{R}' = 3 uncolored mana 1 white 1 red
+      allowNull: true, //change
+    },
+    originaltype: {
       type: DataTypes.STRING,
       allowNull: true, //change
-      defaultValue: 12,
     },
-    chargeMove: {
+    rarity: {
       type: DataTypes.STRING,
       allowNull: true, //change
+      defaultValue: '',
     },
-    isShiny: {
+    color: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true, //change
+      defaultValue: ['B'],
+    },
+    //---------------------- Variable data
+    isFoil: {
       type: DataTypes.BOOLEAN,
       allowNull: true, //change
       defaultValue: false,
     },
-    appraisal: {
-      type: DataTypes.INTEGER,
-      allowNull: true, ///change
-      defaultValue: 3,
-    },
 
     // --------------------- PRICE FIELDS
     price: {
-      // PokeVariableData!
+      //  MTGOVariableData!
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: 10,
+      defaultValue: 0,
     },
     tax: {
-      // PokeVariableData!
+      // MTGOVariableData!
       type: DataTypes.INTEGER,
       allowNull: true,
-      defaultValue: 1,
+      defaultValue: 0,
     },
     // ------------------------- BUYER FIELDS
     buyer: {
-      // username!
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -108,14 +114,13 @@ module.exports = (sequelize, DataTypes) => {
     // The timestamp is added automatically by Sequelize
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
-  //Trade has two pokemons that are going to be traded, each trade belongs to many users
-  trade.associate = (model) => {
-    // trade.hasMany(model.PokemonToTrade);
-    trade.belongsToMany(model.UserData, {
-      through: 'Trade_Users',
-      as: 'PokeTrade',
-    });
-  };
 
-  return trade;
+  // mtgotrade.associate = (model) => {
+  //   mtgotrade.belongsToMany(model.UserData, {
+  //     through: 'MtgoTrade_Users',
+  //     as: 'Mtgotrade',
+  //   });
+  // };
+
+  return mtgotrade;
 };

@@ -1,6 +1,8 @@
 const db = require('../models/index');
 
 const createTrade = async (req, res) => {
+  //check if it is magic or pokemon and do one action or the other
+  /*if (req.body.pokeName) { do pokemon  } else {magic} */
   try {
     console.log('A User Is Creating An Offer!');
     const {
@@ -116,16 +118,16 @@ const editTrade = async (req, res) => {
 const deleteTrade = async (req, res) => {
   try {
     console.log(req.body);
-    const { tradeID } = req.body;
-    try {
-      db.TradeData.destroy({ where: { tradeID: tradeID } });
-      res.status(204).send('');
-    } catch (error) {
-      console.log('No Trade With That ID Found', err);
-      res.status(500).send('DELETE ERROR');
+    const { tradeID } = await req.body;
+    const reply = await db.TradeData.findOne({ where: { tradeID: tradeID } });
+    if (reply) {
+      const deleted = await db.TradeData.destroy({
+        where: { tradeID: tradeID },
+      });
+      res.status(204).send(deleted);
     }
-  } catch (err) {
-    console.log('Trade DELETING ERROR', err);
+  } catch (error) {
+    console.log('No Trade With That ID Found', err);
     res.status(500).send('DELETE ERROR');
   }
 };
