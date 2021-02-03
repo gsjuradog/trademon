@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 //Redux imports
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from './store/store';
 
 //<App /> wrapped in Redux context provider
 ReactDOM.render(
