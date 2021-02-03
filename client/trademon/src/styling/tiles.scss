@@ -1,21 +1,18 @@
 @import './config';
 
-.std-tile-title-text {
-  font-size: 14px;
-}
-
 p {
-  font-size: 10px;
+  font-size: calc(12px + .28vw);
 }
 
 .standard-tile-container {
-  max-width: 175px;
-  max-height: 175px;
-  height: 175px;
-  height: 175px;
+  width: 15vw;
+  height: 15vw;
+  min-width: 175px;
+  min-height: 175px;
   background-color: $colorGreyPop80;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 10px;
   border-radius: 25px;
   box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
@@ -35,29 +32,44 @@ p {
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 10px;
+  padding-top: 1.5vh;
 }
 
-.spacer-span {
-  width: 20px;
+.std-tile-title-text {
+  font-size: calc(12px + .55vw);
 }
 
 .heart {
-  max-width: 12px;
-  max-height: 12px;
+  width: 1vw;
+  height: 1vw;
+  min-width: 12px;
+  min-height: 12px;
   align-self: flex-end;
+  margin-bottom: -.6vh;
+  margin-right: .5vh;
+}
+
+.heart-mini {
+  width: 1vw;
+  height: 1vw;
+  min-width: 12px;
+  min-height: 12px;
+  align-self: flex-end;
+  margin-right: .5vh;
 }
 
 .sprite-row {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 1.5vh;
 }
 
 .standard-sprite {
-  width: 75px;
-  height: 75px;
+  width: 7.25vw;
+  height: 7.25vw;
+  min-width: 75px;
+  min-height: 75px;
 }
 
 .standard-info-row {
@@ -68,19 +80,17 @@ p {
   height: 20px;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 5px;
 }
 
 .seller-row {
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 5px;
   display: flex;
   justify-content: space-between;
   max-height: 20px;
   height: 20px;
   align-items: center;
-  padding-top: 8px;
+  margin-bottom: 1.2vh;
 }
 
 .seller-info {
@@ -99,13 +109,12 @@ p {
 .mini-tile-container {
   background-color: $colorGreyPop80;
   background-position: center;
-  display: grid;
-  grid-template-columns: minmax(50, 30%) 1fr;
-  width: 125px;
-  max-width: 125px;
-  height: 60px;
-  max-height: 60px;
   display: flex;
+  align-items: center;
+  width: 12.5vw;
+  height: 6vw;
+  min-width: 160px;
+  min-height: 77px;
   margin: 7px;
   border-radius: 15px;
   box-shadow: -2px -2px 5px $colorShadowLight, 2px 2px 5px $colorShadowDark;
@@ -118,23 +127,30 @@ p {
 }
 
 .sprite-mini-box {
-  width: 48px;
-  height: 48px;
-  margin-left: 5px;
-  margin-top: 8px;
+  margin-left: 1vw;
+  width: 4vw;
+  height: 4vw;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 .sprite-mini {
-  width: 45px;
-  height: 45px;
+  width: 4vw;
+  height: 4vw;
+  min-width: 45px;
+  min-height: 45px;
 }
 
 .mini-tile-info-box {
   text-align: right;
   justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   margin: 7px 8px;
-  width: 80px;
-  padding-right: 10px;
+  width: 50%;
+  height: 90%;
+  padding-right: .5vw;
 }
 
 .mini-fave-icon-container {
@@ -144,27 +160,27 @@ p {
 }
 
 .mini-tile-text {
-  font-size: 0.6em;
+  font-size: calc(9px + .20vw);
   margin-top: 5px;
 }
 
 .img-large {
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 60px;
+  max-height: 60px;
 }
 
 .img-med {
+  max-width: 35px;
+  max-height: 35px;
+}
+
+.img-small {
   max-width: 20px;
   max-height: 20px;
 }
 
-.img-small {
-  max-width: 12px;
-  max-height: 12px;
-}
-
 .dm-link {
-  width: 60%;
+  width: 80%;
 }
 
 .dm-summary-container {
@@ -175,8 +191,8 @@ p {
   margin: 5px 0px;
   background-color: $colorGreyPop80;
   border-radius: 25px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 3px;
   padding-right: 10px;
   transition: 150ms;
@@ -189,23 +205,11 @@ p {
 .dm-summary-text-column {
   display: flex;
   flex-direction: column;
-  margin-left: 5px;
-}
-.dm-text {
-  font-size: 0.6em;
-}
-
-.dm-text-item {
-  @extend .dm-text;
-  color: $colorPrimary;
-}
-
-.dm-summary-text {
-  @extend .dm-text;
-  color: rgba(190, 190, 190, 0.856);
+  margin-left: 8px;
 }
 
 .dm-chat-container {
+  margin-top: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -232,12 +236,23 @@ p {
   transform: scale(1.05);
 }
 .dm-text {
-  font-size: 0.4em;
+  font-size: calc(12px + .5vw);
+  font-weight: 100;
+}
+
+.dm-text-item {
+  font-size: 1.10em;
+  color: $colorPrimary;
+}
+
+.dm-summary-text {
+  @extend .dm-text-item;
+  color: rgba(190, 190, 190, 0.856);
 }
 
 .dm-timestamp {
-  font-size: 0.3em;
-  margin-top: 4px;
+  font-size: calc(12px + .2vw);
+  margin-top: 1vh;
 }
 
 .right {

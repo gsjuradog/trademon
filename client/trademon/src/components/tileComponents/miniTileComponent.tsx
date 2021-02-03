@@ -11,7 +11,7 @@ export default function MiniTile() {
 
         <div className="mini-tile-info-box">
           <div className="mini-fave-icon-container">
-            <img src={'/assets/FavIconEmpty.png'} className="heart"></img>
+            <img src={'/assets/FavIconEmpty.png'} className="heart-mini"></img>
           </div>
           <div className="mini-tile-text">Charmeleon</div>
           <div className="mini-tile-text">$2.99</div>

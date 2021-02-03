@@ -1,4 +1,4 @@
-const endpointURL : String = 'http://localhost:3001';
+const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
 export const createUser = (userName: String, trainerID: String, trainerName: String) => {
   fetch(`${endpointURL}/createUser`, {
