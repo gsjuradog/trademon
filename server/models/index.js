@@ -20,10 +20,10 @@ const sequelize = new Sequelize(
     username: USER,
     password: PASSWORD,
     dialectOptions: {
-      // ssl: {
-      //   require: true,
-      //   rejectUnauthorized: false 
-      // }
+      ssl: {
+        require: true,
+        rejectUnauthorized: false 
+      }
     }
   }
 );
