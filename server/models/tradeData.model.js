@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     pokeName: {
-      type: DataTypes.STRING, //username
+      type: DataTypes.STRING,
       allowNull: false,
     },
     pokeSprite: {
@@ -68,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
     isShiny: {
       type: DataTypes.BOOLEAN,
       allowNull: true, //change
-      defaultValue: false
+      defaultValue: false,
     },
     appraisal: {
       type: DataTypes.INTEGER,
@@ -109,15 +109,13 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
   //Trade has two pokemons that are going to be traded, each trade belongs to many users
-  trade.associate = (model) => {
-    // trade.hasMany(model.PokemonToTrade);
-    trade.belongsToMany(model.UserData, {
-      through: 'Trade_Users',
-      as: 'Trade',
-    });
-  };
+  // trade.associate = (model) => {
+  //   // trade.hasMany(model.PokemonToTrade);
+  //   trade.belongsToMany(model.UserData, {
+  //     through: 'Trade_Users',
+  //     as: 'PokeTrade',
+  //   });
+  // };
 
   return trade;
 };
-
-
