@@ -82,3 +82,15 @@ export interface Transaction {
   price?:                 number,
   tax?:                   number,
 }
+
+export interface TradeData {
+  pokeName: string,
+  CP: number,
+  catchLocation: string,
+  fastMove: string,
+  chargeMove: string,
+  shiny: boolean
+  price: number,
+  appraisal: number
+  listingType: string
+}
