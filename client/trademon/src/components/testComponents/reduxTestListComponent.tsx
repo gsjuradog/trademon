@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux'; //useDispatch deleted undil use
+
 // import { pokemonListed } from '../../store/reducers/pokemonsSlice';
 
 export default function ReduxTestListComponent() {
   const pokemon = useSelector((state: any) => state.pokemons);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleList = () => {
     console.log('Pokemon List: ', pokemon);

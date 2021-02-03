@@ -2,8 +2,8 @@ import React from 'react';
 import '../../../styling/navs.scss';
 import ProfileOverlay from './profileOverlayComponent';
 import { searchQuery } from '../../../store/searchSlice';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../store/store';
+import { useDispatch } from 'react-redux'; //deleted useSelector
+// import { RootState } from '../../../store/store';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export default function SearchBar() {
     <div className="nav-container">
 
       <a className="logo-img-link" href={'/'} >
-        <img className="logo-img" src={'/assets/trademon-logo.png'}/>
+        <img className="logo-img" src={'/assets/trademon-logo.png'} alt="trademon logo"/>
       </a>
 
       <div className="search-container-vertical">
