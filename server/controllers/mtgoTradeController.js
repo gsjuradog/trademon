@@ -1,6 +1,6 @@
 const db = require('../models/index');
 
-const createTrade = async (req, res) => {
+const createMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Creating An Offer!');
     const {
@@ -40,7 +40,7 @@ const createTrade = async (req, res) => {
   }
 };
 
-const fetchTrades = async (req, res) => {
+const fetchMTGOTrades = async (req, res) => {
   try {
     console.log('Someone Requested Active MTGO Trades!');
     const reply = await db.MtgoTrade.findAll();
@@ -51,7 +51,7 @@ const fetchTrades = async (req, res) => {
   }
 };
 
-const fetchTradesByDate = async (req, res) => {
+const fetchMTGOTradesByDate = async (req, res) => {
   try {
     console.log('Showing recent MTGO Trades!');
     const reply = await db.MtgoTrade.findAll({
@@ -65,7 +65,7 @@ const fetchTradesByDate = async (req, res) => {
   }
 };
 
-const editTrade = async (req, res) => {
+const editMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An MTGO Offer!');
     const {
@@ -110,7 +110,7 @@ const editTrade = async (req, res) => {
   }
 };
 
-const deleteTrade = async (req, res) => {
+const deleteMTGOTrade = async (req, res) => {
   try {
     console.log(req.body);
     const { tradeID } = await req.body;
@@ -128,9 +128,9 @@ const deleteTrade = async (req, res) => {
 };
 
 module.exports = {
-  createTrade,
-  fetchTrades,
-  fetchTradesByDate,
-  editTrade,
-  deleteTrade,
+  createMTGOTrade,
+  fetchMTGOTrades,
+  fetchMTGOTradesByDate,
+  editMTGOTrade,
+  deleteMTGOTrade,
 };
