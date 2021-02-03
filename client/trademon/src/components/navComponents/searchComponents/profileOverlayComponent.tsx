@@ -1,12 +1,13 @@
-import React, { useState, useEffect }from 'react'
-import '../../../styling/navs.scss'
-import Backdrop from '../../modal/backdrop'
+import React, { useState } from 'react';  //useEffect deleted until use
+import '../../../styling/navs.scss';
+import Backdrop from '../../modal/backdrop';
 
 export default function ProfileOverlay(this: any) {
 
   const [hamburgVis, setHamburgVis] = useState<boolean>(false)
   const [exitIcon, setExitIcon] = useState<string>('/assets/exit-icon.png')
 
+  console.log(exitIcon)
   const toggleHamburger = () => {
     setHamburgVis(!hamburgVis);
     handleMouseLeave();
@@ -32,9 +33,9 @@ export default function ProfileOverlay(this: any) {
     <div className="my-profile-overlay">
       <a href={'/profile'} className="my-profile-overlay-link">
         <div className="prof-overlay-text">User12345</div>
-        <img className="avatar-overlay-img" src ={'/assets/avatarIcon.png'}/>
+        <img className="avatar-overlay-img" src ={'/assets/avatarIcon.png'} alt="avatar Icon"/>
       </a>
-      <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'}/>
+      <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'} alt="menu Icon"/>
     </div>
   )
 }

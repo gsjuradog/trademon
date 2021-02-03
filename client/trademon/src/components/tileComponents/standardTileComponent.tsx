@@ -27,10 +27,10 @@ export default function StandardTile({trade}:trade) {
       <div className="title-row">
         <span className="heart"></span>
         <div className="std-tile-title-text">{trade.pokeName}</div>
-        <img src={'/assets/FavIconEmpty.png'} className="heart"></img>
+        <img src={'/assets/FavIconEmpty.png'} className="heart" alt="Heart Icon"></img>
       </div>
       <div className="sprite-row">
-        <img className="standard-sprite" src={'/assets/testSprite.png'}></img>
+        <img className="standard-sprite" src={'/assets/testSprite.png'} alt={`${trade.pokeName}`}></img>
       </div>
       <div className="standard-info-row"> 
         <p>CP: {trade.pokeLvl}</p>
@@ -38,7 +38,7 @@ export default function StandardTile({trade}:trade) {
       </div>
       <div className="seller-row">
         <div className="seller-info">
-          <img className="standard-avatar" src={'/assets/avatarIcon.png'}></img>
+          <img className="standard-avatar" src={'/assets/avatarIcon.png'} alt="avatar icon"></img>
           <p className="seller-text">{trade.seller}</p>
         </div>
         <p>${trade.price}</p>

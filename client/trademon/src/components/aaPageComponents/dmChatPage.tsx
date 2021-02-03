@@ -15,7 +15,7 @@ export default function DMChatPage() {
           <div className="menu-title-dm">
             Messages:
           </div>
-          <img src={'/assets/avatarIcon.png'} className="img-large"/>
+          <img src={'/assets/avatarIcon.png'} className="img-large" alt="Avatar icon"/>
           <span className="span4"></span>
           <div className="dm-username">User54321</div>
         </div>
