@@ -1,0 +1,19 @@
+.rating-widget-container {
+  display: flex;
+  align-items: flex-end;
+  margin-top: .5vh;
+}
+
+.rating-widget {
+  display: flex;
+  align-items: flex-end;
+}
+.rating-icon-empty {
+  height: 1.25vw;
+  width: 1.25vw;
+}
+
+.rating-icon-full {
+  height: 1.25vw;
+  width: 1.25vw;
+}

@@ -1,0 +1,59 @@
+{ 
+  "example1":{
+    "numViews": 53,
+    "seller":"Gabriel",
+    "pokeNum": 2,
+    "pokeName": "Ivysaur",
+    "pokeGen": 1,
+    "pokeLvl": 2156,
+    "fastMove": "Tackle",
+    "chargeMove": "Solar Beam",
+    "isShiny": false,
+    "appraisal": 3,
+    "price": 12,
+    "tax": 1
+  },
+
+  "example2":{
+    "numViews": 7,
+    "seller":"Adrian",
+    "pokeNum": 131,
+    "pokeName": "Lapras",
+    "pokeGen": 1,
+    "pokeLvl": 2402,
+    "fastMove": "Water Gun",
+    "chargeMove": "Ice Shard",
+    "isShiny": false,
+    "appraisal": 2,
+    "price": 9,
+    "tax": 1
+  },
+  "example3":{
+    "numViews": 3,
+    "seller":"Dan",
+    "pokeNum": 12,
+    "pokeName": "DeveloSaur",
+    "pokeGen": 1,
+    "pokeLvl": 2156,
+    "fastMove": "Sure",
+    "chargeMove": "Solar Beam",
+    "isShiny": true,
+    "appraisal": 3,
+    "price": 1200,
+    "tax": 10
+  },
+  "example4":{
+    "numViews": 0,
+    "seller":"Stiches",
+    "pokeNum": 300,
+    "pokeName": "Skitty",
+    "pokeGen": 3,
+    "pokeLvl": 1890,
+    "fastMove": "Feint Attack",
+    "chargeMove": "Wild Charge",
+    "isShiny": false,
+    "appraisal": 3,
+    "price": 2,
+    "tax": 1
+  }
+}

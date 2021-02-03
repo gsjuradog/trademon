@@ -1,0 +1,141 @@
+@import './config';
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-height: 15vh;
+  margin-bottom: 2em;
+}
+.logo-img-link {
+  width: 6vw;
+  height: 6vw;
+  min-width: 50px;
+  min-height: 50px;
+  padding-left: 15px;
+  padding-top: 0px;
+}
+.logo-img {
+  width: 6vw;
+  opacity: 90%;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.search-container-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.platform-text {
+  font-size: calc(12px + 1.5vw);
+  font-weight: 400;
+  color: $colorText;
+  margin-left: 3vw;
+  margin-bottom: 0.3em;
+  padding-top: 2vh;
+}
+
+.filters-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .select-dropdown {
+    height: 40px;
+    margin-left: 0.7em;
+    font-size: 0.8em;
+    min-width: 80px;
+    margin-right: 4px;
+  }
+  input {
+    outline: none;
+    border-radius: 25px;
+    width: 50%;
+    padding: 1em;
+  }
+}
+
+.my-profile-overlay {
+  margin-left: 5px;
+  margin-right: 20px;
+  height: 40px;
+  max-height: 40px;
+  width: 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.my-profile-overlay-link {
+  display: flex;
+  align-items: center;
+  transition: 150ms;
+}
+
+.my-profile-overlay-link:hover {
+  transform: scale(1.05);
+}
+
+.prof-overlay-text {
+  font-size: calc(12px + 0.8vw);
+  color: $colorText;
+  margin-right: 4px;
+}
+
+.avatar-overlay-img {
+  width: 3vw;
+  height: 3vw;
+  min-width: 25px;
+  min-height: 25px;
+}
+
+.img-small {
+  max-width: 12px;
+  max-height: 12px;
+}
+
+.img-exit {
+  max-width: 15px;
+  max-height: 15px;
+  align-self: flex-end;
+  margin-right: 12px;
+  margin-bottom: 25px;
+}
+
+@media screen and (max-width: 1024px) {
+  .nav-container {
+    .logo-img-link {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .nav-container {
+    .my-profile-overlay-link {
+      display: none;
+    }
+    .platform-text {
+      margin-top: 0.5em;
+    }
+    .filters-box {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 0.5em;
+      .select-dropdown {
+        margin-bottom: 0.5em;
+      }
+      .search-field {
+        margin-left: 0.8em;
+        width: 100%;
+      }
+    }
+    .hamburger-img {
+      position: absolute;
+      top: 0.5em;
+      right: 0.1em;
+    }
+  }
+}

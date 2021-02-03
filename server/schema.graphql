@@ -1,0 +1,97 @@
+type Schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  getUserData(user: String!): UserData
+  getPrivateChat(chatID: Int!): PrivateChat
+  getTrade(trade: String!): Trade
+  test: String!
+}
+
+type Mutation {
+  editUser: String
+}
+
+#TypeDefs
+type Username {
+  username: String!
+}
+
+type Date {
+  date: String!
+}
+
+type UserData {
+  id: Int!
+  username: Username!
+  trainerID: Int!
+  trainerName: String!
+  mtgoID: String
+  mtgoName: String
+  latitude: Int
+  longitude: Int
+  buyerRating: Int!
+  numBuyRatings: Int!
+  sellerRating: Int!
+  numSellRatings: Int!
+  numOfStrikes: Int!
+  privateChat: [PrivateChat]
+}
+
+type PrivateChat {
+  id: Int!
+  seller: Username!
+  buyer: Username!
+  history: [Message]
+}
+
+type Message {
+  messageID: String!
+  chatID: String!
+  from: Username!
+  to: Username!
+  content: String!
+  publishDate: Date!
+}
+
+type Trade {
+  tradeID: Int!
+  publishDate: Date!
+  numViews: Int
+  expirationDate: Date
+  seller: Username!
+  tradeItemID: String!
+  tradeItemVariableData: PokeVariableData!
+  price: Int
+  tax: Int
+  buyer: Username!
+  offerItemId: String!
+  offerItemVariableData: PokeVariableData!
+  tradeComplete: Boolean!
+}
+
+type PokeVariableData {
+  pokeLvl: Int!
+  fastMove: String!
+  chargeMove: String!
+  isShiny: Boolean!
+  appraisal: Int!
+}
+
+type PokeConstData {
+  id: String!
+  name: String!
+  pokeNum: Int!
+  sprite: String
+  generation: Int!
+}
+
+type UserCredentials {
+  userID: String!
+  email: String!
+  username: Username!
+  password: String!
+  signUpDate: Date
+}

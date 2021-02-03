@@ -1,0 +1,132 @@
+@import './config';
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+  .login-banner {
+    display: flex;
+    align-items: center;
+    img {
+      width: 150px;
+    }
+    h1 {
+      margin-left: 2em;
+      font-size: 400%;
+    }
+  }
+  .panel-container {
+    display: flex;
+    position: relative;
+    width: 70%;
+    height: 50%;
+    .form-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      position: relative;
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        .login-inputs {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          input {
+            margin: 0.4em;
+            padding: 0.5em;
+            height: 1em;
+            font-size: large;
+            background-color: $colorText;
+            color: $colorGreyBg;
+            width: 50%;
+          }
+        }
+        button {
+          margin-top: 1em;
+          margin-bottom: 1em;
+          height: 3em;
+          width: 50%;
+        }
+      }
+    }
+    .overlay-panel {
+      position: absolute;
+      height: 100%;
+      width: 50%;
+      background-color: $colorPrimary;
+    }
+    .overlay-create {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 50%;
+      button {
+        width: 30%;
+        height: 3em;
+        background-color: $colorGreyBg;
+      }
+    }
+    .overlay-member {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      opacity: 0;
+      button {
+        width: 30%;
+        height: 3em;
+        background-color: $colorGreyBg;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .login-container {
+    .login-banner {
+      h1 {
+        display: none;
+      }
+    }
+    .overlay-create,
+    .overlay-create h2,
+    .overlay-create button,
+    .overlay-member,
+    .overlay-member h2,
+    .overlay-member button,
+    .overlay-panel {
+      display: none;
+    }
+    .panel-container {
+      flex-direction: column;
+      .form-container {
+        form {
+          button {
+            width: 85%;
+            height: 2em;
+          }
+          .login-inputs {
+            input {
+              width: 90%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
