@@ -10,6 +10,10 @@ export default function ReduxTestComponent() {
 
   const dispatch = useDispatch();
 
+  /*   useEffect(() => {
+    dispatch(fetchPokemon('1', 'str2'));
+  }, []); */
+
   const handleAdded = () => {
     console.log('Pokemon Added: ', pokemon);
     // dispatch(pokemonAdded(Math.floor(Math.random() * 4)));
@@ -17,7 +21,7 @@ export default function ReduxTestComponent() {
 
   const handleToggled = () => {
     console.log('Pokemon Toggled: ', pokemon);
-    // dispatch(pokemonToggled(0));
+    // dispatch(getPokeSuccess());
   };
 
   return (
