@@ -7,7 +7,7 @@ export default function DMChatTile(props: { isOwner: boolean; }) {
 
   useEffect( () => {
     setIsMyMessage(isOwner)
-  }, [])
+  }, [isOwner]) //added isOwner inside
 
   return (
     <div className={`message ${(isMyMessage ? "right": "left")}`}>

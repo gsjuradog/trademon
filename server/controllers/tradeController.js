@@ -83,24 +83,24 @@ const editTrade = async (req, res) => {
       price,
       tax,
     } = req.body;
-    const filter = {where: {tradeID:tradeID}};
-    const reply = await db.TradeData.findOne(filter)
+    const filter = { where: { tradeID: tradeID } };
+    const reply = await db.TradeData.findOne(filter);
     //Check if record exists in db
     if (reply) {
       reply.update({
-        numViews:   numViews,
-        seller:     seller,
-        pokeNum:    pokeNum,
-        pokeName:   pokeName,
-        pokeGen:    pokeGen,
-        pokeLvl:    pokeLvl,
-        fastMove:   fastMove,
+        numViews: numViews,
+        seller: seller,
+        pokeNum: pokeNum,
+        pokeName: pokeName,
+        pokeGen: pokeGen,
+        pokeLvl: pokeLvl,
+        fastMove: fastMove,
         chargeMove: chargeMove,
-        isShiny:    isShiny,
-        appraisal:  appraisal,
-        price:      price,
-        tax:        tax,
-      })
+        isShiny: isShiny,
+        appraisal: appraisal,
+        price: price,
+        tax: tax,
+      });
     }
     res.status(200).send(reply);
   } catch (err) {
@@ -111,18 +111,18 @@ const editTrade = async (req, res) => {
 
 const deleteTrade = async (req, res) => {
   try {
-    console.log(req.body)
-    const {tradeID} = req.body
+    console.log(req.body);
+    const { tradeID } = req.body;
     try {
-      db.TradeData.destroy({where: {tradeID: tradeID}})
+      db.TradeData.destroy({ where: { tradeID: tradeID } });
       res.status(204).send('');
     } catch (error) {
-      console.log('No Trade With That ID Found', err)
-      res.status(500).send('DELETE ERROR')
+      console.log('No Trade With That ID Found', err);
+      res.status(500).send('DELETE ERROR');
     }
   } catch (err) {
-    console.log('Trade DELETING ERROR', err)
-    res.status(500).send('DELETE ERROR')
+    console.log('Trade DELETING ERROR', err);
+    res.status(500).send('DELETE ERROR');
   }
 };
 
@@ -131,5 +131,5 @@ module.exports = {
   fetchTrades,
   fetchTradesByDate,
   editTrade,
-  deleteTrade
+  deleteTrade,
 };
