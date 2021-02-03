@@ -27,6 +27,6 @@ router.put('/editTrade',         tradeControllers.editTrade);
 router.delete('/deleteTrade',    tradeControllers.deleteTrade);
 
 // STATIC ITEM DATA RELATED ROUTES
-router.get('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
+router.post('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
 
 module.exports = router;
