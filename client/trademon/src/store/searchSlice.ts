@@ -4,42 +4,26 @@ import { ajax } from 'rxjs/ajax';
 import {
   filter,
   map,
-  mapTo,
   distinctUntilChanged,
   debounceTime,
   switchMap,
   catchError,
 } from 'rxjs/operators';
 
-export interface InitialState {
-  startText: string;
-  text: string;
-  color: string;
-}
+import { Trade, SearchResponseAction } from './interfaces';
 
-const initialState = {
-  startText: ': ',
-  text: ': ',
-  color: 'green',
-  trades: [],
-} as InitialState;
-
-interface searchResponseAction {
-  response: string;
-  color: string;
-}
+const initialState: Trade[] = [];
 
 const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
     searchQuery(state, action) {
-      state.startText = action.payload;
       return state;
     },
-    searchResults(state, action: PayloadAction<searchResponseAction>) {
-      state.text += action.payload.response;
-      state.color = action.payload.color;
+    searchResults(state, action: PayloadAction<SearchResponseAction>) {
+      state = action.payload.trades;
+      console.log('Search Results: ', 'STATE:', state);
       return state;
     },
   },
@@ -48,21 +32,17 @@ const searchSlice = createSlice({
 export const { searchQuery, searchResults } = searchSlice.actions;
 export default searchSlice.reducer;
 
-// EPIC 1:
-export const searchEpic = (action$: any, state$: any) =>
+export const searchEpic = (action$: any) =>
   action$.pipe(
-    ofType('search/keystroke'),
+    ofType('search/searchQuery'),
     debounceTime(500),
     distinctUntilChanged(),
     filter((action: any) => action.payload.length > 2),
     switchMap((action: any) =>
-      ajax
-        .getJSON(`https://trademon.herokuapp.com/${action.payload}`)
-        //.getJSON('https://pokeapi.co/api/v2/pokemon/' + action.payload) // + action.payload)
-        .pipe(
-          map((response) => console.log(response)),
-          catchError((error, caught) => caught),
-        ),
+      ajax.getJSON<Trade>('https://trademon.herokuapp.com/fetchTrades').pipe(
+        map((data: any) => searchResults({ trades: data, response: '+api' })),
+
+        catchError((error, caught) => caught),
+      ),
     ),
-    mapTo(searchResults({ response: '+api, ', color: 'red' })),
   );
