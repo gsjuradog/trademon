@@ -1,4 +1,4 @@
-const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
+const endpointURL : String = 'https://trademon.herokuapp.com' //|| 'http://localhost:3001';
 
 export const createUser = (userName: String, trainerID: String, trainerName: String) => {
   fetch(`${endpointURL}/createUser`, {
@@ -52,6 +52,8 @@ export const createMessage = (from: String, to: String, content: String, chatID:
 }
 
 export const getTrades  = () => {
+  console.log('URLLLLLLL   ',endpointURL);
+  
 return fetch(`${endpointURL}/fetchTrades`, {
   method: 'GET'})
   .then(res => res.status <= 400? res : Promise.reject(res))
