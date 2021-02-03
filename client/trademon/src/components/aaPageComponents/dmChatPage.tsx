@@ -17,7 +17,7 @@ export default function DMChatPage() {
           </div>
           <img src={'/assets/avatarIcon.png'} className="img-large"/>
           <span className="span4"></span>
-          <div className="dm-text">User54321</div>
+          <div className="dm-username">User54321</div>
         </div>
         <span className="span20"></span>
       </div>

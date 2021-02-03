@@ -1,31 +1,13 @@
 import React, { useState, useEffect }from 'react'
-import { Link } from 'react-router-dom'
 import '../../../styling/navs.scss'
 import Backdrop from '../../modal/backdrop'
-
-import { gsap } from 'gsap'
 
 export default function ProfileOverlay(this: any) {
 
   const [hamburgVis, setHamburgVis] = useState<boolean>(false)
   const [exitIcon, setExitIcon] = useState<string>('/assets/exit-icon.png')
 
-  // const animateHamburger = () => {
-  //   if (hamburgVis === false) {
-  //     gsap.from('.hamburger-nav', 1, {
-  //      x: 200
-  //     })
-  //    } else if (hamburgVis === true) {
-  //      gsap.to('.hamburger-nav', 1, {
-  //        x: -200
-  //       })
-  //    }
-  //    setTimeout(() => { setHamburgVis(!hamburgVis); }, 1000)
-  // }
-  
-
   const toggleHamburger = () => {
-    //animateHamburger();
     setHamburgVis(!hamburgVis);
     handleMouseLeave();
   }
@@ -50,7 +32,7 @@ export default function ProfileOverlay(this: any) {
     <div className="my-profile-overlay">
       <a href={'/profile'} className="my-profile-overlay-link">
         <div className="prof-overlay-text">User12345</div>
-        <img className="img-med" src ={'/assets/avatarIcon.png'}/>
+        <img className="avatar-overlay-img" src ={'/assets/avatarIcon.png'}/>
       </a>
       <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'}/>
     </div>

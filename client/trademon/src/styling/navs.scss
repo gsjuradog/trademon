@@ -3,21 +3,36 @@
 .nav-container {
   display: flex;
   align-items: center;
-  height: 20vh;
+  max-height: 15vh
+}
+.logo-img-link {
+  width: 6vw;
+  height: 6vw;
+  min-width: 50px;
+  min-height: 50px;
+  padding-left: 15px;
+  padding-top: 0px;
+}
+.logo-img {
+  width: 6vw;
+  opacity: 90%;
+  min-width: 50px;
+  min-height: 50px;
 }
 
-.logo-img {
-  width: 180px;
-  height: 100%;
-  padding: 0.7em;
-  opacity: 90%;
+.search-container-vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .platform-text {
-  font-size: 4em;
+  font-size: calc(12px + 1.5vw);
+  font-weight: 400;
   color: $colorText;
-  margin-left: 0.4em;
+  margin-left: 3vw;
   margin-bottom: 0.3em;
+  padding-top: 2vh;
 }
 
 .filters-box {
@@ -26,12 +41,15 @@
   align-items: center;
   width: 100%;
   .select-dropdown {
+    height: 40px;
     margin-left: 0.7em;
+    font-size: .8em;
+    min-width: 80px;
+    margin-right: 4px;
   }
   input {
     outline: none;
-    border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 25px;
     width: 50%;
     padding: 1em;
   }
@@ -59,14 +77,16 @@
 }
 
 .prof-overlay-text {
-  font-size: 0.5em;
+  font-size: calc(12px + .8vw);
   color: $colorText;
-  margin-right: 2px;
+  margin-right: 4px;
 }
 
-.img-med {
-  max-width: 20px;
-  max-height: 20px;
+.avatar-overlay-img {
+  width: 3vw;
+  height: 3vw;
+  min-width: 25px;
+  min-height: 25px;
 }
 
 .img-small {
@@ -80,11 +100,4 @@
   align-self: flex-end;
   margin-right: 12px;
   margin-bottom: 25px;
-}
-
-.dm-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
