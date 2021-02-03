@@ -35,6 +35,6 @@ router.put('/editMTGOTrade', mtgotradeControllers.editMTGOTrade);
 router.delete('/deleteMTGOTrade', mtgotradeControllers.deleteMTGOTrade);
 
 // STATIC ITEM DATA RELATED ROUTES
-router.get('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
+router.post('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
 
 module.exports = router;

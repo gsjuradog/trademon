@@ -1,4 +1,7 @@
-const endpointURL : String = 'https://trademon.herokuapp.com' //|| 'http://localhost:3001';
+import { TradeData } from './interfaces'
+
+const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
+
 
 export const createUser = (userName: String, trainerID: String, trainerName: String) => {
   fetch(`${endpointURL}/createUser`, {
@@ -64,41 +67,58 @@ return fetch(`${endpointURL}/fetchTrades`, {
 } 
 
 
-export const createTrade = (
-  numViews:number, 
-  seller:string, 
-  pokeNum:number, 
-  pokeName:string, 
-  pokeGen:number, 
-  pokeLvl:number, 
-  fastMove:string, 
-  chargeMove:string, 
-  isShiny:boolean ,
-  appraisal:number, 
-  price:number, 
-  tax:number
-  ) => {
+
+export const createTrade = async (trade : TradeData) => {
+  
+  const {pokeName, CP, catchLocation, fastMove, chargeMove, shiny, price, appraisal, listingType } = trade;
+
+  const pokeDetails = await getPoke(pokeName);
+
+  const { id, generation, pokeSprite } : any = pokeDetails;
+
   fetch(`${endpointURL}/createTrade`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-      numViews, 
-      seller, 
-      pokeNum, 
-      pokeName, 
-      pokeGen, 
-      pokeLvl, 
-      fastMove, 
-      chargeMove, 
-      isShiny, 
-      appraisal, 
-      price, 
-      tax,//do we need tax here?
+      numViews: 0,
+      seller: 'ME',
+      pokeNum: id,
+      pokeName,
+      pokeGen: generation,
+      pokeLvl: CP,
+      pokeSprite,
+      fastMove,
+      chargeMove,
+      isShiny: shiny,
+      appraisal,
+      price,
+      catchLocation,
+      listingType,
+      
     })
   })
-    .then(res => res.json)
+    .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.log('CREATE TRADE ERROR', err))
+}
+
+const getPoke = async (name: string) => {
+
+  let call = {};
+
+  await fetch(`${endpointURL}/fetchStaticPoke`, {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          name: name
+        }) 
+      }).then(res => res.json())
+      .then(data => call = data)
+      .catch(err => console.log('GETPOKE ERROR', err))
+
+      return call;
 }
