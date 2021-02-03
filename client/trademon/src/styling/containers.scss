@@ -1,12 +1,4 @@
-$colorPrimary: #075f59;
-$colorSecondary: #ba3f1d;
-$colorGreyPop: #232026;
-$colorGreyPop80: #232026bb;
-$colorGreyHover: #2f2c33;
-$colorGreyBg: #1c1c1e;
-$colorText: #ffffff;
-$colorShadowLight: rgba(48, 48, 48, 0.85);
-$colorShadowDark: rgba(0, 0, 0, 0.65);
+@import './config';
 
 .flex-column-center {
   display: flex;
@@ -23,12 +15,14 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .platform-container {
-  width: 305px;
-  max-width: 305px;
-  height: 300px;
-  max-height: 300px;
+  width: 40vw;
+  min-width: 325px;
+  height: 18vh;
+  min-height: 380px;
   background-color: $colorGreyPop;
-  margin: 10px;
+  margin-top: 3vh;
+  margin-left: 1.5vh;
+  margin-right: 1.5vh;
   border-radius: 30px;
   box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
     2px 2px 5px rgba(0, 0, 0, 0.65);
@@ -39,24 +33,31 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 .platform-container-title {
   width: 100%;
   text-align: center;
-  font-size: 2em;
+  font-size: calc(12px + 2.5vw);
   font-weight: 500;
   padding-top: 15px;
 }
 
 .platform-container-tile-box {
   width: 100%;
+  height: 80%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 4px 0px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 1vw;
+  padding-right: 1.5vw;
+  padding-left: 1.5vw;
+  overflow: auto;
 }
 
 .search-results {
   width: 95%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 2.5vh;
 }
 
 .my-profile-container {
@@ -68,11 +69,11 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .offer-details-container {
+  margin-top: 4.5vh;
   display: flex;
   flex-wrap: wrap;
   width: 95%;
   justify-content: space-evenly;
-  margin-top: 15px;
 }
 
 .item-details-container {
@@ -90,48 +91,53 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .small-text {
-  font-size: .35em;
+  font-size: calc(12px + .25vw);
 }
 .rating-text {
   @extend .small-text;
   margin-top: 6px;
-  margin-bottom: -2px;
+  margin-bottom: .4vh;
 }
 .standard-text {
-  font-size: .6em;
+  font-size: calc(12px + .8vw);
   margin-top: 3px;
 }
 
 .large-text {
   position: absolute;
   z-index: 0;
-  font-size: 6em;
+  font-size: 15vw;
   opacity: 0.18;
 }
 
 .large-sprite {
-  width: 125px;
-  height: 125px;
+  width: 20vw;
+  height: 20vw;
+  min-width: 125px;
+  min-height: 125px;
   align-self: center;
   z-index: 1;
 }
 
 .is-shiny-box {
   display: flex;
-  max-width: 41px;
+  width: 100%;
+  max-width: 10vw;
   align-items: center;
+  margin-left: 1.4vw;
 }
 
 .shiny-checkbox {
   display: inline-block;
-  width: 10px;
-  max-width: 12px;
-  height: 10px;
+  min-width: 12px;
+  min-height: 12px;
+  width: 1.5vw;
+  height: 1.5vw;
   background-color: $colorSecondary;
   border: 1.5px solid #bbbbbb;
   background-clip: content-box;
   border-radius: 3px;
-  margin-left: -30px;
+  margin-left: 1vw;
 }
 
 .seller-details-container {
@@ -149,8 +155,8 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   margin-top: 10px;
 }
 
-.interest-box button{
-  width: 100%
+.interest-box button {
+  width: 100%;
 }
 
 .interest-stats {
@@ -160,16 +166,28 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 }
 
 .bar-spacer {
- margin-left: 3px;
- margin-right: 3px;
- margin-top: 3px;
- font-size: .6em;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 3px;
+  font-size: calc(12px + .5vw);
 }
 
 .menu-title {
-  font-size: .8em;
+  font-size: calc(12px + 1vw);
   width: 100%;
   text-align: center;
+}
+
+.dm-page {
+  width: 100%;
+}
+
+.dm-container {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dm-chat-title-box {
@@ -181,12 +199,13 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 .dm-sender-info {
   display: flex;
   align-items: center;
+  margin-top: 1.5vh;
 }
 
 .dm-back-button {
-  font-size: .5em;
+  font-size:calc(12px + .5vw);
   transition: 150ms;
-  margin-top: -1px;
+  margin-top: 1.5vh;
 }
 
 .dm-back-button:hover {
@@ -198,6 +217,10 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
   width: fit-content;
   margin-right: 8px;
   margin-top: -2px;
+}
+
+.dm-username {
+  font-size: calc(12px + 1vw);
 }
 
 .dm-title-avatar-box {
@@ -212,4 +235,3 @@ $colorShadowDark: rgba(0, 0, 0, 0.65);
 .span20 {
   width: 20px;
 }
-

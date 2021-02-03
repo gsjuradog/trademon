@@ -24,7 +24,7 @@ export default function OfferDetailsPage() {
           </div>
           <UserRatingComponent />
           <div className="is-shiny-box">
-            <div className="small-text">
+            <div className="standard-text">
               Shiny?
             </div>
             <input type="checkbox" className="shiny-checkbox"/>

@@ -25,7 +25,7 @@ export default function StandardTile({trade}:trade) {
   return (
     <div className="standard-tile-container">
       <div className="title-row">
-        <span className="spacer-span"></span>
+        <span className="heart"></span>
         <div className="std-tile-title-text">{trade.pokeName}</div>
         <img src={'/assets/FavIconEmpty.png'} className="heart"></img>
       </div>

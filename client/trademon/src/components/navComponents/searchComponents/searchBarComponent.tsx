@@ -13,17 +13,15 @@ export default function SearchBar() {
 
   return (
     <div className="nav-container">
-      <a href={'/'}>
-        <div className="logo-box">
-          <img
-            alt="logo"
-            className="logo-img"
-            src={'/assets/trademon-logo.png'}
-          />
-          <div className="platform-text">trademon.io</div>
-        </div>
+
+      <a className="logo-img-link" href={'/'} >
+        <img className="logo-img" src={'/assets/trademon-logo.png'}/>
       </a>
-      <div className="nav-row">
+
+      <div className="search-container-vertical">
+
+        <h1 className="platform-text">trademon.io</h1>
+        
         <div className="filters-box">
           <select className="select-dropdown">
             <option value="Pokemon Go">Pokemon Go</option>
@@ -39,8 +37,9 @@ export default function SearchBar() {
             }
           />
         </div>
-        <ProfileOverlay></ProfileOverlay>
       </div>
+      <ProfileOverlay></ProfileOverlay>
+
     </div>
   );
 }

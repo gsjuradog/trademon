@@ -5,7 +5,7 @@ import '../../styling/containers.scss'
 
 export default function DMPage() {
   return (
-    <div>
+    <div className="dm-page">
       <div>
         <SearchBar></SearchBar>
       </div>

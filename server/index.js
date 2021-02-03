@@ -10,14 +10,14 @@ require('dotenv').config();
 const router = require('./routes');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || process.env.PORTLOCAL || 3001;
 const HOST = 'localhost';
 const test = process.env.HOST;
 console.log(test);
 
 app.use(cors(), express.json(), router);
 
-const typeDefs = gql(fs.readFileSync('./schema.graphql', { encoding: 'utf8' }));
+const typeDefs = gql(fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' }));
 const resolvers = require('./controllers/resolvers');
 //const context = ({ req }) => ({user: req.user});
 //const apolloServer = new ApolloServer({typeDefs, resolvers, context});
