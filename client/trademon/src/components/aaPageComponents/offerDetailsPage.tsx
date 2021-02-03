@@ -4,6 +4,7 @@ import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 
 export default function OfferDetailsPage() {
+
   return (
     <>
       <SearchBar></SearchBar>

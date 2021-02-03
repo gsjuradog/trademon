@@ -10,12 +10,15 @@ const createTrade = async (req, res) => {
       pokeName,
       pokeGen,
       pokeLvl,
+      pokeSprite,
       fastMove,
       chargeMove,
       isShiny,
       appraisal,
       price,
       tax,
+      catchLocation,  //<--Also on req.body
+      listingType     //<--Also on req.body
     } = req.body;
 
     console.log(seller);
@@ -26,6 +29,7 @@ const createTrade = async (req, res) => {
       pokeName: pokeName,
       pokeGen: pokeGen,
       pokeLvl: pokeLvl,
+      pokeSprite: pokeSprite,
       fastMove: fastMove,
       chargeMove: chargeMove,
       isShiny: isShiny,
