@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { pokemonListed } from '../../redux/reducers/pokemonsSlice';
+import { useSelector } from 'react-redux'; //useDispatch deleted undil use
+
+// import { pokemonListed } from '../../store/reducers/pokemonsSlice';
 
 export default function ReduxTestListComponent() {
   const pokemon = useSelector((state: any) => state.pokemons);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleList = () => {
     console.log('Pokemon List: ', pokemon);
-    dispatch(pokemonListed(Math.floor(Math.random() * 4)));
+    // dispatch(pokemonListed(Math.floor(Math.random() * 4)));
   };
 
   return (
