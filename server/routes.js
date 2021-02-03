@@ -6,6 +6,7 @@ const userControllers = require('./controllers/authController');
 const tradeControllers = require('./controllers/tradeController');
 const chatControllers = require('./controllers/chatController');
 const messageControllers = require('./controllers/messageController');
+const staticPokeControllers = require('./controllers/pokeStaticController');
 
 router.get('/test', testControllers.getUser);
 
@@ -22,5 +23,8 @@ router.get('/getChat/:id', chatControllers.getChat);
 router.post('/createTrade', tradeControllers.createTrade);
 router.get('/fetchTrades', tradeControllers.fetchTrades);
 router.get('/fetchTradesByDate', tradeControllers.fetchTradesByDate);
+
+// STATIC ITEM DATA RELATED ROUTES
+router.get('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
 
 module.exports = router;
