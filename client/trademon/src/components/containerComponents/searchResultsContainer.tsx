@@ -32,7 +32,10 @@ console.log('trades after useEffect', trades)
 
   return (
     <div className="search-results">
-      {trades && trades.map(trade => <StandardTile trade={trade}></StandardTile>)}
+      {trades && trades.map(trade => <StandardTile 
+        key = {trade.tradeID}
+        trade={trade}></StandardTile>
+      )}
      
     </div>
   )
