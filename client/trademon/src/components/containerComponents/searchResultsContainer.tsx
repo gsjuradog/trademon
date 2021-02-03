@@ -4,31 +4,30 @@ import StandardTile from '../tileComponents/standardTileComponent'
 import '../../styling/containers.scss';
 
 interface trades {
-  tradeID:number,
-  numViews:number, 
-  seller:string, 
-  pokeNum:number, 
-  pokeName:string, 
-  pokeGen:number, 
-  pokeLvl:number, 
-  fastMove:string, 
-  chargeMove:string, 
-  isShiny:boolean ,
-  appraisal:number, 
-  price:number, 
-  tax:number
+  tradeID: number;
+  numViews: number;
+  seller: string;
+  pokeNum: number;
+  pokeName: string;
+  pokeGen: number;
+  pokeLvl: number;
+  fastMove: string;
+  chargeMove: string;
+  isShiny: boolean;
+  appraisal: number;
+  price: number;
+  tax: number;
 }
 
 export default function SearchResultsContainer() {
-const [trades,setTrades] = useState <trades[]>()
+  const [trades, setTrades] = useState<trades[]>();
 
 useEffect(():any => {
   getTrades()
   .then(res =>setTrades(res))
 }, [])
- 
 
-console.log('trades after useEffect', trades)
+  console.log('trades after useEffect', trades);
 
   return (
     <div className="search-results">
@@ -36,7 +35,6 @@ console.log('trades after useEffect', trades)
         key = {trade.tradeID}
         trade={trade}></StandardTile>
       )}
-     
     </div>
-  )
+  );
 }
