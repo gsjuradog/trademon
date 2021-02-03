@@ -27,12 +27,12 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  // privateChat.associate = (model) => {
-  //   privateChat.hasMany(model.Message);
-  //   privateChat.belongsToMany(model.UserData, {
-  //     through: 'User_Chat',
-  //   });
-  // };
+  privateChat.associate = (model) => {
+    privateChat.hasMany(model.Message);
+    privateChat.belongsToMany(model.UserData, {
+      through: 'User_Chat',
+    });
+  };
 
   return privateChat;
 };

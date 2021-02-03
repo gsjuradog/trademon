@@ -118,7 +118,7 @@ module.exports = (sequelize, DataTypes) => {
   // mtgotrade.associate = (model) => {
   //   mtgotrade.belongsToMany(model.UserData, {
   //     through: 'MtgoTrade_Users',
-  //     as: 'MtgoTrade',
+  //     as: 'Mtgotrade',
   //   });
   // };
 
