@@ -50,3 +50,19 @@
   margin-right: 15px;
   transition: 150ms;
 }
+
+@media screen and (max-width: 1200px) {
+  .hamburger-nav {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hamburger-nav {
+    width: 60%;
+    .img-exit {
+      margin-top: 1em;
+      margin-right: 3em;
+    }
+  }
+}

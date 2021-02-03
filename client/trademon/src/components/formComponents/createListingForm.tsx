@@ -107,14 +107,18 @@ export default function CreateListingForm() {
             <input name="chargeMove" type="text" className="form-input" placeholder="Charge Move..."></input>
           </div>
           <div className="form-appraisal-box">
-            <div className="small-text">
-              Shiny?
+            <div className="special-attrib-box">
+              <div className="small-text">
+                Shiny?
+              </div>
+              <input name="shiny" type="checkbox" className="shiny-checkbox"/>
             </div>
-            <input name="shiny" type="checkbox" className="shiny-checkbox"/>
-            <div className="half-em-font">Appraisal: </div>
-            <UserRatingComponent 
-              ratingHandler={ratingHandler}
-            />
+            <div className="special-attrib-box">
+              <div className="form-appraisal-font">Appraisal: </div>
+              <UserRatingComponent 
+                ratingHandler={ratingHandler}
+              />
+            </div>
           </div>
           <div className="horiz-input-box">
             <select id="listingType" className="trade-dropdown">

@@ -47,13 +47,14 @@ select {
   color: $colorText;
   border-radius: 25px;
   height: 2.5em;
-  font-size: 1em;
-  font-weight: 600;
+  font-family: 'Rubik', sans-serif;
+  font-size: calc(10px + 0.2vw);
+  font-weight: 200;
   outline: none;
   border: none;
-  padding: 10px;
-  padding-right: 12px;
+  padding-left: 0.5vw;
   -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 select:hover {
@@ -64,9 +65,17 @@ input {
   background-color: $colorGreyPop;
   border-style: none;
   color: $colorText;
-  border-radius: 25;
+  border-radius: 15px;
+  padding: 0.5vw;
+  padding-left: 0.6vw;
+  font-family: 'Rubik', sans-serif;
+  font-size: calc(10px + 0.4vw);
 }
 
 input:hover {
   cursor: pointer;
+}
+
+input:focus {
+  outline: none;
 }
