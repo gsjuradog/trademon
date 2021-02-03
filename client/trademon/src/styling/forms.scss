@@ -47,21 +47,40 @@
 
 .special-attrib-box {
   display: flex;
-  width: 50%;
   justify-content: center;
+  align-items: baseline;
+  position: relative;
+  width: 50%;
 }
 
 .shiny-checkbox {
-  width: 1vw;
-  height: 1vw;
-  margin-right: 1.5vw;
-  margin-top: 0.2vh;
+  position: absolute;
+  margin-left: 4em;
+  width: 3em;
+  height: 2.5em;
+  opacity: 0;
+}
+
+.shiny-text {
+  position: absolute;
+  left: 4vw;
+}
+
+.fa-check {
+  color: green;
+  margin-left: 2em;
+}
+
+.fa-times {
+  color: red;
+  margin-left: 2em;
 }
 
 .form-appraisal-font {
-  font-size: calc(12px + 0.25vw);
-  margin-right: 5px;
+  font-size: calc(12px + 0.8vw);
+  margin-right: 20px;
   margin-top: 0.2vh;
+  margin-bottom: 0.2vh;
 }
 
 .trade-dropdown {
