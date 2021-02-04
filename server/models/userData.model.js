@@ -69,6 +69,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // userData.associate = (model) => {
+  //   userData.hasMany(model.TradeData);
+  //   // userData.hasMany(model.MtgoTrade);
   //   userData.belongsTo(model.userCredentials);
   //   userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
   // };

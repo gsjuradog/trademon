@@ -43,7 +43,7 @@ const Login = () => {
     <div className="login-container">
 
       <div className="login-banner">
-        <img className="login-trademon-logo" src={'/assets/trademon-logo.png'}/>
+        <img className="login-trademon-logo" src={'/assets/trademon-logo.png'} alt="Trademon Logo"/>
         <h1>Trademon.io</h1>
       </div>
       
@@ -53,7 +53,8 @@ const Login = () => {
           <form action="#">
             <h1>create account</h1>
             <div className="login-inputs">
-              <input type="text" placeholder="Name" />
+              <input type="text" 
+              placeholder="Name" />
               <input type="email" placeholder="email" />
               <input type="password" placeholder="Password" />
             </div>
@@ -89,22 +90,7 @@ const Login = () => {
   </div>
 </div>
   )
+  
 }
 
 export default Login;
-
-{/* <div className="overlay-container">
-
-<div className="overlay-panel overlay-left">
-  <h1>already a member?</h1>
-  <p>sign in to trade!</p>
-  <button className="ghost" id="signIn">sign In</button>
-</div>
-
-<div className="overlay-panel overlay-right">
-  <h1>hello friend!</h1>
-  <p>not a member? sign up!</p>
-  <button className="ghost" id="signUp">sign up</button>
-</div>
-
-</div> */}

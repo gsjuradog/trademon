@@ -1,6 +1,8 @@
 const db = require('../models/index');
 
 const createTrade = async (req, res) => {
+  //check if it is magic or pokemon and do one action or the other
+  /*if (req.body.pokeName) { do pokemon  } else {magic} */
   try {
     console.log('A User Is Creating An Offer!');
     const {
@@ -10,12 +12,15 @@ const createTrade = async (req, res) => {
       pokeName,
       pokeGen,
       pokeLvl,
+      pokeSprite,
       fastMove,
       chargeMove,
       isShiny,
       appraisal,
       price,
       tax,
+      catchLocation,  //<--Also on req.body
+      listingType     //<--Also on req.body
     } = req.body;
 
     console.log(seller);
@@ -26,6 +31,7 @@ const createTrade = async (req, res) => {
       pokeName: pokeName,
       pokeGen: pokeGen,
       pokeLvl: pokeLvl,
+      pokeSprite: pokeSprite,
       fastMove: fastMove,
       chargeMove: chargeMove,
       isShiny: isShiny,
@@ -83,24 +89,24 @@ const editTrade = async (req, res) => {
       price,
       tax,
     } = req.body;
-    const filter = {where: {tradeID:tradeID}};
-    const reply = await db.TradeData.findOne(filter)
+    const filter = { where: { tradeID: tradeID } };
+    const reply = await db.TradeData.findOne(filter);
     //Check if record exists in db
     if (reply) {
       reply.update({
-        numViews:   numViews,
-        seller:     seller,
-        pokeNum:    pokeNum,
-        pokeName:   pokeName,
-        pokeGen:    pokeGen,
-        pokeLvl:    pokeLvl,
-        fastMove:   fastMove,
+        numViews: numViews,
+        seller: seller,
+        pokeNum: pokeNum,
+        pokeName: pokeName,
+        pokeGen: pokeGen,
+        pokeLvl: pokeLvl,
+        fastMove: fastMove,
         chargeMove: chargeMove,
-        isShiny:    isShiny,
-        appraisal:  appraisal,
-        price:      price,
-        tax:        tax,
-      })
+        isShiny: isShiny,
+        appraisal: appraisal,
+        price: price,
+        tax: tax,
+      });
     }
     res.status(200).send(reply);
   } catch (err) {
@@ -111,18 +117,18 @@ const editTrade = async (req, res) => {
 
 const deleteTrade = async (req, res) => {
   try {
-    console.log(req.body)
-    const {tradeID} = req.body
-    try {
-      db.TradeData.destroy({where: {tradeID: tradeID}})
-      res.status(204).send('');
-    } catch (error) {
-      console.log('No Trade With That ID Found', err)
-      res.status(500).send('DELETE ERROR')
+    console.log(req.body);
+    const { tradeID } = await req.body;
+    const reply = await db.TradeData.findOne({ where: { tradeID: tradeID } });
+    if (reply) {
+      const deleted = await db.TradeData.destroy({
+        where: { tradeID: tradeID },
+      });
+      res.status(204).send(deleted);
     }
-  } catch (err) {
-    console.log('Trade DELETING ERROR', err)
-    res.status(500).send('DELETE ERROR')
+  } catch (error) {
+    console.log('No Trade With That ID Found', err);
+    res.status(500).send('DELETE ERROR');
   }
 };
 
@@ -131,5 +137,5 @@ module.exports = {
   fetchTrades,
   fetchTradesByDate,
   editTrade,
-  deleteTrade
+  deleteTrade,
 };

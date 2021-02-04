@@ -1,18 +1,19 @@
 // ******************
 // USER POST RELATED
-export interface Offering {
-  //Info for posts regardless of game
-  postId:         string,
-  itemId:         string,
-  owner:          string,
-  price:          number,
-  description:    string,
-  numViews:       number,
-  expirationDate: Date,
-  publishDate:    Date,
-  //comments?
-  //variable data from form, relevant to platform
-  variableData:   PokeVariableData | MTGVariableData
+export interface Trades {
+  tradeID:number,
+  numViews:number, 
+  seller:string, 
+  pokeNum:number, 
+  pokeName:string, 
+  pokeGen:number, 
+  pokeLvl:number, 
+  fastMove:string, 
+  chargeMove:string, 
+  isShiny:boolean ,
+  appraisal:number, 
+  price:number, 
+  tax:number
 }
 export interface PokeVariableData {
   pokeLvl:        number,
@@ -66,7 +67,7 @@ export interface UserData {
   numSellRatings: number,
   numOfStrikes:   number,
   transHistory:   Transaction[],
-  activePosts:    Offering[], //It would be nice if we could have 1 interface for posts, and dynamically set part of it
+  activePosts:    Trades[], //It would be nice if we could have 1 interface for posts, and dynamically set part of it
   //following?
   //followers?
 }
@@ -81,4 +82,16 @@ export interface Transaction {
   tradeItemVariableData?: PokeVariableData | MTGVariableData, //If trade, item details offered in return
   price?:                 number,
   tax?:                   number,
+}
+
+export interface TradeData {
+  pokeName: string,
+  CP: number,
+  catchLocation: string,
+  fastMove: string,
+  chargeMove: string,
+  shiny: boolean
+  price: number,
+  appraisal: number
+  listingType: string
 }

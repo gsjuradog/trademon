@@ -1,10 +1,10 @@
-import { Checkbox } from '@material-ui/core';
 import React from 'react';
 import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 
 export default function OfferDetailsPage() {
+
   return (
     <>
       <SearchBar></SearchBar>
@@ -32,7 +32,7 @@ export default function OfferDetailsPage() {
         </div>
         <div className="large-sprite-container">
           <div className="large-text">#155</div>
-          <img className="large-sprite" src={'/assets/testSprite.png'}/>
+          <img className="large-sprite" src={'/assets/testSprite.png'} alt="pokemon Name"/>
         </div>
         <div className="seller-details-container">
           <div className="standard-text">

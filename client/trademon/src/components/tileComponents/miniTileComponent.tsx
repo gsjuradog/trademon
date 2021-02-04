@@ -13,20 +13,12 @@ export default function MiniTile(trade: any) {
     <a href="/offer/randomID123">
       <div className="mini-tile-container">
         <div className="sprite-mini-box">
-          <img
-            alt=""
-            className={trade.world === 'mtgs' ? 'mtg-mini' : 'sprite-mini'}
-            src={'/assets/' + trade.world + '/' + trade.tradeID + '.png'}
-          ></img>
+          <img className="sprite-mini" src={'/assets/testSprite.png'} alt=''></img>
         </div>
 
         <div className="mini-tile-info-box">
           <div className="mini-fave-icon-container">
-            <img
-              alt=""
-              src={'/assets/FavIconEmpty.png'}
-              className="heart-mini"
-            ></img>
+            <img src={'/assets/FavIconEmpty.png'} className="heart-mini" alt=''></img>
           </div>
           <div className="mini-tile-text">{trade.pokeName}</div>
           <div className="mini-tile-text">$ {trade.price}</div>

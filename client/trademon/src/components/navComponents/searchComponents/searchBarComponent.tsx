@@ -20,15 +20,16 @@ export default function SearchBar() {
 
   return (
     <div className="nav-container">
-      <a className="logo-img-link" href={'/'}>
-        <img alt="" className="logo-img" src={'/assets/trademon-logo.png'} />
+
+      <a className="logo-img-link" href={'/'} >
+        <img className="logo-img" src={'/assets/trademon-logo.png'} alt="trademon logo"/>
       </a>
 
       <div className="search-container-vertical">
         <h1 className="platform-text">trademon.io</h1>
 
         <div className="filters-box">
-          <select className="select-dropdown">
+          <select className="search-select-dropdown">
             <option value="Pokemon Go">Pokemon Go</option>
             <option value="MTG: Online">MTG: Online</option>
           </select>

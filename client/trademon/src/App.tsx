@@ -18,11 +18,11 @@ const App = () => {
         <Switch>
           <Route path="/"            exact component={LandingPage}/>
           <Route path="/login"             component={Login}/>
-          <Route path="/offer/randomID123" component={OfferDetailsPage}/>
+          <Route path="/trade/:tradeID"    component={OfferDetailsPage}/>
           <Route path="/profile"           component={MyProfile}/>
           <Route path="/create-listing"    component={CreateListingForm}/>
           <Route path="/messages"          component={DMPage}/>
-          <Route path="/chat/1234"          component={DMChatPage}/>
+          <Route path="/chat/1234"         component={DMChatPage}/>
           <Route path="/test"              component={TestPage}/>
           <Route path="/pokemon-go"        component={PokemonGoPage}/>
           <Redirect to="/"/>
