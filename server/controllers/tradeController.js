@@ -4,7 +4,7 @@ const createTrade = async (req, res) => {
   //check if it is magic or pokemon and do one action or the other
   /*if (req.body.pokeName) { do pokemon  } else {magic} */
   try {
-    console.log('A User Is Creating An Offer! ', req.body.pokeSprite);
+    console.log('A User Is Creating An Offer! ');
     const {
       numViews,
       seller,
@@ -39,7 +39,6 @@ const createTrade = async (req, res) => {
       price: price,
       tax: tax,
     });
-    console.log('WHAT IS RESULT: ', reply.dataValues);
     res.status(200).send(reply);
   } catch (err) {
     console.log('POST ERROR', err);
@@ -51,6 +50,19 @@ const fetchTrades = async (req, res) => {
   try {
     console.log('Someone Requested Active Trades!');
     const reply = await db.TradeData.findAll();
+    res.status(200).send(reply);
+  } catch (err) {
+    console.log('FETCH ERROR', err);
+    res.status(500).send('FETCH ERROR');
+  }
+};
+
+const fetchOneTrade = async (req, res) => {
+  try {
+    console.log('Someone Requested Trade Details!');
+    const { tradeID } = req.body;
+    const filter = {where: {tradeID: tradeID }};
+    const reply = await db.TradeData.findOne(filter);
     res.status(200).send(reply);
   } catch (err) {
     console.log('FETCH ERROR', err);
@@ -136,6 +148,7 @@ const deleteTrade = async (req, res) => {
 module.exports = {
   createTrade,
   fetchTrades,
+  fetchOneTrade,
   fetchTradesByDate,
   editTrade,
   deleteTrade,
