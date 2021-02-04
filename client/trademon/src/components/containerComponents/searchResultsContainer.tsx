@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { getTrades } from '../../utils/rest';
 import StandardTile from '../tileComponents/standardTileComponent';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store/store';
 import '../../styling/containers.scss';
+import { fetchTrades } from '../../store/tradeSlice';
 
 interface trades {
   tradeID: number;
@@ -22,17 +25,20 @@ interface trades {
 export default function SearchResultsContainer() {
   const [trades, setTrades] = useState<trades[]>();
 
-  useEffect((): any => {
-    getTrades().then((res) => setTrades(res));
+  const miniTiles = useSelector((state: RootState) => state.trade);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTrades('Pokemon'));
   }, []);
 
-  console.log('trades after useEffect', trades);
+  console.log('>>>> Trades after useEffect', miniTiles.pokemons);
 
   return (
     <div className="search-results">
-      {trades &&
-        trades.map((trade) => (
-          <StandardTile key={trade.tradeID} trade={trade}></StandardTile>
+      {miniTiles &&
+        miniTiles.pokemons.map((trade) => (
+          <StandardTile key={trade.tradeID} {...trade}></StandardTile>
         ))}
     </div>
   );

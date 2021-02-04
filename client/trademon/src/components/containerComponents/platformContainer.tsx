@@ -40,26 +40,26 @@ export default function PlatformContainer(props: IProps) {
       ));
       break;
     default:
-      miniTilesRender = <li>World of Warcraft!</li>;
+      miniTilesRender = <li>World of Warcraft! ... coming soon :)</li>;
       break;
   }
 
   return (
     <div>
-      {/* <a href="/pokemon-go"> */}
-      <div
-        className="platform-container"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('assets/bg_" +
-            props.world +
-            ".jpg')",
-        }}
-      >
-        <div className="platform-container-title">{props.world}</div>
-        <div className="platform-container-tile-box">{miniTilesRender}</div>
-      </div>
-      {/* </a> */}
+      <a href="/pokemon-go">
+        <div
+          className="platform-container"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('assets/bg_" +
+              props.world +
+              ".jpg')",
+          }}
+        >
+          <div className="platform-container-title">{props.world}</div>
+          <div className="platform-container-tile-box">{miniTilesRender}</div>
+        </div>
+      </a>
     </div>
   );
 }
