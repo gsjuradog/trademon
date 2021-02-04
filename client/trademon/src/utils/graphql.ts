@@ -36,25 +36,28 @@ export async function getUser(user:String) {
   return data; //<-- 3. Return result
 }
 
-//getPrivateChat - working
-export async function getPrivateChat(chatID:Number) {
+//getPrivateChats
+export async function getPrivateChats(user:String) {
   const query = `
-  query ($chatID: Int!){
-    getPrivateChat(chatID:$chatID) {
-      id
-      seller {
-        username
-      }
-      buyer {
-        username
+  query ($user: String!) {
+    getUserData(user: $user) {
+      username 
+      privateChat {
+        id
+        seller
+        buyer
+        history {
+          content
+          publishDate
+        }
       }
     }
   }
   `;
-  const data = await graphqlRequest(query, {chatID:chatID});
+  const data = await graphqlRequest(query, {user:user});
   return data;
 }
 
-export async function getTrade() {
+// export async function getTrade() {
   
-}
+// }

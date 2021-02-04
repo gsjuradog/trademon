@@ -9,7 +9,7 @@ const postMessage = async (req, res) => {
       from: from,
       to: to,
       content: content,
-      chatID: chatID,
+      chatId: chatID,
     });
     // const chat = await db.PrivateChats.findOne({
     //   where: {

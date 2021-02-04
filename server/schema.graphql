@@ -15,19 +15,11 @@ type Mutation {
 }
 
 #TypeDefs
-type Username {
-  username: String!
-}
-
-type Date {
-  date: String!
-}
 
 type UserData {
-  id: Int!
-  username: Username!
-  trainerID: Int!
-  trainerName: String!
+  username: String!
+  trainerID: Int
+  trainerName: String
   mtgoID: String
   mtgoName: String
   latitude: Int
@@ -41,32 +33,32 @@ type UserData {
 }
 
 type PrivateChat {
-  id: Int!
-  seller: Username!
-  buyer: Username!
-  history: [Message]
+  id: Int
+  seller: String!
+  buyer: String!
+  history(id: Int): [Message!]
 }
 
 type Message {
-  messageID: String!
-  chatID: String!
-  from: Username!
-  to: Username!
+  messageID: Int!
+  chatId: Int!
+  from: String!
+  to: String!
   content: String!
-  publishDate: Date!
+  publishDate: String!
 }
 
 type Trade {
   tradeID: Int!
-  publishDate: Date!
+  publishDate: Int!
   numViews: Int
-  expirationDate: Date
-  seller: Username!
+  expirationDate: Int!
+  seller: String!
   tradeItemID: String!
   tradeItemVariableData: PokeVariableData!
   price: Int
   tax: Int
-  buyer: Username!
+  buyer: String!
   offerItemId: String!
   offerItemVariableData: PokeVariableData!
   tradeComplete: Boolean!
@@ -91,7 +83,7 @@ type PokeConstData {
 type UserCredentials {
   userID: String!
   email: String!
-  username: Username!
+  username: String!
   password: String!
-  signUpDate: Date
+  signUpDate: Int
 }

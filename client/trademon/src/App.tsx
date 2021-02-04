@@ -11,6 +11,8 @@ import DMPage from './components/aaPageComponents/dmPage'
 import DMChatPage from './components/aaPageComponents/dmChatPage'
 import CreateListingForm from './components/formComponents/createListingForm'
 
+import TestComponent from './components/testComponent/testComponent'
+
 const App = () => {
   return (
     <Router>
@@ -25,6 +27,7 @@ const App = () => {
           <Route path="/chat/1234"         component={DMChatPage}/>
           <Route path="/test"              component={TestPage}/>
           <Route path="/pokemon-go"        component={PokemonGoPage}/>
+          <Route path="/test"              component={TestComponent}/>
           <Redirect to="/"/>
         </Switch>
       </div>
