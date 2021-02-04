@@ -13,7 +13,7 @@ router.get('/test', testControllers.getUser);
 
 // AUTH RELATED ROUTES
 router.post('/createUser', userControllers.createUser);
-router.get('/signin', userControllers.signin);
+router.post('/signin', userControllers.signin);
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);

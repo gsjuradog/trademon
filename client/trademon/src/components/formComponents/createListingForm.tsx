@@ -32,7 +32,6 @@ export default function CreateListingForm() {
     //Fetch
     createTrade(stateCopy);
  
-    
     //ClearUp
     setFormState(formData);
     
