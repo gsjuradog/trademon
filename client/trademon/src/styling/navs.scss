@@ -42,18 +42,21 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  .select-dropdown {
-    height: 40px;
+  .search-select-dropdown {
     margin-left: 0.7em;
-    font-size: 0.8em;
-    min-width: 80px;
+    width: 10vw;
+    min-width: 100px;
     margin-right: 4px;
+    height: 3.5vw;
+    min-height: 45px;
+    padding-left: 1.75vw;
+    text-align: center;
   }
   input {
-    outline: none;
     border-radius: 25px;
     width: 50%;
     padding: 1em;
+    min-width: 225px;
   }
 }
 
@@ -121,7 +124,7 @@
       margin-top: 0.5em;
     }
     .filters-box {
-      flex-direction: column;
+      flex-direction: row;
       align-items: flex-start;
       margin-left: 0.5em;
       .select-dropdown {

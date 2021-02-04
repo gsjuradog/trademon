@@ -23,7 +23,7 @@ export default function SearchBar() {
         <h1 className="platform-text">trademon.io</h1>
         
         <div className="filters-box">
-          <select className="select-dropdown">
+          <select className="search-select-dropdown">
             <option value="Pokemon Go">Pokemon Go</option>
             <option value="MTG: Online">MTG: Online</option>
           </select>

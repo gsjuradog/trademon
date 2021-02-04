@@ -48,11 +48,11 @@ select {
   border-radius: 25px;
   height: 2.5em;
   font-family: 'Rubik', sans-serif;
-  font-size: calc(10px + 0.2vw);
+  font-size: calc(10px + 0.4vw);
   font-weight: 200;
   outline: none;
   border: none;
-  padding-left: 0.5vw;
+  padding-left: 0.65vw;
   -moz-appearance: none;
   -webkit-appearance: none;
 }
@@ -65,7 +65,7 @@ input {
   background-color: $colorGreyPop;
   color: $colorText;
   outline: none;
-  border-radius: 15px;
+  border-radius: 25px;
   padding: 0.5vw;
   padding-left: 0.6vw;
   font-family: 'Rubik', sans-serif;
@@ -81,7 +81,7 @@ input:hover {
 input:focus {
   //outline: none;
   //border: 3px solid $colorSecondary;
-  box-shadow: 0px 0px 20px 5px $colorSecondary;
+  box-shadow: 0px 0px 10px 3px $colorSecondary;
   transition: box-shadow 1s;
 }
 
