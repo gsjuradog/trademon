@@ -107,8 +107,8 @@ export default function CreateListingForm() {
             <input name="chargeMove" type="text" className="form-input" placeholder="Charge Move..."></input>
           </div>
           <div className="form-appraisal-box">
-            <div className="special-attrib-box">
-              <div className="shiny-text standard-text">
+            <div className="special-attrib-box-left">
+              <div className="standard-text">
                 Shiny?
               </div>
               {formState.shiny ? 
@@ -116,7 +116,7 @@ export default function CreateListingForm() {
                 <i className="fas fa-times fa-2x"></i>}
               <input name="shiny" type="checkbox" className="shiny-checkbox"/>
             </div>
-            <div className="special-attrib-box">
+            <div className="special-attrib-box-right">
               <div className="form-appraisal-font">Appraisal:</div>
               <UserRatingComponent 
                 ratingHandler={ratingHandler}
