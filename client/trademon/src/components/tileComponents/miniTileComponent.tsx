@@ -1,7 +1,14 @@
 import React from 'react';
 import '../../styling/tiles.scss';
+import { Trade } from '../../store/interfaces';
 
-export default function MiniTile() {
+interface IProps {
+  world: string;
+}
+
+export default function MiniTile(trade: any) {
+  console.log('Mini Tile trade: > ', trade.world);
+
   return (
     <a href="/offer/randomID123">
       <div className="mini-tile-container">
@@ -13,8 +20,8 @@ export default function MiniTile() {
           <div className="mini-fave-icon-container">
             <img src={'/assets/FavIconEmpty.png'} className="heart-mini" alt=''></img>
           </div>
-          <div className="mini-tile-text">Charmeleon</div>
-          <div className="mini-tile-text">$2.99</div>
+          <div className="mini-tile-text">{trade.pokeName}</div>
+          <div className="mini-tile-text">$ {trade.price}</div>
         </div>
       </div>
     </a>

@@ -22,3 +22,9 @@ export interface SearchResponseAction {
   trades: Trade[];
   response: string;
 }
+
+export interface MiniTileInfo {
+  id: string;
+  name: string;
+  price: number;
+}

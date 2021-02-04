@@ -1,22 +1,21 @@
 import React from 'react';
 import ReduxTest from '../testComponents/reduxTestComponent';
 import ReduxTestList from '../testComponents/reduxTestListComponent';
-import PlatformContainer from '../containerComponents/platformContainer';
+
 import './testComponent.scss';
 
 import { getPrivateChat } from '../../utils/graphql';
 import { createUser } from '../../utils/rest';
 
 const TestComponent = () => {
-
   const newUser = () => {
-    createUser("Jimbo", "4587", "Jimbo The Pokemon Guy");
-  }
+    createUser('Jimbo', '4587', 'Jimbo The Pokemon Guy');
+  };
 
   const fetchChat = async () => {
     const result = await getPrivateChat(1);
     console.log(result);
-  }
+  };
 
   return (
     <div>
@@ -26,7 +25,6 @@ const TestComponent = () => {
       <ReduxTest />
       <ReduxTestList />
       <hr />
-      <PlatformContainer />
     </div>
   );
 };
