@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
 const expDate = () => Date.now() + 604800000;
-
+//
 module.exports = (sequelize, DataTypes) => {
   const mtgotrade = sequelize.define('MtgoTrade', {
     tradeID: {
