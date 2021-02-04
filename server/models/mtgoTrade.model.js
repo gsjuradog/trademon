@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     extraName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     cardImage: {
       type: DataTypes.STRING,
@@ -115,12 +115,12 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  // mtgotrade.associate = (model) => {
-  //   mtgotrade.belongsToMany(model.UserData, {
-  //     through: 'MtgoTrade_Users',
-  //     as: 'Mtgotrade',
-  //   });
-  // };
+  mtgotrade.associate = (model) => {
+    mtgotrade.belongsToMany(model.UserData, {
+      through: 'MtgoTrade_Users',
+      as: 'Mtgotrade',
+    });
+  };
 
   return mtgotrade;
 };
