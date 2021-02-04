@@ -11,7 +11,7 @@ export default function LandingPage() {
   useEffect(() => {
     dispatch(fetchTrades(worlds[0]));
     dispatch(fetchTrades(worlds[1]));
-    dispatch(fetchTrades(worlds[0]));
+    dispatch(fetchTrades(worlds[2]));
   }, []);
 
   // TODO: get the worlds mapped instead of hard coded

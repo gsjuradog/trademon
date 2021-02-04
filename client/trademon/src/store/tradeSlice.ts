@@ -130,7 +130,7 @@ const mapMtgsToUtrade = (trades: Trade[]): UTrade[] => {
       price: trade.price,
       tax: trade.tax,
       image: trade.cardImage,
-      world: 'Pokemon',
+      world: 'MTG',
     };
   });
 };
