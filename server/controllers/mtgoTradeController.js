@@ -8,13 +8,12 @@ const createMTGOTrade = async (req, res) => {
       seller,
       colors,
       cardName,
-      set,
       setName,
       cardImage,
       convertedManaCost,
       manaCost,
-      types,
-      type,
+      subTypes,
+      mainType,
       rarity,
       isFoil,
       price,
@@ -26,12 +25,11 @@ const createMTGOTrade = async (req, res) => {
       numViews,
       seller,
       cardName,
-      set,
       setName,
       manaCost,
       convertedManaCost,
-      types,
-      type,
+      subTypes,
+      mainType,
       cardImage,
       colors,
       rarity,
@@ -74,8 +72,8 @@ const fetchMTGOTradesByDate = async (req, res) => {
 const editMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An MTGO Offer!');
-    const { numViews, isFoil, price, tax } = req.body;
-    const filter = { where: { tradeID: tradeID } };
+    const { numViews, isFoil, price, tax, id } = req.body;
+    const filter = { where: { id: id } };
     const reply = await db.MtgoData.findOne(filter);
     //Check if record exists in db
     if (reply) {
@@ -96,11 +94,11 @@ const editMTGOTrade = async (req, res) => {
 const deleteMTGOTrade = async (req, res) => {
   try {
     console.log(req.body);
-    const { tradeID } = await req.body;
-    const reply = await db.MtgoTrade.findOne({ where: { tradeID: tradeID } });
+    const { id } = await req.body;
+    const reply = await db.MtgoTrade.findOne({ where: { id: id } });
     if (reply) {
       const deleted = await db.MtgoTrade.destroy({
-        where: { tradeID: tradeID },
+        where: { id: id },
       });
       res.status(204).send(deleted);
     }

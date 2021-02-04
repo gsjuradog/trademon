@@ -3,21 +3,11 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const privateChat = sequelize.define('PrivateChat', {
-    // chatID: {
-    //   type: DataTypes.INTEGER,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    //   allowNull: false,
-    // },
-    seller: {
-      type: DataTypes.STRING, //username
+    users: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER), //username
       allowNull: false,
     },
-    buyer: {
-      //username
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+
     // history: {
     //   //array of messages
     //   type: DataTypes.ARRAY(DataTypes.STRING), //[message] the strings are message IDs

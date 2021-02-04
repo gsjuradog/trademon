@@ -3,18 +3,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const expDate = () => Date.now() + 604800000;
 
 module.exports = (sequelize, DataTypes) => {
-  const mtgotrade = sequelize.define('MtgoTrade', {
-    tradeID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    publishDate: {
-      type: DataTypes.DATE,
-      //allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
+  const mtgotrade = sequelize.define('MtgoTradeData', {
     expirationDate: {
       type: DataTypes.DATE,
       defaultValue: expDate(),
@@ -23,12 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     numViews: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
-      //allowNull: true,
-    },
-    seller: {
-      type: DataTypes.STRING, //of type username  FOREIGN KEY
-      defaultValue: 'seller',
-      allowNull: true,
     },
 
     //----------------------
@@ -41,10 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    set: {
-      type: DataTypes.STRING,
-      allowNull: true, //change,
-    },
+
     setName: {
       type: DataTypes.STRING,
       allowNull: true, ///change
@@ -53,16 +33,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       allowNull: true, //change
     },
-
     manaCost: {
       type: DataTypes.STRING, //'{3}{W}{R}' = 3 uncolored mana 1 white 1 red
       allowNull: true, //change
     },
-    type: {
+    mainType: {
       type: DataTypes.STRING,
       allowNull: true, //change
     },
-    types: {
+    subTypes: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
     },
@@ -74,7 +53,6 @@ module.exports = (sequelize, DataTypes) => {
     colors: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
-      defaultValue: ['B'],
     },
     //---------------------- Variable data
     isFoil: {
@@ -87,39 +65,32 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       //  MTGOVariableData!
       type: DataTypes.INTEGER,
-      allowNull: true,
+
       defaultValue: 0,
     },
     tax: {
       // MTGOVariableData!
       type: DataTypes.INTEGER,
-      allowNull: true,
+
       defaultValue: 0,
     },
     // ------------------------- BUYER FIELDS
     buyer: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     buyersOfferItemId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     tradeComplete: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
       defaultValue: false,
     },
-
-    // The timestamp is added automatically by Sequelize
-    // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
   mtgotrade.associate = (model) => {
-    mtgotrade.belongsToMany(model.UserData, {
-      through: 'MtgoTrade_Users',
-      as: 'Mtgotrade',
-    });
+    mtgotrade.belongsTo(model.UserData);
   };
 
   return mtgotrade;

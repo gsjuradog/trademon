@@ -19,12 +19,12 @@ const createTrade = async (req, res) => {
       appraisal,
       price,
       tax,
-      catchLocation,  //<--Also on req.body
-      listingType     //<--Also on req.body
+      catchLocation, //<--Also on req.body
+      listingType, //<--Also on req.body
     } = req.body;
 
     console.log(seller);
-    const reply = await db.TradeData.create({
+    const reply = await db.PokeTradeData.create({
       numViews: numViews,
       seller: seller,
       pokeNum: pokeNum,
@@ -49,7 +49,7 @@ const createTrade = async (req, res) => {
 const fetchTrades = async (req, res) => {
   try {
     console.log('Someone Requested Active Trades!');
-    const reply = await db.TradeData.findAll();
+    const reply = await db.PokeTradeData.findAll();
     res.status(200).send(reply);
   } catch (err) {
     console.log('FETCH ERROR', err);
@@ -60,9 +60,9 @@ const fetchTrades = async (req, res) => {
 const fetchOneTrade = async (req, res) => {
   try {
     console.log('Someone Requested Trade Details!');
-    const { tradeID } = req.body;
-    const filter = {where: {tradeID: tradeID }};
-    const reply = await db.TradeData.findOne(filter);
+    const { id } = req.body;
+    const filter = { where: { id: id } };
+    const reply = await db.PokeTradeData.findOne(filter);
     res.status(200).send(reply);
   } catch (err) {
     console.log('FETCH ERROR', err);
@@ -73,7 +73,7 @@ const fetchOneTrade = async (req, res) => {
 const fetchTradesByDate = async (req, res) => {
   try {
     console.log('Showing recent Trades!');
-    const reply = await db.TradeData.findAll({
+    const reply = await db.PokeTradeData.findAll({
       limit: 2,
       order: [['publishDate', 'DESC']],
     });
@@ -88,7 +88,7 @@ const editTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An Offer!');
     const {
-      tradeID,
+      id,
       numViews,
       seller,
       pokeNum,
@@ -102,8 +102,8 @@ const editTrade = async (req, res) => {
       price,
       tax,
     } = req.body;
-    const filter = { where: { tradeID: tradeID } };
-    const reply = await db.TradeData.findOne(filter);
+    const filter = { where: { id: id } };
+    const reply = await db.PokeTradeData.findOne(filter);
     //Check if record exists in db
     if (reply) {
       reply.update({
@@ -131,11 +131,13 @@ const editTrade = async (req, res) => {
 const deleteTrade = async (req, res) => {
   try {
     console.log(req.body);
-    const { tradeID } = await req.body;
-    const reply = await db.TradeData.findOne({ where: { tradeID: tradeID } });
+    const { id } = await req.body;
+    const reply = await db.PokeTradeData.findOne({
+      where: { id: id },
+    });
     if (reply) {
-      const deleted = await db.TradeData.destroy({
-        where: { tradeID: tradeID },
+      const deleted = await db.PokeTradeData.destroy({
+        where: { id: id },
       });
       res.status(204).send(deleted);
     }

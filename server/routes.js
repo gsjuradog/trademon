@@ -3,7 +3,7 @@ const router = express.Router();
 
 const testControllers = require('./controllers/testControllers');
 const userControllers = require('./controllers/authController');
-const tradeControllers = require('./controllers/tradeController');
+const tradeControllers = require('./controllers/pokeTradeController');
 const chatControllers = require('./controllers/chatController');
 const messageControllers = require('./controllers/messageController');
 const staticPokeControllers = require('./controllers/pokeStaticController');
