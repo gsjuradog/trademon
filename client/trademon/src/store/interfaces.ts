@@ -54,28 +54,28 @@ export interface MiniTileInfo {
   price: number;
 }
 
-// export interface MtgTrade {
-//   buyer: null;
-//   buyersOfferItemId: null;
-//   cardImage: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409741&type=card';
-//   cardName: 'Archangel Avacyn';
-//   color: ['White'];
-//   convertedManaCost: null;
-//   createdAt: '2021-02-04T13:28:11.559Z';
-//   expirationDate: '2021-02-11T13:27:47.025Z';
-//   extraName: null;
-//   isFoil: false;
-//   manaCost: '{3}{W}{W}';
-//   numViews: 0;
-//   originaltype: null;
-//   price: 2;
-//   publishDate: '2021-02-04T13:28:11.557Z';
-//   rarity: 'Mythic Rare';
-//   seller: 'Stiches';
-//   set: null;
-//   setName: 'Shadows over Innistrad';
-//   tax: 1;
-//   tradeComplete: false;
-//   tradeID: 1;
-//   updatedAt: '2021-02-04T13:28:11.559Z';
-// }
+export interface MtgTrade {
+  buyer: string;
+  buyersOfferItemId: string;
+  cardImage: string;
+  cardName: string;
+  color: string[];
+  convertedManaCost: number;
+  createdAt: Date;
+  expirationDate: Date;
+  extraName: null;
+  isFoil: boolean;
+  manaCost: string;
+  numViews: number;
+  originaltype: null;
+  price: number;
+  publishDate: Date;
+  rarity: string;
+  seller: string;
+  set: string;
+  setName: string;
+  tax: number;
+  tradeComplete: boolean;
+  tradeID: number;
+  updatedAt: Date;
+}
