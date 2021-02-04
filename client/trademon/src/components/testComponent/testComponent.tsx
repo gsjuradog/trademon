@@ -7,9 +7,9 @@ import './testComponent.scss';
 import { getPrivateChat } from '../../utils/graphql';
 
 const TestComponent = () => {
-  const newUser = () => {
-    createUser('Jimbo', '4587', 'Jimbo The Pokemon Guy');
-  };
+  // const newUser = () => {
+  //   createUser('Jimbo', '4587', 'Jimbo The Pokemon Guy');
+  // };
 
 
   const fetchChat = async () => {
