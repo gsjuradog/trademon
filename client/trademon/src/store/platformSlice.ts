@@ -5,31 +5,33 @@ import { getTrades } from '../utils/rest';
 
 const initialState: Trade[] = [];
 
-function loadingFailed(state: IssuesState, action: PayloadAction<string>) {
-  state.isLoading = false;
-  state.error = action.payload;
+function loadingFailed(state: Trade[], action: PayloadAction<string>) {
+  console.log('I am in reducer ', action.payload);
+  return state;
 }
 
 const platformSlice = createSlice({
   name: 'platform',
-  initialState: initialState,
+  initialState,
   reducers: {
-    getMiniTiles(state, { payload }: PayloadAction<Issue>) {
-      const { number } = payload;
-      state.issuesByNumber[number] = payload;
+    getMiniTiles(state, { payload }: PayloadAction<Trade[]>) {
+      console.log('I am in reducer ', payload);
+      state = payload;
+      return state;
     },
     getMiniTilesError: loadingFailed,
   },
 });
 
-export const { getMiniTiles, getMiniTilesError } = issues.actions;
-
+export const { getMiniTiles, getMiniTilesError } = platformSlice.actions;
 export default platformSlice.reducer;
 
 // THUNK / EPIC
 // THUNK
 export const fetchMiniTiles = (world: string): AppThunk => async (dispatch) => {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    console.clear;
     console.log('I am in THUNK ', world);
     const info = await getTrades();
     console.log('THUNK: info ', info);
