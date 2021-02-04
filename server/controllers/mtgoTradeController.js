@@ -14,24 +14,26 @@ const createMTGOTrade = async (req, res) => {
       type,
       rarity,
       isFoil,
+      color,
       price,
       tax,
     } = req.body;
 
     console.log(seller);
     const reply = await db.MtgoTrade.create({
-      numViews: numViews,
-      seller: seller,
-      cardName: cardName,
-      extraNames: extraNames,
-      set: set,
-      setName: setName,
-      manaCost: manaCost,
-      type: type,
-      rarity: rarity,
-      isFoil: isFoil,
-      price: price,
-      tax: tax,
+      numViews,
+      seller,
+      cardName,
+      extraNames,
+      set,
+      setName,
+      manaCost,
+      type,
+      color,
+      rarity,
+      isFoil,
+      price,
+      tax,
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -70,15 +72,6 @@ const editMTGOTrade = async (req, res) => {
     console.log('A User Is Editing An MTGO Offer!');
     const {
       numViews,
-      seller,
-      cardName,
-      extraNames,
-      set,
-      ConvertedManaCost,
-      setName,
-      manaCost,
-      type,
-      rarity,
       isFoil,
       price,
       tax,
@@ -89,15 +82,6 @@ const editMTGOTrade = async (req, res) => {
     if (reply) {
       reply.update({
         numViews: numViews,
-        seller: seller,
-        cardName: cardName,
-        extraNames: extraNames,
-        set: set,
-        setName: setName,
-        ConvertedManaCost: ConvertedManaCost,
-        manaCost: manaCost,
-        type: type,
-        rarity: rarity,
         isFoil: isFoil,
         price: price,
         tax: tax,
