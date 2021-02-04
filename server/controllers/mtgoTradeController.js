@@ -6,15 +6,17 @@ const createMTGOTrade = async (req, res) => {
     const {
       numViews,
       seller,
+      colors,
       cardName,
-      extraNames,
       set,
       setName,
+      cardImage,
+      convertedManaCost,
       manaCost,
+      types,
       type,
       rarity,
       isFoil,
-      color,
       price,
       tax,
     } = req.body;
@@ -24,12 +26,14 @@ const createMTGOTrade = async (req, res) => {
       numViews,
       seller,
       cardName,
-      extraNames,
       set,
       setName,
       manaCost,
+      convertedManaCost,
+      types,
       type,
-      color,
+      cardImage,
+      colors,
       rarity,
       isFoil,
       price,
@@ -70,12 +74,7 @@ const fetchMTGOTradesByDate = async (req, res) => {
 const editMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An MTGO Offer!');
-    const {
-      numViews,
-      isFoil,
-      price,
-      tax,
-    } = req.body;
+    const { numViews, isFoil, price, tax } = req.body;
     const filter = { where: { tradeID: tradeID } };
     const reply = await db.MtgoData.findOne(filter);
     //Check if record exists in db
