@@ -4,7 +4,7 @@ const createTrade = async (req, res) => {
   //check if it is magic or pokemon and do one action or the other
   /*if (req.body.pokeName) { do pokemon  } else {magic} */
   try {
-    console.log('A User Is Creating An Offer!');
+    console.log('A User Is Creating An Offer! ', req.body.pokeSprite);
     const {
       numViews,
       seller,
@@ -39,6 +39,7 @@ const createTrade = async (req, res) => {
       price: price,
       tax: tax,
     });
+    console.log('WHAT IS RESULT: ', reply.dataValues);
     res.status(200).send(reply);
   } catch (err) {
     console.log('POST ERROR', err);

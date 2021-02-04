@@ -74,7 +74,8 @@ export const createTrade = async (trade : TradeData) => {
 
   const pokeDetails = await getPoke(pokeName);
 
-  const { id, generation, pokeSprite } : any = pokeDetails;
+  const { id, generation, sprite } : any = pokeDetails;
+  console.log('DETAILS: ', id, '  ', pokeName, '  ', generation,  '  ', CP, '  ', sprite);
 
   fetch(`${endpointURL}/createTrade`, {
     method: 'POST',
@@ -83,12 +84,12 @@ export const createTrade = async (trade : TradeData) => {
     },
     body: JSON.stringify({
       numViews: 0,
-      seller: 'ME',
+      seller: 'DevTeam',
       pokeNum: id,
       pokeName,
       pokeGen: generation,
       pokeLvl: CP,
-      pokeSprite,
+      pokeSprite: sprite,
       fastMove,
       chargeMove,
       isShiny: shiny,
@@ -107,7 +108,8 @@ export const createTrade = async (trade : TradeData) => {
 const getPoke = async (name: string) => {
 
   let call = {};
-
+  console.log('GET POKE CALLED WITH NAME: ', name);
+  
   await fetch(`${endpointURL}/fetchStaticPoke`, {
         method: 'POST',
         headers: {
