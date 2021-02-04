@@ -34,10 +34,6 @@ module.exports = (sequelize, DataTypes) => {
     //----------------------
 
     cardName: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    extraName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -62,8 +58,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING, //'{3}{W}{R}' = 3 uncolored mana 1 white 1 red
       allowNull: true, //change
     },
-    originaltype: {
+    type: {
       type: DataTypes.STRING,
+      allowNull: true, //change
+    },
+    types: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
     },
     rarity: {
@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true, //change
       defaultValue: '',
     },
-    color: {
+    colors: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
       defaultValue: ['B'],
@@ -115,12 +115,12 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  // mtgotrade.associate = (model) => {
-  //   mtgotrade.belongsToMany(model.UserData, {
-  //     through: 'MtgoTrade_Users',
-  //     as: 'Mtgotrade',
-  //   });
-  // };
+  mtgotrade.associate = (model) => {
+    mtgotrade.belongsToMany(model.UserData, {
+      through: 'MtgoTrade_Users',
+      as: 'Mtgotrade',
+    });
+  };
 
   return mtgotrade;
 };

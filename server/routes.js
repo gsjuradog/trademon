@@ -13,7 +13,7 @@ router.get('/test', testControllers.getUser);
 
 // AUTH RELATED ROUTES
 router.post('/createUser', userControllers.createUser);
-router.get('/signin', userControllers.signin);
+router.post('/signin', userControllers.signin);
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
@@ -23,6 +23,7 @@ router.get('/getChat/:id', chatControllers.getChat);
 // TRADE RELATED ROUTES
 router.post('/createTrade', tradeControllers.createTrade);
 router.get('/fetchTrades', tradeControllers.fetchTrades);
+router.post('/fetchOneTrade', tradeControllers.fetchOneTrade);
 router.get('/fetchTradesByDate', tradeControllers.fetchTradesByDate);
 router.put('/editTrade', tradeControllers.editTrade);
 router.delete('/deleteTrade', tradeControllers.deleteTrade);

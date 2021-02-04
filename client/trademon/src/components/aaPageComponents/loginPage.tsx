@@ -1,46 +1,112 @@
-import React from 'react';
-import { gsap } from 'gsap';
-import '../../styling/login.scss';
+import React, { useState } from 'react';
 
+import { withRouter, useHistory } from 'react-router-dom';
+
+import { createUser as createREST, signInUser as signInREST } from '../../utils/rest'
+import { Create, SignIn } from '../../utils/interfaces';
+
+import { panelRight, panelLeft, loginError as loginErrorAnim, loginErrorClear } from '../../utils/animations';
+import '../../styling/login.scss';
 
 const Login = () => {
 
-  const panelRight = () => {
-    gsap.to('.overlay-panel', 0.6, {
-      xPercent: 100,
-      ease: "back.inOut(1.7)"
-    })
-    gsap.to('.overlay-create', 0.8, {
-      opacity: 0,
-      y: -100,
-      ease: "elastic.out(1, 0.8)"
-    })
-    gsap.to('.overlay-member', 0.8, {
-      delay: 0.6,
-      opacity: 1,
-      y: 0
-    })
+  const history = useHistory();
+
+  const initialCreate : Create = {
+    name : '',
+    email: '',
+    password: '',
   }
 
-  const panelLeft = () => {
-    gsap.to('.overlay-panel', 0.6, {
-      xPercent: 0,
-      ease: "back.inOut(1.7)"
-    })
-    gsap.to('.overlay-create', 0.8, {
-      delay: 0.6,
-      opacity: 1,
-      y: 0
-    })
-    gsap.to('.overlay-member', 0.8, {
-      opacity: 0,
-      y: -100,
-      ease: "elastic.out(1, 0.8)"
-    })
+  const initialSignIn : SignIn = {
+    email: '',
+    password: ''
+  }
+
+  const [create, setCreateState] = useState(initialCreate);
+  const [signIn, setSignInState] = useState(initialSignIn);
+
+  const [loginError, setError] = useState('none');
+
+  const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const result = await createREST(create);
+    if (result.hasOwnProperty('success')) {
+      history.push('/')
+    } else if (result.hasOwnProperty('error')) {
+        setError(result.error);
+        loginErrorAnim();
+    } else {
+        setError('Server error...'); 
+        loginErrorAnim();
+    }
+    
+  }
+
+  const createState = (event: React.FormEvent<HTMLFormElement>) => {
+    const target = event.target as HTMLInputElement;
+    const name = target.name;
+    const value = target.value;
+
+    let createCopy = {...create};
+
+    switch(name) {
+      case 'username':
+        createCopy.name = value;
+        break;
+      case 'email':
+        createCopy.email = value;     
+        break;
+      case 'password':
+        createCopy.password = value;
+      break;
+        default:
+        return 
+    }  
+    setCreateState(createCopy);
+  }
+
+  const signInUser = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    signInREST(signIn);
+  }
+
+  const signInState = (event: React.FormEvent<HTMLFormElement>) => {
+    const target = event.target as HTMLInputElement;
+    const name = target.name;
+    const value = target.value;
+
+    let signInCopy = {...signIn};
+
+    switch(name) {
+      case 'email':
+        signInCopy.email = value;     //Because it's a number...
+        break;
+      case 'password':
+        signInCopy.password = value;
+        break;
+      default:
+        return
+    }
+    setSignInState(signInCopy);
+  }
+
+  const clearError = () => {
+    loginErrorClear();
+    setError('none');
   }
 
   return (
     <div className="login-container">
+
+      <div className="login-error-container">
+        <div className="login-error-message">
+        <h1>Uh oh...</h1>
+          <img className="error-pikachu" src={'/assets/suprised-pikachu.png'} alt="suprised-pik"/>
+          <p>{loginError}</p>
+          <button onClick={clearError}>Back</button>
+        </div>
+      </div>
 
       <div className="login-banner">
         <img className="login-trademon-logo" src={'/assets/trademon-logo.png'} alt="Trademon Logo"/>
@@ -50,47 +116,48 @@ const Login = () => {
       <div className="panel-container">
 
         <div className="form-container sign-up-container">
-          <form action="#">
+          <form onSubmit={createUser} onChange={createState}>
             <h1>create account</h1>
             <div className="login-inputs">
-              <input type="text" 
-              placeholder="Name" />
-              <input type="email" placeholder="email" />
-              <input type="password" placeholder="Password" />
+              <input name="username" type="text" placeholder="Name" />
+              <input name="email" type="email" placeholder="email" />
+              <input name="password" type="password" placeholder="Password" />
             </div>
             <button>sign up</button>
           </form>
         </div>
 
         <div className="form-container sign-in-container">
-          <form action="#">
+          <form onSubmit={signInUser} onChange={signInState}>
             <h1>sign in</h1>
             <div className="login-inputs">
-              <input type="email" placeholder="email" />
-              <input type="password" placeholder="Password" />
+              <input name="email" type="email" placeholder="email" />
+              <input name="password" type="password" placeholder="Password" />
             </div>
             <button>sign in</button>
           </form>
         </div>
 
-      <div className="overlay-panel">
-      </div>
+      <div className="overlay-panel"></div>
 
       <div className="overlay-create">
         <h2>Not a member?</h2>
+        <i className="fas fa-user-plus fa-3x"></i>
         <button onClick={panelRight}>SIGN UP!</button>
       </div>
 
       
       <div className="overlay-member">
         <h2>Already a member?</h2>
+        <i className="fas fa-sign-in-alt fa-3x"></i>
         <button onClick={panelLeft}>SIGN IN!</button>
       </div>
 
   </div>
-</div>
+
+  </div>
   )
   
 }
 
-export default Login;
+export default withRouter(Login);

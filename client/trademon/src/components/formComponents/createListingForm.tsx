@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory, withRouter } from 'react-router-dom';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import '../../styling/forms.scss'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
@@ -7,8 +8,8 @@ import { TradeData } from '../../utils/interfaces'
 
 import { createTrade } from '../../utils/rest' 
 
-export default function CreateListingForm() {
-
+const CreateListingForm = () => {
+  const history = useHistory()
   const formData = {
     pokeName: '',
     CP: 0,
@@ -23,15 +24,25 @@ export default function CreateListingForm() {
 
   const [formState, setFormState] = useState <TradeData> (formData); 
 
-  const formSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let stateCopy : TradeData = {...formState};
     stateCopy.listingType = handleSelect();
 
     //Fetch
-    createTrade(stateCopy);
-
+    createTrade(stateCopy).then(
+      (tradeSubmissionResult) => {
+        //check to make sure this is valid before continuing
+        if(tradeSubmissionResult.tradeID) {
+          console.log('RESULT  ',tradeSubmissionResult);
+          history.push(`/trade/${tradeSubmissionResult.tradeID}`);
+        } else {
+          //display error message to the user in this block
+        }
+      }
+    );
+ 
     //ClearUp
     setFormState(formData);
     
@@ -99,7 +110,7 @@ export default function CreateListingForm() {
           </div>
           <input name="pokeName" type="text" className="form-input" placeholder="Item Name..."></input>
           <div className="horiz-input-box">
-            <input name="CP" type="text" className="form-input" placeholder="CP..."></input>
+            <input name="CP" type="number" className="form-input" placeholder="CP..."></input>
             <input name="catchLocation" type="text" className="form-input" placeholder="Catch Location..."></input>
           </div>
           <div className="horiz-input-box">
@@ -128,7 +139,7 @@ export default function CreateListingForm() {
               <option value="sale">For Sale</option>
               <option value="trade">For Trade</option>
             </select>
-            <input name="price" type="text" className="form-input" placeholder="Price..."></input>
+            <input name="price" type="number" className="form-input" placeholder="Price..."></input>
           </div>
           <button className="submit__btn" value="NameHEREE">Create</button>
         </form>
@@ -136,3 +147,5 @@ export default function CreateListingForm() {
     </div>
   )
 }
+
+export default withRouter(CreateListingForm);

@@ -2,6 +2,7 @@
 
 .login-container {
   display: flex;
+  position: relative;
   flex-direction: column;
   height: 90vh;
   justify-content: center;
@@ -78,7 +79,9 @@
       width: 50%;
       h2 {
         font-size: 2em;
-        margin-bottom: 2em;
+      }
+      i {
+        margin: 1em;
       }
       button {
         width: 30%;
@@ -101,7 +104,9 @@
       opacity: 0;
       h2 {
         font-size: 2em;
-        margin-bottom: 2em;
+      }
+      i {
+        margin: 1em;
       }
       button {
         width: 30%;
@@ -111,6 +116,39 @@
       button:hover {
         box-shadow: none;
       }
+    }
+  }
+}
+
+.login-error-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: $colorGreyPop;
+  opacity: 0;
+  .login-error-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    border: 3px solid $colorPrimary;
+    border-radius: 20px;
+    h1 {
+      font-size: 4em;
+    }
+    img {
+      height: 30vh;
+    }
+    p {
+      font-size: 2em;
+    }
+    button {
+      width: 10em;
     }
   }
 }
@@ -128,7 +166,8 @@
     .overlay-member,
     .overlay-member h2,
     .overlay-member button,
-    .overlay-panel {
+    .overlay-panel,
+    i {
       display: none;
     }
     .panel-container {

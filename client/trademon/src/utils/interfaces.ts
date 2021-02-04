@@ -95,3 +95,15 @@ export interface TradeData {
   appraisal: number
   listingType: string
 }
+
+//Login / SignUp Interfaces
+export interface Create {
+  name: string,
+  email: string,
+  password: string
+}
+
+export interface SignIn {
+  email: string,
+  password: string
+}

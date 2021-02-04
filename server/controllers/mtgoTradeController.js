@@ -6,11 +6,14 @@ const createMTGOTrade = async (req, res) => {
     const {
       numViews,
       seller,
+      colors,
       cardName,
-      extraNames,
       set,
       setName,
+      cardImage,
+      convertedManaCost,
       manaCost,
+      types,
       type,
       rarity,
       isFoil,
@@ -19,19 +22,22 @@ const createMTGOTrade = async (req, res) => {
     } = req.body;
 
     console.log(seller);
-    const reply = await db.TradeData.create({
-      numViews: numViews,
-      seller: seller,
-      cardName: cardName,
-      extraNames: extraNames,
-      set: set,
-      setName: setName,
-      manaCost: manaCost,
-      type: type,
-      rarity: rarity,
-      isFoil: isFoil,
-      price: price,
-      tax: tax,
+    const reply = await db.MtgoTrade.create({
+      numViews,
+      seller,
+      cardName,
+      set,
+      setName,
+      manaCost,
+      convertedManaCost,
+      types,
+      type,
+      cardImage,
+      colors,
+      rarity,
+      isFoil,
+      price,
+      tax,
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -68,36 +74,13 @@ const fetchMTGOTradesByDate = async (req, res) => {
 const editMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An MTGO Offer!');
-    const {
-      numViews,
-      seller,
-      cardName,
-      extraNames,
-      set,
-      ConvertedManaCost,
-      setName,
-      manaCost,
-      type,
-      rarity,
-      isFoil,
-      price,
-      tax,
-    } = req.body;
+    const { numViews, isFoil, price, tax } = req.body;
     const filter = { where: { tradeID: tradeID } };
-    const reply = await db.TradeData.findOne(filter);
+    const reply = await db.MtgoData.findOne(filter);
     //Check if record exists in db
     if (reply) {
       reply.update({
         numViews: numViews,
-        seller: seller,
-        cardName: cardName,
-        extraNames: extraNames,
-        set: set,
-        setName: setName,
-        ConvertedManaCost: ConvertedManaCost,
-        manaCost: manaCost,
-        type: type,
-        rarity: rarity,
         isFoil: isFoil,
         price: price,
         tax: tax,
@@ -116,7 +99,7 @@ const deleteMTGOTrade = async (req, res) => {
     const { tradeID } = await req.body;
     const reply = await db.MtgoTrade.findOne({ where: { tradeID: tradeID } });
     if (reply) {
-      const deleted = await db.tgoTrade.destroy({
+      const deleted = await db.MtgoTrade.destroy({
         where: { tradeID: tradeID },
       });
       res.status(204).send(deleted);
