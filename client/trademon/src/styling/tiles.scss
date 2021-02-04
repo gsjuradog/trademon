@@ -1,7 +1,7 @@
 @import './config';
 
 p {
-  font-size: calc(12px + .28vw);
+  font-size: calc(12px + 0.28vw);
 }
 
 .standard-tile-container {
@@ -36,7 +36,7 @@ p {
 }
 
 .std-tile-title-text {
-  font-size: calc(12px + .55vw);
+  font-size: calc(12px + 0.55vw);
 }
 
 .heart {
@@ -45,8 +45,8 @@ p {
   min-width: 12px;
   min-height: 12px;
   align-self: flex-end;
-  margin-bottom: -.6vh;
-  margin-right: .5vh;
+  margin-bottom: -0.6vh;
+  margin-right: 0.5vh;
 }
 
 .heart-mini {
@@ -55,7 +55,7 @@ p {
   min-width: 12px;
   min-height: 12px;
   align-self: flex-end;
-  margin-right: .5vh;
+  margin-right: 0.5vh;
 }
 
 .sprite-row {
@@ -128,10 +128,10 @@ p {
 
 .sprite-mini-box {
   margin-left: 1vw;
-  width: 4vw;
-  height: 4vw;
+  width: 5vw;
+  height: 5vw;
   min-width: 48px;
-  min-height: 48px;
+  min-height: 54px;
 }
 
 .sprite-mini {
@@ -139,6 +139,12 @@ p {
   height: 4vw;
   min-width: 45px;
   min-height: 45px;
+}
+.mtg-mini {
+  width: 3.6vw;
+  height: 4.4vw;
+  min-width: 36px;
+  min-height: 56px;
 }
 
 .mini-tile-info-box {
@@ -150,7 +156,7 @@ p {
   margin: 7px 8px;
   width: 50%;
   height: 90%;
-  padding-right: .5vw;
+  padding-right: 0.5vw;
 }
 
 .mini-fave-icon-container {
@@ -160,7 +166,7 @@ p {
 }
 
 .mini-tile-text {
-  font-size: calc(9px + .20vw);
+  font-size: calc(9px + 0.2vw);
   margin-top: 5px;
 }
 
@@ -236,12 +242,12 @@ p {
   transform: scale(1.05);
 }
 .dm-text {
-  font-size: calc(12px + .5vw);
+  font-size: calc(12px + 0.5vw);
   font-weight: 100;
 }
 
 .dm-text-item {
-  font-size: 1.10em;
+  font-size: 1.1em;
   color: $colorPrimary;
 }
 
@@ -251,7 +257,7 @@ p {
 }
 
 .dm-timestamp {
-  font-size: calc(12px + .2vw);
+  font-size: calc(12px + 0.2vw);
   margin-top: 1vh;
 }
 

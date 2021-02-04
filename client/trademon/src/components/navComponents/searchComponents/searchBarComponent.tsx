@@ -1,14 +1,21 @@
 import React from 'react';
 import '../../../styling/navs.scss';
 import ProfileOverlay from './profileOverlayComponent';
-import { searchQuery } from '../../../store/searchSlice';
-import { useDispatch } from 'react-redux'; //deleted useSelector
-// import { RootState } from '../../../store/store';
+import {
+  searchQuery,
+  fetchPokemon,
+  filterPokemon,
+} from '../../../store/searchSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../store/store';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
+
   const handleSearchKeyPress = (value: string) => {
-    dispatch(searchQuery(value));
+    // dispatch(searchQuery(value));
+    dispatch(fetchPokemon(value, '1'));
+    dispatch(filterPokemon(value, '1'));
   };
 
   return (
@@ -19,9 +26,8 @@ export default function SearchBar() {
       </a>
 
       <div className="search-container-vertical">
-
         <h1 className="platform-text">trademon.io</h1>
-        
+
         <div className="filters-box">
           <select className="search-select-dropdown">
             <option value="Pokemon Go">Pokemon Go</option>
@@ -39,7 +45,6 @@ export default function SearchBar() {
         </div>
       </div>
       <ProfileOverlay></ProfileOverlay>
-
     </div>
   );
 }

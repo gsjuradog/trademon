@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../../../styling/myProf.scss';
 import MiniTileComponent from '../miniTileComponent';
 
@@ -9,6 +9,7 @@ export default function WatchList() {
         <div className="my-profile-text">Watch List</div>
       </div>
       <div className="watch-list-flexbox">
+        {/* <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
@@ -17,9 +18,8 @@ export default function WatchList() {
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
         <MiniTileComponent></MiniTileComponent>
-        <MiniTileComponent></MiniTileComponent>
-        <MiniTileComponent></MiniTileComponent>
+        <MiniTileComponent></MiniTileComponent> */}
       </div>
     </div>
-  )
+  );
 }
