@@ -90,12 +90,12 @@ return fetch(`${endpointURL}/fetchTrades`, {
 
 export const createTrade = async (trade : TradeData) => {
   
-  const {pokeName, CP, catchLocation, fastMove, chargeMove, shiny, price, appraisal, listingType } = trade;
-
+  const {
+    pokeName, CP, catchLocation, fastMove, chargeMove, 
+    shiny, price, appraisal, listingType 
+  } = trade;
   const pokeDetails = await getPoke(pokeName);
-
   const { id, generation, sprite } : any = pokeDetails;
-  console.log('DETAILS: ', id, '  ', pokeName, '  ', generation,  '  ', CP, '  ', sprite);
 
   return fetch(`${endpointURL}/createTrade`, {
     method: 'POST',

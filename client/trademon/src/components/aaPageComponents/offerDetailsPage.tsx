@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
+//import { TradeData } from '../../utils/interfaces'
 
 export default function OfferDetailsPage() {
 
