@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     //----------------------
 
     cardName: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     extraName: {
