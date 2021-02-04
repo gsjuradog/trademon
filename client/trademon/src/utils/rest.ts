@@ -1,23 +1,43 @@
-import { TradeData } from './interfaces'
+import { TradeData, Create, SignIn } from './interfaces'
 
 const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
 
-export const createUser = (userName: String, trainerID: String, trainerName: String) => {
-  fetch(`${endpointURL}/createUser`, {
+export const createUser = async (user : Create) => {
+  const { name, email, password } = user;
+
+  return await fetch(`${endpointURL}/createUser`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-      userName, 
-      trainerID, 
-      trainerName
+      username: name, 
+      email, 
+      password
     })
   })
-    .then(res => res.json)
-    .then(data => console.log(data))
-    .catch(err => console.log('CREATE USER ERROR', err))
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.log('CREATE USER ERROR', err));
+}
+
+export const signInUser = async (user: SignIn) => {
+  const { email, password } = user;
+  
+  return await fetch(`${endpointURL}/signin`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      email, 
+      password
+    })
+  })
+    .then(res => res.json())
+    .then(data => data)
+    .catch(err => console.log('SIGN IN USER ERROR', err))
 }
 
 export const createChat = (seller: String, buyer: String) => {
