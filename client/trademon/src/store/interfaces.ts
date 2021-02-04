@@ -33,6 +33,12 @@ export interface UTrade {
   world: string;
 }
 
+export interface Tiles {
+  pokemons: UTrade[];
+  mtgs: UTrade[];
+  wows: UTrade[];
+}
+
 export interface InitialState {
   trades: Trade[];
 }

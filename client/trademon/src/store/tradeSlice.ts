@@ -1,13 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
-import { Trade, UTrade } from './interfaces';
+import { Trade, UTrade, Tiles } from './interfaces';
 import { getTrades, getMTGOTrades } from '../utils/rest';
-
-export interface Tiles {
-  pokemons: UTrade[];
-  mtgs: UTrade[];
-  wows: UTrade[];
-}
 
 const initialState: Tiles = { pokemons: [], mtgs: [], wows: [] };
 
