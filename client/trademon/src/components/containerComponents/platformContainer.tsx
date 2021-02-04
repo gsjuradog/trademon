@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { getMiniTiles, fetchMiniTiles } from '../../store/platformSlice';
+import { getMiniTiles, fetchTrades } from '../../store/tradeSlice';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
 import { Trade } from '../../store/interfaces';
 import '../../styling/containers.scss';
@@ -11,14 +11,13 @@ interface IProps {
 }
 
 export default function PlatformContainer(props: IProps) {
-  const miniTiles = useSelector((state: RootState) => state.search);
+  const miniTiles = useSelector((state: RootState) => state.trade);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(searchQuery(props.world));
-    dispatch(fetchPokemon('1', '1'));
+    dispatch(fetchTrades(props.world));
     console.log(`PLATFORM UseEffect (after render):`, miniTiles);
-  }, [dispatch, miniTiles, props.world]);
+  }, []);
 
   const miniTilesRender = miniTiles.map((miniTile: Trade) => (
     <li style={{ listStyleType: 'none' }} key={props.world + miniTile.tradeID}>
