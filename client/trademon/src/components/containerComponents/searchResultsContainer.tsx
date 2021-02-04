@@ -11,6 +11,7 @@ interface trades {
   pokeName: string;
   pokeGen: number;
   pokeLvl: number;
+  pokeSprite: string;
   fastMove: string;
   chargeMove: string;
   isShiny: boolean;

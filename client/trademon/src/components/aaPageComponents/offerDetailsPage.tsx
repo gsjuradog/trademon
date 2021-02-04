@@ -1,10 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styling/containers.scss';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent'
+import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
-//import { TradeData } from '../../utils/interfaces'
+import { Trades } from '../../utils/interfaces';
+import { getOneTrade } from '../../utils/rest';
+import { useParams } from 'react-router';
+//
+export default function OfferDetailsPage() { 
 
-export default function OfferDetailsPage() {
+  const { tradeID } : any = useParams();
+  const [ tradeDetails, setTradeDetails] = useState<Trades>(
+    {
+      tradeID:0,
+      numViews:0, 
+      seller:'', 
+      pokeNum:0, 
+      pokeName:'', 
+      pokeGen:0, 
+      pokeLvl:0, 
+      pokeSprite:'https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612299771/1_ea1rrt.png',
+      fastMove:'Loading', 
+      chargeMove:'Loading', 
+      isShiny:false ,
+      appraisal:0, 
+      price:0, 
+      tax:0
+    }
+  );
+
+  useEffect(() => {
+    fetchTradeDetails();
+  }, []) 
+
+  async function fetchTradeDetails () {
+    const tradeFetch = await getOneTrade(tradeID);
+    if (tradeFetch) setTradeDetails(tradeFetch);
+    console.log('Are We Getting Data? ', tradeDetails);
+  }
 
   return (
     <>
@@ -12,13 +44,13 @@ export default function OfferDetailsPage() {
       <div className="offer-details-container">
         <div className="item-details-container">
           <div className="small-text">
-            ID: 42548664
+            ID: {tradeDetails!.tradeID}
           </div>
           <div className="standard-text">
-            Charmeleon
+            {tradeDetails!.pokeName}
           </div>
           <div className="standard-text">
-            CP: 2300
+            CP: {tradeDetails!.pokeLvl}
           </div>
           <div className="rating-text">
             Appraisal: 
@@ -32,12 +64,12 @@ export default function OfferDetailsPage() {
           </div>
         </div>
         <div className="large-sprite-container">
-          <div className="large-text">#155</div>
-          <img className="large-sprite" src={'/assets/testSprite.png'} alt="pokemon Name"/>
+          <div className="large-text">#{tradeDetails!.pokeNum}</div>
+          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="pokemon Name"/>
         </div>
         <div className="seller-details-container">
           <div className="standard-text">
-            Seller12345
+            {tradeDetails!.seller}
           </div>
           <div className="rating-text">
             Seller Rating: 
@@ -56,7 +88,7 @@ export default function OfferDetailsPage() {
         <div className="interest-box">
           <div className="interest-stats">
             <div className="standard-text">
-              Views: 18
+              Views: {tradeDetails!.numViews}
             </div>
             <div className="bar-spacer"> | </div>
             <div className="standard-text">
