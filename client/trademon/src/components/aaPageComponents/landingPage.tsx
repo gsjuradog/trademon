@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PlatformContainer from '../containerComponents/platformContainer';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import { fetchTrades } from '../../store/tradeSlice';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function LandingPage() {
   const worlds: string[] = ['Pokemon', 'MTG', 'WoW', 'WoT'];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTrades(worlds[0]));
+    dispatch(fetchTrades(worlds[1]));
+    dispatch(fetchTrades(worlds[0]));
+  }, []);
 
   // TODO: get the worlds mapped instead of hard coded
   return (

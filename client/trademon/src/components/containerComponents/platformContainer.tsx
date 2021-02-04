@@ -2,32 +2,47 @@ import React, { useEffect } from 'react';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { getMiniTiles, fetchTrades } from '../../store/tradeSlice';
+import { fetchTrades } from '../../store/tradeSlice';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
-import { Trade } from '../../store/interfaces';
+import { Trade, UTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
+
 interface IProps {
   world: string;
 }
 
 export default function PlatformContainer(props: IProps) {
   const miniTiles = useSelector((state: RootState) => state.trade);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchTrades(props.world));
-    console.log(`PLATFORM UseEffect (after render):`, miniTiles);
-  }, []);
+  let miniTilesRender: any = <li>LI</li>;
 
-  const miniTilesRender = miniTiles.map((miniTile: Trade) => (
-    <li style={{ listStyleType: 'none' }} key={props.world + miniTile.tradeID}>
-      {props.world === 'Pokemon' ? (
-        <MiniTileComponent world={'pokemons'} {...miniTile}></MiniTileComponent>
-      ) : (
-        <MiniTileComponent world={'mtgs'} {...miniTile}></MiniTileComponent>
-      )}
-    </li>
-  ));
+  switch (props.world) {
+    case 'Pokemon':
+      miniTilesRender = miniTiles.pokemons.map((miniTile: UTrade) => (
+        <li
+          style={{ listStyleType: 'none' }}
+          key={props.world + miniTile.tradeID}
+        >
+          <MiniTileComponent {...miniTile}></MiniTileComponent>
+          {console.log('RENDER MINI TILE: ', miniTile)}
+        </li>
+      ));
+      break;
+    case 'MTG':
+      miniTilesRender = miniTiles.mtgs.map((miniTile: UTrade) => (
+        <li
+          style={{ listStyleType: 'none' }}
+          key={props.world + miniTile.tradeID}
+        >
+          <MiniTileComponent {...miniTile}></MiniTileComponent>
+          {console.log('RENDER MINI TILE: ', miniTile)}
+        </li>
+      ));
+      break;
+    default:
+      miniTilesRender = <li>World of Warcraft!</li>;
+      break;
+  }
 
   return (
     <div>
