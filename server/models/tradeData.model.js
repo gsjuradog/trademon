@@ -109,13 +109,13 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
   //Trade has two pokemons that are going to be traded, each trade belongs to many users
-  trade.associate = (model) => {
-    // trade.hasMany(model.PokemonToTrade);
-    trade.belongsToMany(model.UserData, {
-      through: 'Trade_Users',
-      as: 'PokeTrade',
-    });
-  };
+  // trade.associate = (model) => {
+  //   // trade.hasMany(model.PokemonToTrade);
+  //   trade.belongsToMany(model.UserData, {
+  //     through: 'Trade_Users',
+  //     as: 'PokeTrade',
+  //   });
+  // };
 
   return trade;
 };
