@@ -19,7 +19,7 @@ const createMTGOTrade = async (req, res) => {
     } = req.body;
 
     console.log(seller);
-    const reply = await db.TradeData.create({
+    const reply = await db.MtgoTrade.create({
       numViews: numViews,
       seller: seller,
       cardName: cardName,
@@ -84,7 +84,7 @@ const editMTGOTrade = async (req, res) => {
       tax,
     } = req.body;
     const filter = { where: { tradeID: tradeID } };
-    const reply = await db.TradeData.findOne(filter);
+    const reply = await db.MtgoData.findOne(filter);
     //Check if record exists in db
     if (reply) {
       reply.update({
@@ -116,7 +116,7 @@ const deleteMTGOTrade = async (req, res) => {
     const { tradeID } = await req.body;
     const reply = await db.MtgoTrade.findOne({ where: { tradeID: tradeID } });
     if (reply) {
-      const deleted = await db.tgoTrade.destroy({
+      const deleted = await db.MtgoTrade.destroy({
         where: { tradeID: tradeID },
       });
       res.status(204).send(deleted);
