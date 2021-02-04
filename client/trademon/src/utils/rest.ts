@@ -75,21 +75,28 @@ export const createMessage = (from: String, to: String, content: String, chatID:
 }
 
 export const getTrades  = () => {
-  console.log('URLLLLLLL   ',endpointURL);
-  
-return fetch(`${endpointURL}/fetchTrades`, {
-  method: 'GET'})
-  .then(res => res.status <= 400? res : Promise.reject(res))
-  .then(res => res.json())
-  .catch((err)=>{
-    console.log(`${err} while fetching trades`)
+  return fetch(`${endpointURL}/fetchTrades`, {
+    method: 'GET'})
+    .then(res => res.status <= 400? res : Promise.reject(res))
+    .then(res => res.json())
+    .catch((err)=>{
+      console.log(`${err} while fetching trades`)
+  })
+};
+
+export const getMTGOTrades  = () => {
+  return fetch(`${endpointURL}/fetchMTGOTrades`, {
+    method: 'GET'})
+    .then(res => res.status <= 400? res : Promise.reject(res))
+    .then(res => res.json())
+    .catch((err)=>{
+      console.log(`${err} while fetching trades`)
   })
 } 
 
 
 
 export const createTrade = async (trade : TradeData) => {
-  
   const {
     pokeName, CP, catchLocation, fastMove, chargeMove, 
     shiny, price, appraisal, listingType 
