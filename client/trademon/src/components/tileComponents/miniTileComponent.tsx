@@ -19,7 +19,7 @@ export default function MiniTile(trade: UTrade) {
   }
 
   return (
-    <a href="/offer/randomID123">
+    <a href={`/trade/${trade.tradeID}`}>
       <div className="mini-tile-container">
         <div className="sprite-mini-box">
           <img className="sprite-mini" src={trade.image} alt=""></img>
