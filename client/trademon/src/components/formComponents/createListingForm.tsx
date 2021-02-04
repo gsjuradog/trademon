@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory, withRouter } from 'react-router-dom';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import '../../styling/forms.scss'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
@@ -7,8 +8,8 @@ import { TradeData } from '../../utils/interfaces'
 
 import { createTrade } from '../../utils/rest' 
 
-export default function CreateListingForm() {
-
+const CreateListingForm = () => {
+  const history = useHistory()
   const formData = {
     pokeName: '',
     CP: 0,
@@ -23,15 +24,25 @@ export default function CreateListingForm() {
 
   const [formState, setFormState] = useState <TradeData> (formData); 
 
-  const formSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
+  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let stateCopy : TradeData = {...formState};
     stateCopy.listingType = handleSelect();
 
     //Fetch
-    createTrade(stateCopy);
-
+    createTrade(stateCopy).then(
+      (tradeSubmissionResult) => {
+        //check to make sure this is valid before continuing
+        if(tradeSubmissionResult.tradeID) {
+          console.log('RESULT  ',tradeSubmissionResult);
+          history.push(`/trade/${tradeSubmissionResult.tradeID}`);
+        } else {
+          //display error message to the user in this block
+        }
+      }
+    );
+ 
     //ClearUp
     setFormState(formData);
     
@@ -136,3 +147,5 @@ export default function CreateListingForm() {
     </div>
   )
 }
+
+export default withRouter(CreateListingForm);
