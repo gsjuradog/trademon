@@ -99,7 +99,7 @@ export default function CreateListingForm() {
           </div>
           <input name="pokeName" type="text" className="form-input" placeholder="Item Name..."></input>
           <div className="horiz-input-box">
-            <input name="CP" type="text" className="form-input" placeholder="CP..."></input>
+            <input name="CP" type="number" className="form-input" placeholder="CP..."></input>
             <input name="catchLocation" type="text" className="form-input" placeholder="Catch Location..."></input>
           </div>
           <div className="horiz-input-box">
@@ -128,7 +128,7 @@ export default function CreateListingForm() {
               <option value="sale">For Sale</option>
               <option value="trade">For Trade</option>
             </select>
-            <input name="price" type="text" className="form-input" placeholder="Price..."></input>
+            <input name="price" type="number" className="form-input" placeholder="Price..."></input>
           </div>
           <button className="submit__btn" value="NameHEREE">Create</button>
         </form>
