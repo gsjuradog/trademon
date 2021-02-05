@@ -103,7 +103,7 @@ const Login = () => {
 
   const clearError = () => {
     loginErrorClear();
-    setUp();
+    panelLeft();
     setError('none');
   }
 
