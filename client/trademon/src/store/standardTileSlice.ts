@@ -8,7 +8,12 @@ import {
 } from './interfaces';
 import { getTrades, getMTGOTrades } from '../utils/rest';
 
-const initialState: StandardTiles = { pokemons: [], mtgs: [], wows: [] };
+const initialState: StandardTiles = {
+  pokemons: [],
+  mtgs: [],
+  wows: [],
+  world: '',
+};
 
 const standardTileSlice = createSlice({
   name: 'standardTrade',
@@ -18,7 +23,6 @@ const standardTileSlice = createSlice({
       state,
       { payload }: PayloadAction<StandardTileTrade[]>,
     ) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.pokemons = payload;
       console.log('state: ', payload);
       return state;
@@ -27,7 +31,6 @@ const standardTileSlice = createSlice({
       state,
       { payload }: PayloadAction<StandardTileTrade[]>,
     ) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.mtgs = payload;
       console.log('state: ', payload);
       return state;
@@ -36,13 +39,17 @@ const standardTileSlice = createSlice({
       state,
       { payload }: PayloadAction<StandardTileTrade[]>,
     ) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.wows = payload;
       console.log('state: ', payload);
       return state;
     },
     getStandardTilesError(state, action: PayloadAction<string>) {
-      console.error('TRADE - Error Handling: ', action.payload);
+      return state;
+    },
+    setWorld(state, action: PayloadAction<string>) {
+      state.world = action.payload;
+      console.log('Current World is: ');
+
       return state;
     },
   },
@@ -53,6 +60,7 @@ export const {
   getStandardTilesMTG,
   getStandardTilesWoW,
   getStandardTilesError,
+  setWorld,
 } = standardTileSlice.actions;
 export default standardTileSlice.reducer;
 
@@ -82,6 +90,47 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         break;
       default:
         return [];
+        break;
+    }
+  } catch (err) {
+    dispatch(getStandardTilesError(err.toString()));
+  }
+};
+
+// THUNK 2. filter
+export const filterTrade = (
+  searchInput: string,
+  world: string,
+): AppThunk => async (dispatch) => {
+  try {
+    let response: any[] = [];
+    let trades: StandardTileTrade[] = [];
+    let filteredTrades: StandardTileTrade[] = [];
+
+    console.log('I am in FILTER ', searchInput, 'our world is: ', world);
+
+    switch (world) {
+      case 'Pokemon':
+        response = await getTrades();
+        trades = mapPokemonsToUtrade(response);
+        filteredTrades = trades.filter((p: StandardTileTrade) =>
+          p.name.includes(searchInput),
+        );
+        dispatch(getStandardTilesPoke(filteredTrades));
+        break;
+      case 'MTG':
+        console.log('I am here! in MTG!');
+
+        response = await getMTGOTrades();
+        trades = mapMtgsToUtrade(response);
+        filteredTrades = trades.filter((p: StandardTileTrade) =>
+          p.name.includes(searchInput),
+        );
+        dispatch(getStandardTilesMTG(filteredTrades));
+        break;
+      case 'WoW':
+        break;
+      default:
         break;
     }
   } catch (err) {

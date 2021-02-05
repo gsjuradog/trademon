@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 import { withRouter, useHistory } from 'react-router-dom';
 
+import LoginError from '../modal/loginError';
+
 import { createUser as createREST, signInUser as signInREST } from '../../utils/rest'
 import { Create, SignIn } from '../../utils/interfaces';
 
-import { panelRight, panelLeft, loginError as loginErrorAnim, loginErrorClear, setUp } from '../../utils/animations';
+import { panelRight, panelLeft, setUp } from '../../utils/animations';
 import '../../styling/login.scss';
 
 const Login = () => {
-
-  useEffect(() => {setUp();}, [])
 
   const history = useHistory();
 
@@ -27,8 +27,10 @@ const Login = () => {
 
   const [create, setCreateState] = useState(initialCreate);
   const [signIn, setSignInState] = useState(initialSignIn);
+  const [loginError, setError] = useState(false);
 
-  const [loginError, setError] = useState('none');
+  useEffect(() => {setUp();}, []);
+  useEffect(() => {setUp();}, [loginError]);
   
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,10 +39,8 @@ const Login = () => {
       history.push('/')
     } else if (result.hasOwnProperty('error')) {
         setError(result.error);
-        loginErrorAnim();
     } else {
-        setError('Server error...'); 
-        loginErrorAnim();
+        setError(true); 
     } 
   }
 
@@ -74,10 +74,8 @@ const Login = () => {
       history.push('/')
     } else if (result.hasOwnProperty('error')) {
         setError(result.error);
-        loginErrorAnim();
     } else {
-        setError('Login error...'); 
-        loginErrorAnim();
+        setError(true); 
     }
   }
 
@@ -102,22 +100,19 @@ const Login = () => {
   }
 
   const clearError = () => {
-    loginErrorClear();
-    panelLeft();
-    setError('none');
+    setError(false);
+  }
+
+  if (loginError) {
+    return (
+      <LoginError
+        clearError={clearError}
+      />
+    )
   }
 
   return (
     <div className="login-container">
-
-      <div className="login-error-container">
-        <div className="login-error-message">
-        <h1>Uh oh...</h1>
-          <img className="error-pikachu" src={'/assets/suprised-pikachu.png'} alt="suprised-pik"/>
-          <p>{loginError}</p>
-          <button onClick={clearError}>Back</button>
-        </div>
-      </div>
 
       <div className="login-banner">
         <img className="login-trademon-logo" src={'/assets/trademon-logo.png'} alt="Trademon Logo"/>
