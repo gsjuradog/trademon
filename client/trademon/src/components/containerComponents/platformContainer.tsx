@@ -5,6 +5,7 @@ import { RootState } from '../../store/store';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
 import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
+import { Link, useHistory } from 'react-router-dom';
 
 interface IProps {
   world: string;
@@ -13,28 +14,21 @@ interface IProps {
 export default function PlatformContainer(props: IProps) {
   const miniTiles = useSelector((state: RootState) => state.trade);
 
+  const world = props.world;
   let miniTilesRender: any = <li></li>;
 
-  switch (props.world) {
+  switch (world) {
     case 'Pokemon':
       miniTilesRender = miniTiles.pokemons.map((miniTile: MiniTileTrade) => (
-        <li
-          style={{ listStyleType: 'none' }}
-          key={props.world + miniTile.tradeID}
-        >
+        <li style={{ listStyleType: 'none' }} key={world + miniTile.tradeID}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>
-          {console.log('RENDER MINI TILE: ', miniTile)}
         </li>
       ));
       break;
     case 'MTG':
       miniTilesRender = miniTiles.mtgs.map((miniTile: MiniTileTrade) => (
-        <li
-          style={{ listStyleType: 'none' }}
-          key={props.world + miniTile.tradeID}
-        >
+        <li style={{ listStyleType: 'none' }} key={world + miniTile.tradeID}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>
-          {console.log('RENDER MINI TILE: ', miniTile)}
         </li>
       ));
       break;
@@ -52,22 +46,26 @@ export default function PlatformContainer(props: IProps) {
       break;
   }
 
+  const history = useHistory();
+  const handleSelectWorld = () => history.push(`/${world}`);
+
   return (
     <div>
-      <a href="/pokemon-go">
-        <div
-          className="platform-container"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('assets/bg_" +
-              props.world +
-              ".jpg')",
-          }}
-        >
-          <div className="platform-container-title">{props.world}</div>
-          <div className="platform-container-tile-box">{miniTilesRender}</div>
-        </div>
-      </a>
+      <div
+        className="platform-container"
+        onClick={(e: React.MouseEvent<HTMLDivElement>): void =>
+          handleSelectWorld()
+        }
+        style={{
+          backgroundImage:
+            "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('assets/bg_" +
+            props.world +
+            ".jpg')",
+        }}
+      >
+        <div className="platform-container-title">{props.world}</div>
+        <div className="platform-container-tile-box">{miniTilesRender}</div>
+      </div>
     </div>
   );
 }
