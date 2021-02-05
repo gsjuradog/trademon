@@ -58,3 +58,18 @@ export const loginErrorClear = () => {
     y: 0
   })
 }
+
+//Demo Start Animation
+export const demoHeadAnimation = () => {
+  gsap.to('.demo-img-head', 0.5,
+  { scale: 1.3, repeat: -1})
+}
+export const demoArrowAnimation = () => {
+  gsap.to('.demo-img-arrows', 0.5,
+  { scale: 1.3, repeat: -1})
+  gsap.to('.demo-img-arrows', 2, {
+    delay: 1,
+    rotation: -360,
+    repeat: -1
+  })
+}
