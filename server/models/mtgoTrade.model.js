@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-
     setName: {
       type: DataTypes.STRING,
       allowNull: true, ///change
@@ -73,6 +72,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
 
       defaultValue: 0,
+    },
+    listingType: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     // ------------------------- BUYER FIELDS
     buyer: {

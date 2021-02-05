@@ -14,7 +14,6 @@ exports.keyGen = (length) => {
 exports.checkToken = async (id, token) => {
   let check = await db.userTokens.findOne({ where: { id: id } });
   check = check.dataValues;
-  console.log('WHAT IS CHECK??', check);
   let result = '';
   if (check.id) {
     if (check.token === token) {

@@ -78,7 +78,7 @@ const fetchTradesByDate = async (req, res) => {
   try {
     console.log('Showing recent Trades!');
     const reply = await db.PokeTradeData.findAll({
-      limit: 2,
+      limit: 8,
       order: [['createdAt', 'DESC']],
     });
     res.status(200).send(reply);
