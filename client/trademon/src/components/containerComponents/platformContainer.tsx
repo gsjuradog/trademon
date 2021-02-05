@@ -14,7 +14,7 @@ interface IProps {
 export default function PlatformContainer(props: IProps) {
   const miniTiles = useSelector((state: RootState) => state.trade);
 
-  let miniTilesRender: any = <li>LI</li>;
+  let miniTilesRender: any = <li></li>;
 
   switch (props.world) {
     case 'Pokemon':
