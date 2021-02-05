@@ -5,7 +5,7 @@ import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
 
 export default function MagicTheGatheringPage() {
-  const world: string = 'MTG';
+  const world: string = 'WoW';
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function MagicTheGatheringPage() {
       <div>
         <h1>{world}</h1>
         <SearchResultsContainer
-          key={'MTG'}
+          key={'WoW'}
           world={world}
         ></SearchResultsContainer>
       </div>
