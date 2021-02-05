@@ -42,19 +42,8 @@ export const panelLeft = () => {
 }
 
 export const loginError = () => {
-  gsap.to('.login-error-container', 0.5, {
+  gsap.to('.login-error-container', 2, {
     opacity: 1
-  })
-  gsap.to('.form-container, .overlay-panel, .overlay-create, .overlay-member, .login-banner', 0.01, {
-    y: -600
   })
 }
 
-export const loginErrorClear = () => {
-  gsap.to('.login-error-container', 0.1, {
-    opacity: 0,
-  })
-  gsap.to('.form-container, .overlay-panel, .overlay-create, .overlay-member, .login-banner', 0.01, {
-    y: 0
-  })
-}
