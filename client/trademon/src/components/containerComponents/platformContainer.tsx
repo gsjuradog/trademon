@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { fetchTrades } from '../../store/miniTileSlice';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
 import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
@@ -39,7 +38,7 @@ export default function PlatformContainer(props: IProps) {
         </li>
       ));
       break;
-    default:
+    case 'WoW':
       miniTilesRender = (
         <li style={{ listStyleType: 'none' }}>
           <p style={{ fontSize: '1.5rem', textAlign: 'center' }}>
@@ -48,6 +47,8 @@ export default function PlatformContainer(props: IProps) {
           </p>
         </li>
       );
+      break;
+    default:
       break;
   }
 

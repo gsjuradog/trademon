@@ -4,7 +4,7 @@ import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
 
-export default function StandardTile(trade: StandardTileTrade) {
+export default function StandardTileComponent(trade: StandardTileTrade) {
   return (
     <Link to={`/trade/${trade.tradeID}`}>
       <div className="standard-tile-container">
