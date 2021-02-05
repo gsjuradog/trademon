@@ -82,13 +82,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-
-    // The timestamp is added automatically by Sequelize
-    // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
   //Trade has two pokemons that are going to be traded, each trade belongs to many users
   trade.associate = (model) => {
-    // trade.hasMany(model.PokemonToTrade);
     trade.belongsTo(model.UserData);
   };
 

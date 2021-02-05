@@ -7,20 +7,19 @@ exports.signin = async (req, res) => {
     console.log(' ♛ A User Requested Sign In ♛ ');
     const { email, password } = req.body;
     const filter = { where: { email: email } };
-    const user = await db.userCredentials.findOne(filter);
+    let user = await db.UserData.findOne(filter);
     let result = '';
     if (user !== null) {
       const validPass = await bcrypt.compare(password, user.hashed);
       if (validPass) {
         let token = services.keyGen(15);
-        const deleteOldTokens = await db.userTokens.destroy(filter);
+        await db.userTokens.destroy(filter); //delete Old tokens
         const newToken = await db.userTokens.create({ email, token });
-        const userSave = await db.UserData.findOne({
-          where: { id: user.UserDatumId },
-        });
+        user = user.dataValues;
+        delete user.hashed;
         result = {
           success: newToken,
-          userSave,
+          user,
         };
       } else result = { error: 'One of your credentials is incorrect!' };
     } else result = { error: 'One of your credentials is incorrect!' };
@@ -37,25 +36,25 @@ exports.createUser = async (req, res) => {
     const { username, email, password } = req.body;
     const filter1 = { where: { username: username } };
     const filter2 = { where: { email: email } };
-    const userCheck = await db.userCredentials.findOne(filter1);
-    const emailCheck = await db.userCredentials.findOne(filter2);
+    const userCheck = await db.UserData.findOne(filter1);
+    const emailCheck = await db.UserData.findOne(filter2);
     let result = '';
     if (userCheck === null && emailCheck === null) {
-      const hashed = await bcrypt.hash(password, 10);
+      const hashedPass = await bcrypt.hash(password, 10);
 
-      const storeSave = await db.UserData.create();
-
-      await db.userCredentials.create({
-        UserDatumId: storeSave.id,
+      const newUser = await db.UserData.create({
         email: email,
         username: username,
-        hashed: hashed,
+        hashed: hashedPass,
       });
-      result = storeSave;
+
+      const cloneUser = Object.assign({}, newUser);
+      delete cloneUser.dataValues.hashed;
+      result = cloneUser.dataValues;
     } else {
-      if (userCheck !== null) result = { error: 'Username is taken' };
-      if (emailCheck !== null)
-        result = { error: 'Account exists with this email' };
+      if (userCheck !== null || emailCheck !== null) {
+        result = { error: 'Credentials are already in use!' };
+      }
     }
     res.status(200).send(result);
   } catch (err) {
