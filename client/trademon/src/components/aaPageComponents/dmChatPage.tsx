@@ -2,6 +2,7 @@ import React from 'react'
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
 import '../../styling/containers.scss'
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile'
+import AddMessage from './addMessage';
 
 export default function DMChatPage() {
   return (
@@ -29,8 +30,10 @@ export default function DMChatPage() {
         <DMChatTile isOwner={true}></DMChatTile>
         <DMChatTile isOwner={false}></DMChatTile>
         <DMChatTile isOwner={true}></DMChatTile>
-        <DMChatTile isOwner={false}></DMChatTile>
-        
+        <DMChatTile isOwner={false}></DMChatTile>    
+      </div>
+      <div className="dm-add-message-container">
+        <AddMessage></AddMessage>
       </div>
     </div>
   )
