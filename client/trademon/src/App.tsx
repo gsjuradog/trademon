@@ -17,6 +17,7 @@ import TestPage from './components/testComponent/testComponent';
 import DMPage from './components/aaPageComponents/dmPage';
 import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
+import DemoAnimation from './components/aaPageComponents/demoAnimation';
 
 import TestComponent from './components/testComponent/testComponent';
 
@@ -36,6 +37,8 @@ const App = () => {
           <Route path="/Pokemon" component={PokemonGoPage} />
           <Route path="/MTG" component={MagicTheGatheringPage} />
           <Route path="/WoW" component={WorldOfWarcraftPage} />
+          <Route path="/demo-animation" component={DemoAnimation} />
+
           <Redirect to="/" />
         </Switch>
       </div>
