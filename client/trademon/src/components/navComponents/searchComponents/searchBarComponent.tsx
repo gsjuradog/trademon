@@ -15,14 +15,18 @@ export default function SearchBar() {
 
   const [world, setWorld] = useState('Pokemon');
 
-  const tiles = useSelector((state: RootState) => state.trade);
+  const worldFromState = useSelector(
+    (state: RootState) => state.standardTrade.world,
+  );
+
   const handleSearchKeyPress = (searchString: string) => {
-    dispatch(filterTrade(searchString, world));
+    dispatch(filterTrade(searchString, worldFromState));
   };
 
   const changeWorldSelector = (world: string) => {
     setWorld(world);
-    console.log('world', world);
+    dispatch(setWorld(world));
+    console.log('world (set in SearchBar)', world);
   };
 
   return (

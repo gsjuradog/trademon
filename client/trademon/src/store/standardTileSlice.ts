@@ -8,7 +8,12 @@ import {
 } from './interfaces';
 import { getTrades, getMTGOTrades } from '../utils/rest';
 
-const initialState: StandardTiles = { pokemons: [], mtgs: [], wows: [] };
+const initialState: StandardTiles = {
+  pokemons: [],
+  mtgs: [],
+  wows: [],
+  world: '',
+};
 
 const standardTileSlice = createSlice({
   name: 'standardTrade',
@@ -41,6 +46,12 @@ const standardTileSlice = createSlice({
     getStandardTilesError(state, action: PayloadAction<string>) {
       return state;
     },
+    setWorld(state, action: PayloadAction<string>) {
+      state.world = action.payload;
+      console.log('Current World is: ');
+
+      return state;
+    },
   },
 });
 
@@ -49,6 +60,7 @@ export const {
   getStandardTilesMTG,
   getStandardTilesWoW,
   getStandardTilesError,
+  setWorld,
 } = standardTileSlice.actions;
 export default standardTileSlice.reducer;
 
@@ -107,6 +119,8 @@ export const filterTrade = (
         dispatch(getStandardTilesPoke(filteredTrades));
         break;
       case 'MTG':
+        console.log('I am here! in MTG!');
+
         response = await getMTGOTrades();
         trades = mapMtgsToUtrade(response);
         filteredTrades = trades.filter((p: StandardTileTrade) =>
@@ -115,15 +129,8 @@ export const filterTrade = (
         dispatch(getStandardTilesMTG(filteredTrades));
         break;
       case 'WoW':
-        response = await getTrades();
-        trades = mapPokemonsToUtrade(response);
-        filteredTrades = trades.filter((p: StandardTileTrade) =>
-          p.name.includes(searchInput),
-        );
-        dispatch(getStandardTilesPoke(filteredTrades));
         break;
       default:
-        return [];
         break;
     }
   } catch (err) {
