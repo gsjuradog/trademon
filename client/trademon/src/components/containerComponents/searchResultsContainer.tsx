@@ -4,7 +4,7 @@ import StandardTile from '../tileComponents/standardTileComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import '../../styling/containers.scss';
-import { fetchTrades } from '../../store/tradeSlice';
+import { fetchTrades } from '../../store/standardTileSlice';
 
 interface trades {
   tradeID: number;
@@ -26,7 +26,7 @@ interface trades {
 export default function SearchResultsContainer() {
   const [trades, setTrades] = useState<trades[]>();
 
-  const miniTiles = useSelector((state: RootState) => state.trade);
+  const miniTiles = useSelector((state: RootState) => state.standardTrade);
   const dispatch = useDispatch();
 
   useEffect(() => {

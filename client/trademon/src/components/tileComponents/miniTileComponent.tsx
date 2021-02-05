@@ -1,12 +1,8 @@
 import React from 'react';
 import '../../styling/tiles.scss';
-import { UTrade } from '../../store/interfaces';
+import { MiniTileTrade } from '../../store/interfaces';
 
-interface IProps {
-  world: string;
-}
-
-export default function MiniTile(trade: UTrade) {
+export default function MiniTile(trade: MiniTileTrade) {
   switch (trade.world) {
     case 'Pokemon':
       break;

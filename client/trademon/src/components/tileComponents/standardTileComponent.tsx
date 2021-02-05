@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../styling/tiles.scss';
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
-import { UTrade } from '../../store/interfaces';
+import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
 
-export default function StandardTile(trade: UTrade) {
+export default function StandardTile(trade: StandardTileTrade) {
   return (
     <Link to={`/trade/${trade.tradeID}`}>
       <div className="standard-tile-container">
