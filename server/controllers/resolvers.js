@@ -1,5 +1,10 @@
-const db = require('../models/index');
+const moment = require('moment');
 
+const db = require('../models/index');
+const { Op } = require('sequelize');
+
+
+//Example query
 // query ($user: String!){
 //   getUserData(user: $user) {
 //     numOfStrikes
@@ -12,8 +17,8 @@ const db = require('../models/index');
 
 // Query Variable: { "user": "Dan"}
 
-//GraphQL Queries
 
+//GraphQL Queries
 const Query = {
   getUserData: (root, args, context) => {
     const { user } = args;
@@ -48,42 +53,23 @@ const getUser = async (user) => {
   return reply;
 };
 
-const getChat = async (chatID) => {
-  const reply = await db.PrivateChat.findOne({
+const getChat = async (chatId) => {
+  const reply = await db.Message.findAll({
     where: {
-      id: chatID,
+      chatId: chatId,
     },
   });
   return reply;
 };
 
-const getTrade = async (trade) => {
-  const reply = await db.TradeData.findOne({
-    where: {
-      tradeID: tradeID,
-    },
-  });
-  return 'Trade';
-};
-
-// const getMessages = async (chatID) => {
-//   const messages = await db.Message.findAll({ 
+// const getTrade = async (trade) => {
+//   const reply = await db.TradeData.findOne({
 //     where: {
-//       chatID: chatID
-//     }
-//   })
-//   return messages;
-// }
-
-// const getAllChats = async (userID) => {
-//   const user = await db.UserData.findOne({
-//     where:{
-//       userID:userID
-//     }
+//       tradeID: tradeID,
+//     },
 //   });
-//   return user.privatchat;
-// }
-
+//   return 'Trade';
+// };
 
 //GraphQL Mutations
 const Mutation = {
@@ -94,31 +80,16 @@ const Mutation = {
 
 //Resolvers for GraphQL Mutations
 
-
-//Type Resolvers
-const Username = {
-  username: (username) => {
-    return username;
-  }
-};
-
-const Date = {
-  date: (date) => {
-    return date;
-  }
-};
-
 const UserData = {
   //args is the type passed in
-  username: (args) => {
-    return args.username;
-  },
   privateChat: async (args) => {
     const { username } = args;
     const reply = await db.PrivateChat.findAll({
       where: {
-        seller: username,
-        buyer: username
+        [Op.or]: [
+          {seller: username},
+          {buyer: username}
+        ]
       },
     });
     return reply;
@@ -126,57 +97,24 @@ const UserData = {
 };
 
 const PrivateChat = {
-  seller: async (args) => {
-    const { id } = args;
-    const reply = await db.PrivateChat.findOne({
-      where: {
-        id:id
-      }
-    });
-    console.log(reply.dataValues.seller);
-    return reply.seller;
-  },
-  buyer: async (args) => {
-    const { id } = args;
-    const reply = await db.PrivateChat.findOne({
-      where: {
-        id:id
-      }
-    });
-    return reply.buyer;
-  },
   history: async (args) => {
     const { id } = args;
+    console.log('id', id);
     const reply = await db.Message.findAll({
       where: {
-        id:id  //No chatID property in Messages table
-      },
+        chatId: id
+      }
     });
     return reply;
-  },
+  }
 };
 
 const Message = {
-  from: async (args) => {
-    const { messageID } = args;
-    const reply = await db.Message.findOne({
-      where: {
-        messageID: messageID,
-      },
-    });
-    return reply.from;
-  },
-  to: async (args) => {
-    const { messageID } = args;
-    const reply = await db.Message.findOne({
-      where: {
-        messageID: messageID,
-      },
-    });
-    return reply.to;
-  },
-};
-
+  publishDate: (args) => {
+    const reply = moment(args).format('MMMM Do YYYY, h:mm a');
+    return reply;
+  }
+}
 
 const Trade = {
   //
@@ -185,4 +123,9 @@ const Trade = {
 };
 
 
-module.exports = { Query, Mutation, Username, UserData, PrivateChat, Message, Trade };
+module.exports = { Query, 
+                   Mutation,
+                   UserData, 
+                   PrivateChat, 
+                   Message,
+                   Trade };

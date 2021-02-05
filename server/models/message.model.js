@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE, //[message] the strings are message IDs
       defaultValue: DataTypes.NOW,
     },
+    chatId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   });
 
   message.associate = (model) => {

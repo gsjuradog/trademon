@@ -26,7 +26,10 @@ export default function SearchBar() {
       </a>
 
       <div className="search-container-vertical">
-        <h1 className="platform-text">trademon.io</h1>
+
+        <a href={'/'}>
+          <h1 className="platform-text">trademon.io</h1>
+        </a>
 
         <div className="filters-box">
           <select className="search-select-dropdown">

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { withRouter, useHistory } from 'react-router-dom';
 
 import { createUser as createREST, signInUser as signInREST } from '../../utils/rest'
 import { Create, SignIn } from '../../utils/interfaces';
 
-import { panelRight, panelLeft, loginError as loginErrorAnim, loginErrorClear } from '../../utils/animations';
+import { panelRight, panelLeft, loginError as loginErrorAnim, loginErrorClear, setUp } from '../../utils/animations';
 import '../../styling/login.scss';
 
 const Login = () => {
+
+  useEffect(() => {setUp();}, [])
 
   const history = useHistory();
 
@@ -27,7 +29,7 @@ const Login = () => {
   const [signIn, setSignInState] = useState(initialSignIn);
 
   const [loginError, setError] = useState('none');
-
+  
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = await createREST(create);
@@ -39,8 +41,7 @@ const Login = () => {
     } else {
         setError('Server error...'); 
         loginErrorAnim();
-    }
-    
+    } 
   }
 
   const createState = (event: React.FormEvent<HTMLFormElement>) => {
@@ -66,9 +67,18 @@ const Login = () => {
     setCreateState(createCopy);
   }
 
-  const signInUser = (event: React.FormEvent<HTMLFormElement>) => {
+  const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    signInREST(signIn);
+    const result = await signInREST(signIn);
+    if (result.hasOwnProperty('success')) {
+      history.push('/')
+    } else if (result.hasOwnProperty('error')) {
+        setError(result.error);
+        loginErrorAnim();
+    } else {
+        setError('Login error...'); 
+        loginErrorAnim();
+    }
   }
 
   const signInState = (event: React.FormEvent<HTMLFormElement>) => {

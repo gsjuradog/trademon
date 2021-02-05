@@ -4,16 +4,13 @@ import ReduxTestList from '../testComponents/reduxTestListComponent';
 
 import './testComponent.scss';
 
-import { getPrivateChat } from '../../utils/graphql';
+import { getPrivateChats } from '../../utils/graphql';
 
 const TestComponent = () => {
-  // const newUser = () => {
-  //   createUser('Jimbo', '4587', 'Jimbo The Pokemon Guy');
-  // };
 
 
   const fetchChat = async () => {
-    const result = await getPrivateChat(1);
+    const result = await getPrivateChats('Santi');
     console.log(result);
   };
 
@@ -22,9 +19,6 @@ const TestComponent = () => {
       <h1>Test Component</h1>
 
       <button onClick={fetchChat}>fetchChat</button>
-      <ReduxTest />
-      <ReduxTestList />
-      <hr />
     </div>
   );
 };

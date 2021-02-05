@@ -1,14 +1,20 @@
 import { gsap } from 'gsap';
 
 //Login / SignUp Animations
+export const setUp = () => {
+  gsap.to('.overlay-member', 0.01, {
+    y: -600
+  })
+}
+
 export const panelRight = () => {
   gsap.to('.overlay-panel', 0.6, {
     xPercent: 100,
     ease: "back.inOut(1.7)"
   })
-  gsap.to('.overlay-create', 0.8, {
+  gsap.to('.overlay-create', 1.5, {
     opacity: 0,
-    y: -300,
+    y: -600,
     ease: "elastic.out(1, 0.8)"
   })
   gsap.to('.overlay-member', 0.8, {
@@ -28,29 +34,27 @@ export const panelLeft = () => {
     opacity: 1,
     y: 0
   })
-  gsap.to('.overlay-member', 0.8, {
+  gsap.to('.overlay-member', 1.5, {
     opacity: 0,
-    y: -300,
+    y: -600,
     ease: "elastic.out(1, 0.8)"
   })
 }
 
 export const loginError = () => {
-  gsap.to('.login-error-container', 1, {
-    opacity: 1,
-    zindex: 10
+  gsap.to('.login-error-container', 0.5, {
+    opacity: 1
   })
-  gsap.to('.form-container, .overlay-panel, .overlay-create, .overlay-member', 1, {
-    opacity: 0
+  gsap.to('.form-container, .overlay-panel, .overlay-create, .overlay-member, .login-banner', 0.01, {
+    y: -600
   })
 }
 
 export const loginErrorClear = () => {
-  gsap.to('.login-error-container', 1, {
+  gsap.to('.login-error-container', 0.1, {
     opacity: 0,
-    zindex: 0
   })
-  gsap.to('.form-container, .overlay-panel, overlay-create, .overlay-member', 1, {
-    opacity: 1
+  gsap.to('.form-container, .overlay-panel, .overlay-create, .overlay-member, .login-banner', 0.01, {
+    y: 0
   })
 }

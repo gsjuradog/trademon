@@ -4,8 +4,11 @@
   display: flex;
   align-items: center;
   position: relative;
-  max-height: 15vh;
-  margin-bottom: 2em;
+  max-height: 20vh;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid $colorPrimary;
+  box-shadow: 0 0 10px 3px $colorPrimary;
 }
 .logo-img-link {
   width: 6vw;
@@ -16,7 +19,7 @@
   padding-top: 0px;
 }
 .logo-img {
-  width: 6vw;
+  width: 180%;
   opacity: 90%;
   min-width: 50px;
   min-height: 50px;
@@ -35,6 +38,7 @@
   margin-left: 3vw;
   margin-bottom: 0.3em;
   padding-top: 2vh;
+  padding-left: 0.5em;
 }
 
 .filters-box {
