@@ -1,7 +1,8 @@
 import { configureStore, Action } from '@reduxjs/toolkit';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import SearchSlice, { searchEpic } from './searchSlice';
-import TradeSlice from './tradeSlice';
+import MiniTileSlice from './miniTileSlice';
+import StandardTileSlice from './standardTileSlice';
 import { ThunkAction } from 'redux-thunk';
 import thunk from 'redux-thunk';
 
@@ -11,7 +12,8 @@ export const rootEpic = combineEpics(searchEpic);
 const store = configureStore({
   reducer: {
     search: SearchSlice,
-    trade: TradeSlice,
+    trade: MiniTileSlice,
+    standardTrade: StandardTileSlice,
   },
   middleware: [epicMiddleware, thunk],
   devTools: process.env.NODE_ENV !== 'production',

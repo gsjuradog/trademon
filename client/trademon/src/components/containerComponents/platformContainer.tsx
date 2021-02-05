@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import { fetchTrades } from '../../store/tradeSlice';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
-import { Trade, UTrade } from '../../store/interfaces';
+import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
 
 interface IProps {
@@ -14,11 +13,11 @@ interface IProps {
 export default function PlatformContainer(props: IProps) {
   const miniTiles = useSelector((state: RootState) => state.trade);
 
-  let miniTilesRender: any = <li>LI</li>;
+  let miniTilesRender: any = <li></li>;
 
   switch (props.world) {
     case 'Pokemon':
-      miniTilesRender = miniTiles.pokemons.map((miniTile: UTrade) => (
+      miniTilesRender = miniTiles.pokemons.map((miniTile: MiniTileTrade) => (
         <li
           style={{ listStyleType: 'none' }}
           key={props.world + miniTile.tradeID}
@@ -29,7 +28,7 @@ export default function PlatformContainer(props: IProps) {
       ));
       break;
     case 'MTG':
-      miniTilesRender = miniTiles.mtgs.map((miniTile: UTrade) => (
+      miniTilesRender = miniTiles.mtgs.map((miniTile: MiniTileTrade) => (
         <li
           style={{ listStyleType: 'none' }}
           key={props.world + miniTile.tradeID}
@@ -39,8 +38,17 @@ export default function PlatformContainer(props: IProps) {
         </li>
       ));
       break;
+    case 'WoW':
+      miniTilesRender = (
+        <li style={{ listStyleType: 'none' }}>
+          <p style={{ fontSize: '1.5rem', textAlign: 'center' }}>
+            World of Warcraft! <br />
+            ... coming soon &#x1F929;
+          </p>
+        </li>
+      );
+      break;
     default:
-      miniTilesRender = <li>World of Warcraft! ... coming soon :)</li>;
       break;
   }
 

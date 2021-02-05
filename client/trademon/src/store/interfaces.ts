@@ -17,20 +17,94 @@ export interface Trade {
   cardImage?: string;
 }
 
-export interface UTrade {
+export interface PokeTrade {
   tradeID: number;
   numViews: number;
   seller: string;
-  skillNum?: number;
-  name?: string | undefined;
-  gen?: number;
-  level?: number;
-  isShiny?: boolean;
-  // appraisal?: number | string | undefined;
+  pokeNum: number;
+  pokeName: string;
+  pokeGen: number;
+  pokeLvl: number;
+  fastMove: string;
+  chargeMove: string;
+  isShiny: boolean;
+  appraisal: number;
   price: number;
   tax: number;
-  image: string | undefined;
+  pokeSprite: string;
+  cardName?: string;
+  cardImage?: string;
+}
+
+export interface MtgTrade {
+  buyer: string;
+  buyersOfferItemId: string;
+  cardImage: string;
+  cardName: string;
+  color: string[];
+  convertedManaCost: number;
+  createdAt: Date;
+  expirationDate: Date;
+  extraName: null;
+  isFoil: boolean;
+  manaCost: string;
+  numViews: number;
+  originaltype: null;
+  price: number;
+  publishDate: Date;
+  rarity: string;
+  seller: string;
+  set: string;
+  setName: string;
+  tax: number;
+  tradeComplete: boolean;
+  tradeID: number;
+  updatedAt: Date;
+}
+
+export interface MiniTileTrade {
+  tradeID: number;
+  name: string;
+  price: number;
+  image: string;
   world: string;
+}
+
+// export interface StandardTileTrade {
+//   tradeID: number;
+//   numViews: number;
+//   seller: string;
+//   skillNum?: number;
+//   name?: string | undefined;
+//   gen?: number;
+//   level?: number;
+//   isShiny?: boolean;
+//   price: number;
+//   tax: number;
+//   image: string | undefined;
+//   world: string;
+// }
+
+export interface StandardTileTrade {
+  tradeID: number;
+  name: string;
+  price: number;
+  image: string;
+  level?: number;
+  seller: string;
+  world: string;
+}
+
+export interface MiniTiles {
+  pokemons: MiniTileTrade[];
+  mtgs: MiniTileTrade[];
+  wows: MiniTileTrade[];
+}
+
+export interface StandardTiles {
+  pokemons: StandardTileTrade[];
+  mtgs: StandardTileTrade[];
+  wows: StandardTileTrade[];
 }
 
 export interface InitialState {
@@ -41,35 +115,3 @@ export interface SearchResponseAction {
   trades: Trade[];
   response: string;
 }
-
-export interface MiniTileInfo {
-  id: string;
-  name: string;
-  price: number;
-}
-
-// export interface MtgTrade {
-//   buyer: null;
-//   buyersOfferItemId: null;
-//   cardImage: 'http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=409741&type=card';
-//   cardName: 'Archangel Avacyn';
-//   color: ['White'];
-//   convertedManaCost: null;
-//   createdAt: '2021-02-04T13:28:11.559Z';
-//   expirationDate: '2021-02-11T13:27:47.025Z';
-//   extraName: null;
-//   isFoil: false;
-//   manaCost: '{3}{W}{W}';
-//   numViews: 0;
-//   originaltype: null;
-//   price: 2;
-//   publishDate: '2021-02-04T13:28:11.557Z';
-//   rarity: 'Mythic Rare';
-//   seller: 'Stiches';
-//   set: null;
-//   setName: 'Shadows over Innistrad';
-//   tax: 1;
-//   tradeComplete: false;
-//   tradeID: 1;
-//   updatedAt: '2021-02-04T13:28:11.559Z';
-// }

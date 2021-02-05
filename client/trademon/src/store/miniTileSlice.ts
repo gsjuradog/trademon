@@ -1,33 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
-import { Trade, UTrade } from './interfaces';
+import { PokeTrade, MtgTrade, MiniTileTrade, MiniTiles } from './interfaces';
 import { getTrades, getMTGOTrades } from '../utils/rest';
 
-export interface Tiles {
-  pokemons: UTrade[];
-  mtgs: UTrade[];
-  wows: UTrade[];
-}
+const initialState: MiniTiles = { pokemons: [], mtgs: [], wows: [] };
 
-const initialState: Tiles = { pokemons: [], mtgs: [], wows: [] };
-
-const tradeSlice = createSlice({
+const miniTileSlice = createSlice({
   name: 'trade',
   initialState,
   reducers: {
-    getMiniTilesP(state, { payload }: PayloadAction<UTrade[]>) {
+    getMiniTilesP(state, { payload }: PayloadAction<MiniTileTrade[]>) {
       console.log('TRADE REDUCER, payload is: ', payload);
       state.pokemons = payload;
       console.log('state: ', payload);
       return state;
     },
-    getMiniTilesM(state, { payload }: PayloadAction<UTrade[]>) {
+    getMiniTilesM(state, { payload }: PayloadAction<MiniTileTrade[]>) {
       console.log('TRADE REDUCER, payload is: ', payload);
       state.mtgs = payload;
       console.log('state: ', payload);
       return state;
     },
-    getMiniTilesW(state, { payload }: PayloadAction<UTrade[]>) {
+    getMiniTilesW(state, { payload }: PayloadAction<MiniTileTrade[]>) {
       console.log('TRADE REDUCER, payload is: ', payload);
       state.wows = payload;
       console.log('state: ', payload);
@@ -45,8 +39,8 @@ export const {
   getMiniTilesM,
   getMiniTilesW,
   getMiniTilesError,
-} = tradeSlice.actions;
-export default tradeSlice.reducer;
+} = miniTileSlice.actions;
+export default miniTileSlice.reducer;
 
 // THUNK / EPIC
 
@@ -58,8 +52,8 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
       world,
     );
 
-    let response: Trade[] = [];
-    let trades: UTrade[] = [];
+    let response: any[] = [];
+    let trades: MiniTileTrade[] = [];
 
     switch (world) {
       case 'Pokemon':
@@ -95,42 +89,26 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
   }
 };
 
-const mapPokemonsToUtrade = (trades: Trade[]): UTrade[] => {
+const mapPokemonsToUtrade = (trades: PokeTrade[]): MiniTileTrade[] => {
   return trades.map((trade) => {
     return {
       tradeID: trade.tradeID,
-      numViews: trade.numViews,
-      seller: trade.seller,
-      skillNum: trade.pokeNum,
       name: trade.pokeName,
-      gen: trade.pokeGen,
-      level: trade.pokeLvl,
-      isShiny: trade.isShiny,
-      // appraisal: trade.appraisal,
       price: trade.price,
-      tax: trade.tax,
       image: trade.pokeSprite,
       world: 'Pokemon',
     };
   });
 };
 
-const mapMtgsToUtrade = (trades: Trade[]): UTrade[] => {
+const mapMtgsToUtrade = (trades: MtgTrade[]): MiniTileTrade[] => {
   return trades.map((trade) => {
     return {
       tradeID: trade.tradeID,
-      numViews: trade.numViews,
-      seller: trade.seller,
-      skillNum: trade.pokeNum,
-      name: 'MTGO NAME', //trade.cardName,
-      gen: trade.pokeGen,
-      level: trade.pokeLvl,
-      isShiny: trade.isShiny,
-      // appraisal: trade.appraisal,
+      name: trade.cardName,
       price: trade.price,
-      tax: trade.tax,
       image: trade.cardImage,
-      world: 'Pokemon',
+      world: 'MTG',
     };
   });
 };
