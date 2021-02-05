@@ -32,7 +32,7 @@ router.delete('/deleteTrade', tradeControllers.deleteTrade);
 router.post('/createMTGOTrade', mtgotradeControllers.createMTGOTrade);
 router.get('/fetchMTGOTrades', mtgotradeControllers.fetchMTGOTrades);
 router.get('/fetchMTGOByDate', mtgotradeControllers.fetchMTGOTradesByDate);
-router.post('/fetchOneMTGOTrade', tradeControllers.fetchOneMTGOTrade);
+router.post('/fetchOneMTGOTrade', mtgotradeControllers.fetchOneMTGOTrade);
 router.put('/editMTGOTrade', mtgotradeControllers.editMTGOTrade);
 router.delete('/deleteMTGOTrade', mtgotradeControllers.deleteMTGOTrade);
 

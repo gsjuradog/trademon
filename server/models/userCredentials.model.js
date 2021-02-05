@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  userCredentials.associate = (model) => {
-    userCredentials.hasOne(model.UserData);
-  };
+  // userCredentials.associate = (model) => {
+  //   userCredentials.hasOne(model.UserData);
+  // };
   return userCredentials;
 };

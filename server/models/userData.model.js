@@ -68,12 +68,12 @@ module.exports = (sequelize, DataTypes) => {
     // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  userData.associate = (model) => {
-    userData.belongsTo(model.userCredentials);
-    userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
-    userData.belongsToMany(model.TradeData, { through: 'Trade_Users' } );
-    userData.belongsToMany(model.MtgoTrade, { through: 'MtgoTrade_Users' } );
-  };
+  // userData.associate = (model) => {
+  //   userData.belongsTo(model.userCredentials);
+  //   userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
+  //   userData.belongsToMany(model.TradeData, { through: 'Trade_Users' } );
+  //   userData.belongsToMany(model.MtgoTrade, { through: 'MtgoTrade_Users' } );
+  // };
 
   return userData;
 };
