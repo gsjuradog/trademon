@@ -17,41 +17,23 @@ export interface Trade {
   cardImage?: string;
 }
 
-export interface UTrade {
+export interface PokeTrade {
   tradeID: number;
   numViews: number;
   seller: string;
-  skillNum?: number;
-  name?: string | undefined;
-  gen?: number;
-  level?: number;
-  isShiny?: boolean;
-  // appraisal?: number | string | undefined;
+  pokeNum: number;
+  pokeName: string;
+  pokeGen: number;
+  pokeLvl: number;
+  fastMove: string;
+  chargeMove: string;
+  isShiny: boolean;
+  appraisal: number;
   price: number;
   tax: number;
-  image: string | undefined;
-  world: string;
-}
-
-export interface Tiles {
-  pokemons: UTrade[];
-  mtgs: UTrade[];
-  wows: UTrade[];
-}
-
-export interface InitialState {
-  trades: Trade[];
-}
-
-export interface SearchResponseAction {
-  trades: Trade[];
-  response: string;
-}
-
-export interface MiniTileInfo {
-  id: string;
-  name: string;
-  price: number;
+  pokeSprite: string;
+  cardName?: string;
+  cardImage?: string;
 }
 
 export interface MtgTrade {
@@ -78,4 +60,58 @@ export interface MtgTrade {
   tradeComplete: boolean;
   tradeID: number;
   updatedAt: Date;
+}
+
+export interface MiniTileTrade {
+  tradeID: number;
+  name: string;
+  price: number;
+  image: string;
+  world: string;
+}
+
+// export interface StandardTileTrade {
+//   tradeID: number;
+//   numViews: number;
+//   seller: string;
+//   skillNum?: number;
+//   name?: string | undefined;
+//   gen?: number;
+//   level?: number;
+//   isShiny?: boolean;
+//   price: number;
+//   tax: number;
+//   image: string | undefined;
+//   world: string;
+// }
+
+export interface StandardTileTrade {
+  tradeID: number;
+  name: string;
+  price: number;
+  image: string;
+  level?: number;
+  seller: string;
+  world: string;
+}
+
+export interface MiniTiles {
+  pokemons: MiniTileTrade[];
+  mtgs: MiniTileTrade[];
+  wows: MiniTileTrade[];
+}
+
+export interface StandardTiles {
+  pokemons: StandardTileTrade[];
+  mtgs: StandardTileTrade[];
+  wows: StandardTileTrade[];
+}
+
+export interface InitialState {
+  trades: Trade[];
+}
+
+export interface SearchResponseAction {
+  trades: Trade[];
+  response: string;
 }
