@@ -105,6 +105,7 @@ export interface StandardTiles {
   pokemons: StandardTileTrade[];
   mtgs: StandardTileTrade[];
   wows: StandardTileTrade[];
+  world: string;
 }
 
 export interface InitialState {
