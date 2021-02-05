@@ -10,7 +10,10 @@ export default function DMChatPage() {
         <SearchBar></SearchBar>
       </div>
       <div className="dm-chat-title-box">
-        <a href="/messages" className="dm-back-button">back</a>
+        <a href="/messages" className="dm-back-button">
+          <i className="fas fa-angle-left fa-2x"></i>
+          <p>back</p>
+        </a>
         <div className="dm-sender-info">
           <div className="menu-title-dm">
             Messages:

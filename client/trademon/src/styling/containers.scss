@@ -91,15 +91,15 @@
 }
 
 .small-text {
-  font-size: calc(12px + .25vw);
+  font-size: calc(12px + 0.25vw);
 }
 .rating-text {
   @extend .small-text;
   margin-top: 6px;
-  margin-bottom: .4vh;
+  margin-bottom: 0.4vh;
 }
 .standard-text {
-  font-size: calc(12px + .8vw);
+  font-size: calc(12px + 0.8vw);
   margin-top: 3px;
 }
 
@@ -169,7 +169,7 @@
   margin-left: 1vw;
   margin-right: 1vw;
   margin-top: 3px;
-  font-size: calc(12px + .5vw);
+  font-size: calc(12px + 0.5vw);
 }
 
 .menu-title {
@@ -203,9 +203,20 @@
 }
 
 .dm-back-button {
-  font-size:calc(12px + .5vw);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(12px + 0.5vw);
   transition: 150ms;
   margin-top: 1.5vh;
+}
+
+.dm-back-button p {
+  font-size: 1.4em;
+}
+
+.dm-back-button i {
+  padding-right: 0.4em;
 }
 
 .dm-back-button:hover {

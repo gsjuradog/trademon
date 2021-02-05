@@ -197,6 +197,7 @@ p {
   margin: 5px 0px;
   background-color: $colorGreyPop80;
   border-radius: 25px;
+  border: 1px solid $colorPrimary;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 3px;
@@ -227,8 +228,8 @@ p {
 .message {
   min-width: 20%;
   max-width: 60%;
-  margin-top: 0.3em;
-  margin-bottom: 0.3em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
   border-radius: 10px;
   padding: 15px;
   box-shadow: -1px -1px 5px $colorShadowLight, 1px 1px 5px $colorShadowDark;
@@ -263,6 +264,7 @@ p {
 
 .right {
   background-color: $colorGreyPop;
+  border: 1px solid $colorPrimary;
   margin-left: 25px;
 }
 
@@ -271,10 +273,10 @@ p {
 }
 
 .left {
-  background-color: $colorGreyBg;
+  background-color: $colorPrimary;
   margin-right: 25px;
 }
 
 .left:hover {
-  background-color: $colorGreyHover;
+  opacity: 0.9;
 }

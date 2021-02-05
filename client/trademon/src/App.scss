@@ -79,10 +79,6 @@ input:hover {
 }
 
 input:focus {
-  //outline: none;
-  //border: 3px solid $colorSecondary;
-  box-shadow: 0px 0px 10px 3px $colorSecondary;
-  transition: box-shadow 1s;
+  box-shadow: 0px 0px 10px 8px $colorPrimary;
+  transition: box-shadow 0.7s;
 }
-
-//$colorSecondary
