@@ -80,7 +80,7 @@ export const createMessage = (from: String, to: String, content: String, chatID:
     .catch(err => console.log('CREATE MESSAGE ERROR', err))
 }
 
-export const getTrades  = () => {
+export const getTrades = () => {
   return fetch(`${endpointURL}/fetchTrades`, {
     method: 'GET'})
     .then(res => res.status <= 400? res : Promise.reject(res))
@@ -90,7 +90,24 @@ export const getTrades  = () => {
   })
 };
 
-export const getMTGOTrades  = () => {
+export const getOneTrade = (tradeID: Number) => {
+  return fetch(`${endpointURL}/fetchOneTrade`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      tradeID: tradeID,
+    })
+  })
+    .then(res => res.status <= 400? res : Promise.reject(res))
+    .then(res => res.json())
+    .catch((err)=>{
+      console.log(`${err} while fetching single trade`)
+  })
+};
+
+export const getMTGOTrades = () => {
   return fetch(`${endpointURL}/fetchMTGOTrades`, {
     method: 'GET'})
     .then(res => res.status <= 400? res : Promise.reject(res))

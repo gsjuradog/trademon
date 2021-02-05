@@ -4,14 +4,13 @@ import { fetchTrades } from '../../store/standardTileSlice';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
 
-export default function PokemonGoPage() {
-  const world: string = 'Pokemon';
+export default function MagicTheGatheringPage() {
+  const world: string = 'MTG';
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTrades(world));
   }, []);
-
   return (
     <>
       <div>
@@ -19,7 +18,7 @@ export default function PokemonGoPage() {
       </div>
       <div>
         <SearchResultsContainer
-          key={'Pokemon'}
+          key={'MTG'}
           world={world}
         ></SearchResultsContainer>
       </div>

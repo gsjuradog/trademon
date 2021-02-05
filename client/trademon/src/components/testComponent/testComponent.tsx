@@ -8,6 +8,7 @@ import { getPrivateChats } from '../../utils/graphql';
 
 const TestComponent = () => {
 
+
   const fetchChat = async () => {
     const result = await getPrivateChats('Santi');
     console.log(result);

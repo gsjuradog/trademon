@@ -15,7 +15,7 @@ exports.signin = async (req, res) => {
         let token = services.keyGen(15);
         const deleteOldTokens = await db.userTokens.destroy(filter)
         const newToken = await db.userTokens.create({ email, token });
-        const userSave = await db.UserData.findOne({username: user.username})
+        const userSave = await db.UserData.findOne({ where: {username: user.username}})
         result = {
           success:        token, 
           email:          user.email, 

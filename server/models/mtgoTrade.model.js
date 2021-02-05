@@ -37,10 +37,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    extraName: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     cardImage: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -62,8 +58,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING, //'{3}{W}{R}' = 3 uncolored mana 1 white 1 red
       allowNull: true, //change
     },
-    originaltype: {
+    type: {
       type: DataTypes.STRING,
+      allowNull: true, //change
+    },
+    types: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
     },
     rarity: {
@@ -71,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true, //change
       defaultValue: '',
     },
-    color: {
+    colors: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true, //change
       defaultValue: ['B'],
