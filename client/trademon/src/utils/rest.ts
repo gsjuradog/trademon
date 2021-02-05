@@ -1,9 +1,6 @@
 import { TradeData, Create, SignIn } from './interfaces'
 
-const endpointURL : String = 'http://localhost:3001';
-
-//'https://trademon.herokuapp.com' ||
-
+const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
 export const createUser = async (user : Create) => {
   const { name, email, password } = user;
