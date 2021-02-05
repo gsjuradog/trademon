@@ -1,44 +1,48 @@
 const db = require('../models/index');
-
+const services = require('../services/services');
 const createTrade = async (req, res) => {
-  //check if it is magic or pokemon and do one action or the other
-  /*if (req.body.pokeName) { do pokemon  } else {magic} */
   try {
-    console.log('A User Is Creating An Offer! ');
-    const {
-      numViews,
-      seller,
-      pokeNum,
-      pokeName,
-      pokeGen,
-      pokeLvl,
-      pokeSprite,
-      fastMove,
-      chargeMove,
-      isShiny,
-      appraisal,
-      price,
-      tax,
-      catchLocation, //<--Also on req.body
-      listingType, //<--Also on req.body
-    } = req.body;
-
-    console.log(seller);
-    const reply = await db.PokeTradeData.create({
-      numViews: numViews,
-      seller: seller,
-      pokeNum: pokeNum,
-      pokeName: pokeName,
-      pokeGen: pokeGen,
-      pokeLvl: pokeLvl,
-      pokeSprite: pokeSprite,
-      fastMove: fastMove,
-      chargeMove: chargeMove,
-      isShiny: isShiny,
-      appraisal: appraisal,
-      price: price,
-      tax: tax,
-    });
+    console.log('A User Is Creating An Offer! ', req.headers.token);
+    const { id, token } = req.headers;
+    const tokenValid = await services.checkToken(id, token);
+    let reply = '';
+    if (tokenValid === true) {
+      const {
+        numViews,
+        seller,
+        pokeNum,
+        pokeName,
+        pokeGen,
+        pokeLvl,
+        pokeSprite,
+        fastMove,
+        chargeMove,
+        isShiny,
+        appraisal,
+        price,
+        tax,
+        catchLocation,
+        listingType,
+      } = req.body;
+      reply = await db.PokeTradeData.create({
+        numViews,
+        seller,
+        pokeNum,
+        pokeName,
+        pokeGen,
+        pokeLvl,
+        pokeSprite,
+        fastMove,
+        chargeMove,
+        isShiny,
+        appraisal,
+        price,
+        tax,
+        catchLocation,
+        listingType,
+        UserDatumId: id,
+      });
+    } else reply = { error: 'User not authorized to make this request.' };
     res.status(200).send(reply);
   } catch (err) {
     console.log('POST ERROR', err);
@@ -75,7 +79,7 @@ const fetchTradesByDate = async (req, res) => {
     console.log('Showing recent Trades!');
     const reply = await db.PokeTradeData.findAll({
       limit: 2,
-      order: [['publishDate', 'DESC']],
+      order: [['createdAt', 'DESC']],
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -87,39 +91,48 @@ const fetchTradesByDate = async (req, res) => {
 const editTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An Offer!');
-    const {
-      id,
-      numViews,
-      seller,
-      pokeNum,
-      pokeName,
-      pokeGen,
-      pokeLvl,
-      fastMove,
-      chargeMove,
-      isShiny,
-      appraisal,
-      price,
-      tax,
-    } = req.body;
-    const filter = { where: { id: id } };
-    const reply = await db.PokeTradeData.findOne(filter);
-    //Check if record exists in db
-    if (reply) {
-      reply.update({
-        numViews: numViews,
-        seller: seller,
-        pokeNum: pokeNum,
-        pokeName: pokeName,
-        pokeGen: pokeGen,
-        pokeLvl: pokeLvl,
-        fastMove: fastMove,
-        chargeMove: chargeMove,
-        isShiny: isShiny,
-        appraisal: appraisal,
-        price: price,
-        tax: tax,
-      });
+    const { id, token } = req.headers;
+    const tokenValid = await services.checkToken(id, token);
+    let reply;
+    if (tokenValid === true) {
+      const {
+        id,
+        numViews,
+        seller,
+        pokeNum,
+        pokeName,
+        pokeGen,
+        pokeLvl,
+        fastMove,
+        chargeMove,
+        isShiny,
+        appraisal,
+        price,
+        tax,
+        catchLocation,
+        listingType,
+      } = req.body;
+      const filter = { where: { id: id } };
+      reply = await db.PokeTradeData.findOne(filter);
+      //Check if record exists in db
+      if (reply) {
+        reply.update({
+          numViews,
+          seller,
+          pokeNum,
+          pokeName,
+          pokeGen,
+          pokeLvl,
+          fastMove,
+          chargeMove,
+          isShiny,
+          appraisal,
+          price,
+          tax,
+          catchLocation,
+          listingType,
+        });
+      } else reply = { error: 'User not authorized to make this request.' };
     }
     res.status(200).send(reply);
   } catch (err) {
@@ -131,16 +144,18 @@ const editTrade = async (req, res) => {
 const deleteTrade = async (req, res) => {
   try {
     console.log(req.body);
-    const { id } = await req.body;
-    const reply = await db.PokeTradeData.findOne({
-      where: { id: id },
-    });
-    if (reply) {
-      const deleted = await db.PokeTradeData.destroy({
-        where: { id: id },
-      });
-      res.status(204).send(deleted);
-    }
+    const { id, token } = req.headers;
+    const tokenValid = await services.checkToken(id, token);
+    let reply;
+    if (tokenValid === true) {
+      const { id } = await req.body;
+      const filter = { where: { id: id } };
+      reply = await db.PokeTradeData.findOne(filter);
+      if (reply) {
+        await db.PokeTradeData.destroy(filter);
+      }
+    } else reply = { error: 'User not authorized to make this request.' };
+    res.status(200).send(reply);
   } catch (error) {
     console.log('No Trade With That ID Found', err);
     res.status(500).send('DELETE ERROR');

@@ -54,6 +54,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0,
     },
+    catchLocation: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    listingType: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
 
     // --------------------- PRICE FIELDS
     price: {
@@ -83,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
     },
   });
-  //Trade has two pokemons that are going to be traded, each trade belongs to many users
+
   trade.associate = (model) => {
     trade.belongsTo(model.UserData);
   };

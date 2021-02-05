@@ -13,9 +13,9 @@ exports.signin = async (req, res) => {
       const validPass = await bcrypt.compare(password, user.hashed);
       if (validPass) {
         let token = services.keyGen(15);
-        await db.userTokens.destroy(filter); //delete Old tokens
-        const newToken = await db.userTokens.create({ email, token });
+        await db.userTokens.destroy({ where: { id: user.id } }); //delete Old tokens
         user = user.dataValues;
+        const newToken = await db.userTokens.create({ id: user.id, token });
         delete user.hashed;
         result = {
           success: newToken,
