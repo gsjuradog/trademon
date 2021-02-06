@@ -2,11 +2,14 @@ const db = require('../models/index');
 const services = require('../services/services');
 const createTrade = async (req, res) => {
   try {
-    console.log('A User Is Creating An Offer! ', req.headers.token);
+    console.log('A User Is Creating An Offer! ');
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
     let reply = '';
-    if (tokenValid === true) {
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         numViews,
         seller,
@@ -92,9 +95,12 @@ const editTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An Offer!');
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
-    let reply;
-    if (tokenValid === true) {
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
+    let reply = '';
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         id,
         numViews,
@@ -145,9 +151,12 @@ const deleteTrade = async (req, res) => {
   try {
     console.log(req.body);
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
-    let reply;
-    if (tokenValid === true) {
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
+    let reply = '';
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const { id } = await req.body;
       const filter = { where: { id: id } };
       reply = await db.PokeTradeData.findOne(filter);

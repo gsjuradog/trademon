@@ -5,9 +5,12 @@ const createMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Creating An Offer!');
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
-    let reply;
-    if (tokenValid === true) {
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
+    let reply = '';
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         numViews,
         seller,
@@ -80,10 +83,12 @@ const editMTGOTrade = async (req, res) => {
   try {
     console.log('A User Is Editing An MTGO Offer!');
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
     let reply;
-    console.log('WHAT IS TOKENVALUID: ', tokenValid);
-    if (tokenValid === true) {
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const { id, numViews, isFoil, price, tax, listingType } = req.body;
       const filter = { where: { id: id } };
       reply = await db.MtgoTradeData.findOne(filter);
@@ -108,9 +113,12 @@ const editMTGOTrade = async (req, res) => {
 const deleteMTGOTrade = async (req, res) => {
   try {
     const { id, token } = req.headers;
-    const tokenValid = await services.checkToken(id, token);
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
     let reply;
-    if (tokenValid === true) {
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const { id } = await req.body;
       reply = await db.MtgoTradeData.findOne({ where: { id: id } });
       if (reply) {

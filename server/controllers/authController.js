@@ -17,10 +17,7 @@ exports.signin = async (req, res) => {
         user = user.dataValues;
         const newToken = await db.userTokens.create({ id: user.id, token });
         delete user.hashed;
-        result = {
-          success: newToken,
-          user,
-        };
+        result = { token: newToken.token, ...user };
       } else result = { error: 'One of your credentials is incorrect!' };
     } else result = { error: 'One of your credentials is incorrect!' };
     res.status(200).send(result);
@@ -47,10 +44,11 @@ exports.createUser = async (req, res) => {
         username: username,
         hashed: hashedPass,
       });
-
+      let token = services.keyGen(15);
+      const newToken = await db.userTokens.create({ id: newUser.id, token });
       const cloneUser = Object.assign({}, newUser);
       delete cloneUser.dataValues.hashed;
-      result = cloneUser.dataValues;
+      result = { token: newToken.token, ...cloneUser.dataValues };
     } else {
       if (userCheck !== null || emailCheck !== null) {
         result = { error: 'Credentials are already in use!' };

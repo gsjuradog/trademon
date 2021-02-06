@@ -51,7 +51,6 @@ export interface UserData {
   email:          string,
   username:       string,
   hashed:         string, //password
-  username:       string,
   trainerID?:     number,
   trainerName?:   string,
   mtgoID?:        string,
