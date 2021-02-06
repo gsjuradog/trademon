@@ -78,7 +78,7 @@ export const createMessage = (from: String, to: String, content: String, chatID:
 }
 
 export const getTrades = () => {
-  return fetch(`${endpointURL}/fetchTrades`, {
+  return fetch(`${endpointURL}/fetchPokeTrades`, {
     method: 'GET'})
     .then(res => res.status <= 400? res : Promise.reject(res))
     .then(res => res.json())
@@ -88,7 +88,7 @@ export const getTrades = () => {
 };
 
 export const getOneTrade = (tradeID: Number) => {
-  return fetch(`${endpointURL}/fetchOneTrade`, {
+  return fetch(`${endpointURL}/fetchOnePokeTrade`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'

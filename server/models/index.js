@@ -1,6 +1,6 @@
 require('dotenv').config();
 const path = require('path');
-
+//
 const fs = require('fs');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
@@ -18,12 +18,12 @@ const sequelize = new Sequelize({
   database: DBNAME,
   username: USER,
   password: PASSWORD,
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 fs.readdirSync(__dirname)
