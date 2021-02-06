@@ -42,20 +42,26 @@ export const signInUser = async (user: SignIn) => {
     return result;
 }
 
-export const createChat = (seller: String, buyer: String) => {
-  fetch(`${endpointURL}/createChat`, {
+export const createChat = async (seller: Number, buyer: Number, message: any) => {
+
+  let result; 
+  
+  await fetch(`${endpointURL}/createChat`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
       seller,
-      buyer
+      buyer,
+      message
     })
   })
-    .then(res => res.json)
-    .then(data => console.log(data))
-    .catch(err => console.log('CREATE CHAT ERROR', err))
+    .then(res => res.json())
+    .then(data => result = data)
+    .catch(err => console.log('CREATE CHAT ERROR', err));
+
+  return result;
 }
 
 export const createMessage = (from: String, to: String, content: String, chatID: Number) => {
