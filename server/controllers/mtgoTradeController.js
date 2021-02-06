@@ -139,7 +139,7 @@ const fetchOneMTGOTrade = async (req, res) => {
     console.log('Someone Requested Trade Details!');
     const { id } = req.body;
     const filter = { where: { id: id } };
-    const reply = await db.MtgoTrade.findOne(filter);
+    const reply = await db.MtgoTradeData.findOne(filter);
     res.status(200).send(reply);
   } catch (err) {
     console.log('FETCH ERROR', err);
