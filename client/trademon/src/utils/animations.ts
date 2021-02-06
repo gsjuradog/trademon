@@ -72,3 +72,18 @@ export const demoArrowAnimation = () => {
   })
 }
 
+//Contact Seller animation
+export const contactSellerAnimation = () => {
+  gsap.from('.contact-seller-trade', 1.5, {
+    x: -300,
+    ease: "bounce.out"
+  })
+  gsap.from('.contact-seller-message', 1.5, {
+    x: 300,
+    ease: "bounce.out"
+  })
+  gsap.to('.contact-seller-container', 1, {
+    opacity: 1
+  })
+}
+

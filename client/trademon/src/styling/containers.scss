@@ -76,6 +76,71 @@
   justify-content: space-evenly;
 }
 
+.contact-seller-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 100vh;
+  opacity: 0;
+  .contact-seller-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    height: 60vh;
+    margin: 2em;
+    border: 1px solid $colorPrimary;
+    box-shadow: 0 0 10px 3px $colorPrimary;
+    h1 {
+      padding-top: 1em;
+    }
+  }
+}
+
+.contact-seller-message {
+  textarea {
+    width: 80%;
+    height: 40%;
+    resize: none;
+    background-color: $colorShadowLight;
+    color: $colorText;
+    padding: 1em;
+    font-size: 1.5em;
+    box-shadow: 0 0 10px 3px $colorPrimary;
+    border-style: none;
+  }
+  textarea:focus {
+    outline: none;
+  }
+  i {
+    color: $colorPrimary;
+  }
+  .contact-seller-btns {
+    margin-bottom: 1em;
+    button {
+      margin: 1em;
+    }
+  }
+}
+
+.contact-seller-trade {
+  img {
+    width: 40%;
+  }
+  p {
+    margin: 1em;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .contact-seller-container {
+    flex-direction: column;
+  }
+}
+
 .item-details-container {
   @extend .flex-column-center;
 }

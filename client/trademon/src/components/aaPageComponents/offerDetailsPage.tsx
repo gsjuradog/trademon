@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
+import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOneTrade } from '../../utils/rest';
 import { useParams } from 'react-router';
@@ -13,9 +14,9 @@ export default function OfferDetailsPage() {
     {
       tradeID:0,
       numViews:0, 
-      seller:'', 
+      seller:'Santi', 
       pokeNum:0, 
-      pokeName:'', 
+      pokeName:'Bulbasaur', 
       pokeGen:0, 
       pokeLvl:0, 
       pokeSprite:'https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612299771/1_ea1rrt.png',
@@ -23,10 +24,12 @@ export default function OfferDetailsPage() {
       chargeMove:'Loading', 
       isShiny:false ,
       appraisal:0, 
-      price:0, 
+      price:100, 
       tax:0
     }
   );
+
+  const [messageSeller, setMessageSeller] = useState(false);
 
   useEffect(() => {
     fetchTradeDetails();
@@ -36,6 +39,18 @@ export default function OfferDetailsPage() {
     const tradeFetch = await getOneTrade(tradeID);
     if (tradeFetch) setTradeDetails(tradeFetch);
     console.log('Are We Getting Data? ', tradeDetails);
+  }
+
+  const messageHandler = () => {   
+    setMessageSeller(true);
+  };
+
+  if (messageSeller) {
+    return (
+      <ContactSeller
+        tradeDetails={tradeDetails}
+        setmessageSeller={setMessageSeller}/>
+    )
   }
 
   return (
@@ -99,7 +114,7 @@ export default function OfferDetailsPage() {
               2h 16m left
             </div>
           </div>
-          <button>Message Seller</button>
+          <button onClick={messageHandler}>Message Seller</button>
         </div>
       </div>
     </>

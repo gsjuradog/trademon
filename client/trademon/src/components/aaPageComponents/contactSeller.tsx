@@ -1,0 +1,76 @@
+import React, { useState, useEffect } from 'react';
+import { withRouter, useHistory } from 'react-router-dom';
+
+import { createChat } from '../../utils/rest';
+
+import { contactSellerAnimation } from '../../utils/animations';
+import { ClockLoader }  from 'react-spinners';
+
+import '../../styling/containers.scss'
+
+const ContactSeller = ({setmessageSeller, tradeDetails} : any) => {
+
+  const history = useHistory();
+
+  const [sendStatus, setSendStatus] = useState('DEFAULT');
+
+  useEffect (() => {
+    contactSellerAnimation()
+  }, []);
+
+  const chatHandler = async () => {
+    setSendStatus('SENDING');
+    const reply = await createChat(1, 2);
+    if (!reply) {
+      setSendStatus('SEND ERROR');
+      return;
+    } 
+    setSendStatus('SEND SUCCESS');
+  }
+
+  const backHandler = () => {
+    history.push(`trade/${tradeDetails.tradeID}`);
+    setmessageSeller(false);
+  }
+
+const color = '#075f59';
+
+  const textAreaHandler = () => {
+    if (ClockLoader) {
+      switch(sendStatus) {
+        case 'SENDING' : 
+          return <ClockLoader size={80} color={color}/>
+        case 'SEND ERROR' :
+          return <p>Send error!</p>;
+        case 'SEND SUCCESS' :
+          return <i className="fas fa-check fa-10x"></i>
+        default :
+          return <textarea autoFocus></textarea>;  
+      }
+    }
+  }
+
+  return (
+    <div className="contact-seller-container">
+      <div className="contact-seller-box contact-seller-trade">
+        <h1>Trade Details</h1>
+        <img src={tradeDetails.pokeSprite}></img>
+        <p>Pokemon: {tradeDetails.pokeName}</p>
+        <p>Seller: {tradeDetails.seller}</p>
+        <p>Price: {tradeDetails.price}</p>
+      </div>
+      <div className="contact-seller-box contact-seller-message">
+        <h1>Contact Seller</h1>
+        {textAreaHandler()}
+        <div className="contact-seller-btns">
+          <button onClick={backHandler}>Back to trade</button>
+          {
+          sendStatus === 'DEFAULT' ?  
+          <button onClick={chatHandler}>Send message</button> : null}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default withRouter(ContactSeller);

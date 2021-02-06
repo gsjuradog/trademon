@@ -18,7 +18,7 @@ console.log(test);
 app.use(cors(), express.json(), router);
 
 const typeDefs = gql(
-  fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' }),
+  fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' })
 );
 const resolvers = require('./controllers/resolvers');
 //const context = ({ req }) => ({user: req.user});
@@ -28,7 +28,7 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 (async () => {
   try {
-    // await db.sequelize.sync({ force: true });
+    //await db.sequelize.sync({ force: true });
     await db.sequelize.sync();
     app.listen(PORT);
     console.log(`Conected to DB, Server listening on port ${PORT}`); // eslint-disable-line no-console
