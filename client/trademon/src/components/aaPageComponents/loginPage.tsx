@@ -13,10 +13,11 @@ import '../../styling/login.scss';
 import { fetchUser, getUser } from '../../store/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
+import {User} from '../../'
 
 const Login = () => {
 
-  const userState = useSelector((state: RootState) => state.user);
+  const userState: User = useSelector((state: RootState) => state.user);
   const history = useHistory();
 
   const initialCreate : Create = {
