@@ -42,8 +42,6 @@ export const {
 } = miniTileSlice.actions;
 export default miniTileSlice.reducer;
 
-// THUNK / EPIC
-
 // THUNK1: Fetching Trades
 export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
   try {

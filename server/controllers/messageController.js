@@ -1,6 +1,6 @@
 const db = require('../models/index');
 
-const postMessage = async (req, res) => {
+const sendMessage = async (req, res) => {
   try {
     console.log('POST');
     const { sender, content, PrivateChatId } = req.body;
@@ -27,5 +27,5 @@ const postMessage = async (req, res) => {
 };
 
 module.exports = {
-  postMessage,
+  sendMessage,
 };

@@ -137,8 +137,8 @@ const deleteMTGOTrade = async (req, res) => {
 const fetchOneMTGOTrade = async (req, res) => {
   try {
     console.log('Someone Requested Trade Details!');
-    const { tradeID } = req.body;
-    const filter = { where: { tradeID: tradeID } };
+    const { id } = req.body;
+    const filter = { where: { id: id } };
     const reply = await db.MtgoTrade.findOne(filter);
     res.status(200).send(reply);
   } catch (err) {

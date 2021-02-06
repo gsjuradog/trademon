@@ -37,22 +37,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
     buyerRating: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      allowNull: true,
-    },
-    numBuyReviews: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.ARRAY(DataTypes.FLOAT),
       defaultValue: 0,
       allowNull: true,
     },
     sellerRating: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-      allowNull: true,
-    },
-    numSellReviews: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.ARRAY(DataTypes.FLOAT),
       defaultValue: 0,
       allowNull: true,
     },
