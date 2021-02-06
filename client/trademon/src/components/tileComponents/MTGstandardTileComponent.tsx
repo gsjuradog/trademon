@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function StandardTileComponent(trade: StandardTileTrade) {
   return (
-    <Link to={`/trade/${trade.id}`}>
+    <Link to={`/mtgotrade/${trade.id}`}>
       <div className="standard-tile-container">
         <div className="title-row">
           <span className="heart"></span>

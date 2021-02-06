@@ -93,7 +93,7 @@ export const getOneTrade = (tradeID: Number) => {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-      tradeID: tradeID,
+      id: tradeID,
     })
   })
     .then(res => res.status <= 400? res : Promise.reject(res))
@@ -113,6 +113,24 @@ export const getMTGOTrades = () => {
   })
 } 
 
+
+export const getOneMTGOTrade = (tradeID: Number) => {
+  console.log(tradeID, 'TradeID')
+  return fetch(`${endpointURL}/fetchOneMTGOTrade`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      id: tradeID,
+    })
+  })
+    .then(res => res.status <= 400? res : Promise.reject(res))
+    .then(res => res.json())
+    .catch((err)=>{
+      console.log(`${err} while fetching single trade`)
+  })
+};
 
 
 export const createTrade = async (trade : TradeData) => {
