@@ -13,7 +13,7 @@ import '../../styling/login.scss';
 import { fetchUser, getUser } from '../../store/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
-import {User} from '../../'
+import { User } from '../../store/interfaces';
 
 const Login = () => {
 

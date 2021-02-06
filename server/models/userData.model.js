@@ -38,12 +38,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     buyerRating: {
       type: DataTypes.ARRAY(DataTypes.FLOAT),
-      defaultValue: 0,
+      defaultValue: [],
       allowNull: true,
     },
     sellerRating: {
       type: DataTypes.ARRAY(DataTypes.FLOAT),
-      defaultValue: 0,
+      defaultValue: [],
       allowNull: true,
     },
     numOfStrikes: {
