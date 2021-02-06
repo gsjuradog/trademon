@@ -66,6 +66,26 @@ export interface UserData {
 
 export interface UserData {
   username:       string,
+  signUpDate: Date,
+}
+
+export interface UserData {
+  username:       string,
+  signUpDate: Date,
+}
+
+export interface UserData {
+  username:       string,
+  signUpDate: Date,
+}
+
+export interface UserData {
+  username:       string,
+  signUpDate: Date,
+}
+
+export interface UserData {
+  username:       string,
   trainerID?:     number,
   trainerName?:   string,
   mtgoID?:        string,
