@@ -14,7 +14,7 @@ const PORT = process.env.PORT || process.env.PORTLOCAL || 3001;
 const HOST = 'localhost';
 const test = process.env.HOST;
 console.log(test);
-
+//
 app.use(cors(), express.json(), router);
 
 const typeDefs = gql(
