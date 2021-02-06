@@ -24,6 +24,29 @@ export interface PokeVariableData {
   appraisal:      number,
 }
 
+export interface MtgoTrades {
+  id:number
+  expirationDate:string,//change to date later
+  numViews:number,
+  cardName:string,
+  cardImage:string,
+  setName:string,
+  convertedManaCost:number,
+  manaCost:string,
+  name:string,
+  type:string,
+  subTypes:string[],
+  rarity:string,
+  color:string[],
+  isFoil:boolean,
+  price:number,
+  tax:number,
+  listingType:string,
+  buyer:string|null,
+  buyersOfferItemId:number|null,
+  tradeComplete:boolean
+}
+
 export interface MTGVariableData {
   id:             string,
   //Still need to fill this out

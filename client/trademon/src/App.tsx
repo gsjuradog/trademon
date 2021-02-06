@@ -18,7 +18,7 @@ import DMPage from './components/aaPageComponents/dmPage';
 import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
 import DemoAnimation from './components/aaPageComponents/demoAnimation';
-
+import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsMtgoPage';
 import TestComponent from './components/testComponent/testComponent';
 
 const App = () => {
@@ -29,6 +29,7 @@ const App = () => {
           <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
           <Route path="/trade/:tradeID" component={OfferDetailsPage} />
+          <Route path="/mtgotrade/:tradeID" component={OfferDetailsMTGOPage} />
           <Route path="/profile" component={MyProfile} />
           <Route path="/create-listing" component={CreateListingForm} />
           <Route path="/messages" component={DMPage} />
