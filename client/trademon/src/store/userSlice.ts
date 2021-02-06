@@ -1,22 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
-import { User } from './interfaces';
+import { User, SignIn } from './interfaces';
 import { signInUser } from '../utils/rest';
 
-const initialState: any = {user: 
-  {
-    token: '',
-    id: 0,
-    email: '',
-    username: '',
-    trainerID: 0,
-    trainerName: '',
-    mtgoID: 0,
-    mtgoName: '',
-    buyerRating: [],
-    sellerRating: [],
-    numOfStrikes: 0,
-  }
+const initialState: User = {
+  token: '',
+  id: 0,
+  email: '',
+  username: '',
+  trainerID: 0,
+  trainerName: '',
+  mtgoID: 0,
+  mtgoName: '',
+  buyerRating: [],
+  sellerRating: [],
+  numOfStrikes: 0,
+  error: false,
 }
 
 const userSlice = createSlice({
@@ -25,7 +24,7 @@ const userSlice = createSlice({
   reducers: {
     getUser(state, { payload }: PayloadAction<User>) {
       console.log('TRADE REDUCER, payload is: ', payload);
-      state.user = payload;
+      state = payload;
     },
     getUserError(state, action: PayloadAction<string>) {
       console.error('TRADE - Error Handling: ', action.payload);
@@ -43,7 +42,7 @@ export default userSlice.reducer;
 // THUNK / EPIC
 
 // THUNK1: Fetching User
-export const fetchUser = (signin: any): AppThunk => async (dispatch) => {
+export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
   try {
     console.log(
       'THUNK fetch USER I am getting User Info: ',

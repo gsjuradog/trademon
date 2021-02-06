@@ -77,10 +77,10 @@ const Login = () => {
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await dispatch(fetchUser(signIn));
-    if (userState.user.hasOwnProperty('token')) {
+    if (userState.hasOwnProperty('token')) {
       history.push('/')
-    } else if (userState.user.hasOwnProperty('error')) {
-        setError(userState.user.error);
+    } else if (userState.hasOwnProperty('error')) {
+        setError(userState.error);
     } else {
         setError(true); 
     }

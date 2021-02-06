@@ -12,7 +12,13 @@ export interface User {
   numOfStrikes: number;
   createdAt?: Date;
   updatedAt?: Date;
+  error: React.SetStateAction<boolean>;
 }
+
+export interface SignIn {
+    email: string;
+    password: string;
+  }
 
 export interface Trade {
   id: number;
