@@ -46,16 +46,12 @@ export interface MTGConstData {
 
 // ******************
 // USER ACCOUNT RELATED
-export interface UserCredentials {
-  id:         string,
-  email:      string,
-  username:   string,
-  password:   string,
-  signUpDate: Date,
-}
 
 export interface UserData {
+  id:             string,
+  email:          string,
   username:       string,
+  hashed:         string, //password
   trainerID?:     number,
   trainerName?:   string,
   mtgoID?:        string,

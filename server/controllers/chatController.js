@@ -4,8 +4,7 @@ const createChat = async (req, res) => {
   try {
     const { seller, buyer } = req.body;
     const reply = await db.PrivateChat.create({
-      buyer: buyer,
-      seller: seller,
+      users: [buyer, seller],
     });
     res.status(200).send(reply);
   } catch (err) {
@@ -19,17 +18,17 @@ const getChat = async (req, res) => {
     const { id } = req.params;
     const reply = await db.Message.findAll({
       where: {
-        chatID: id
-      }
+        chatID: id,
+      },
     });
     res.status(200).send(reply);
   } catch (err) {
     console.log('GET ERROR', err);
     res.status(500).send(`GET ERROR: ${err}`);
   }
-}
+};
 
 module.exports = {
   createChat,
-  getChat
+  getChat,
 };

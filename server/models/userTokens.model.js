@@ -2,11 +2,11 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const userTokens = sequelize.define('userTokens', {
-    email: {
+    id: {
       primaryKey: true,
       unique: true,
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     token: {
       type: DataTypes.STRING,

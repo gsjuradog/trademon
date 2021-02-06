@@ -1,42 +1,29 @@
 const db = require('../models/index');
-const bcrypt    = require('bcrypt')
+const bcrypt = require('bcrypt');
 const services = require('../services/services');
 
 exports.signin = async (req, res) => {
   try {
     console.log(' ♛ A User Requested Sign In ♛ ');
     const { email, password } = req.body;
-    const filter = {where: {email: email }};
-    const user = await db.userCredentials.findOne(filter);
+    const filter = { where: { email: email } };
+    let user = await db.UserData.findOne(filter);
     let result = '';
-    if ( user !== null) {
-      const validPass = await bcrypt.compare(password, user.hashed)
-      if ( validPass ) {
+    if (user !== null) {
+      const validPass = await bcrypt.compare(password, user.hashed);
+      if (validPass) {
         let token = services.keyGen(15);
-        const deleteOldTokens = await db.userTokens.destroy(filter)
-        const newToken = await db.userTokens.create({ email, token });
-        const userSave = await db.UserData.findOne({ where: {username: user.username}})
-        result = {
-          success:        token, 
-          email:          user.email, 
-          username:       user.username, 
-          trainerID:      userSave.trainerID,
-          trainerName:    userSave.trainerName,
-          mtgoId:         userSave.mtgoId,
-          mtgoName:       userSave.mtgoName,
-          buyerRating:    userSave.buyerRating,
-          numBuyRatings:  userSave.numBuyRatings,
-          sellerRating:   userSave.sellerRating,
-          numSellRatings: userSave.numSellRatings,
-          numOfStrikes:   userSave.numOfStrikes
-        }
-      }
-      else result = {error: 'One of your credentials is incorrect!'};
-    } else result = {error: 'One of your credentials is incorrect!'};
+        await db.userTokens.destroy({ where: { id: user.id } }); //delete Old tokens
+        user = user.dataValues;
+        const newToken = await db.userTokens.create({ id: user.id, token });
+        delete user.hashed;
+        result = { token: newToken.token, ...user };
+      } else result = { error: 'One of your credentials is incorrect!' };
+    } else result = { error: 'One of your credentials is incorrect!' };
     res.status(200).send(result);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500); 
+    res.sendStatus(500);
   }
 };
 
@@ -44,28 +31,28 @@ exports.createUser = async (req, res) => {
   try {
     console.log('♛ A User Requested Sign Up ♛');
     const { username, email, password } = req.body;
-    const filter1 =  {where: {username: username }};
-    const filter2 =  {where: {email: email }};
-    const userCheck = await db.userCredentials.findOne(filter1);
-    const emailCheck = await db.userCredentials.findOne(filter2);
+    const filter1 = { where: { username: username } };
+    const filter2 = { where: { email: email } };
+    const userCheck = await db.UserData.findOne(filter1);
+    const emailCheck = await db.UserData.findOne(filter2);
     let result = '';
-    if (userCheck === null  && emailCheck === null) {
-      const hashed = await bcrypt.hash(password, 10);
-      const newUser = db.userCredentials.create({ 
-        email: email, 
-        username:username, 
-        hashed: hashed 
-      });
-      const storeSave = db.UserData.create({ 
+    if (userCheck === null && emailCheck === null) {
+      const hashedPass = await bcrypt.hash(password, 10);
+
+      const newUser = await db.UserData.create({
+        email: email,
         username: username,
-        numBuyRatings: 0,
-        numSellRatings: 0,
-        numOfStrikes: 0,
-      })
-      result = {success: 'User created'}
+        hashed: hashedPass,
+      });
+      let token = services.keyGen(15);
+      const newToken = await db.userTokens.create({ id: newUser.id, token });
+      const cloneUser = Object.assign({}, newUser);
+      delete cloneUser.dataValues.hashed;
+      result = { token: newToken.token, ...cloneUser.dataValues };
     } else {
-      if (userCheck !== null) result = {error: 'Username is taken'};
-      if (emailCheck !== null) result = {error: 'Account exists with this email'};
+      if (userCheck !== null || emailCheck !== null) {
+        result = { error: 'Credentials are already in use!' };
+      }
     }
     res.status(200).send(result);
   } catch (err) {

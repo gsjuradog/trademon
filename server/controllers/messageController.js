@@ -3,13 +3,12 @@ const db = require('../models/index');
 const postMessage = async (req, res) => {
   try {
     console.log('POST');
-    const { from, to, content, chatID } = req.body;
-    console.log(from, to, content, chatID);
+    const { sender, content, PrivateChatId } = req.body;
+    console.log(content, sender);
     const reply = await db.Message.create({
-      from: from,
-      to: to,
+      sender,
       content: content,
-      chatId: chatID,
+      PrivateChatId,
     });
     // const chat = await db.PrivateChats.findOne({
     //   where: {
