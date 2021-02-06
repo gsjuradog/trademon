@@ -10,8 +10,14 @@ import { Create, SignIn } from '../../utils/interfaces';
 import { panelRight, panelLeft, setUp } from '../../utils/animations';
 import '../../styling/login.scss';
 
+import { fetchUser, getUser } from '../../store/userSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store/store';
+import { User } from '../../store/interfaces';
+
 const Login = () => {
 
+  const userState: User = useSelector((state: RootState) => state.user);
   const history = useHistory();
 
   const initialCreate : Create = {
@@ -25,6 +31,7 @@ const Login = () => {
     password: ''
   }
 
+  const dispatch = useDispatch();
   const [create, setCreateState] = useState(initialCreate);
   const [signIn, setSignInState] = useState(initialSignIn);
   const [loginError, setError] = useState(false);
@@ -69,11 +76,11 @@ const Login = () => {
 
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const result = await signInREST(signIn);
-    if (result.hasOwnProperty('token')) {
+    await dispatch(fetchUser(signIn));
+    if (userState.hasOwnProperty('token')) {
       history.push('/')
-    } else if (result.hasOwnProperty('error')) {
-        setError(result.error);
+    } else if (userState.hasOwnProperty('error')) {
+        setError(userState.error);
     } else {
         setError(true); 
     }

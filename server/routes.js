@@ -17,7 +17,7 @@ router.post('/signin', userControllers.signin);
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
-router.post('/createMessage', messageControllers.postMessage);
+router.post('/sendMessage', messageControllers.sendMessage);
 router.get('/getChat/:id', chatControllers.getChat);
 
 // Pokemon TRADE RELATED ROUTES

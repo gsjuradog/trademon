@@ -1,3 +1,25 @@
+export interface User {
+  token: string;
+  id: number;
+  email: string;
+  username: string;
+  trainerID?: number;
+  trainerName?: string;
+  mtgoID?: number;
+  mtgoName?: string;
+  buyerRating: number[];
+  sellerRating: number[];
+  numOfStrikes: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  error: React.SetStateAction<boolean>;
+}
+
+export interface SignIn {
+    email: string;
+    password: string;
+  }
+
 export interface Trade {
   id: number;
   numViews: number;

@@ -1,11 +1,16 @@
 const db = require('../models/index');
-
+//
 const createChat = async (req, res) => {
   try {
-    const { seller, buyer } = req.body;
+    const { seller, buyer, message } = req.body;
     const reply = await db.PrivateChat.create({
       users: [buyer, seller],
     });
+    await db.Message.create({
+      sender: buyer,
+      content: message,
+      PrivateChatId: reply.id
+    })
     res.status(200).send(reply);
   } catch (err) {
     console.log('POST ERROR', err);
