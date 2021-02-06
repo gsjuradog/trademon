@@ -35,7 +35,7 @@ const Login = () => {
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = await createREST(create);
-    if (result.hasOwnProperty('success')) {
+    if (result.hasOwnProperty('token')) {
       history.push('/')
     } else if (result.hasOwnProperty('error')) {
         setError(result.error);
@@ -70,7 +70,7 @@ const Login = () => {
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = await signInREST(signIn);
-    if (result.hasOwnProperty('success')) {
+    if (result.hasOwnProperty('token')) {
       history.push('/')
     } else if (result.hasOwnProperty('error')) {
         setError(result.error);

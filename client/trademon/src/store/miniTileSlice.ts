@@ -92,7 +92,7 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
 const mapPokemonsToUtrade = (trades: PokeTrade[]): MiniTileTrade[] => {
   return trades.map((trade) => {
     return {
-      tradeID: trade.tradeID,
+      id: trade.id,
       name: trade.pokeName,
       price: trade.price,
       image: trade.pokeSprite,
@@ -104,7 +104,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): MiniTileTrade[] => {
 const mapMtgsToUtrade = (trades: MtgTrade[]): MiniTileTrade[] => {
   return trades.map((trade) => {
     return {
-      tradeID: trade.tradeID,
+      id: trade.id,
       name: trade.cardName,
       price: trade.price,
       image: trade.cardImage,

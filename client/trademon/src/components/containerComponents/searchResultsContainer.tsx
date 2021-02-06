@@ -26,7 +26,7 @@ export default function SearchResultsContainer(props: IProps) {
         (standardTile: StandardTileTrade) => (
           <li
             style={{ listStyleType: 'none' }}
-            key={props.world + standardTile.tradeID}
+            key={props.world + standardTile.id}
           >
             <StandardTileComponent {...standardTile}></StandardTileComponent>
             {console.log('RENDER Standard TILE: ', standardTile)}
@@ -39,7 +39,7 @@ export default function SearchResultsContainer(props: IProps) {
         (standardTile: StandardTileTrade) => (
           <li
             style={{ listStyleType: 'none' }}
-            key={props.world + standardTile.tradeID}
+            key={props.world + standardTile.id}
           >
             <MTGstandardTileComponent
               {...standardTile}
@@ -59,7 +59,7 @@ export default function SearchResultsContainer(props: IProps) {
         (standardTile: StandardTileTrade) => (
           <li
             style={{ listStyleType: 'none' }}
-            key={props.world + standardTile.tradeID}
+            key={props.world + standardTile.id}
           >
             <StandardTileComponent {...standardTile}></StandardTileComponent>
             {console.log('RENDER Standard TILE: ', standardTile)}

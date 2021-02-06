@@ -1,5 +1,5 @@
 export interface Trade {
-  tradeID: number;
+  id: number;
   numViews: number;
   seller: string;
   pokeNum: number;
@@ -18,7 +18,7 @@ export interface Trade {
 }
 
 export interface PokeTrade {
-  tradeID: number;
+  id: number;
   numViews: number;
   seller: string;
   pokeNum: number;
@@ -37,6 +37,7 @@ export interface PokeTrade {
 }
 
 export interface MtgTrade {
+  id: number;
   buyer: string;
   buyersOfferItemId: string;
   cardImage: string;
@@ -58,35 +59,19 @@ export interface MtgTrade {
   setName: string;
   tax: number;
   tradeComplete: boolean;
-  tradeID: number;
   updatedAt: Date;
 }
 
 export interface MiniTileTrade {
-  tradeID: number;
+  id: number;
   name: string;
   price: number;
   image: string;
   world: string;
 }
 
-// export interface StandardTileTrade {
-//   tradeID: number;
-//   numViews: number;
-//   seller: string;
-//   skillNum?: number;
-//   name?: string | undefined;
-//   gen?: number;
-//   level?: number;
-//   isShiny?: boolean;
-//   price: number;
-//   tax: number;
-//   image: string | undefined;
-//   world: string;
-// }
-
 export interface StandardTileTrade {
-  tradeID: number;
+  id: number;
   name: string;
   price: number;
   image: string;

@@ -141,7 +141,7 @@ export const filterTrade = (
 const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
   return trades.map((trade) => {
     return {
-      tradeID: trade.tradeID,
+      id: trade.id,
       name: trade.pokeName,
       price: trade.price,
       image: trade.pokeSprite,
@@ -155,7 +155,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
 const mapMtgsToUtrade = (trades: MtgTrade[]): StandardTileTrade[] => {
   return trades.map((trade) => {
     return {
-      tradeID: trade.tradeID,
+      id: trade.id,
       name: trade.cardName,
       price: trade.price,
       image: trade.cardImage,

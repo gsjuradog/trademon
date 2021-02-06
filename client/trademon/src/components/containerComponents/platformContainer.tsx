@@ -20,14 +20,14 @@ export default function PlatformContainer(props: IProps) {
   switch (world) {
     case 'Pokemon':
       miniTilesRender = miniTiles.pokemons.map((miniTile: MiniTileTrade) => (
-        <li style={{ listStyleType: 'none' }} key={world + miniTile.tradeID}>
+        <li style={{ listStyleType: 'none' }} key={world + miniTile.id}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>
         </li>
       ));
       break;
     case 'MTG':
       miniTilesRender = miniTiles.mtgs.map((miniTile: MiniTileTrade) => (
-        <li style={{ listStyleType: 'none' }} key={world + miniTile.tradeID}>
+        <li style={{ listStyleType: 'none' }} key={world + miniTile.id}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>
         </li>
       ));
