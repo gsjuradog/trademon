@@ -49,7 +49,7 @@ export default function OfferDetailsPage() {
     return (
       <ContactSeller
         tradeDetails={tradeDetails}
-        setmessageSeller={setMessageSeller}/>
+        setMessageSeller={setMessageSeller}/>
     )
   }
 

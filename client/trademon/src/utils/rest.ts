@@ -43,7 +43,7 @@ export const signInUser = async (user: SignIn) => {
     return result;
 }
 
-export const createChat = async (seller: Number, buyer: Number) => {
+export const createChat = async (seller: Number, buyer: Number, message: any) => {
 
   let result; 
   
@@ -54,7 +54,8 @@ export const createChat = async (seller: Number, buyer: Number) => {
     },
     body: JSON.stringify({
       seller,
-      buyer
+      buyer,
+      message
     })
   })
     .then(res => res.json())

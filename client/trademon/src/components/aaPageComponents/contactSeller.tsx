@@ -8,11 +8,13 @@ import { ClockLoader }  from 'react-spinners';
 
 import '../../styling/containers.scss'
 
-const ContactSeller = ({setmessageSeller, tradeDetails} : any) => {
+const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
 
   const history = useHistory();
+  const color = '#075f59';     //Spinner colour
 
   const [sendStatus, setSendStatus] = useState('DEFAULT');
+  const [textAreaValue, setTextAreaValue] = useState<string>("");
 
   useEffect (() => {
     contactSellerAnimation()
@@ -20,7 +22,7 @@ const ContactSeller = ({setmessageSeller, tradeDetails} : any) => {
 
   const chatHandler = async () => {
     setSendStatus('SENDING');
-    const reply = await createChat(1, 2);
+    const reply = await createChat(1, 2, textAreaValue);
     if (!reply) {
       setSendStatus('SEND ERROR');
       return;
@@ -30,12 +32,10 @@ const ContactSeller = ({setmessageSeller, tradeDetails} : any) => {
 
   const backHandler = () => {
     history.push(`trade/${tradeDetails.tradeID}`);
-    setmessageSeller(false);
+    setMessageSeller(false);
   }
 
-const color = '#075f59';
-
-  const textAreaHandler = () => {
+  const textAreaState = () => {
     if (ClockLoader) {
       switch(sendStatus) {
         case 'SENDING' : 
@@ -45,7 +45,14 @@ const color = '#075f59';
         case 'SEND SUCCESS' :
           return <i className="fas fa-check fa-10x"></i>
         default :
-          return <textarea autoFocus></textarea>;  
+          return <textarea 
+                    id="contact-seller-content" 
+                    autoFocus 
+                    placeholder="Message seller..."
+                    value={textAreaValue}
+                    onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>)
+                    : void => setTextAreaValue(ev.target.value)}
+                    ></textarea>;  
       }
     }
   }
@@ -61,7 +68,7 @@ const color = '#075f59';
       </div>
       <div className="contact-seller-box contact-seller-message">
         <h1>Contact Seller</h1>
-        {textAreaHandler()}
+        {textAreaState()}
         <div className="contact-seller-btns">
           <button onClick={backHandler}>Back to trade</button>
           {

@@ -119,6 +119,7 @@
     color: $colorPrimary;
   }
   .contact-seller-btns {
+    display: flex;
     margin-bottom: 1em;
     button {
       margin: 1em;
@@ -135,9 +136,24 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 840px) {
   .contact-seller-container {
     flex-direction: column;
+    height: auto;
+    .contact-seller-box {
+      width: 90%;
+    }
+    .contact-seller-message {
+      h1 {
+        margin-bottom: 1em;
+      }
+      textarea {
+        height: 60%;
+      }
+      .contact-seller-btns {
+        margin-top: 1em;
+      }
+    }
   }
 }
 
