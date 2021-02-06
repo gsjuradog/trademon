@@ -3,7 +3,7 @@ const router = express.Router();
 
 const testControllers = require('./controllers/testControllers');
 const userControllers = require('./controllers/authController');
-const tradeControllers = require('./controllers/tradeController');
+const tradeControllers = require('./controllers/pokeTradeController');
 const chatControllers = require('./controllers/chatController');
 const messageControllers = require('./controllers/messageController');
 const staticPokeControllers = require('./controllers/pokeStaticController');
@@ -20,13 +20,13 @@ router.post('/createChat', chatControllers.createChat);
 router.post('/createMessage', messageControllers.postMessage);
 router.get('/getChat/:id', chatControllers.getChat);
 
-// TRADE RELATED ROUTES
-router.post('/createTrade', tradeControllers.createTrade);
-router.get('/fetchTrades', tradeControllers.fetchTrades);
-router.post('/fetchOneTrade', tradeControllers.fetchOneTrade);
-router.get('/fetchTradesByDate', tradeControllers.fetchTradesByDate);
-router.put('/editTrade', tradeControllers.editTrade);
-router.delete('/deleteTrade', tradeControllers.deleteTrade);
+// Pokemon TRADE RELATED ROUTES
+router.post('/createPokeTrade', tradeControllers.createTrade);
+router.get('/fetchPokeTrades', tradeControllers.fetchTrades);
+router.post('/fetchOnePokeTrade', tradeControllers.fetchOneTrade);
+router.get('/fetchPokeTradesByDate', tradeControllers.fetchTradesByDate);
+router.put('/editPokeTrade', tradeControllers.editTrade);
+router.delete('/deletePokeTrade', tradeControllers.deleteTrade);
 
 //MTGO for now duplicated routes...wonder if we can use just one for both pokemon and MTGO
 router.post('/createMTGOTrade', mtgotradeControllers.createMTGOTrade);

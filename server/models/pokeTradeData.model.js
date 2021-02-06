@@ -3,32 +3,14 @@ const { Sequelize, DataTypes } = require('sequelize');
 const expDate = () => Date.now() + 604800000;
 
 module.exports = (sequelize, DataTypes) => {
-  const trade = sequelize.define('TradeData', {
-    tradeID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
-    },
-    publishDate: {
-      type: DataTypes.DATE,
-      //allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
+  const trade = sequelize.define('PokeTradeData', {
     expirationDate: {
       type: DataTypes.DATE,
       defaultValue: expDate(),
-      allowNull: true,
     },
     numViews: {
       type: DataTypes.INTEGER,
-      defaultValue: 4,
-      //allowNull: true,
-    },
-    seller: {
-      type: DataTypes.STRING, //of type username  FOREIGN KEY
-      defaultValue: 'seller',
-      allowNull: true,
+      defaultValue: 0,
     },
 
     //----------------------
@@ -59,62 +41,59 @@ module.exports = (sequelize, DataTypes) => {
     fastMove: {
       type: DataTypes.STRING,
       allowNull: true, //change
-      defaultValue: 12,
     },
     chargeMove: {
       type: DataTypes.STRING,
-      allowNull: true, //change
+      allowNull: true,
     },
     isShiny: {
       type: DataTypes.BOOLEAN,
-      allowNull: true, //change
       defaultValue: false,
     },
     appraisal: {
       type: DataTypes.INTEGER,
-      allowNull: true, ///change
-      defaultValue: 3,
+      defaultValue: 0,
+    },
+    catchLocation: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    listingType: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
 
     // --------------------- PRICE FIELDS
     price: {
       // PokeVariableData!
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
-      defaultValue: 10,
+      defaultValue: 0,
     },
     tax: {
       // PokeVariableData!
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true,
-      defaultValue: 1,
+      defaultValue: 0,
     },
     // ------------------------- BUYER FIELDS
     buyer: {
       // username!
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     buyersOfferItemId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     tradeComplete: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
       defaultValue: false,
     },
-
-    // The timestamp is added automatically by Sequelize
-    // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
-  //Trade has two pokemons that are going to be traded, each trade belongs to many users
+
   trade.associate = (model) => {
-    // trade.hasMany(model.PokemonToTrade);
-    trade.belongsToMany(model.UserData, {
-      through: 'Trade_Users',
-      as: 'PokeTrade',
-    });
+    trade.belongsTo(model.UserData);
   };
 
   return trade;

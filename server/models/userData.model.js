@@ -3,10 +3,20 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const userData = sequelize.define('UserData', {
-    // username = userCredentialUsername ...comes from reference in userCredential
-    username: {
-      primaryKey: true,
+    email: {
+      type: DataTypes.STRING,
       unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    username: {
+      unique: true,
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hashed: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -18,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    mtgoId: {
+    mtgoID: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -26,20 +36,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    latitude: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    longitude: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     buyerRating: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
     },
-    numBuyRatings: {
+    numBuyReviews: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
@@ -49,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true,
     },
-    numSellRatings: {
+    numSellReviews: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: true,
@@ -59,21 +61,13 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true,
     },
-
-    // privateChat: {
-    //   allowNull: true,
-    // },
-
-    // The timestamp is added automatically by Sequelize
-    // http://docs.sequelizejs.com/manual/tutorial/models-definition.html#timestamps
   });
 
-  // userData.associate = (model) => {
-  //   userData.belongsTo(model.userCredentials);
-  //   userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
-  //   userData.belongsToMany(model.TradeData, { through: 'Trade_Users' } );
-  //   userData.belongsToMany(model.MtgoTrade, { through: 'MtgoTrade_Users' } );
-  // };
+  userData.associate = (model) => {
+    userData.belongsToMany(model.PrivateChat, { through: 'User_Chat' });
+    userData.hasMany(model.PokeTradeData);
+    userData.hasMany(model.MtgoTradeData);
+  };
 
   return userData;
 };
