@@ -32,12 +32,6 @@ const Query = {
     return query;
   },
 
-  getTrade: (root, args, context) => {
-    const { tradeID } = args;
-    const query = getTrade(tradeID);
-    return query;
-  },
-
   test: () => {
     return "Test";
   }
@@ -47,7 +41,7 @@ const Query = {
 const getUser = async (user) => {
   const reply = await db.UserData.findOne({
     where: {
-      username: user,
+      id: user,
     },
   });
   return reply;
@@ -56,20 +50,12 @@ const getUser = async (user) => {
 const getChat = async (chatId) => {
   const reply = await db.Message.findAll({
     where: {
-      chatId: chatId,
+      PrivateChatId: chatId,
     },
   });
   return reply;
 };
 
-// const getTrade = async (trade) => {
-//   const reply = await db.TradeData.findOne({
-//     where: {
-//       tradeID: tradeID,
-//     },
-//   });
-//   return 'Trade';
-// };
 
 //GraphQL Mutations
 const Mutation = {
@@ -83,26 +69,36 @@ const Mutation = {
 const UserData = {
   //args is the type passed in
   privateChat: async (args) => {
-    const { username } = args;
+    const { id } = args;
     const reply = await db.PrivateChat.findAll({
-      where: {
-        [Op.or]: [
-          {seller: username},
-          {buyer: username}
-        ]
-      },
-    });
+        where : {
+          id: id
+        } 
+        // [Op.or]: [
+        //   {seller: username},
+        //   {buyer: username}
+        //]
+      }); 
     return reply;
-  },
+  }
 };
 
 const PrivateChat = {
+  createdAt: async (args) => {
+    const { id } = args;
+    const reply = await db.PrivateChat.findOne({
+      where: {
+        id:id
+      }
+    });
+    const createdAt = moment(id.createdAt).format('MMMM Do YYYY, h:mm a');
+    return createdAt;
+  },
   history: async (args) => {
     const { id } = args;
-    console.log('id', id);
     const reply = await db.Message.findAll({
       where: {
-        chatId: id
+        PrivateChatId: id
       }
     });
     return reply;
@@ -116,16 +112,9 @@ const Message = {
   }
 }
 
-const Trade = {
-  //
-  //need to define tradeItemVariableData resolver
-  //need to define offerItemVariableData resolver
-};
-
 
 module.exports = { Query, 
                    Mutation,
                    UserData, 
                    PrivateChat, 
-                   Message,
-                   Trade };
+                   Message};
