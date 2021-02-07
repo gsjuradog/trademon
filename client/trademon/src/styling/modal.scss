@@ -19,7 +19,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  height: 95vh;
+  height: 100vh;
   padding-top: 1rem;
   display: flex;
   flex-direction: column;
@@ -34,12 +34,23 @@
 
 .hamburger-links {
   min-width: 91%;
+  display: flex;
+  justify-content: center;
 }
 
 .hamburger-button {
-  width: 80%;
-  margin: 8px 8px;
+  width: 90%;
+  margin: 8px 0px;
   font-size: 1em;
+}
+
+.hamburger-exit-button {
+  @extend .hamburger-button;
+  background-color: $colorSecondary;
+}
+
+.hamburger-exit-button:hover {
+  color:$colorSecondary;
 }
 
 .hamburger-img {
@@ -47,8 +58,18 @@
   max-height: 30px;
   margin-top: -2px;
   margin-left: 12px;
-  margin-right: 15px;
   transition: 150ms;
+}
+
+.hamburger-exit {
+  margin-top: 2vh;
+  margin-right: calc(20px + 1.5vw);
+  width: 1.5vw;
+  height: 1.5vw;
+  min-width: 20px;
+  min-height: 20px;
+  align-self: flex-end;
+  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -60,9 +81,5 @@
 @media screen and (max-width: 500px) {
   .hamburger-nav {
     width: 60%;
-    .img-exit {
-      margin-top: 1em;
-      margin-right: 3em;
-    }
   }
 }

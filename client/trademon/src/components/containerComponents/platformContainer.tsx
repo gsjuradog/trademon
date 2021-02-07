@@ -41,7 +41,7 @@ export default function PlatformContainer(props: IProps) {
         </li>
       );
       break;
-    default:
+      default:
       break;
   }
 
@@ -52,7 +52,7 @@ export default function PlatformContainer(props: IProps) {
     <div>
       <div
         className="platform-container"
-        onClick={(e: React.MouseEvent<HTMLDivElement>): void =>
+        onClick={(): void =>
           handleSelectWorld()
         }
         style={{

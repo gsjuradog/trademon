@@ -3,7 +3,8 @@ import { AppThunk } from './store';
 import { User, SignIn } from './interfaces';
 import { signInUser } from '../utils/rest';
 
-const initialState: User = {
+const initialState: any = {
+  user: {
   token: '',
   id: 0,
   email: '',
@@ -16,6 +17,7 @@ const initialState: User = {
   sellerRating: [],
   numOfStrikes: 0,
   error: false,
+  }
 }
 
 const userSlice = createSlice({
@@ -24,7 +26,7 @@ const userSlice = createSlice({
   reducers: {
     getUser(state, { payload }: PayloadAction<User>) {
       console.log('TRADE REDUCER, payload is: ', payload);
-      state = payload;
+      state.user = payload;
     },
     getUserError(state, action: PayloadAction<string>) {
       console.error('TRADE - Error Handling: ', action.payload);
@@ -44,15 +46,13 @@ export default userSlice.reducer;
 // THUNK1: Fetching User
 export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
   try {
-    console.log(
-      'THUNK fetch USER I am getting User Info: ',
-      signin
-    );
     let response: User;
     response = await signInUser({email: signin.email, password:signin.password});
-    if (!response.error) {dispatch(getUser(response))};
+    if (!response.error) {
+      dispatch(getUser(response))
+    }
     console.log(
-      'TRADE THUNK fetchUser: I fetched: ',
+      'USER THUNK fetchUser: I fetched: ',
       response
     );
   } catch (err) {

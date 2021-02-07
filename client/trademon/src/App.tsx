@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/trade/:tradeID" component={OfferDetailsPage} />
           <Route path="/mtgotrade/:tradeID" component={OfferDetailsMTGOPage} />
           <Route path="/profile" component={MyProfile} />
-          <Route path="/create-listing" component={CreateListingForm} />
+          <Route path="/create-poke-trade" component={CreateListingForm} />
           <Route path="/messages" component={DMPage} />
           <Route path="/chat/1234" component={DMChatPage} />
           <Route path="/test" component={TestPage} />

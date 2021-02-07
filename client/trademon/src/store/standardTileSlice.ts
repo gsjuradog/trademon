@@ -15,7 +15,7 @@ const initialState: StandardTiles = {
 };
 
 const standardTileSlice = createSlice({
-  name: 'standardTrade',
+  name: 'standard-tiles',
   initialState,
   reducers: {
     getStandardTilesPoke(

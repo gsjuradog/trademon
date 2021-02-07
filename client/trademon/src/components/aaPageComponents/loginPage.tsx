@@ -19,13 +19,11 @@ const Login = () => {
 
   const userState: User = useSelector((state: RootState) => state.user);
   const history = useHistory();
-
   const initialCreate : Create = {
     name : '',
     email: '',
     password: '',
   }
-
   const initialSignIn : SignIn = {
     email: '',
     password: ''
@@ -44,9 +42,9 @@ const Login = () => {
     const result = await createREST(create);
     console.log('TESSTING LOGIN RESULT  ', result);
     
-    if (result.hasOwnProperty('token')) {
+    if ("token" in result) {
       history.push('/')
-    } else if (result.hasOwnProperty('error')) {
+    } else if ("error" in result) {
         setError(result.error);
     } else {
         setError(true); 
@@ -79,12 +77,10 @@ const Login = () => {
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await dispatch(fetchUser(signIn));
-    if (userState.hasOwnProperty('token')) {
+    if (userState.username !== '') {
       history.push('/')
-    } else if (userState.hasOwnProperty('error')) {
-        setError(userState.error);
     } else {
-        setError(true); 
+      setError(true); 
     }
   }
 
