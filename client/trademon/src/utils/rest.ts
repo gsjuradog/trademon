@@ -83,6 +83,7 @@ export const createMessage = (from: String, to: String, content: String, chatID:
 }
 
 export const getTrades = () => {
+  console.log('I am here!!  ',);
   return fetch(`${endpointURL}/fetchPokeTrades`, {
     method: 'GET'})
     .then(res => res.status <= 400? res : Promise.reject(res))

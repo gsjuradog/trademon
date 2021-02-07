@@ -39,7 +39,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
               src={'/assets/avatarIcon.png'}
               alt="avatar icon"
             ></img>
-             <p className="seller-text">User1234</p>
+             <p className="seller-text">{trade.seller}</p>
           </div>
           <p>${trade.price}</p>
         </div>
