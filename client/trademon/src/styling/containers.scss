@@ -161,6 +161,11 @@
       }
     }
   }
+  .large-MTGOCard:hover{
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      transform: scale(1.7); 
+  }
 }
 
 .item-details-container {
@@ -214,6 +219,16 @@
   z-index: 1;
 }
 
+.large-MTGOCard {
+  width: 21vw;
+  height: 29vw;
+  min-width: 100px;
+  min-height: 125px;
+  align-self: center;
+  z-index: 1;
+  border-radius: 15px;
+}
+
 .is-shiny-box {
   display: flex;
   width: 100%;
@@ -237,6 +252,13 @@
 
 .seller-rating-box {
   display: flex;
+}
+
+.seller-details-container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .interest-box {

@@ -5,12 +5,19 @@ import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
 
 export default function StandardTileComponent(trade: StandardTileTrade) {
+  let shortenName;
+  if(trade.name.length >= 15) {
+    shortenName = trade.name.slice(0,15)+'...'
+    
+  } else {
+    shortenName = trade.name
+  }
   return (
     <Link to={`/mtgotrade/${trade.id}`}>
-      <div className="standard-tile-container">
+      <div className="standard-mtgo-tile-container">
         <div className="title-row">
           <span className="heart"></span>
-          <div className="std-tile-title-text">{trade.name}</div>
+          <div className="std-mtgo-tile-title-text">{shortenName}</div>
           <img
             src={'/assets/FavIconEmpty.png'}
             className="heart"
@@ -25,8 +32,7 @@ export default function StandardTileComponent(trade: StandardTileTrade) {
           ></img>
         </div>
         <div className="standard-info-row">
-          <p>CP: {trade.level}</p>
-          <UserRatingComponent />
+          
         </div>
         <div className="seller-row">
           <div className="seller-info">
