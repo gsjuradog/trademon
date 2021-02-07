@@ -39,7 +39,7 @@ const App = () => {
           <Route path="/MTG" component={MagicTheGatheringPage} />
           <Route path="/WoW" component={WorldOfWarcraftPage} />
           <Route path="/demo-animation" component={DemoAnimation} />
-
+          <Route path="/test-component" component={TestComponent} />
           <Redirect to="/" />
         </Switch>
       </div>

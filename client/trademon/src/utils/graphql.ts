@@ -1,4 +1,4 @@
-const endpointURL : any = 'http://localhost:3001/graphql';
+const endpointURL : String = 'https://trademon.herokuapp.com/graphql' || 'http://localhost:3001/graphql';
 
 /*
 GraphQL Endpoint fetch factory - takes a GraphQL query, and an optional GraphQL variables object
@@ -20,15 +20,31 @@ async function graphqlRequest(query: String, variables={}) {
 
 }
 
-//getUser data - query not working atm due to db refactor
-export async function getUser(user:String) {
+//Returns userData by UserID - not getting buyerRating / sellerRating yet, weird datatype in Postgres...
+export async function getUser(user: Number) {
   //1. Define query
   const query = `
-  query ($user: String!){
+  query ($user: Int!) {
     getUserData(user: $user) {
-      trainerID
       id
-      buyerRating
+      email
+      username
+      trainerID
+      trainerName
+      mtgoID
+      mtgoName
+      numOfStrikes
+      privateChat {
+          id
+          users
+          createdAt
+          history {
+            id
+            sender
+            content
+            publishDate
+          }
+      }
     }
   }
   `;
@@ -36,25 +52,19 @@ export async function getUser(user:String) {
   return data; //<-- 3. Return result
 }
 
-//getPrivateChats
-export async function getPrivateChats(user:String) {
+//Gets a private chat and all nested messages via PrivateChatId
+export async function getPrivateChats(chatID:Number) {
   const query = `
-  query ($user: String!) {
-    getUserData(user: $user) {
-      username 
-      privateChat {
-        id
-        seller
-        buyer
-        history {
-          content
-          publishDate
-        }
-      }
+  query ($chatID: Int!){
+    getPrivateChat(chatID:$chatID) {
+      id
+      sender
+      content
+      publishDate
     }
   }
   `;
-  const data = await graphqlRequest(query, {user:user});
+  const data = await graphqlRequest(query, {chatID:chatID});
   return data;
 }
 
