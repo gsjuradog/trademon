@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import StandardTileComponent from '../tileComponents/standardTileComponent';
-import MTGstandardTileComponent from '../tileComponents/MTGstandardTileComponent';
+import StandardTilePokemon from '../tileComponents/standardTilePokemon';
+import MTGstandardTileComponent from '../tileComponents/standardTileMTGO';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import { StandardTileTrade } from '../../store/interfaces';
-import { fetchTrades } from '../../store/standardTileSlice';
 import '../../styling/containers.scss';
 
 interface IProps {
@@ -28,7 +27,7 @@ export default function SearchResultsContainer(props: IProps) {
             style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTileComponent {...standardTile}></StandardTileComponent>
+            <StandardTilePokemon {...standardTile}></StandardTilePokemon>
             {console.log('RENDER Standard TILE: ', standardTile)}
           </li>
         ),
@@ -61,7 +60,7 @@ export default function SearchResultsContainer(props: IProps) {
             style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTileComponent {...standardTile}></StandardTileComponent>
+            <StandardTilePokemon {...standardTile}></StandardTilePokemon>
             {console.log('RENDER Standard TILE: ', standardTile)}
           </li>
         ),
@@ -71,8 +70,6 @@ export default function SearchResultsContainer(props: IProps) {
       break;
   }
   return (
-    <Link to={`/magic-the-gathering`}>
-      <div className="search-results">{standardTilesRender}</div>
-    </Link>
+    <div className="search-results">{standardTilesRender}</div>
   );
 }

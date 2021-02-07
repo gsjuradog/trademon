@@ -12,13 +12,13 @@ import MyProfile from './components/aaPageComponents/myProfilePage';
 import PokemonGoPage from './components/aaPageComponents/pokemonGoPage';
 import MagicTheGatheringPage from './components/aaPageComponents/MagicTheGatheringPage';
 import WorldOfWarcraftPage from './components/aaPageComponents/WorldOfWarcraftPage';
-import OfferDetailsPage from './components/aaPageComponents/offerDetailsPage';
+import OfferDetailsPage from './components/aaPageComponents/offerDetailsPagePokemon';
 import TestPage from './components/testComponent/testComponent';
 import DMPage from './components/aaPageComponents/dmPage';
 import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
 import DemoAnimation from './components/aaPageComponents/demoAnimation';
-import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsMtgoPage';
+import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
 import TestComponent from './components/testComponent/testComponent';
 
 const App = () => {

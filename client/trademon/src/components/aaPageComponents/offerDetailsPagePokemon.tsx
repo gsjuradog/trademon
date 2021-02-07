@@ -14,14 +14,14 @@ export default function OfferDetailsPage() {
     {
       tradeID:0,
       numViews:0, 
-      seller:'Santi', 
+      seller:'Loading...', 
       pokeNum:0, 
-      pokeName:'Bulbasaur', 
+      pokeName:'Loading...', 
       pokeGen:0, 
       pokeLvl:0, 
-      pokeSprite:'https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612299771/1_ea1rrt.png',
-      fastMove:'Loading', 
-      chargeMove:'Loading', 
+      pokeSprite:'Loading...',
+      fastMove:'Loading...', 
+      chargeMove:'Loading...', 
       isShiny:false ,
       appraisal:0, 
       price:100, 
@@ -80,7 +80,7 @@ export default function OfferDetailsPage() {
         </div>
         <div className="large-sprite-container">
           <div className="large-text">#{tradeDetails!.pokeNum}</div>
-          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="pokemon Name"/>
+          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/>
         </div>
         <div className="seller-details-container">
           <div className="standard-text">

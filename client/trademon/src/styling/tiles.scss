@@ -32,7 +32,7 @@ p {
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 1.5vh;
+  padding-top: 2.5vh;
 }
 
 .std-tile-title-text {
@@ -58,11 +58,18 @@ p {
   margin-right: 0.5vh;
 }
 
+.main-info-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 .sprite-row {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 1.5vh;
+  padding-left: 1vw;
 }
 
 .standard-sprite {
@@ -72,14 +79,17 @@ p {
   min-height: 75px;
 }
 
-.standard-info-row {
+.appraisal-box {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  max-height: 20px;
-  height: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+  width: 100%;
+}
+.appraisal-img {
+  width: 4vw;
+  height: 4vw;
+  margin-bottom: 1vh;
 }
 
 .seller-row {
@@ -102,8 +112,8 @@ p {
 }
 
 .standard-avatar {
-  width: 20px;
-  height: 20px;
+  width: 1.5vw;
+  height: 1.5vw;
 }
 
 .mini-tile-container {
