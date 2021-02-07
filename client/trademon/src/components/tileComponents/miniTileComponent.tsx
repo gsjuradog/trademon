@@ -1,18 +1,23 @@
 import React from 'react';
-import '../../styling/tiles.scss';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { RootState } from '../../store/store';
 import { MiniTileTrade } from '../../store/interfaces';
+import '../../styling/tiles.scss';
 
 export default function MiniTile(trade: MiniTileTrade) {
-  switch (trade.world) {
-    case 'Pokemon':
-      break;
-    case 'MTG':
-      break;
-    case 'WoW':
-      break;
-    default:
-      break;
-  }
+  // const worlds = useSelector((state: RootState) => state.world);
+  // const dispatch = useDispatch();
+
+  // switch (world) {
+  //   case 'Pokemon':
+  //     break;
+  //   case 'MTG':
+  //     break;
+  //   case 'WoW':
+  //     break;
+  //   default:
+  //     break;
+  // }
 
   return (
     <a href={`/trade/${trade.id}`}>

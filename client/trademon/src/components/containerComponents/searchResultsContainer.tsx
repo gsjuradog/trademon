@@ -15,7 +15,7 @@ interface IProps {
 export default function SearchResultsContainer(props: IProps) {
   const standardTiles = useSelector((state: RootState) => state.standardTrade);
 
-  let standardTilesRender: any = <li></li>;
+  let standardTilesRender: React.ReactNode = <li></li>;
 
   const world = props.world;
   console.log('--------------------- world: ', world);

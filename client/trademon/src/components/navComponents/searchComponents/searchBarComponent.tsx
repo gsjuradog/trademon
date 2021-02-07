@@ -16,7 +16,7 @@ export default function SearchBar() {
   const [world, setWorld] = useState('Pokemon');
 
   const worldFromState = useSelector(
-    (state: RootState) => state.standardTrade.world,
+    (state: RootState) => 'state.standardTrade.world', // unquoute to test
   );
 
   const handleSearchKeyPress = (searchString: string) => {
@@ -58,8 +58,8 @@ export default function SearchBar() {
             placeholder="Search offers..."
             id="search-field"
             className="search-field"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
-              handleSearchKeyPress(e.target.value)
+            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void =>
+              handleSearchKeyPress(e.key)
             }
           />
         </div>
