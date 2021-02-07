@@ -38,6 +38,26 @@ p {
 .std-tile-title-text {
   font-size: calc(12px + 0.55vw);
 }
+.std-mtgo-tile-title-text {
+  font-size: calc(12px + 0.55vw);
+  text-overflow:ellipsis;
+}
+
+.standard-mtgo-tile-container {
+  width: 15vw;
+  height: 15vw;
+  min-width: 175px;
+  min-height: 175px;
+  background-color: $colorGreyPop80;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  border-radius: 25px;
+  box-shadow: -2px -2px 5px rgba(48, 48, 48, 0.85),
+    2px 2px 5px rgba(0, 0, 0, 0.65);
+  transition: 150ms;
+}
 
 .heart {
   width: 1vw;

@@ -5,6 +5,7 @@ import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import { MtgoTrades } from '../../utils/interfaces';
 import { getOneMTGOTrade } from '../../utils/rest';
 import { useParams } from 'react-router';
+import Moment from 'react-moment';
 //
 export default function OfferDetailsPage() { 
  
@@ -44,9 +45,7 @@ export default function OfferDetailsPage() {
 
   async function fetchTradeDetails () {
     const tradeFetch = await getOneMTGOTrade(tradeID); 
-    console.log('Asking for a single card : ',tradeFetch)
     if (tradeFetch) setTradeDetails(tradeFetch);
-    console.log('Are We Getting Data? ', tradeDetails);
   }
 
   return (
@@ -55,10 +54,10 @@ export default function OfferDetailsPage() {
       <div className="offer-details-container">
         <div className="item-details-container">
           <div className="small-text"> 
-            ID: {tradeDetails!.id}
+            Name: {tradeDetails!.name}
           </div>
           <div className="standard-text">
-            {tradeDetails!.name}
+            {tradeDetails!.cardName}
           </div>
           <div className="standard-text">
             Mana Cost: {tradeDetails!.manaCost}
@@ -76,7 +75,7 @@ export default function OfferDetailsPage() {
         </div>
         <div className="large-sprite-container">
           <div className="large-text">#</div>
-          <img className="large-sprite" src={tradeDetails!.cardImage} alt="Mtgo Card"/>
+          <img className="large-MTGOCard" src={tradeDetails!.cardImage} alt="Mtgo Card"/>
         </div>
         <div className="seller-details-container">
           <div className="standard-text">
@@ -107,7 +106,7 @@ export default function OfferDetailsPage() {
             </div>
             <div className="bar-spacer"> | </div>
             <div className="standard-text">
-              {tradeDetails!.expirationDate}
+              Expires: <Moment   fromNow>{tradeDetails!.expirationDate}</Moment>
             </div>
           </div>
           <button>Message Seller</button>
