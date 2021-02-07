@@ -54,12 +54,12 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
     let trades: MiniTileTrade[] = [];
 
     switch (world) {
-      case 'Pokemon':
+      case 'Pokemon Go':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         dispatch(getMiniTilesP(trades));
         break;
-      case 'MTG':
+      case 'MTGO':
         response = await getMTGOTrades();
         trades = mapMtgsToUtrade(response);
         dispatch(getMiniTilesM(trades));
@@ -94,7 +94,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): MiniTileTrade[] => {
       name: trade.pokeName,
       price: trade.price,
       image: trade.pokeSprite,
-      world: 'Pokemon',
+      world: 'Pokemon Go',
     };
   });
 };
@@ -106,7 +106,7 @@ const mapMtgsToUtrade = (trades: MtgTrade[]): MiniTileTrade[] => {
       name: trade.cardName,
       price: trade.price,
       image: trade.cardImage,
-      world: 'MTG',
+      world: 'MTGO',
     };
   });
 };

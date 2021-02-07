@@ -1,7 +1,7 @@
 // ******************
 // USER POST RELATED
 export interface Trades {
-  tradeID:number,
+  id:number,
   numViews:number, 
   seller:string, 
   pokeNum:number, 

@@ -18,14 +18,14 @@ export default function PlatformContainer(props: IProps) {
   let miniTilesRender: React.ReactNode = <li></li>;
 
   switch (world) {
-    case 'Pokemon':
+    case 'Pokemon GO':
       miniTilesRender = miniTiles.pokemons.map((miniTile: MiniTileTrade) => (
         <li style={{ listStyleType: 'none' }} key={world + miniTile.id}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>
         </li>
       ));
       break;
-    case 'MTG':
+    case 'MTGO':
       miniTilesRender = miniTiles.mtgs.map((miniTile: MiniTileTrade) => (
         <li style={{ listStyleType: 'none' }} key={world + miniTile.id}>
           <MiniTileComponent {...miniTile}></MiniTileComponent>

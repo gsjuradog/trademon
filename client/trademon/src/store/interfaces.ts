@@ -97,6 +97,7 @@ export interface StandardTileTrade {
   price: number;
   image: string;
   level?: number;
+  appraisal?: number;
   seller: string;
 }
 

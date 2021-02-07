@@ -5,19 +5,6 @@ import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/tiles.scss';
 
 export default function MiniTile(trade: MiniTileTrade) {
-  // const worlds = useSelector((state: RootState) => state.world);
-  // const dispatch = useDispatch();
-
-  // switch (world) {
-  //   case 'Pokemon':
-  //     break;
-  //   case 'MTG':
-  //     break;
-  //   case 'WoW':
-  //     break;
-  //   default:
-  //     break;
-  // }
 
   return (
     <a href={`/trade/${trade.id}`}>

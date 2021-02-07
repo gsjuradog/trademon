@@ -97,6 +97,7 @@ export const filterTrade = (
     console.log('I am in FILTER ', searchInput, 'our world is: ', world);
 
     switch (world) {
+      
       case 'Pokemon':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
@@ -106,8 +107,6 @@ export const filterTrade = (
         dispatch(getStandardTilesPoke(filteredTrades));
         break;
       case 'MTG':
-        console.log('I am here! in MTG!');
-
         response = await getMTGOTrades();
         trades = mapMtgsToUtrade(response);
         filteredTrades = trades.filter((p: StandardTileTrade) =>
@@ -134,6 +133,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
       image: trade.pokeSprite,
       level: trade.pokeLvl,
       seller: trade.seller,
+      appraisal: trade.appraisal,
       world: 'Pokemon',
     };
   });

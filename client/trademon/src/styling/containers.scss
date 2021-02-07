@@ -12,6 +12,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  cursor: pointer; 
 }
 
 .platform-container {
@@ -53,7 +54,7 @@
 }
 
 .search-results {
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -69,7 +70,7 @@
 }
 
 .offer-details-container {
-  margin-top: 4.5vh;
+  margin-top: 3vh;
   display: flex;
   flex-wrap: wrap;
   width: 95%;
@@ -174,14 +175,22 @@
 .small-text {
   font-size: calc(12px + 0.25vw);
 }
+
+.rating-tiny-text {
+  font-size: calc(10px + 0.2vw);
+  color: $colorText;
+  color: rgb(156, 156, 156);
+}
+
 .rating-text {
   @extend .small-text;
   margin-top: 6px;
   margin-bottom: 0.4vh;
 }
 .standard-text {
-  font-size: calc(12px + 0.8vw);
+  font-size: calc(12px + 0.5vw);
   margin-top: 3px;
+  text-align: center;
 }
 
 .large-text {
@@ -221,10 +230,6 @@
   margin-left: 1vw;
 }
 
-.seller-details-container {
-  @extend .flex-column-center;
-  margin-left: 20px;
-}
 .seller-rating-box {
   display: flex;
 }
@@ -243,7 +248,7 @@
 .interest-stats {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 2vh;
 }
 
 .bar-spacer {
@@ -326,9 +331,6 @@
   margin-top: 1em;
   width: 100%;
   height: 25vh;
-}
-
-.addMessage-container {
 }
 
 .span4 {

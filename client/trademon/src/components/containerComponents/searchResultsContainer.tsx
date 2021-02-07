@@ -28,7 +28,6 @@ export default function SearchResultsContainer(props: IProps) {
             key={props.world + standardTile.id}
           >
             <StandardTilePokemon {...standardTile}></StandardTilePokemon>
-            {console.log('RENDER Standard TILE: ', standardTile)}
           </li>
         ),
       );

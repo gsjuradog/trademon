@@ -1,4 +1,4 @@
-const endpointURL : String = 'https://trademon.herokuapp.com/graphql' || 'http://localhost:3001/graphql';
+const endpointURL : string = 'https://trademon.herokuapp.com/graphql' || 'http://localhost:3001/graphql';
 
 /*
 GraphQL Endpoint fetch factory - takes a GraphQL query, and an optional GraphQL variables object
