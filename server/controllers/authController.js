@@ -60,3 +60,34 @@ exports.createUser = async (req, res) => {
     res.status(500).send('POST ERROR');
   }
 };
+
+exports.getPublicDetails = async (req, res) => {
+  try {
+    const { id, token } = req.headers;
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
+    let reply = '';
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
+      const { id } = req.body;
+      const filter = { where: { id: id } };
+      let user = await db.UserData.findOne(filter);
+      reply = {
+        email: user.email,
+        username: user.username,
+        trainerID: user.trainerID,
+        trainerName:  user.trainerName,
+        mtgoID:  user.mtgoID,
+        mtgoName:  user.mtgoName,
+        buyerRating:  user.buyerRating,
+        sellerRating:  user.sellerRating,
+        transactions: user.transactionSales.length
+      }
+    }
+    res.status(200).send(reply);
+  } catch (error) {
+    console.log('POST ERROR', err);
+    res.status(500).send('POST ERROR');
+  }
+};

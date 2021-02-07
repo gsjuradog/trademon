@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import '../../../styling/myProf.scss';
-import UserRatingComponent from '../../ratingComponents/userRatingComponent';
+import {calcRating} from '../../../utils/helperFunctions'
 
 export default function ProfileBanner() {
 
@@ -16,19 +16,13 @@ export default function ProfileBanner() {
   }, []);
 
   const setSellerRating = () => {
-    let totalRating: number = 0;
-    userData.sellerRating.forEach((rating: number) => {
-      totalRating += rating;
-    });
-    setSellerRatingValue(totalRating/userData.sellerRating.length);    
+    let totalRating: number = calcRating(userData.sellerRating);
+    setSellerRatingValue(totalRating);    
   }
 
   const setBuyerRating = () => {
-    let totalRating: number = 0;
-    userData.buyerRating.forEach((rating: number) => {
-      totalRating += rating;
-    });
-    setBuyerRatingValue(totalRating/userData.buyerRating.length);    
+    let totalRating: number = calcRating(userData.buyerRating);
+    setBuyerRatingValue(totalRating);    
   }
 
 

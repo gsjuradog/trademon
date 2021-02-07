@@ -14,6 +14,7 @@ router.get('/test', testControllers.getUser);
 // AUTH RELATED ROUTES
 router.post('/createUser', userControllers.createUser);
 router.post('/signin', userControllers.signin);
+router.post('/getPublicDetails', userControllers.getPublicDetails);
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);

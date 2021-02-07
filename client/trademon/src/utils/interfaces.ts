@@ -3,6 +3,7 @@
 export interface Trades {
   id:number,
   numViews:number, 
+  UserDatumId:number,
   seller:string, 
   pokeNum:number, 
   pokeName:string, 

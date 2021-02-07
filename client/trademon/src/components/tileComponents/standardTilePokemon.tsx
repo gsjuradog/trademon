@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../styling/tiles.scss';
 import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
-import setAppraisalImage from '../../utils/helperFunction'
+import setAppraisalImage from '../../utils/helperFunctions'
 
 export default function StandardTilePokemon(trade: StandardTileTrade) {
 

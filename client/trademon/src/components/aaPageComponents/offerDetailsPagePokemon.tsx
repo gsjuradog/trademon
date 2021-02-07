@@ -6,7 +6,7 @@ import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOneTrade } from '../../utils/rest';
 import { useParams } from 'react-router';
-import setAppraisalImage from '../../utils/helperFunction'
+import setAppraisalImage, {calcRating} from '../../utils/helperFunctions'
 //
 export default function OfferDetailsPage() { 
   const { tradeID } : any = useParams();
@@ -14,7 +14,8 @@ export default function OfferDetailsPage() {
   const [ tradeDetails, setTradeDetails] = useState<Trades>(
     {
       id:0,
-      numViews:0, 
+      numViews:0,
+      UserDatumId:0, 
       seller:'Loading...', 
       pokeNum:0, 
       pokeName:'Loading...', 
@@ -34,6 +35,7 @@ export default function OfferDetailsPage() {
 
   useEffect(() => {
     fetchTradeDetails();
+    fetchSellerDetails();
   }, []) 
 
   async function fetchTradeDetails () {
@@ -43,6 +45,10 @@ export default function OfferDetailsPage() {
       const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal)
       setAppraisalImgUrl(foundSpriteURL);
     }
+  }
+
+  async function fetchSellerDetails () {
+    //
   }
 
   const messageHandler = () => {   
@@ -100,7 +106,9 @@ export default function OfferDetailsPage() {
           <div className="rating-text">
             Seller Rating
           </div>
-          <UserRatingComponent />
+          <div>
+            {}/5
+          </div>
           <div className="rating-tiny-text">
             based on 4 ratings
           </div>
