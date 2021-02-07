@@ -11,7 +11,7 @@ export default function LandingPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setWorld(['Pokemon', 'MTG', 'WoW', 'WoT']));
+    dispatch(setWorld(['Pokemon GO', 'MTGO', 'WoW', 'WoT']));
   }, [dispatch]);
 
   worlds.forEach((world) => dispatch(fetchTrades(world)));

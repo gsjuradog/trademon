@@ -35,8 +35,8 @@ const App = () => {
           <Route path="/messages" component={DMPage} />
           <Route path="/chat/1234" component={DMChatPage} />
           <Route path="/test" component={TestPage} />
-          <Route path="/Pokemon" component={PokemonGoPage} />
-          <Route path="/MTG" component={MagicTheGatheringPage} />
+          <Route path="/Pokemon Go" component={PokemonGoPage} />
+          <Route path="/MTGO" component={MagicTheGatheringPage} />
           <Route path="/WoW" component={WorldOfWarcraftPage} />
           <Route path="/demo-animation" component={DemoAnimation} />
           <Route path="/test-component" component={TestComponent} />

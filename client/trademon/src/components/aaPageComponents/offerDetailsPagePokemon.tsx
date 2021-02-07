@@ -6,13 +6,14 @@ import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOneTrade } from '../../utils/rest';
 import { useParams } from 'react-router';
+import setAppraisalImage from '../../utils/helperFunction'
 //
 export default function OfferDetailsPage() { 
-
   const { tradeID } : any = useParams();
+  const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>("");
   const [ tradeDetails, setTradeDetails] = useState<Trades>(
     {
-      tradeID:0,
+      id:0,
       numViews:0, 
       seller:'Loading...', 
       pokeNum:0, 
@@ -37,8 +38,13 @@ export default function OfferDetailsPage() {
 
   async function fetchTradeDetails () {
     const tradeFetch = await getOneTrade(tradeID);
-    if (tradeFetch) setTradeDetails(tradeFetch);
-    console.log('Are We Getting Data? ', tradeDetails);
+    console.log('ZAPDOS  ',tradeFetch);
+    
+    if (tradeFetch) {
+      setTradeDetails(tradeFetch);
+      const foundSpriteURL: any = setAppraisalImage(tradeDetails.appraisal)
+      setAppraisalImgUrl(foundSpriteURL);
+    }
   }
 
   const messageHandler = () => {   
@@ -59,7 +65,7 @@ export default function OfferDetailsPage() {
       <div className="offer-details-container">
         <div className="item-details-container">
           <div className="small-text">
-            ID: {tradeDetails!.tradeID}
+            ID: {tradeDetails!.id}
           </div>
           <div className="standard-text">
             {tradeDetails!.pokeName}
@@ -67,36 +73,42 @@ export default function OfferDetailsPage() {
           <div className="standard-text">
             CP: {tradeDetails!.pokeLvl}
           </div>
-          <div className="rating-text">
-            Appraisal: 
-          </div>
-          <UserRatingComponent />
-          <div className="is-shiny-box">
-            <div className="standard-text">
-              Shiny?
-            </div>
-            <input type="checkbox" className="shiny-checkbox"/>
+          <div className="flex-center">
+            <img className="appraisal-img"
+              src= {appraisalImgUrl}
+              alt={`${tradeDetails.pokeName}`}
+            />
+            { tradeDetails.isShiny ?
+              <img className="appraisal-img"
+              src= {'/assets/ShinyBadge.png'}
+              alt={`${tradeDetails.pokeName}`}
+            />: <> </> }
           </div>
         </div>
         <div className="large-sprite-container">
           <div className="large-text">#{tradeDetails!.pokeNum}</div>
           <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/>
         </div>
-        <div className="seller-details-container">
-          <div className="standard-text">
-            {tradeDetails!.seller}
+        <div className="item-details-container">
+          <div className="flex-center">
+            <img className="avatar-overlay-img" 
+              src ={'/assets/avatarIcon.png'} 
+              alt="avatar Icon"
+            />
+            <div className="standard-text">
+              {tradeDetails!.seller}
+            </div>
           </div>
           <div className="rating-text">
-            Seller Rating: 
+            Seller Rating
           </div>
           <UserRatingComponent />
-          <div className="standard-text">
-            Ratings: 4
+          <div className="rating-tiny-text">
+            based on 4 ratings
           </div>
-          <div className="standard-text">
-            Sales: 10
+          <div className="rating-text">
+            10 Sales
           </div>
-        
         </div>
       </div>
       <div className="offer-details-container">

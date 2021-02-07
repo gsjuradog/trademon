@@ -9,3 +9,15 @@ $colorText: #ffffff;
 $colorButtonHover: #dfdfdf;
 $colorShadowLight: rgba(48, 48, 48, 0.85);
 $colorShadowDark: rgba(0, 0, 0, 0.65);
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}

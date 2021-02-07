@@ -133,6 +133,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
       image: trade.pokeSprite,
       level: trade.pokeLvl,
       seller: trade.seller,
+      appraisal: trade.appraisal,
       world: 'Pokemon',
     };
   });
