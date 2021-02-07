@@ -16,9 +16,9 @@ export interface User {
 }
 
 export interface SignIn {
-    email: string;
-    password: string;
-  }
+  email: string;
+  password: string;
+}
 
 export interface Trade {
   id: number;
