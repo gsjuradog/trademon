@@ -16,7 +16,7 @@ export default function SearchBar() {
   const [world, setWorld] = useState('Pokemon');
 
   const worldFromState = useSelector(
-    (state: RootState) => state.standardTrade.world,
+    (state: RootState) => 'state.standardTrade.world', // unquoute to test
   );
 
   const handleSearchKeyPress = (searchString: string) => {

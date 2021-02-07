@@ -12,7 +12,6 @@ const initialState: StandardTiles = {
   pokemons: [],
   mtgs: [],
   wows: [],
-  world: '',
 };
 
 const standardTileSlice = createSlice({
@@ -46,12 +45,6 @@ const standardTileSlice = createSlice({
     getStandardTilesError(state, action: PayloadAction<string>) {
       return state;
     },
-    setWorld(state, action: PayloadAction<string>) {
-      state.world = action.payload;
-      console.log('Current World is: ');
-
-      return state;
-    },
   },
 });
 
@@ -60,13 +53,9 @@ export const {
   getStandardTilesMTG,
   getStandardTilesWoW,
   getStandardTilesError,
-  setWorld,
 } = standardTileSlice.actions;
 export default standardTileSlice.reducer;
 
-// THUNK / EPIC
-
-// THUNK1: Fetching Trades
 export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
   try {
     let response: any[] = [];
@@ -89,7 +78,6 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         dispatch(getStandardTilesPoke(trades));
         break;
       default:
-        // return [];
         break;
     }
   } catch (err) {
@@ -97,7 +85,6 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
   }
 };
 
-// THUNK 2. filter
 export const filterTrade = (
   searchInput: string,
   world: string,
@@ -159,7 +146,6 @@ const mapMtgsToUtrade = (trades: MtgTrade[]): StandardTileTrade[] => {
       name: trade.cardName,
       price: trade.price,
       image: trade.cardImage,
-      // level: trade.pokeLvl,
       seller: trade.seller,
       world: 'MTG',
     };
