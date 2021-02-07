@@ -2,27 +2,15 @@ import '../../styling/temp_tradePage.scss';
 import imageBuyer from '../../assets/users/user1.jpg';
 import imageCard from '../../assets/mtgs/3.png';
 import imageSeller from '../../assets/users/user2.jpg';
-
-import badge_n1 from '../../assets/badges/_n1.png';
-import badge_n2 from '../../assets/badges/_n2.png';
 import badge_n3 from '../../assets/badges/_n3.png';
-import badge_n4 from '../../assets/badges/_n4.png';
-
-import badge_s1 from '../../assets/badges/_s1.png';
 import badge_s2 from '../../assets/badges/_s2.png';
 import badge_s3 from '../../assets/badges/_s3.png';
-
 import badge_t1 from '../../assets/badges/_t1.png';
 import badge_t2 from '../../assets/badges/_t2.png';
-import badge_t3 from '../../assets/badges/_t3.png';
-
-import badge_q1 from '../../assets/badges/_q1.png';
 import badge_q2 from '../../assets/badges/_q2.png';
 import badge_q3 from '../../assets/badges/_q3.png';
-
-import badge_p1 from '../../assets/badges/_p1.png';
 import badge_p2 from '../../assets/badges/_p2.png';
-import badge_p3 from '../../assets/badges/_p3.png';
+
 
 import Chat from './trade_dmPage';
 

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { withRouter, useHistory } from 'react-router-dom';
 
 import { demoHeadAnimation, demoArrowAnimation } from '../../utils/animations';
@@ -26,8 +24,8 @@ const DemoAnimation = () => {
 
         <h1>Trademon.io</h1>
 
-        <img className="demo-img-head" src={'/assets/head-t.png'}></img>
-        <img className="demo-img-arrows" src={'/assets/arrows-t.png'}></img>
+        <img className="demo-img-head" src={'/assets/head-t.png'} alt=''></img>
+        <img className="demo-img-arrows" src={'/assets/arrows-t.png'} alt=''></img>
 
         <div className="demo-redirect">
           <p>Dalton | Wilfredo | Santiago not Gabriel | Adrian | Wlad | Dan</p>

@@ -134,6 +134,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
       level: trade.pokeLvl,
       seller: trade.seller,
       appraisal: trade.appraisal,
+      isShiny: trade.isShiny,
       world: 'Pokemon',
     };
   });

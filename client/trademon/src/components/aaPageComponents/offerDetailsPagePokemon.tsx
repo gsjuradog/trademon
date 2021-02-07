@@ -38,11 +38,9 @@ export default function OfferDetailsPage() {
 
   async function fetchTradeDetails () {
     const tradeFetch = await getOneTrade(tradeID);
-    console.log('ZAPDOS  ',tradeFetch);
-    
     if (tradeFetch) {
       setTradeDetails(tradeFetch);
-      const foundSpriteURL: any = setAppraisalImage(tradeDetails.appraisal)
+      const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal)
       setAppraisalImgUrl(foundSpriteURL);
     }
   }

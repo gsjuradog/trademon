@@ -26,7 +26,8 @@ const Drawer = ({toggleHamburger, handleMouseEnter, handleMouseLeave} :Props) =>
           src={'./assets/exit-icon.png'}
           onMouseOver={handleMouseEnter}
           onMouseOut={handleMouseLeave}
-        alt="exit Icon"/>
+          alt="exit Icon"
+        />
         <Link to="/messages" className="hamburger-links">
           <button className="hamburger-button">Messages</button>
         </Link>

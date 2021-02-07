@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import '../../../styling/navs.scss';
 import ProfileOverlay from './profileOverlayComponent';
-import {
-  searchQuery,
-  fetchPokemon,
-  filterPokemon,
-} from '../../../store/searchSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { filterTrade } from '../../../store/standardTileSlice';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-
+  // eslint-disable-next-line
   const [world, setWorld] = useState('Pokemon');
 
   const worldFromState = useSelector(

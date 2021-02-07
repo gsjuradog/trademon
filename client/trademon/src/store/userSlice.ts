@@ -50,8 +50,7 @@ export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
     );
     let response: User;
     response = await signInUser({email: signin.email, password:signin.password});
-    dispatch(getUser(response));
-
+    if (!response.error) {dispatch(getUser(response))};
     console.log(
       'TRADE THUNK fetchUser: I fetched: ',
       response
