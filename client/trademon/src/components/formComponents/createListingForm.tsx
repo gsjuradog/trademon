@@ -34,9 +34,9 @@ const CreateListingForm = () => {
     createTrade(stateCopy).then(
       (tradeSubmissionResult) => {
         //check to make sure this is valid before continuing
-        if(tradeSubmissionResult.tradeID) {
+        if(tradeSubmissionResult.id) {
           console.log('RESULT  ',tradeSubmissionResult);
-          history.push(`/trade/${tradeSubmissionResult.tradeID}`);
+          history.push(`/trade/${tradeSubmissionResult.id}`);
         } else {
           //display error message to the user in this block
         }

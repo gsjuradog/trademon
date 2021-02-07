@@ -16,9 +16,9 @@ export interface User {
 }
 
 export interface SignIn {
-    email: string;
-    password: string;
-  }
+  email: string;
+  password: string;
+}
 
 export interface Trade {
   id: number;
@@ -89,7 +89,6 @@ export interface MiniTileTrade {
   name: string;
   price: number;
   image: string;
-  world: string;
 }
 
 export interface StandardTileTrade {
@@ -99,7 +98,6 @@ export interface StandardTileTrade {
   image: string;
   level?: number;
   seller: string;
-  world: string;
 }
 
 export interface MiniTiles {
@@ -112,7 +110,6 @@ export interface StandardTiles {
   pokemons: StandardTileTrade[];
   mtgs: StandardTileTrade[];
   wows: StandardTileTrade[];
-  world: string;
 }
 
 export interface InitialState {
