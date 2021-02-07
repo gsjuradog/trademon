@@ -61,6 +61,7 @@ p {
 .main-info-row {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 .sprite-row {
@@ -85,12 +86,13 @@ p {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-top: 1.25vh;
 }
 .appraisal-img {
-  width: 4vw;
-  height: 4vw;
-  min-width: 45px;
-  min-height: 45px;
+  width: 3.5vw;
+  height: 3.5vw;
+  min-width: 37px;
+  min-height: 37px;
   margin-bottom: 1vh;
 }
 

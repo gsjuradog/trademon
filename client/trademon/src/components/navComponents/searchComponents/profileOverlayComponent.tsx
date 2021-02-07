@@ -7,7 +7,6 @@ export default function ProfileOverlay(this: any) {
   const [hamburgVis, setHamburgVis] = useState<boolean>(false)
   const [exitIcon, setExitIcon] = useState<string>('/assets/exit-icon.png')
 
-  console.log(exitIcon)
   const toggleHamburger = () => {
     setHamburgVis(!hamburgVis);
     handleMouseLeave();

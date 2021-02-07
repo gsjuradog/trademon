@@ -2,29 +2,16 @@ import React, { useEffect, useState } from 'react';
 import '../../styling/tiles.scss';
 import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
+import setAppraisalImage from '../../utils/helperFunction'
 
 export default function StandardTilePokemon(trade: StandardTileTrade) {
 
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>("");
 
   useEffect (() => {
-    setAppraisalImage()
+    const appraisalURL: any = setAppraisalImage(trade.appraisal)
+    setAppraisalImgUrl(appraisalURL);
   }, []);
-
-  const setAppraisalImage = () => {
-    switch(trade.appraisal) {
-      case 0 : setAppraisalImgUrl("https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star0_krjjeh.png");
-        break;
-      case 1 : setAppraisalImgUrl("https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star1_gvfybl.png");
-        break;
-      case 2 : setAppraisalImgUrl("https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star2_byidda.png");
-        break;
-      case 3 : setAppraisalImgUrl("https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star3_hku77d.png");
-        break;
-      case 4 : setAppraisalImgUrl("https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star4_ypibwp.png");
-        break;
-    }
-  }
 
   return (
     <Link to={`/trade/${trade.id}`}>
@@ -51,6 +38,11 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
               src= {appraisalImgUrl}
               alt={`${trade.name}`}
             />
+            { trade.isShiny ?
+              <img className="appraisal-img"
+              src= {'/assets/ShinyBadge.png'}
+              alt={`${trade.name}`}
+            />: <> </> }
             <p>CP {trade.level}</p>
           </div>
         </div>

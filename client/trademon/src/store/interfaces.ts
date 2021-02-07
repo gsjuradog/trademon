@@ -98,6 +98,7 @@ export interface StandardTileTrade {
   image: string;
   level?: number;
   appraisal?: number;
+  isShiny?: boolean;
   seller: string;
 }
 

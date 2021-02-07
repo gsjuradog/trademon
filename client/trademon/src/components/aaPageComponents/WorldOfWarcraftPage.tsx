@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchTrades } from '../../store/standardTileSlice';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';

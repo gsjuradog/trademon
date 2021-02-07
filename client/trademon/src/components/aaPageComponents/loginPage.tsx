@@ -4,13 +4,13 @@ import { withRouter, useHistory } from 'react-router-dom';
 
 import LoginError from '../modal/loginError';
 
-import { createUser as createREST, signInUser as signInREST } from '../../utils/rest'
+import { createUser as createREST } from '../../utils/rest'
 import { Create, SignIn } from '../../utils/interfaces';
 
 import { panelRight, panelLeft, setUp } from '../../utils/animations';
 import '../../styling/login.scss';
 
-import { fetchUser, getUser } from '../../store/userSlice';
+import { fetchUser } from '../../store/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
 import { User } from '../../store/interfaces';
@@ -42,6 +42,8 @@ const Login = () => {
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = await createREST(create);
+    console.log('TESSTING LOGIN RESULT  ', result);
+    
     if (result.hasOwnProperty('token')) {
       history.push('/')
     } else if (result.hasOwnProperty('error')) {

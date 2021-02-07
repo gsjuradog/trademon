@@ -10,21 +10,18 @@ const miniTileSlice = createSlice({
   initialState,
   reducers: {
     getMiniTilesP(state, { payload }: PayloadAction<MiniTileTrade[]>) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.pokemons = payload;
-      console.log('state: ', payload);
+      //console.log('state: ', payload);
       return state;
     },
     getMiniTilesM(state, { payload }: PayloadAction<MiniTileTrade[]>) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.mtgs = payload;
-      console.log('state: ', payload);
+      //console.log('state: ', payload);
       return state;
     },
     getMiniTilesW(state, { payload }: PayloadAction<MiniTileTrade[]>) {
-      console.log('TRADE REDUCER, payload is: ', payload);
       state.wows = payload;
-      console.log('state: ', payload);
+      //console.log('state: ', payload);
       return state;
     },
     getMiniTilesError(state, action: PayloadAction<string>) {
@@ -45,10 +42,10 @@ export default miniTileSlice.reducer;
 // THUNK1: Fetching Trades
 export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
   try {
-    console.log(
-      'THUNK fetchMiniTiles I am getting Trades of the world: ',
-      world,
-    );
+    // console.log(
+    //   'THUNK fetchMiniTiles I am getting Trades of the world: ',
+    //   world,
+    // );
 
     let response: any[] = [];
     let trades: MiniTileTrade[] = [];
@@ -71,17 +68,16 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         break;
       default:
         return [];
-        break;
     }
 
-    console.log(
-      'TRADE THUNK fetchMiniTiles: I fetched: ',
-      response,
-      ' from the world: ',
-      world,
-      'trades ',
-      trades,
-    );
+    // console.log(
+    //   'TRADE THUNK fetchMiniTiles: I fetched: ',
+    //   response,
+    //   ' from the world: ',
+    //   world,
+    //   'trades ',
+    //   trades,
+    // );
   } catch (err) {
     dispatch(getMiniTilesError(err.toString()));
   }

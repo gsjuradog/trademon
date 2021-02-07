@@ -7,7 +7,7 @@ export default function DMSummaryTile() {
     <>
       <Link to="/chat/1234" className="dm-link">
         <div className="dm-summary-container">
-          <img src={'/assets/avatarIcon.png'} className="img-large" alt=''/>
+          <img src={'/assets/avatarIcon.png'} className="img-large" alt='avatarIcon'/>
           <div className="dm-summary-text-column">
             <div className="dm-text">User54321</div>
             <div className="dm-text-item">Bulbasaur</div>

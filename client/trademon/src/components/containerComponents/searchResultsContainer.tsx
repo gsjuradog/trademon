@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import StandardTilePokemon from '../tileComponents/standardTilePokemon';
 import MTGstandardTileComponent from '../tileComponents/standardTileMTGO';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { StandardTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
@@ -13,21 +12,17 @@ interface IProps {
 
 export default function SearchResultsContainer(props: IProps) {
   const standardTiles = useSelector((state: RootState) => state.standardTrade);
-
-  let standardTilesRender: React.ReactNode = <li></li>;
-
   const world = props.world;
-  console.log('--------------------- world: ', world);
+  let standardTilesRender: React.ReactNode = <li></li>;
 
   switch (world) {
     case 'Pokemon':
       standardTilesRender = standardTiles.pokemons.map(
         (standardTile: StandardTileTrade) => (
-          <li
-            style={{ listStyleType: 'none' }}
+          <li style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTilePokemon {...standardTile}></StandardTilePokemon>
+            <StandardTilePokemon {...standardTile}/>
           </li>
         ),
       );
@@ -35,19 +30,10 @@ export default function SearchResultsContainer(props: IProps) {
     case 'MTG':
       standardTilesRender = standardTiles.mtgs.map(
         (standardTile: StandardTileTrade) => (
-          <li
-            style={{ listStyleType: 'none' }}
+          <li style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <MTGstandardTileComponent
-              {...standardTile}
-            ></MTGstandardTileComponent>
-            {console.log(
-              'RENDER Standard TILE: ',
-              standardTile,
-              'WORLD: ',
-              world,
-            )}
+            <MTGstandardTileComponent {...standardTile}/>
           </li>
         ),
       );
@@ -55,12 +41,10 @@ export default function SearchResultsContainer(props: IProps) {
     case 'WoW':
       standardTilesRender = standardTiles.mtgs.map(
         (standardTile: StandardTileTrade) => (
-          <li
-            style={{ listStyleType: 'none' }}
+          <li style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTilePokemon {...standardTile}></StandardTilePokemon>
-            {console.log('RENDER Standard TILE: ', standardTile)}
+            <StandardTilePokemon {...standardTile}/>
           </li>
         ),
       );

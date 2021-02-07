@@ -1,12 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from './store';
-import {
-  PokeTrade,
-  MtgTrade,
-  StandardTileTrade,
-  StandardTiles,
-} from './interfaces';
-import { getTrades, getMTGOTrades } from '../utils/rest';
 
 const initialState: string[] = [];
 

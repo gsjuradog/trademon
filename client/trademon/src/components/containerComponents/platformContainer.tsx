@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import MiniTileComponent from '../tileComponents/miniTileComponent';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { searchQuery, fetchPokemon } from '../../store/searchSlice';
 import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
 import { useHistory } from 'react-router-dom';

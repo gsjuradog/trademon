@@ -19,6 +19,11 @@
   align-items: center;
 }
 
+.banner-container-top {
+  @extend .banner-container;
+  margin-top: 1vh;
+}
+
 .watch-list-container {
   @extend .my-profile-containers;
   max-height: 300px;
@@ -50,7 +55,6 @@
   align-items: center;
   justify-content: flex-start;
   width: 15vw;
-  padding: 4px 0px;
 }
 
 .prof-banner-avatar {
