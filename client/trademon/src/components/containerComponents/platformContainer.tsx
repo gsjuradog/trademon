@@ -17,6 +17,8 @@ export default function PlatformContainer(props: IProps) {
   const world = props.world;
   let miniTilesRender: any = <li></li>;
 
+  //worlds.map((world) => )
+
   switch (world) {
     case 'Pokemon':
       miniTilesRender = miniTiles.pokemons.map((miniTile: MiniTileTrade) => (
