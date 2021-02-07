@@ -1,10 +1,9 @@
 import React from 'react';
 import '../../styling/tiles.scss';
-import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import { StandardTileTrade } from '../../store/interfaces';
 import { Link } from 'react-router-dom';
 
-export default function StandardTileComponent(trade: StandardTileTrade) {
+export default function StandardTilePokemon(trade: StandardTileTrade) {
   return (
     <Link to={`/trade/${trade.id}`}>
       <div className="standard-tile-container">
@@ -17,16 +16,21 @@ export default function StandardTileComponent(trade: StandardTileTrade) {
             alt="Heart Icon"
           ></img>
         </div>
-        <div className="sprite-row">
-          <img
-            className="standard-sprite"
-            src={trade.image}
-            alt={`${trade.name}`}
-          ></img>
-        </div>
-        <div className="standard-info-row">
-          <p>CP: {trade.level}</p>
-          <UserRatingComponent />
+        <div className="main-info-row">
+          <div className="sprite-row">
+            <img
+              className="standard-sprite"
+              src={trade.image}
+              alt={`${trade.name}`}
+            ></img>
+          </div>
+          <div className="appraisal-box">
+            <img className="appraisal-img"
+              src='https://res.cloudinary.com/techlog-cloud-key/image/upload/v1612705445/Star4_ypibwp.png'
+              alt={`${trade.name}`}
+            />
+            <p>CP {trade.level}</p>
+          </div>
         </div>
         <div className="seller-row">
           <div className="seller-info">
@@ -35,7 +39,7 @@ export default function StandardTileComponent(trade: StandardTileTrade) {
               src={'/assets/avatarIcon.png'}
               alt="avatar icon"
             ></img>
-            <p className="seller-text">{trade.seller}</p>
+             <p className="seller-text">User1234</p>
           </div>
           <p>${trade.price}</p>
         </div>
