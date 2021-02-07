@@ -6,7 +6,7 @@ import { getTrades, getMTGOTrades } from '../utils/rest';
 const initialState: MiniTiles = { pokemons: [], mtgs: [], wows: [] };
 
 const miniTileSlice = createSlice({
-  name: 'trade',
+  name: 'mini-tiles',
   initialState,
   reducers: {
     getMiniTilesP(state, { payload }: PayloadAction<MiniTileTrade[]>) {

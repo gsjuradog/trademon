@@ -4,14 +4,12 @@ import { createPortal } from 'react-dom';
 import '../../styling/modal.scss';
 import Drawer from './drawer';
 
-const Backdrop = ({toggleHamburger, handleMouseEnter, handleMouseLeave}) => {
+const Backdrop = ({toggleHamburger}) => {
 
   return createPortal (
     <div className="backdrop-container">
       <Drawer
         toggleHamburger={toggleHamburger}
-        handleMouseEnter={handleMouseEnter}
-        handleMouseLeave={handleMouseLeave}
       />
     </div>, document.getElementById('drawer-hook')
   );

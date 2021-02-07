@@ -23,8 +23,12 @@
   opacity: 90%;
   min-width: 50px;
   min-height: 50px;
+  cursor: pointer;
 }
 
+.trademon-title-link {
+  cursor: pointer;
+}
 .search-container-vertical {
   display: flex;
   flex-direction: column;
@@ -101,14 +105,6 @@
 .img-small {
   max-width: 12px;
   max-height: 12px;
-}
-
-.img-exit {
-  max-width: 15px;
-  max-height: 15px;
-  align-self: flex-end;
-  margin-right: 12px;
-  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 1024px) {

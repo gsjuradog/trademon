@@ -4,8 +4,11 @@ import ProfileOverlay from './profileOverlayComponent';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { filterTrade } from '../../../store/standardTileSlice';
+import { useHistory } from 'react-router-dom';
 
 export default function SearchBar() {
+  const history = useHistory();
+
   const dispatch = useDispatch();
   // eslint-disable-next-line
   const [world, setWorld] = useState('Pokemon');
@@ -26,17 +29,24 @@ export default function SearchBar() {
 
   return (
     <div className="nav-container">
-      <a className="logo-img-link" href={'/'}>
+      <div className="logo-img-link" onClick={(): void =>
+        history.push(`/`)
+        }
+      >
         <img
           className="logo-img"
           src={'/assets/trademon-logo.png'}
           alt="trademon logo"
         />
-      </a>
+      </div>
       <div className="search-container-vertical">
-        <a href={'/'}>
+        <div className="trademon-title-link"
+          onClick={(): void =>
+          history.push(`/`)
+          }
+        >
           <h1 className="platform-text">trademon.io</h1>
-        </a>
+        </div>
         <div className="filters-box">
           <select
             className="search-select-dropdown"
