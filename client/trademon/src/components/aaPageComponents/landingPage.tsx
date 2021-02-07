@@ -10,11 +10,11 @@ export default function LandingPage() {
   const worlds = useSelector((state: RootState) => state.world);
   const dispatch = useDispatch();
 
-  worlds.forEach((world) => dispatch(fetchTrades(world)));
-
   useEffect(() => {
     dispatch(setWorld(['Pokemon', 'MTG', 'WoW', 'WoT']));
   }, [dispatch]);
+
+  worlds.forEach((world) => dispatch(fetchTrades(world)));
 
   return (
     <>
@@ -25,9 +25,6 @@ export default function LandingPage() {
         {worlds.map((world) => (
           <PlatformContainer key={0} world={world}></PlatformContainer>
         ))}
-
-        {/* <PlatformContainer key={1} world={worlds[1]}></PlatformContainer>
-        <PlatformContainer key={2} world={worlds[2]}></PlatformContainer> */}
       </div>
     </>
   );

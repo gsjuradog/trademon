@@ -1,5 +1,6 @@
 import { configureStore, Action } from '@reduxjs/toolkit';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
+import WorldSlice from './worldSlice';
 import UserSlice from './userSlice';
 import SearchSlice, { searchEpic } from './searchSlice';
 import MiniTileSlice from './miniTileSlice';
@@ -12,6 +13,7 @@ export const rootEpic = combineEpics(searchEpic);
 
 const store = configureStore({
   reducer: {
+    world: WorldSlice,
     user: UserSlice,
     search: SearchSlice,
     trade: MiniTileSlice,

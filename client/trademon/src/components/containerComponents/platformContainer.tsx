@@ -5,7 +5,7 @@ import { RootState } from '../../store/store';
 import { searchQuery, fetchPokemon } from '../../store/searchSlice';
 import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/containers.scss';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 interface IProps {
   world: string;
@@ -15,9 +15,7 @@ export default function PlatformContainer(props: IProps) {
   const miniTiles = useSelector((state: RootState) => state.trade);
 
   const world = props.world;
-  let miniTilesRender: any = <li></li>;
-
-  //worlds.map((world) => )
+  let miniTilesRender: React.ReactNode = <li></li>;
 
   switch (world) {
     case 'Pokemon':

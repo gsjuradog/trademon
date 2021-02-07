@@ -89,7 +89,7 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         dispatch(getStandardTilesPoke(trades));
         break;
       default:
-        return [];
+        // return [];
         break;
     }
   } catch (err) {
