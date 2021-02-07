@@ -42,7 +42,7 @@ export const signInUser = async (user: SignIn) => {
     return result;
 }
 
-export const createChat = async (seller: Number, buyer: Number, message: any) => {
+export const createChat = async (seller: Number, buyer: Number, message: string) => {
 
   let result; 
   
@@ -140,6 +140,8 @@ export const getOneMTGOTrade = (tradeID: Number) => {
 
 
 export const createTrade = async (trade : TradeData) => {
+  console.log('WHAT IS TRADE? ', trade);
+  
   const {
     pokeName, CP, catchLocation, fastMove, chargeMove, 
     shiny, price, appraisal, listingType 
@@ -147,7 +149,7 @@ export const createTrade = async (trade : TradeData) => {
   const pokeDetails = await getPoke(pokeName);
   const { id, generation, sprite } : any = pokeDetails;
 
-  return fetch(`${endpointURL}/createTrade`, {
+  return fetch(`${endpointURL}/createPokeTrade`, {
     method: 'POST',
     headers: {
       'Content-Type':'application/json'
