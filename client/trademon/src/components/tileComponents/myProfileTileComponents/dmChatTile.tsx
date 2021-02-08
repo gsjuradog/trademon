@@ -1,20 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import '../../../styling/tiles.scss'
+import {Message} from '../../../utils/interfaces';
+import { RootState } from '../../../store/store';
 
-export default function DMChatTile(props: { isOwner: boolean; }) {
+export default function DMChatTile(message:Message) {
+  const userData = useSelector((state: RootState) => state.user.user);
   const [isMyMessage, setIsMyMessage] = useState<boolean>(true)
-  const isOwner = props.isOwner;
 
+  const setOwner = () => {
+    if (userData.id === message.sender) {
+      setIsMyMessage(true)
+    } else setIsMyMessage(false)
+  }
   useEffect( () => {
-    setIsMyMessage(isOwner)
-  }, [isOwner]) //added isOwner inside
+    setOwner();
+  }, []) //added isOwner inside
 
+  // add auto-scroll
   return (
     <div className={`message ${(isMyMessage ? "right": "left")}`}>
       <div className="dm-text">
-        This is a test message!! Let's see what happens when the message is really long. Holy balls this is a really long message. 
+        {message.content} 
       </div>
-      <div className="dm-timestamp"> Feb 2, 10:11 AM</div>
+      <div className="dm-timestamp">{message.createdAt } </div>
     </div>
   )
 }
