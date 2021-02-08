@@ -87,7 +87,7 @@ exports.getPublicDetails = async (req, res) => {
     }
     res.status(200).send(reply);
   } catch (error) {
-    console.log('POST ERROR', err);
+    console.log('POST ERROR', error);
     res.status(500).send('POST ERROR');
   }
 };
