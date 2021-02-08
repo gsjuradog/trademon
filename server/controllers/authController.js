@@ -82,7 +82,9 @@ exports.getPublicDetails = async (req, res) => {
         mtgoName:  user.mtgoName,
         buyerRating:  user.buyerRating,
         sellerRating:  user.sellerRating,
-        transactions: user.transactionSales.length
+        sales: user.transactionSales.length,
+        purchases:user.transactionPurchases.length,
+        trades: user.transactionTrades.length
       }
     }
     res.status(200).send(reply);

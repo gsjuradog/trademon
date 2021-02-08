@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: [],
       allowNull: true,
     },
-    transactionBuys: {
+    transactionPurchases: {
       type: DataTypes.ARRAY(DataTypes.INTEGER),
       defaultValue: [],
       allowNull: true,
