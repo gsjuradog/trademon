@@ -10,7 +10,12 @@ export interface User {
   mtgoName?: string;
   buyerRating: number[];
   sellerRating: number[];
+  transactionSales: number[];
+  transactionPurchases: number[];
+  transactionTrades: number[];
   numOfStrikes: number;
+  watchList: number[];
+  activeOffers: number[];
   createdAt?: Date;
   updatedAt?: Date;
   error: React.SetStateAction<boolean>;
