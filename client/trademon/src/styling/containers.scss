@@ -1,4 +1,5 @@
 @import './config';
+@import './animations';
 
 .flex-column-center {
   display: flex;
@@ -181,11 +182,7 @@
 .large-sprite-container {
   @extend .flex-column-center;
   margin-left: 20px;
-  transition: 150ms;
-}
-
-.large-sprite-container:hover {
-  transform: scale(1.05);
+  animation: float 4s ease-in-out infinite;
 }
 
 .small-text {

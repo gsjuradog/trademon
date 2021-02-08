@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOnePokeTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
-import setAppraisalImage, {calcRating} from '../../utils/helperFunctions'
+import setAppraisalImage, {calcRating} from '../../utils/helperFunctions';
+import { PuffLoader }  from 'react-spinners';
 //
 export default function OfferDetailsPage() { 
   const { tradeID } : any = useParams();
@@ -28,7 +29,7 @@ export default function OfferDetailsPage() {
       pokeName:'Loading...', 
       pokeGen:0, 
       pokeLvl:0, 
-      pokeSprite:'Loading...',
+      pokeSprite:'None',
       fastMove:'Loading...', 
       chargeMove:'Loading...', 
       isShiny:false ,
@@ -39,6 +40,8 @@ export default function OfferDetailsPage() {
   );
 
   const [messageSeller, setMessageSeller] = useState(false);
+
+  const color = '#075f59';     //Spinner colour
 
   useEffect(() => {
     fetchTradeDetails();
@@ -103,8 +106,13 @@ export default function OfferDetailsPage() {
           </div>
         </div>
         <div className="large-sprite-container">
+          {tradeDetails.pokeSprite === 'None' ? 
+          <PuffLoader size={200} color={color}/> :
+          <Fragment>
           <div className="large-text">#{tradeDetails!.pokeNum}</div>
-          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/>
+          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/> 
+          </Fragment>
+          }
         </div>
         <div className="item-details-container">
           <div className="flex-center">

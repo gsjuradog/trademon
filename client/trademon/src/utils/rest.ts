@@ -45,20 +45,47 @@ export const signInUser = async (user: SignIn) => {
     return result;
 }
 
-export const uploadAvatar = async (avatar: any) => {
+
+export const uploadAvatarCloud = async (user: number, avatar: any) => {
 
   const formData = new FormData();
   formData.append('file', avatar.files[0]);
   formData.append('upload_preset', 'ppgbubn6');
 
-  const cloudUpload = await fetch(avatarCloud + 'upload', {
+  let response;
+
+  await fetch(avatarCloud + 'upload', {
     method: 'POST',
     body: formData,
   }).then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log('Fetch error (CLOUDINARY)', err));  
+    .then(data => response = data.url)
+    .catch(err => console.log('Fetch error (CLOUDINARY)', err));
+
+  return response;
 
 }
+
+
+export const uploadAvatarServer  = async (url: string) => {
+  
+  await fetch(`${endpointURL}/userAvatar`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      userId: 1,
+      avatarUrl: url
+    })
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log('Fetch Error (avatar)', err))
+}
+
+
+
+
 
 export const createChat = async (seller: Number, buyer: Number, message: string) => {
 

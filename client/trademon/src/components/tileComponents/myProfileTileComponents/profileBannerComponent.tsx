@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store';
+import { updateUserUrl } from '../../../store/userSlice';
+
 import '../../../styling/myProf.scss';
 import {calcRating} from '../../../utils/helperFunctions'
 
 import { avatarFormIn, avatarFormOut } from '../../../utils/animations';
-import { uploadAvatar } from '../../../utils/rest';
+import { uploadAvatarCloud, uploadAvatarServer } from '../../../utils/rest';
 
 export default function ProfileBanner() {
 
   const userData = useSelector((state: RootState) => state.user.user);
   const [sellerRatingValue, setSellerRatingValue] = useState<number>(0);
   const [buyerRatingValue, setBuyerRatingValue] = useState<number>(0);
+
+  const dispatch = useDispatch();
 
   useEffect (() => {
     setSellerRating();
@@ -32,22 +36,34 @@ export default function ProfileBanner() {
     avatarFormIn();
   }
 
-  const submitAvatar = () => {
+  const submitAvatar = async () => {
     const avatar = document.querySelector('.avatar-input');
     avatarFormOut();
-    uploadAvatar(avatar);
+    const url:any = await uploadAvatarCloud(userData.id, avatar); //<-- Need user from state here
+    dispatch(updateUserUrl(url));
+    uploadAvatarServer(url);
+  }
+
+  const closeAvatar = () => {
+    avatarFormOut();
   }
 
 
   return (
     <div className="my-profile-containers">
+
       <div className="upload-avatar-form">
+        <p>Upload Avatar...</p>
         <input type="file" className="avatar-input"></input>
-        <button onClick={submitAvatar}>Submit</button>
+        <div className="upload-form-btns">
+          <button onClick={submitAvatar}>Submit</button>
+          <button onClick={closeAvatar}>Close</button>
+        </div>
+      
       </div>
         <div className="banner-container-top">
           <div className="profile-avatar-box">
-            <img className="prof-banner-avatar" src ={'/assets/avatarIcon.png'} alt=''></img> 
+            <img className="prof-banner-avatar" src ={userData.avatarUrl} alt=''></img> 
             <button className="change-avatar-btn" onClick={changeAvatar}>Change Avatar</button>
           </div>
           <div className="my-profile-text">{userData.username ? userData.username: 'none'}</div>
