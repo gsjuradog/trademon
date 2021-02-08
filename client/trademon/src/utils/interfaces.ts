@@ -161,11 +161,6 @@ export interface UserData {
 
 export interface UserData {
   username:       string,
-  signUpDate: Date,
-}
-
-export interface UserData {
-  username:       string,
   trainerID?:     number,
   trainerName?:   string,
   mtgoID?:        string,
@@ -219,3 +214,9 @@ export interface SignIn {
   password: string
 }
 
+export interface Message {
+  sender: number;
+  PrivateChatId: number;
+  content: string;
+  createdAt: string;
+}

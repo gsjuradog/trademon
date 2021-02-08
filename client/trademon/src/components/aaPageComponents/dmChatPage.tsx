@@ -26,11 +26,7 @@ export default function DMChatPage() {
         <span className="span20"></span>
       </div>
       <div className="dm-chat-container">
-        <DMChatTile isOwner={true}></DMChatTile>
-        <DMChatTile isOwner={true}></DMChatTile>
-        <DMChatTile isOwner={false}></DMChatTile>
-        <DMChatTile isOwner={true}></DMChatTile>
-        <DMChatTile isOwner={false}></DMChatTile>    
+
       </div>
       <div className="dm-add-message-container">
         <AddMessage></AddMessage>
