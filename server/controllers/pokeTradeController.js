@@ -13,7 +13,6 @@ const createTrade = async (req, res) => {
     if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         numViews,
-        seller,
         pokeNum,
         pokeName,
         pokeGen,
@@ -28,9 +27,11 @@ const createTrade = async (req, res) => {
         catchLocation,
         listingType,
       } = req.body;
+      const sellerUserName= await db.UserData.findOne({where :{id:id}})
+      console.log(sellerUserName)
       reply = await db.PokeTradeData.create({
         numViews,
-        seller,
+        seller:sellerUserName.dataValues.username,
         pokeNum,
         pokeName,
         pokeGen,
