@@ -5,21 +5,28 @@ import { signInUser } from '../utils/rest';
 
 const initialState: any = {
   user: {
-  token: '',
-  id: 0,
-  email: '',
-  avatarUrl: 'https://res.cloudinary.com/dasb94yfb/image/upload/v1612801631/a6auhq4b9eblw0ketmlv.png',
-  username: '',
-  trainerID: 0,
-  trainerName: '',
-  mtgoID: 0,
-  mtgoName: '',
-  buyerRating: [],
-  sellerRating: [],
-  numOfStrikes: 0,
-  error: false,
-  }
-}
+    token: '',
+    id: 0,
+    email: '',
+    avatarUrl: '/assets/avatarIcon.png',
+    username: '',
+    trainerID: 0,
+    trainerName: '',
+    mtgoID: 0,
+    mtgoName: '',
+    buyerRating: [],
+    sellerRating: [],
+    transactionSales: [],
+    transactionPurchases: [],
+    transactionTrades: [],
+    numOfStrikes: 0,
+    watchList: [],
+    activeOffers: [],
+    createdAt: null,
+    updatedAt: null,
+    error: false,
+  },
+};
 
 const userSlice = createSlice({
   name: 'userData',
@@ -35,16 +42,11 @@ const userSlice = createSlice({
     },
     updateUserUrl(state, { payload }: PayloadAction<User>) {
       state.user.avatarUrl = payload;
-    }
-
+    },
   },
 });
 
-export const {
-  getUser,
-  getUserError,
-  updateUserUrl
-} = userSlice.actions;
+export const { getUser, getUserError, updateUserUrl } = userSlice.actions;
 export default userSlice.reducer;
 
 // THUNK / EPIC
@@ -53,14 +55,14 @@ export default userSlice.reducer;
 export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
   try {
     let response: User;
-    response = await signInUser({email: signin.email, password:signin.password});
+    response = await signInUser({
+      email: signin.email,
+      password: signin.password,
+    });
     if (!response.error) {
-      dispatch(getUser(response))
+      dispatch(getUser(response));
     }
-    console.log(
-      'USER THUNK fetchUser: I fetched: ',
-      response
-    );
+    console.log('USER THUNK fetchUser: I fetched: ', response);
   } catch (err) {
     dispatch(getUserError(err.toString()));
   }
