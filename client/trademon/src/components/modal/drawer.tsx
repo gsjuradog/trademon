@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { gsap } from 'gsap';
 import '../../styling/modal.scss';
+import React from 'react';
 
 type Props = {
   toggleHamburger: any,

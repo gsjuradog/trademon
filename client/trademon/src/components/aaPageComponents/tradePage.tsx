@@ -18,7 +18,9 @@ import { io } from 'socket.io-client';
 import React from 'react'
 import { useHistory } from 'react-router-dom';
 const socket = io("http://localhost:4444");
-
+import Chat from './trade_dmPage';
+import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
+import React from 'react';
 
 export default function TradePage() {
   const history = useHistory();

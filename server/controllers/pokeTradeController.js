@@ -175,6 +175,7 @@ const deleteTrade = async (req, res) => {
 
 const addToWatchlist = async (req, res) => {
   try {
+    console.log('here is the addtolist in the server')
     const { id, token } = req.headers;
     let tokenValid;
     if (token) {
@@ -189,12 +190,17 @@ const addToWatchlist = async (req, res) => {
       const existsInWatchList = reply.watchList.includes(tradeId)//true or false
       
       if (existsInWatchList){
-        reply = {'error':'Object is already in list'};
+        // reply = {'error':'Object is already in list'};
+        await reply.update({watchList: Sequelize.fn('array_remove', Sequelize.col('watchList'), tradeId)})
+        const cloneReply = Object.assign({}, reply); 
+        delete cloneReply.dataValues.hashed;
+
+        reply = cloneReply.dataValues;
       } else if (reply) {
         await reply.update({watchList: Sequelize.fn('array_append', Sequelize.col('watchList'), tradeId)});
         const cloneReply = Object.assign({}, reply);
         delete cloneReply.dataValues.hashed;
-        reply = cloneReply;
+        reply = cloneReply.dataValues;
         
       }  
     } else reply = { error: 'User not authorized to make this request.' }; 
