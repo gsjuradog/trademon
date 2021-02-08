@@ -1,4 +1,3 @@
-import React from 'react';
 import TradePage from '../aaPageComponents/tradePage';
 import './testComponent.scss';
 
@@ -17,12 +16,7 @@ const TestComponent = () => {
 
   return (
     <div>
-
-      <h1>Test Component</h1>
-
-      <button onClick={fetchUser}>fetchUser</button>
-      <button onClick={fetchChat}>fetchChat</button>
-
+      <TradePage/>
     </div>
   );
 };

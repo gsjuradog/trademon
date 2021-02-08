@@ -8,109 +8,149 @@
       rgba(0, 0, 0, 0.9),
       rgba(0, 0, 0, 0.8)
     ),
-    url(../assets/bg_trade_mtg.jpg);
+    url(../assets/bg_trade_MTGO.jpg);
   background-size: cover;
   background-position: center;
   text-align: center;
+  overflow: auto;
 }
 
 .parent {
-  display: grid;
-  grid-template: auto 1fr auto / minmax(150px, 20%) 1fr minmax(150px, 20%);
+  @extend .flex-column-center;
   width: 100%;
   height: 100vh;
-  resize: both;
-  overflow: auto;
 }
 
 /* 1<--->2<--->3<--->4 */
 .trading-container-header {
-  grid-column: 1 / 4;
   font-size: 2.6rem;
   display: flex;
-  flex-direction: column;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  background-color: rgba(61, 60, 97, 0.404);
-  height: 110px;
+  justify-content: space-between;
+  width: 100vw;
   align-items: center;
-}
-
-.trading-container-header {
-  color: white;
   text-align: justify;
 }
 
-.trade {
-  grid-column: 2 / 3;
+.title-spacer{
+  width: 10vw;
+}
+.trade-room-title-text {
+  font-size: calc(14px + 3.5vw);
+}
+
+.master-trade-container {
+  @extend .flex-center;
+  align-items: center;
+  flex-wrap: wrap;
   height: 90vh;
-  grid-template: minmax(150px, 20%) 1fr;
-
-  .left-side {
-    grid-column: 1 / 2;
-    background-color: rgba(61, 60, 97, 0.274);
-    display: grid;
-  }
-
-  .right-side {
-    grid-column: 3 / 4;
-    background-color: rgba(61, 60, 97, 0.274);
-  }
 }
 
-.chat-container {
-  height: 400px;
-  overflow-y: auto;
+.left-side {
+  @extend .flex-column-center;
+  max-height: 90vh;
+  width: 49vw;
+  min-width: 370px;
+  margin-bottom: 2vh;
 }
 
-.footer {
-  grid-column: 1 / 4;
-  background-color: rgba(126, 63, 63, 0.274);
+.traders-container {
+  @extend .flex-center;
+  margin: 2vw 2vw;
+  width: 100%;
 }
 
-.trade-item-size {
-  margin: 10px;
-  width: 32vh;
+.trader-container {
+  @extend .flex-column-center;
+  margin: 0vw 2vw;
+  width: 100%;
 }
 
 .user_image {
-  width: 100%;
+  width: 10vw;
+  height: 10vw;
+  min-width: 50px;
+  min-height: 50px;
   image-rendering: crisp-edges;
 }
 
 .user-text-top {
-  font-size: 2vw;
-  position: absolute;
-  top: 51%;
-  margin: 4px;
+  font-size: calc(10px+ 3vw);
+  width: 20vw;
+  min-width: 175px;
+  margin: 1vh 0vh;
+  background-color: $colorGreyPop;
   color: white;
-  width: 16%;
-  background-color: #1d35578c;
+  padding: 1vh 2vh;
+ 
+  border-radius: 25px;
 }
 
 .user-badges {
+  @extend .flex-center;
   width: 100%;
-  display: flex;
-  position: absolute;
-  top: 55%;
 }
 
 .user-badge {
-  width: 5%;
-  height: auto;
+  width: 2.5vw;
+  height: 2.5vw;
+  min-width: 30px;
+  min-height: 30px;
   image-rendering: pixelated;
+}
+
+.right-side {
+  height: 100%;
+  width: 49vw;
+  min-width: 370px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-container {
+  width: 95%;
+  max-height: 50vh;
+  overflow-y: auto;
+  background-color: $colorGreyPop80;
+  border-radius: 25px;
+  padding: 1vw;
+}
+
+.trade-item-size {
+  width: 20vw;
+  height: 20vw;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .user-comm {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  max-width: 600px;
+  width: 75vw;
+  min-width: 100%
 }
 
 .user-textarea {
-  padding: 10px;
-  font-size: 20px;
-  background-color: black;
+  background-color: $colorGreyPop80;
   margin-bottom: 10px;
+  border-radius: 25px;
+}
+
+.trade-button-row {
+  display: flex;
+}
+
+.dm-offer-buttons {
+  width: 100%;
+  margin: 0vw 1vw;
+}
+.offer-trade-button {
+  background-color: $colorSecondary;
+}
+
+.offer-trade-button:hover {
+  color: $colorSecondary;
 }
