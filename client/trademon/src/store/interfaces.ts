@@ -90,6 +90,7 @@ export interface MiniTileTrade {
   name: string;
   price: number;
   image: string;
+  world:string;
 }
 
 export interface StandardTileTrade {

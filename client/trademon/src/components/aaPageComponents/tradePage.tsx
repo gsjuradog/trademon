@@ -12,15 +12,14 @@ import badge_q3 from '../../assets/badges/_q3.png';
 import badge_p2 from '../../assets/badges/_p2.png';
 import {Message} from '../../utils/interfaces';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 import { io } from 'socket.io-client';
-import React from 'react'
 import { useHistory } from 'react-router-dom';
-const socket = io("http://localhost:4444");
 import Chat from './trade_dmPage';
-import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
-import React from 'react';
+const socket = io("https://trademon.herokuapp.com"||"http://localhost:4444");
+
+
 
 export default function TradePage() {
   const history = useHistory();
@@ -53,7 +52,7 @@ export default function TradePage() {
       className="dm-list-tile"
       style={{ listStyleType: 'none' }} 
       key={index}>
-      <DMChatTile {...message}></DMChatTile>
+      {/* <DMChatTile {...message}></DMChatTile> */}
     </li>
   ));
 
