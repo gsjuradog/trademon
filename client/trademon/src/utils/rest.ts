@@ -79,7 +79,8 @@ export const uploadAvatarServer  = async (url: string) => {
   })
     .then(res => res.json())
     .then(data => console.log(data))
-    .catch(err => console.log('Fetch Error (avatar)', err))
+    .catch(err => console.log('Fetch Error (avatar)', err));
+  return;
 }
 
 

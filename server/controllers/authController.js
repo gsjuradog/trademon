@@ -97,13 +97,13 @@ exports.getPublicDetails = async (req, res) => {
 exports.uploadAvatar = async (req, res) => {
   try {
     const { userId, avatarUrl } = req.body;
-    await db.UserData.update({avatarUrl:avatarUrl}, 
+    const reply = await db.UserData.update({avatarUrl:avatarUrl}, 
       { where : {
         id: userId
       }
     });
     console.log('AVATAR UPLOAD LINK: ', avatarUrl);
-    res.status(201);
+    res.status(201).send(reply);
   } catch (error) {
     console.log('AVATAR UPLOAD ERROR', error);
     res.status(500).send('AVATAR UPLOAD ERROR');
