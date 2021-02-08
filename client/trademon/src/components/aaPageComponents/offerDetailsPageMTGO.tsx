@@ -33,7 +33,6 @@ export default function OfferDetailsPage() {
       tax:0,
       listingType:'sell',
       buyer:null,
-      setAcronym:'',
       buyersOfferItemId:null,
       tradeComplete:false
     }
