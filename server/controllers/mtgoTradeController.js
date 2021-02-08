@@ -28,9 +28,10 @@ const createMTGOTrade = async (req, res) => {
         tax,
         listingType,
       } = req.body;
+      const sellerUserName= await db.UserData.findOne({where :{id:id}})
       reply = await db.MtgoTradeData.create({
         numViews,
-        seller,
+        seller:sellerUserName.dataValues.username,
         cardName,
         cardImage,
         setName,
