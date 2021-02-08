@@ -32,6 +32,7 @@ export interface MtgoTrades {
   cardName:string,
   cardImage:string,
   setName:string,
+  setAcronym:string,
   convertedManaCost:number,
   manaCost:string,
   name:string,

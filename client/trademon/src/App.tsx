@@ -4,7 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Redirect,
+  Redirect
 } from 'react-router-dom';
 import Login from './components/aaPageComponents/loginPage';
 import LandingPage from './components/aaPageComponents/landingPage';
@@ -21,7 +21,11 @@ import DemoAnimation from './components/aaPageComponents/demoAnimation';
 import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
 import TestComponent from './components/testComponent/testComponent';
 
+import Footer from './components/navComponents/footer';
+
+
 const App = () => {
+
   return (
     <Router>
       <div className="App">

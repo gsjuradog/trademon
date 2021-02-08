@@ -1,6 +1,9 @@
-import { TradeData, Create, SignIn } from './interfaces'
+import { TradeData, Create, SignIn, MtgoTrades } from './interfaces'
 
 const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
+
+const cloudName = 'dasb94yfb';
+const avatarCloud = `https://api.cloudinary.com/v1_1/${cloudName}/`
 
 export const createUser = async (user : Create) => {
   const { name, email, password } = user;
@@ -41,6 +44,48 @@ export const signInUser = async (user: SignIn) => {
     .catch(err => console.log('SIGN IN USER ERROR', err))
     return result;
 }
+
+
+export const uploadAvatarCloud = async (user: number, avatar: any) => {
+
+  const formData = new FormData();
+  formData.append('file', avatar.files[0]);
+  formData.append('upload_preset', 'ppgbubn6');
+
+  let response;
+
+  await fetch(avatarCloud + 'upload', {
+    method: 'POST',
+    body: formData,
+  }).then(response => response.json())
+    .then(data => response = data.url)
+    .catch(err => console.log('Fetch error (CLOUDINARY)', err));
+
+  return response;
+
+}
+
+
+export const uploadAvatarServer  = async (url: string) => {
+  
+  await fetch(`${endpointURL}/userAvatar`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      userId: 1,
+      avatarUrl: url
+    })
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log('Fetch Error (avatar)', err))
+}
+
+
+
+
 
 export const createChat = async (seller: Number, buyer: Number, message: string) => {
 
@@ -207,4 +252,49 @@ export const getUserPublicDetails = async (id: number) => {
       .catch(err => console.log('GET USER ERROR', err))
 
       return call;
+}
+
+export const createMTGOTrade = async (trade:MtgoTrades) => {
+  const {isFoil, price, listingType, cardName } = trade;
+  const mtgoCardDetails = await getMtgoCardbyName(cardName);
+  const {manaCost, colors, type, subTypes, rarity,set, setName, imageUrl}: any = mtgoCardDetails;
+  return fetch(`${endpointURL}/createMTGOTrade`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      isFoil,
+      price,
+      listingType,
+      cardName,
+      manaCost,
+      color:colors,
+      mainType:type,
+      subTypes,
+      rarity,
+      setAcronym:set,
+      setName,
+      cardImage:imageUrl
+      
+    })
+  })
+}
+
+
+export const getMtgoCardbyName = async (name:string) =>{
+  console.log(name)
+  let mtgoCard = {}
+  const magicAPIByName = `https://api.magicthegathering.io/v1/cards?name=${name}`;
+  await fetch (magicAPIByName, {
+    method: 'GET',
+    headers:{ 
+      'Content-Type':'application/json'
+  }
+  })
+  .then(res=>res.json())
+  .then(res => mtgoCard = res)
+  .catch(err => console.log('GETPOKE ERROR', err))
+
+  return mtgoCard
 }

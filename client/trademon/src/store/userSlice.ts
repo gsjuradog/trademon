@@ -8,6 +8,7 @@ const initialState: any = {
   token: '',
   id: 0,
   email: '',
+  avatarUrl: 'https://res.cloudinary.com/dasb94yfb/image/upload/v1612801631/a6auhq4b9eblw0ketmlv.png',
   username: '',
   trainerID: 0,
   trainerName: '',
@@ -32,12 +33,18 @@ const userSlice = createSlice({
       console.error('TRADE - Error Handling: ', action.payload);
       return state;
     },
+    updateUserUrl(state, { payload }: PayloadAction<User>) {
+      console.log('URL UPDATE, payload is:', payload);
+      state.user.avatarUrl = payload;
+    }
+
   },
 });
 
 export const {
   getUser,
   getUserError,
+  updateUserUrl
 } = userSlice.actions;
 export default userSlice.reducer;
 
