@@ -23,6 +23,7 @@ export default function ProfileOverlay(this: any) {
         className="my-profile-overlay-link"
       >
         <div className="prof-overlay-text">{userData.username}</div>
+
         <img
           className="avatar-overlay-img"
           src={
@@ -33,6 +34,7 @@ export default function ProfileOverlay(this: any) {
           }
           alt="avatar Icon"
         />
+
       </div>
       <img
         onClick={toggleHamburger}

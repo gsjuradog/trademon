@@ -46,7 +46,7 @@ export interface MtgoTrades {
   listingType:string,
   buyer:string|null,
   buyersOfferItemId:number|null,
-  tradeComplete:boolean
+  tradeComplete:boolean,
 }
 
 export interface MTGVariableData {

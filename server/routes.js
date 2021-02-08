@@ -17,7 +17,7 @@ router.post('/signin', userControllers.signin);
 router.post('/getPublicDetails', userControllers.getPublicDetails);
 
 //USER DETAILS
-router.post('/userAvatar', userControllers.uploadAvatar)
+router.put('/userAvatar', userControllers.uploadAvatar)
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
