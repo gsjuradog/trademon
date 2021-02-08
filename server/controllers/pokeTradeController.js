@@ -28,7 +28,7 @@ const createTrade = async (req, res) => {
         listingType,
       } = req.body;
       const sellerUserName= await db.UserData.findOne({where :{id:id}})
-      console.log(sellerUserName)
+      
       reply = await db.PokeTradeData.create({
         numViews,
         seller:sellerUserName.dataValues.username,
