@@ -1,38 +1,89 @@
 const fs = require('fs');
 const express = require('express');
-const { ApolloServer, gql } = require('apollo-server-express');
-const cors = require('cors');
-
-const db = require('./models/index');
-
-require('dotenv').config();
-
-const router = require('./routes');
-
 const app = express();
+const cors = require('cors');
+// -------------------- SocketIO
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
+const util = require('util');
+
+// -------------------- Default Rest & Express
+const db = require('./models/index');
+require('dotenv').config();
+const router = require('./routes');
 const PORT = process.env.PORT || process.env.PORTLOCAL || 3001;
-const HOST = 'localhost';
-const test = process.env.HOST;
-console.log(test);
-//
 app.use(cors(), express.json(), router);
 
-const typeDefs = gql(
-  fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' })
-);
+// -------------------- GraphQL
+const { ApolloServer, gql } = require('apollo-server-express');
+const typeDefs = gql(fs.readFileSync(__dirname + '/schema.graphql', { encoding: 'utf8' }));
 const resolvers = require('./controllers/resolvers');
-//const context = ({ req }) => ({user: req.user});
-//const apolloServer = new ApolloServer({typeDefs, resolvers, context});
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
+const moment = require('moment');
 
+// -------------------- SocketIO
+const clients = [];	//track connected clients
+io.on('connection', (socket) => {
+  // Welcome Current User & track connected clients via log
+	clients.push(socket.id);
+	const clientConnectedMsg = {
+    content: 'User joined the room',
+    sender: 0,
+    createdAt: moment(Date.now()).format('MMMM Do YYYY, h:mm a'),
+    PrivateChatId: socket.id,
+  }
+  // Send a user who just joined a welcome message
+  socket.emit('newMessage', {
+    content: 'Welcome To The Trade Room!',
+    sender: 0,
+    createdAt:moment(Date.now()).format('MMMM Do YYYY, h:mm a'),
+    PrivateChatId: socket.id,
+  });
+  // Notifies all users that someone joined the room
+  socket.broadcast.emit('newMessage', clientConnectedMsg);
+  console.log(clientConnectedMsg);
+
+  //Listen for chat messages from users
+  socket.on('chatMessage', msg=>{
+    console.log('Server read chatMessage ',msg);
+    const formattedDate= moment(msg.createdAt).format('MMMM Do YYYY, h:mm a')
+    console.log('WHAT IS MOMENT ', formattedDate);
+    const formattedMessage= {
+      content: msg.content,
+      sender: msg.sender,
+      createdAt: formattedDate,
+      PrivateChatId: msg.PrivateChatId,
+    }
+    io.emit('newMessage', formattedMessage);
+    //socket.broadcast.emit('newMessage', msg);
+  });
+
+  //When client disconnects, handle it
+  socket.on('disconnect', () => {
+    clients.pop(socket.id);
+    const clientDisconnectedMsg = 'User disconnected ' + util.inspect(socket.id) + ', total: ' + clients.length;
+    io.emit(clientDisconnectedMsg);
+    console.log(clientDisconnectedMsg);
+  })
+  
+});
+// -------------------- Start Server Listening
 (async () => {
   try {
     //await db.sequelize.sync({ force: true });
     await db.sequelize.sync();
-    app.listen(PORT);
+    http.listen(PORT);
     console.log(`Conected to DB, Server listening on port ${PORT}`); // eslint-disable-line no-console
   } catch (e) {
     console.error('Error connecting to the db', e); // eslint-disable-line no-console
   }
 })();
+
+
+

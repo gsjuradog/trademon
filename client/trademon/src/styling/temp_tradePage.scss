@@ -39,18 +39,21 @@
 }
 
 .master-trade-container {
-  @extend .flex-center;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   height: 90vh;
 }
 
 .left-side {
-  @extend .flex-column-center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   max-height: 90vh;
   width: 49vw;
   min-width: 370px;
-  margin-bottom: 2vh;
 }
 
 .traders-container {
@@ -73,15 +76,14 @@
   image-rendering: crisp-edges;
 }
 
-.user-text-top {
-  font-size: calc(10px+ 3vw);
+.user-text-topp {
+  font-size: calc(10px + 1.2vw);
   width: 20vw;
   min-width: 175px;
   margin: 1vh 0vh;
   background-color: $colorGreyPop;
   color: white;
   padding: 1vh 2vh;
- 
   border-radius: 25px;
 }
 
@@ -91,26 +93,27 @@
 }
 
 .user-badge {
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 3vw;
+  height: 3vw;
   min-width: 30px;
   min-height: 30px;
   image-rendering: pixelated;
 }
 
 .right-side {
-  height: 100%;
+  height: 90%;
   width: 49vw;
   min-width: 370px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .chat-container {
   width: 95%;
   max-height: 50vh;
+  min-height: 50vh;
   overflow-y: auto;
   background-color: $colorGreyPop80;
   border-radius: 25px;
@@ -118,10 +121,17 @@
 }
 
 .trade-item-size {
+  width: 14vw;
+  height: 20vw;
+  min-width: 180px;
+  min-height: 250px;
+}
+
+.trade-item-size-square {
   width: 20vw;
   height: 20vw;
   min-width: 200px;
-  min-height: 200px;
+  min-height: 300px;
 }
 
 .user-comm {
@@ -153,4 +163,40 @@
 
 .offer-trade-button:hover {
   color: $colorSecondary;
+}
+
+.trade-room-nav{
+  width: 100vw;
+}
+
+.nav-container-smallerr {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-height: 9vh;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid $colorPrimary;
+  box-shadow: 0 0 10px 3px $colorPrimary;
+}
+
+.logo-img-link-smaller {
+  width: 5vw;
+  height: 5vw;
+  min-width: 55px;
+  min-height: 55px;
+  padding-left: 15px;
+  padding-top: 2vh;
+}
+
+.logo-img-smaller {
+  width: 100%;
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.trademon-title-link-smaller{
+  cursor: pointer;
+  max-width: 15vw;
+  justify-self: flex-start;
 }

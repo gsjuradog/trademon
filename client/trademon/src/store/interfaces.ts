@@ -2,6 +2,7 @@ export interface User {
   token: string;
   id: number;
   email: string;
+  avatarUrl: string;
   username: string;
   trainerID?: number;
   trainerName?: string;

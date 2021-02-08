@@ -75,8 +75,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: [],    
     },
     avatarUrl: {
-      type: DataTypes.STRING,
-      defaultValue: '',     
+       type: DataTypes.STRING,
+        allowNull: true,    
+
     },
 
   });
