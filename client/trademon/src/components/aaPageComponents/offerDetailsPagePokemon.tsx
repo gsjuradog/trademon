@@ -105,12 +105,12 @@ export default function OfferDetailsPage() {
             />: <> </> }
           </div>
         </div>
-        <div className="large-sprite-container">
+        <div className="large-sprite-container-poke">
           {tradeDetails.pokeSprite === 'None' ? 
           <PuffLoader size={200} color={color}/> :
           <Fragment>
-          <div className="large-text">#{tradeDetails!.pokeNum}</div>
-          <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/> 
+            <div className="large-text">#{tradeDetails!.pokeNum}</div>
+            <img className="large-sprite" src={tradeDetails!.pokeSprite} alt="Pokemon Name"/> 
           </Fragment>
           }
         </div>

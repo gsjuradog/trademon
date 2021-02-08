@@ -1,6 +1,6 @@
 import { TradeData, Create, SignIn, MtgoTrades } from './interfaces'
 
-const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
+const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:4444';
 
 const cloudName = 'dasb94yfb';
 const avatarCloud = `https://api.cloudinary.com/v1_1/${cloudName}/`
@@ -66,14 +66,14 @@ export const uploadAvatarCloud = async (user: number, avatar: any) => {
 }
 
 
-export const uploadAvatarServer  = async (url: string) => {
+export const uploadAvatarServer  = async (id:number, url: string) => {
   await fetch(`${endpointURL}/userAvatar`, {
     method: 'PUT',
     headers: {
       'Content-Type':'application/json'
     },
     body: JSON.stringify({
-      userId: 1,
+      userId: id,
       avatarUrl: url
     })
   })
