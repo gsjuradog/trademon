@@ -26,7 +26,7 @@ export default function ProfileOverlay(this: any) {
         className="my-profile-overlay-link"
       >
         <div className="prof-overlay-text">{userData.username}</div>
-        <img className="avatar-overlay-img" src ={userData.avatarUrl} alt="avatar Icon"/>
+        <img className="avatar-overlay-img" src ={userData.avatarUrl !== 'https://res.cloudinary.com/dasb94yfb/image/upload/v1612801631/a6auhq4b9eblw0ketmlv.png' ? userData.avatarUrl: '/assets/avatarIcon.png'} alt="avatar Icon"/>
       </div>
       <img onClick={toggleHamburger} className="hamburger-img" src ={'/assets/HamburgerIcon.png'} alt="menu Icon"/>
     </div>

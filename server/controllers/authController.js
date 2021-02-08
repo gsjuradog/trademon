@@ -102,6 +102,7 @@ exports.uploadAvatar = async (req, res) => {
         id: userId
       }
     });
+    console.log('AVATAR UPLOAD LINK: ', avatarUrl);
     res.status(201);
   } catch (error) {
     console.log('AVATAR UPLOAD ERROR', error);

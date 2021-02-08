@@ -67,9 +67,8 @@ export const uploadAvatarCloud = async (user: number, avatar: any) => {
 
 
 export const uploadAvatarServer  = async (url: string) => {
-  
   await fetch(`${endpointURL}/userAvatar`, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type':'application/json'
     },

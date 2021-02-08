@@ -17,7 +17,7 @@ import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 import { io } from 'socket.io-client';
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-const socket = io("https://trademon.herokuapp.com/" || "http://localhost:4444");
+const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
 
 
 export default function TradePage() {
