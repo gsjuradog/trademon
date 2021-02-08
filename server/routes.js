@@ -40,4 +40,8 @@ router.delete('/deleteMTGOTrade', mtgotradeControllers.deleteMTGOTrade);
 // STATIC ITEM DATA RELATED ROUTES
 router.post('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
 
+// ROUTE TO WATCHLIST
+router.post('/addToWatchlist', tradeControllers.addToWatchlist);
+
+
 module.exports = router;
