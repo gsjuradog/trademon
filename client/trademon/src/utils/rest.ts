@@ -2,6 +2,9 @@ import { TradeData, Create, SignIn } from './interfaces'
 
 const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
+const cloudName = 'dasb94yfb';
+const avatarCloud = `https://api.cloudinary.com/v1_1/${cloudName}/`
+
 export const createUser = async (user : Create) => {
   const { name, email, password } = user;
 
@@ -40,6 +43,21 @@ export const signInUser = async (user: SignIn) => {
     .then(data => data)
     .catch(err => console.log('SIGN IN USER ERROR', err))
     return result;
+}
+
+export const uploadAvatar = async (avatar: any) => {
+
+  const formData = new FormData();
+  formData.append('file', avatar.files[0]);
+  formData.append('upload_preset', 'ppgbubn6');
+
+  const cloudUpload = await fetch(avatarCloud + 'upload', {
+    method: 'POST',
+    body: formData,
+  }).then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log('Fetch error (CLOUDINARY)', err));  
+
 }
 
 export const createChat = async (seller: Number, buyer: Number, message: string) => {

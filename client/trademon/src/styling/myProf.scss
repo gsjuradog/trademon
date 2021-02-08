@@ -3,6 +3,7 @@
 .my-profile-containers {
   min-width: 150px;
   width: 80%;
+  position: relative;
   background-color: $colorGreyPop;
   border-radius: 25px;
   padding-left: 25px;
@@ -30,7 +31,7 @@
   height: 175px;
   margin-top: 10px;
   overflow: scroll;
-  padding-top: .5vh;
+  padding-top: 0.5vh;
 }
 
 .watch-list-title-row {
@@ -50,11 +51,29 @@
   padding-bottom: 1vh;
 }
 
+.upload-avatar-form {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35vw;
+  height: 10vh;
+  left: 50%;
+  margin-left: -15vw;
+  top: 10%;
+  padding: 1em;
+  border: 2px solid $colorPrimary;
+  box-shadow: 0 0 10px 3px $colorPrimary;
+  opacity: 0;
+}
+
 .profile-avatar-box {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 15vw;
+  justify-content: space-between;
+  button {
+    margin-left: 2em;
+  }
 }
 
 .prof-banner-avatar {
