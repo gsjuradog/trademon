@@ -22,8 +22,8 @@ export default function LandingPage() {
         <SearchBar></SearchBar>
       </div>
       <div className="platforms-container">
-        {worlds.map((world) => (
-          <PlatformContainer key={0} world={world}></PlatformContainer>
+        {worlds.map((world, index) => (
+          <PlatformContainer key={index} world={world}></PlatformContainer>
         ))}
       </div>
     </>

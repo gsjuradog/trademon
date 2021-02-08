@@ -1,5 +1,6 @@
 const db = require('../models/index');
 const services = require('../services/services');
+
 const createTrade = async (req, res) => {
   try {
     console.log('A User Is Creating An Offer! ');

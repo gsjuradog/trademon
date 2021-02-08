@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
-import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
-import { getOneTrade } from '../../utils/rest';
+import { getOnePokeTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
-import setAppraisalImage from '../../utils/helperFunction'
+import setAppraisalImage, {calcRating} from '../../utils/helperFunctions'
 //
 export default function OfferDetailsPage() { 
   const { tradeID } : any = useParams();
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>("");
+  const [sellerRatingValue, setNumSellerRatingValue] = useState<number>(0);
+  const [numSellerSales, setNumSellerSales] = useState<number>(0);
+  const [numSellerRatings, setNumSellerRatings] = useState<number>(0);
+  const [userPublicDetails, setUserPublicDetails] = useState<any>(
+    {
+      numberOfSales: 0,
+    }
+  )
   const [ tradeDetails, setTradeDetails] = useState<Trades>(
     {
       id:0,
-      numViews:0, 
+      numViews:0,
+      UserDatumId:0, 
       seller:'Loading...', 
       pokeNum:0, 
       pokeName:'Loading...', 
@@ -34,15 +42,26 @@ export default function OfferDetailsPage() {
 
   useEffect(() => {
     fetchTradeDetails();
+    fetchSellerDetails();
   }, []) 
 
   async function fetchTradeDetails () {
-    const tradeFetch = await getOneTrade(tradeID);
+    const tradeFetch = await getOnePokeTrade(tradeID);
     if (tradeFetch) {
       setTradeDetails(tradeFetch);
-      const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal)
+      const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal);
       setAppraisalImgUrl(foundSpriteURL);
+      const sellerPublicData: any = await getUserPublicDetails(tradeFetch.UserDatumId);
+      const calculatedRating = calcRating(sellerPublicData.sellerRating);
+      setNumSellerRatingValue(calculatedRating);
+      setNumSellerRatings(sellerPublicData.sellerRating.length);
+      setNumSellerSales(sellerPublicData.sales);
+      setUserPublicDetails(sellerPublicData);
     }
+  }
+
+  async function fetchSellerDetails () {
+    //
   }
 
   const messageHandler = () => {   
@@ -100,12 +119,14 @@ export default function OfferDetailsPage() {
           <div className="rating-text">
             Seller Rating
           </div>
-          <UserRatingComponent />
+          <div>
+            {sellerRatingValue}/5
+          </div>
           <div className="rating-tiny-text">
-            based on 4 ratings
+            based on {numSellerRatings} ratings
           </div>
           <div className="rating-text">
-            10 Sales
+            {numSellerSales} Sales
           </div>
         </div>
       </div>

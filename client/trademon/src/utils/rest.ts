@@ -92,7 +92,7 @@ export const getTrades = () => {
   })
 };
 
-export const getOneTrade = (tradeID: Number) => {
+export const getOnePokeTrade = (tradeID: Number) => {
   return fetch(`${endpointURL}/fetchOnePokeTrade`, {
     method: 'POST',
     headers: {
@@ -176,10 +176,7 @@ export const createTrade = async (trade : TradeData) => {
 }
 
 const getPoke = async (name: string) => {
-
   let call = {};
-  console.log('GET POKE CALLED WITH NAME: ', name);
-  
   await fetch(`${endpointURL}/fetchStaticPoke`, {
         method: 'POST',
         headers: {
@@ -191,6 +188,23 @@ const getPoke = async (name: string) => {
       }).then(res => res.json())
       .then(data => call = data)
       .catch(err => console.log('GETPOKE ERROR', err))
+
+      return call;
+}
+
+export const getUserPublicDetails = async (id: number) => {
+  let call = {};
+  await fetch(`${endpointURL}/getPublicDetails`, {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          id: id
+        }) 
+      }).then(res => res.json())
+      .then(data => call = data)
+      .catch(err => console.log('GET USER ERROR', err))
 
       return call;
 }

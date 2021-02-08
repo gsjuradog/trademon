@@ -296,7 +296,8 @@ p {
 .right {
   background-color: $colorGreyPop;
   border: 1px solid $colorPrimary;
-  margin-left: 25px;
+  margin-left: 4vw;
+  min-width: 80%;
 }
 
 .right:hover {
@@ -305,7 +306,8 @@ p {
 
 .left {
   background-color: $colorPrimary;
-  margin-right: 25px;
+  margin-right: 4vw;
+  min-width: 80%;
 }
 
 .left:hover {

@@ -51,6 +51,21 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true,
     },
+    transactionSales: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      defaultValue: [],
+      allowNull: true,
+    },
+    transactionPurchases: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      defaultValue: [],
+      allowNull: true,
+    },
+    transactionTrades: {
+      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      defaultValue: [],
+      allowNull: true,
+    }
   });
 
   userData.associate = (model) => {
