@@ -14,6 +14,7 @@ import badge_p2 from '../../assets/badges/_p2.png';
 
 import Chat from './trade_dmPage';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
+import React from 'react';
 
 export default function orga() {
   return (

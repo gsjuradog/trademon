@@ -2,6 +2,7 @@ import TradePage from '../aaPageComponents/tradePage';
 import './testComponent.scss';
 
 import { getUser, getPrivateChats } from '../../utils/graphql';
+import React from 'react';
 
 const TestComponent = () => {
   const fetchChat = async () => {

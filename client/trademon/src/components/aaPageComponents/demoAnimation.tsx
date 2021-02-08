@@ -3,6 +3,7 @@ import { withRouter, useHistory } from 'react-router-dom';
 import { demoHeadAnimation, demoArrowAnimation } from '../../utils/animations';
 
 import '../../styling/demo.scss';
+import React from 'react';
 
 const DemoAnimation = () => {
 

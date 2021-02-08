@@ -271,3 +271,21 @@ export const getMtgoCardbyName = async (name:string) =>{
 
   return mtgoCard
 }
+
+export const addToWatchList = async (tradeId:number, userId: number)=>{
+    let result = await fetch(`${endpointURL}/addToWatchlist`, { 
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+     tradeId: tradeId,
+     id:userId
+    }) 
+  })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log('Add To WhatchList Error: ', err));
+
+    return result;
+}

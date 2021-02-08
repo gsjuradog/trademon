@@ -68,6 +68,9 @@ p {
   margin-bottom: -0.6vh;
   margin-right: 0.5vh;
 }
+.linkcomponent{
+  margin-bottom:1.6vh;
+}
 
 .heart-mini {
   width: 1vw;
@@ -77,6 +80,11 @@ p {
   align-self: flex-end;
   margin-right: 0.5vh;
 }
+.name-heart{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} 
 
 .main-info-row {
   display: flex;
@@ -312,4 +320,9 @@ p {
 
 .left:hover {
   opacity: 0.9;
+}
+
+.whatever{
+  display: flex;
+  justify-content: space-between;
 }
