@@ -1,4 +1,4 @@
-import { TradeData, Create, SignIn } from './interfaces'
+import { TradeData, Create, SignIn, MtgoTrades } from './interfaces'
 
 const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
