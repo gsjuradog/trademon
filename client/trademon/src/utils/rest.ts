@@ -1,4 +1,4 @@
-import { TradeData, Create, SignIn } from './interfaces'
+import { TradeData, Create, SignIn, MtgoTrades } from './interfaces'
 
 const endpointURL : String = 'https://trademon.herokuapp.com' || 'http://localhost:3001';
 
@@ -225,4 +225,49 @@ export const getUserPublicDetails = async (id: number) => {
       .catch(err => console.log('GET USER ERROR', err))
 
       return call;
+}
+
+export const createMTGOTrade = async (trade:MtgoTrades) => {
+  const {isFoil, price, listingType, cardName } = trade;
+  const mtgoCardDetails = await getMtgoCardbyName(cardName);
+  const {manaCost, colors, type, subTypes, rarity,set, setName, imageUrl}: any = mtgoCardDetails;
+  return fetch(`${endpointURL}/createMTGOTrade`, {
+    method: 'POST',
+    headers: {
+      'Content-Type':'application/json'
+    },
+    body: JSON.stringify({
+      isFoil,
+      price,
+      listingType,
+      cardName,
+      manaCost,
+      color:colors,
+      mainType:type,
+      subTypes,
+      rarity,
+      setAcronym:set,
+      setName,
+      cardImage:imageUrl
+      
+    })
+  })
+}
+
+
+export const getMtgoCardbyName = async (name:string) =>{
+  console.log(name)
+  let mtgoCard = {}
+  const magicAPIByName = `https://api.magicthegathering.io/v1/cards?name=${name}`;
+  await fetch (magicAPIByName, {
+    method: 'GET',
+    headers:{ 
+      'Content-Type':'application/json'
+  }
+  })
+  .then(res=>res.json())
+  .then(res => mtgoCard = res)
+  .catch(err => console.log('GETPOKE ERROR', err))
+
+  return mtgoCard
 }
