@@ -24,28 +24,26 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
   }, []);
 // Add  on click - Watchlist array on userData? -- Add onClick
   return (
-    // <Link to={`/trade/${trade.id}`}>
-      <div className="standard-tile-container">
+      <div className="standard-tile-container" onClick={() => history.push(`/trade/${trade.id}`)}>
         <div className="title-row">
           <span className="heart" ></span>  
-          <div className="std-tile-title-text" onClick={() => history.push(`/trade/${trade.id}`)}>{trade.name}</div>
-          <button onClick={() => {sendToWatchlist(tradeId,id)}}>
+          <div className="std-tile-title-text">{trade.name}</div>
           <img 
             src={'/assets/FavIconEmpty.png'}
             className="heart"
             alt="Heart Icon"
+            onClick={() => {sendToWatchlist(tradeId,id)}}
             ></img>
-            </button>
         </div>
-        <div className="main-info-row" onClick={() => history.push(`/trade/${trade.id}`)}>
-          <div className="sprite-row" onClick={() => history.push(`/trade/${trade.id}`)}>
+        <div className="main-info-row">
+          <div className="sprite-row">
             <img
               className="standard-sprite"
               src={trade.image}
               alt={`${trade.name}`}
             ></img>
           </div>
-          <div className="appraisal-box" onClick={() => history.push(`/trade/${trade.id}`)}>
+          <div className="appraisal-box">
             <img className="appraisal-img"
               src= {appraisalImgUrl}
               alt={`${trade.name}`}
@@ -58,7 +56,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
             <p>CP {trade.level}</p>
           </div>
         </div>
-        <div className="seller-row" onClick={() => history.push(`/trade/${trade.id}`)}>
+        <div className="seller-row">
           <div className="seller-info">
             <img
               className="standard-avatar"
@@ -70,6 +68,5 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
           <p>${trade.price}</p>
         </div>
       </div>
-    // </Link>
   );
 }
