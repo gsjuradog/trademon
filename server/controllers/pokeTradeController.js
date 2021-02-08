@@ -1,6 +1,6 @@
 const db = require('../models/index');
 const services = require('../services/services');
-
+const {Sequelize} = require('sequelize');
 const createTrade = async (req, res) => {
   try {
     console.log('A User Is Creating An Offer! ');
@@ -9,7 +9,7 @@ const createTrade = async (req, res) => {
     if (token) {
       tokenValid = await services.checkToken(id, token);
     }
-    let reply = '';
+    let reply = ''; 
     if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         numViews,
@@ -167,16 +167,49 @@ const deleteTrade = async (req, res) => {
     } else reply = { error: 'User not authorized to make this request.' };
     res.status(200).send(reply);
   } catch (error) {
-    console.log('No Trade With That ID Found', err);
+    console.log('No Trade With That ID Found', error);
     res.status(500).send('DELETE ERROR');
   }
 };
 
+const addToWatchlist = async (req, res) => {
+  try {
+    const { id, token } = req.headers;
+    let tokenValid;
+    if (token) {
+      tokenValid = await services.checkToken(id, token);
+    }
+    let reply = '';
+    let result = '';
+    if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
+      const { id, tradeId } = await req.body;
+      const filter = { where: { id: id } };
+      reply = await db.UserData.findOne(filter);
+      const existsInWatchList = reply.watchList.includes(tradeId)//true or false
+      
+      if (existsInWatchList){
+        reply = {'error':'Object is already in list'};
+      } else if (reply) {
+        await reply.update({watchList: Sequelize.fn('array_append', Sequelize.col('watchList'), tradeId)});
+        const cloneReply = Object.assign({}, reply);
+        delete cloneReply.dataValues.hashed;
+        reply = cloneReply;
+        
+      }  
+    } else reply = { error: 'User not authorized to make this request.' }; 
+    res.status(200).send(reply);
+  } catch (err) {
+    console.log('No Trade With That ID Found',err);
+    res.status(500).send('Add To Watchlist ERROR'); 
+  }
+}
+  
 module.exports = {
-  createTrade,
+  createTrade, 
   fetchTrades,
   fetchOneTrade,
   fetchTradesByDate,
   editTrade,
   deleteTrade,
+  addToWatchlist
 };

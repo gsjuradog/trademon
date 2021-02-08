@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    setAcronym: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     setName: {
       type: DataTypes.STRING,
       allowNull: true, ///change
