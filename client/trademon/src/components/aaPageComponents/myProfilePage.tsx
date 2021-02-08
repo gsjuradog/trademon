@@ -3,6 +3,7 @@ import ProfileBanner from '../tileComponents/myProfileTileComponents/profileBann
 import WatchList from '../tileComponents/myProfileTileComponents/watchListComponent'
 import MyOffers from '../tileComponents/myProfileTileComponents/myOffersComponent'
 import SearchBar from '../navComponents/searchComponents/searchBarComponent'
+import Footer from '../navComponents/footer';
 import '../../styling/containers.scss'
 
 export default function MyProfile() {
@@ -16,6 +17,7 @@ export default function MyProfile() {
         <ProfileBanner></ProfileBanner>
         <WatchList></WatchList>
         <MyOffers></MyOffers>
+        <Footer/>
       </div>
     </div>
   )

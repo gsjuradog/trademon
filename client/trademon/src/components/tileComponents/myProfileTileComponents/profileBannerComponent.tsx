@@ -4,6 +4,9 @@ import { RootState } from '../../../store/store';
 import '../../../styling/myProf.scss';
 import {calcRating} from '../../../utils/helperFunctions'
 
+import { avatarFormIn, avatarFormOut } from '../../../utils/animations';
+import { uploadAvatar } from '../../../utils/rest';
+
 export default function ProfileBanner() {
 
   const userData = useSelector((state: RootState) => state.user.user);
@@ -25,13 +28,27 @@ export default function ProfileBanner() {
     setBuyerRatingValue(totalRating);    
   }
 
+  const changeAvatar = () => {
+    avatarFormIn();
+  }
+
+  const submitAvatar = () => {
+    const avatar = document.querySelector('.avatar-input');
+    avatarFormOut();
+    uploadAvatar(avatar);
+  }
+
 
   return (
     <div className="my-profile-containers">
+      <div className="upload-avatar-form">
+        <input type="file" className="avatar-input"></input>
+        <button onClick={submitAvatar}>Submit</button>
+      </div>
         <div className="banner-container-top">
           <div className="profile-avatar-box">
-            <img className="prof-banner-avatar" src ={'/assets/avatarIcon.png'} alt=''></img>
-            <div className="prof-banner-text">Change</div>
+            <img className="prof-banner-avatar" src ={'/assets/avatarIcon.png'} alt=''></img> 
+            <button className="change-avatar-btn" onClick={changeAvatar}>Change Avatar</button>
           </div>
           <div className="my-profile-text">{userData.username ? userData.username: 'none'}</div>
         </div>

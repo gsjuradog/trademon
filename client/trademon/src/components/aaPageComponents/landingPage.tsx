@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PlatformContainer from '../containerComponents/platformContainer';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import Footer from '../navComponents/footer';
 import { fetchTrades } from '../../store/miniTileSlice';
 import { setWorld } from '../../store/worldSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,6 +27,7 @@ export default function LandingPage() {
           <PlatformContainer key={index} world={world}></PlatformContainer>
         ))}
       </div>
+      <Footer/>
     </>
   );
 }

@@ -12,7 +12,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  cursor: pointer; 
 }
 
 .platform-container {
@@ -30,6 +29,7 @@
   background-size: cover;
   background-position: center;
   transition: 300ms;
+  cursor: pointer;
 }
 
 .platform-container:hover {
@@ -74,8 +74,14 @@
   margin-top: 15px;
 }
 
+.offer-details-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .offer-details-container {
-  margin-top: 3vh;
+  margin-top: 5vh;
   display: flex;
   flex-wrap: wrap;
   width: 95%;
@@ -161,10 +167,10 @@
       }
     }
   }
-  .large-MTGOCard:hover{
-      margin-top: 5vh;
-      margin-bottom: 5vh;
-      transform: scale(1.7); 
+  .large-MTGOCard:hover {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    transform: scale(1.7);
   }
 }
 
@@ -255,7 +261,7 @@
 }
 
 .seller-details-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -77,7 +77,7 @@ export default function OfferDetailsPage() {
   }
 
   return (
-    <>
+    <div className="offer-details-page">
       <SearchBar></SearchBar>
       <div className="offer-details-container">
         <div className="item-details-container">
@@ -148,6 +148,6 @@ export default function OfferDetailsPage() {
           <button onClick={messageHandler}>Message Seller</button>
         </div>
       </div>
-    </>
+    </div>
   )
 }

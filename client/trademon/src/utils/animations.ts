@@ -87,3 +87,18 @@ export const contactSellerAnimation = () => {
   })
 }
 
+//Upload avatar
+export const avatarFormIn = () => {
+  gsap.from('.upload-avatar-form', 2, {
+    x: -300
+  })
+  gsap.to('.upload-avatar-form', 2, {
+    opacity: 1
+  })
+}
+
+export const avatarFormOut = () => {
+  gsap.to('.upload-avatar-form', 2, {
+    opacity: 0
+  })
+}
