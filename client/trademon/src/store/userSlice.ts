@@ -37,7 +37,7 @@ const userSlice = createSlice({
       state.user = payload;
     },
     updateUserUrl(state, { payload }: PayloadAction<string | undefined>) {
-      state.user.user.avatarUrl = payload;
+      state.user.avatarUrl = payload;
     },
     addFaveToState(state, { payload }: PayloadAction<Object>) {
       console.log('Append With this payload: ', payload);
