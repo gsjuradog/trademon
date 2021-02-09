@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from './store';
 import { User, SignIn } from './interfaces';
-import { signInUser } from '../utils/rest';
+import { getUserPublicDetails, signInUser } from '../utils/rest';
 
 const initialState: any = {
   user: {
@@ -37,7 +37,11 @@ const userSlice = createSlice({
       state.user = payload;
     },
     updateUserUrl(state, { payload }: PayloadAction<string | undefined>) {
-      state.avatarUrl = payload;
+      state.user.user.avatarUrl = payload;
+    },
+    addFaveToState(state, { payload }: PayloadAction<Object>) {
+      console.log('Append With this payload: ', payload);
+      state.user.user.watchList = payload;
     },
     getUserError(state, action: PayloadAction<string>) {
       console.error('TRADE - Error Handling: ', action.payload);
@@ -46,7 +50,12 @@ const userSlice = createSlice({
   },
 });
 
-export const { getUser, getUserError, updateUserUrl } = userSlice.actions;
+export const {
+  getUser,
+  getUserError,
+  updateUserUrl,
+  addFaveToState,
+} = userSlice.actions;
 export default userSlice.reducer;
 
 // THUNK / EPIC
@@ -65,5 +74,19 @@ export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
     console.log('USER THUNK fetchUser: I fetched: ', response);
   } catch (err) {
     dispatch(getUserError(err.toString()));
+  }
+};
+
+export const addFavoriteTrade = (
+  tradeId: number,
+  userId: any,
+): AppThunk => async (dispatch) => {
+  try {
+    const existingWatchList: any = await getUserPublicDetails(userId);
+    console.log('WE ARE ADDING THIS NEW FAVE : ', existingWatchList.watchList);
+    const appendWatchList = { tradeId, ...existingWatchList.watchList };
+    dispatch(addFaveToState(appendWatchList));
+  } catch (error) {
+    dispatch(getUserError(error.toString()));
   }
 };

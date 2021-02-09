@@ -318,7 +318,7 @@ export const getMtgoCardbyName = async (name: string) => {
   return mtgoCard;
 };
 
-export const addToWatchList = async (tradeId: number, userId: number) => {
+export const addToWatchList = async (userId: number, tradeId: number) => {
   let result = await fetch(`${endpointURL}/addToWatchlist`, {
     method: 'POST',
     headers: {
