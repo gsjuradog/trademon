@@ -19,7 +19,6 @@ import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
 import DemoAnimation from './components/aaPageComponents/demoAnimation';
 import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
-import FeedbackForm from './components/formComponents/feedbackForm';
 import TestComponent from './components/testComponent/testComponent';
 import FeedBackForm from './components/formComponents/feedbackForm';
 
