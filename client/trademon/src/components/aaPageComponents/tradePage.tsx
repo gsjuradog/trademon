@@ -13,9 +13,7 @@ import badge_p2 from '../../assets/badges/_p2.png';
 import { Message } from '../../utils/interfaces';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
 import React, { useEffect, useRef, useState } from 'react';
-import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 import { io } from 'socket.io-client';
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
 
