@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
 
 import { createChat } from '../../utils/rest';
@@ -31,7 +31,10 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
   }
 
   const backHandler = () => {
-    history.push(`trade/${tradeDetails.tradeID}`);
+    console.log(tradeDetails.id);
+    tradeDetails.id < 100000 ? 
+      history.push('/Pokemon Go') : 
+      history.push('/MTGO');
     setMessageSeller(false);
   }
 
@@ -43,7 +46,10 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
         case 'SEND ERROR' :
           return <p>Send error!</p>;
         case 'SEND SUCCESS' :
-          return <i className="fas fa-check fa-10x"></i>
+          return <Fragment> 
+                    <i className="fas fa-check fa-10x"></i>
+                    <p>Message sent!</p>
+                 </Fragment>
         default :
           return <textarea 
                     id="contact-seller-content" 
@@ -70,7 +76,7 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
         <h1>Contact Seller</h1>
         {textAreaState()}
         <div className="contact-seller-btns">
-          <button onClick={backHandler}>Back to trade</button>
+          <button onClick={backHandler}>Listings</button>
           {
           sendStatus === 'DEFAULT' ?  
           <button onClick={chatHandler}>Send message</button> : null}

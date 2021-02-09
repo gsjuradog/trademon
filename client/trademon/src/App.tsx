@@ -19,7 +19,9 @@ import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
 import DemoAnimation from './components/aaPageComponents/demoAnimation';
 import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
+import FeedbackForm from './components/formComponents/feedbackForm';
 import TestComponent from './components/testComponent/testComponent';
+import FeedBackForm from './components/formComponents/feedbackForm';
 
 const App = () => {
   return (
@@ -41,6 +43,7 @@ const App = () => {
           <Route path="/Pokemon Go" component={PokemonGoPage} />
           <Route path="/MTGO" component={MagicTheGatheringPage} />
           <Route path="/WoW" component={WorldOfWarcraftPage} />
+          <Route path="/feedback" component={FeedBackForm} />
           <Route path="/demo-animation" component={DemoAnimation} />
           <Route path="/test-component" component={TestComponent} />
           <Redirect to="/" />
