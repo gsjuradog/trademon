@@ -8,6 +8,7 @@ import { RootState } from '../../store/store';
 import { addFavoriteTrade } from '../../store/userSlice';
 
 export default function MiniTile(trade: MiniTileTrade) {
+
   const userData = useSelector((state: RootState) => state.user.user);
   const history = useHistory();
   const [routeUrl, setRouteUrl] = useState('Pokemon');
@@ -35,9 +36,11 @@ export default function MiniTile(trade: MiniTileTrade) {
 
   return (
     <div onClick={(event) => navigateME(event)}>
+
+
       <div className="mini-tile-container">
         <div className="sprite-mini-box">
-          <img className="sprite-mini" src={trade.image} alt=""></img>
+          <img className="mtg-mini" src={trade.image} alt={trade.name}></img>
         </div>
         <div className="mini-tile-info-box">
           <div className="mini-fave-icon-container">
@@ -52,6 +55,8 @@ export default function MiniTile(trade: MiniTileTrade) {
           <div className="mini-tile-text">$ {trade.price}</div>
         </div>
       </div>
+
     </div>
+
   );
 }

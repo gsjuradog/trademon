@@ -14,6 +14,7 @@ export default function setAppraisalImage(appraisal: number | undefined) {
 }
 
 export const calcRating = (array: number[]) => {
+  
   let totalRating: number = 0;
   array.forEach((rating: number) => {
     totalRating += rating;

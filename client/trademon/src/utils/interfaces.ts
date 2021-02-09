@@ -26,27 +26,28 @@ export interface PokeVariableData {
 }
 
 export interface MtgoTrades {
-  id: number;
-  expirationDate: string; //change to date later
-  numViews: number;
-  cardName: string;
-  cardImage: string;
-  setName: string;
+  id:number,
+  expirationDate:string,//change to date later
+  numViews:number,
+  cardName:string,
+  cardImage:string,
+  setName:string,
   setAcronym: string;
-  convertedManaCost: number;
-  manaCost: string;
-  name: string;
-  type: string;
-  subTypes: string[];
-  rarity: string;
-  color: string[];
-  isFoil: boolean;
-  price: number;
-  tax: number;
-  listingType: string;
-  buyer: string | null;
-  buyersOfferItemId: number | null;
-  tradeComplete: boolean;
+  convertedManaCost:number,
+  manaCost:string,
+  seller:string,
+  type:string,
+  subTypes:string[],
+  rarity:string,
+  color:string[],
+  isFoil:boolean,
+  price:number,
+  tax:number,
+  listingType:string,
+  buyer:string|null,
+  buyersOfferItemId:number|null,
+  tradeComplete:boolean,
+
 }
 
 export interface MTGVariableData {

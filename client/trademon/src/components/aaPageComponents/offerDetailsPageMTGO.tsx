@@ -3,64 +3,97 @@ import '../../styling/containers.scss';
 import SearchBar from '../navComponents/searchComponents/searchBarComponent';
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import { MtgoTrades } from '../../utils/interfaces';
-import { getOneMTGOTrade } from '../../utils/rest';
+import { getOneMTGOTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
+import {calcRating} from '../../utils/helperFunctions'
 import Moment from 'react-moment';
 
-export default function OfferDetailsPage() {
-  const { tradeID }: any = useParams();
-  const [tradeDetails, setTradeDetails] = useState<MtgoTrades>({
-    id: 0,
-    expirationDate: '',
-    numViews: 0,
-    cardName: 'String',
-    cardImage:
-      'https://en.wikipedia.org/wiki/Magic:_The_Gathering#/media/File:Magic_the_gathering-card_back.jpg',
-    setName: '',
-    convertedManaCost: 0,
-    manaCost: 'string',
-    name: 'String',
-    type: 'String',
-    subTypes: ['String'],
-    rarity: 'String',
-    color: [''],
-    isFoil: false,
-    price: 0,
-    tax: 0,
-    listingType: 'sell',
-    buyer: null,
-    buyersOfferItemId: null,
-    tradeComplete: false,
-    setAcronym: '',
-  });
+import ContactSeller from './contactSeller';
+//
+export default function OfferDetailsPage() { 
+ 
+ 
+  
+  const { tradeID } : any = useParams();
+  const [messageSeller, setMessageSeller] = useState(false);
+  const [sellerRatingValue, setNumSellerRatingValue] = useState<number>(0);
+  const [numSellerSales, setNumSellerSales] = useState<number>(0);
+  const [numSellerRatings, setNumSellerRatings] = useState<number>(0);
+  const [userPublicDetails, setUserPublicDetails] = useState<any>(
+    {
+      numberOfSales: 0,
+    }
+  )
+  
+  const [ tradeDetails, setTradeDetails] = useState<MtgoTrades>(
+    {
+      id:0,
+      expirationDate:'',
+      numViews:0,
+      cardName:'String',
+      cardImage:'https://res.cloudinary.com/sangad/image/upload/v1612820494/Magic_the_gathering-card_back_kavc4w.jpg',
+      setName:'',
+      convertedManaCost:0,
+      manaCost:'',
+      seller:'',
+      type:'',
+      subTypes:[''],
+      rarity:'',
+      color:[''],
+      isFoil:false,
+      price:0,
+      tax:0,
+      listingType:'sell',
+      buyer:null,
+      buyersOfferItemId:null,
+      tradeComplete:false,
+      setAcronym:'',
+    }
+  );
+ 
 
   useEffect(() => {
     fetchTradeDetails();
   }, []);
 
-  async function fetchTradeDetails() {
-    const tradeFetch = await getOneMTGOTrade(tradeID);
-    if (tradeFetch) setTradeDetails(tradeFetch);
+
+  async function fetchTradeDetails () {
+    const tradeFetch = await getOneMTGOTrade(tradeID); 
+    if (tradeFetch){
+      setTradeDetails(tradeFetch);
+      const sellerPublicData: any = await getUserPublicDetails(tradeFetch.UserDatumId);
+      console.log(tradeFetch)
+      const calculatedRating = calcRating(sellerPublicData.sellerRating);
+      setNumSellerRatingValue(calculatedRating);
+      setNumSellerRatings(sellerPublicData.sellerRating.length);
+      setNumSellerSales(sellerPublicData.sales);
+      setUserPublicDetails(sellerPublicData);
+    } 
   }
+
+  const messageHandler = () => {   
+    setMessageSeller(true);
+  };
+
+  if (messageSeller) {
+    return (
+      <ContactSeller
+        tradeDetails={tradeDetails}
+        setMessageSeller={setMessageSeller}/>
+    )
+  }
+
+
+
 
   return (
     <>
       <SearchBar></SearchBar>
       <div className="offer-details-container">
-        <div className="item-details-container">
-          <div className="small-text">Name: {tradeDetails!.name}</div>
-          <div className="standard-text">{tradeDetails!.cardName}</div>
-          <div className="standard-text">
-            Mana Cost: {tradeDetails!.manaCost}
-          </div>
-          <div className="rating-text">Rarity:</div>
-          <UserRatingComponent />
-          <div className="is-shiny-box">
-            <div className="standard-text">Foil:</div>
-            <input type="checkbox" className="shiny-checkbox" />
-          </div>
-        </div>
-        <div className="large-sprite-container">
+
+
+          <div className="large-mtgo-container">
+
           <div className="large-text">#</div>
           <img
             className="large-MTGOCard"
@@ -68,12 +101,41 @@ export default function OfferDetailsPage() {
             alt="Mtgo Card"
           />
         </div>
+        
         <div className="seller-details-container">
-          <div className="standard-text">{tradeDetails!.buyer}</div>
-          <div className="rating-text">Seller Rating:</div>
+
+        <div className="flex-center">
+            <img className="avatar-overlay-img" 
+              src ={'/assets/avatarIcon.png'} 
+              alt="avatar Icon"
+            />
+            <div className="standard-text">
+              {tradeDetails!.seller}
+            </div>
+          </div>
+          <div className="is-foil-box">
+            {tradeDetails!.isFoil ? (
+               <div className="standard-text">{'Foil: '}<input type="checkbox" className="foil-checkbox" checked readOnly/></div> 
+            ) : null}          
+          </div>
+          <div className="standard-text">
+          {tradeDetails!.seller}
+          </div>
+          <div className="rating-text">
+            Seller Rating: 
+          </div>
+          <div>
+            {sellerRatingValue >0?sellerRatingValue:0 }/5
+          </div>
           <UserRatingComponent />
-          <div className="standard-text">Ratings: 4</div>
-          <div className="standard-text">Sales: 10</div>
+
+          <div className="rating-tiny-text">
+            based on {numSellerRatings} ratings
+          </div>
+          <div className="rating-text">
+            {numSellerSales} Sales
+          </div>
+          
         </div>
       </div>
       <div className="offer-details-container">
@@ -87,9 +149,11 @@ export default function OfferDetailsPage() {
               Expires: <Moment fromNow>{tradeDetails!.expirationDate}</Moment>
             </div>
           </div>
-          <button>Message Seller</button>
+          <button onClick={messageHandler}>Message Seller</button>
         </div>
       </div>
     </>
+
   );
 }
+
