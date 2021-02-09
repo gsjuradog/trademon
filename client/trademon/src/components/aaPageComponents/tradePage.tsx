@@ -1,6 +1,6 @@
 import '../../styling/temp_tradePage.scss';
 import imageBuyer from '../../assets/users/user1.png';
-import imageCard from '../../assets/mtgs/3.png';
+import imageCard from '../../assets/pokemons/2.png';
 import imageSeller from '../../assets/users/user2.png';
 import badge_n3 from '../../assets/badges/_n3.png';
 import badge_s2 from '../../assets/badges/_s2.png';
@@ -45,6 +45,10 @@ export default function TradePage() {
     socket.emit('chatMessage', mssgObj);
     myRef.current.scrollIntoView();
   };
+
+  const closeTradeHandler = () => {
+    history.push('./feedback');
+  }
 
   const messagesListComponent = messagesList.map((message: Message, index: number) => (
     <li
@@ -103,7 +107,15 @@ export default function TradePage() {
               </div>
             </div>
           </section>
-          <img className="trade-item-size" alt="" src={imageCard}></img>
+          <div className="trade-room-details">
+            <div className="trade-room-details-text">
+              <h2>Name: Charmeleon</h2>
+              <p>CP: 985</p>
+              <p>Cost: $150</p>
+            </div>
+            <img className="trade-item-size" alt="" src={imageCard}></img>
+          </div>
+          
         </div>
         <main className="right-side">
           <div className="chat-container">
@@ -130,7 +142,9 @@ export default function TradePage() {
               >
                 Send Message
               </button>
-              <button className="dm-offer-buttons">Close Trade</button>
+              <button 
+                className="dm-offer-buttons"
+                onClick={closeTradeHandler}>Close Trade</button>
             </div>
           </section>
         </main>
