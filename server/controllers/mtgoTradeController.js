@@ -13,7 +13,6 @@ const createMTGOTrade = async (req, res) => {
     if (tokenValid === true || process.env.IS_PRODUCTION === 'false') {
       const {
         numViews,
-        seller,
         cardName,
         cardImage,
         setName,
@@ -28,10 +27,10 @@ const createMTGOTrade = async (req, res) => {
         tax,
         listingType,
       } = req.body;
-      const sellerUserName= await db.UserData.findOne({where :{id:id}})
+      const sellerUserName = await db.UserData.findOne({ where: { id: id } });
       reply = await db.MtgoTradeData.create({
         numViews,
-        seller:sellerUserName.dataValues.username,
+        seller: sellerUserName.dataValues.username,
         cardName,
         cardImage,
         setName,

@@ -5,8 +5,10 @@ import { MiniTileTrade } from '../../store/interfaces';
 import '../../styling/tiles.scss';
 
 export default function MiniTile(trade: MiniTileTrade) {
-
+ 
   return (
+    <>
+      {trade.world === 'pokemon' ? (
     <a href={`/trade/${trade.id}`}>
       <div className="mini-tile-container">
         <div className="sprite-mini-box">
@@ -25,6 +27,29 @@ export default function MiniTile(trade: MiniTileTrade) {
           <div className="mini-tile-text">$ {trade.price}</div>
         </div>
       </div>
-    </a>
+    </a>) : (
+          <a href={`/mtgotrade/${trade.id}`}>
+          <div className="mini-tile-container">
+            <div className="sprite-mini-box">
+              <img className="mtg-mini" src={trade.image} alt={trade.name}></img>
+            </div>
+    
+            <div className="mini-tile-info-box">
+              <div className="mini-fave-icon-container">
+                <img
+                  src={'/assets/FavIconEmpty.png'}
+                  className="heart-mini"
+                  alt=""
+                ></img>
+              </div>
+              <div className="mini-tile-text">{trade.name}</div>
+              <div className="mini-tile-text">$ {trade.price}</div>
+            </div>
+          </div>
+        </a>
+    )
+      
+    }
+    </>
   );
 }
