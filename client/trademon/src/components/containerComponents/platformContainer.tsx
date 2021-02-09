@@ -79,7 +79,7 @@ const miniTilesRL: MiniTileTrade[] = [
   },
   {
     id: 20005,
-    image: 'assets/RL/r5.png',
+    image: 'assets/RL/r6.png',
     name: 'Plate lionWeel',
     price: 7.99,
     world: 'RL',
