@@ -1,4 +1,5 @@
 @import './config';
+@import './animations';
 
 .trading-container {
   height: 100vh;
@@ -31,7 +32,7 @@
   text-align: justify;
 }
 
-.title-spacer{
+.title-spacer {
   width: 10vw;
 }
 .trade-room-title-text {
@@ -54,6 +55,7 @@
   max-height: 90vh;
   width: 49vw;
   min-width: 370px;
+  margin-top: 2vh;
 }
 
 .traders-container {
@@ -108,6 +110,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 2vh;
 }
 
 .chat-container {
@@ -125,6 +128,7 @@
   height: 20vw;
   min-width: 180px;
   min-height: 250px;
+  animation: floatnoglow 4s ease-in-out infinite;
 }
 
 .trade-item-size-square {
@@ -134,13 +138,20 @@
   min-height: 300px;
 }
 
+.traderoom-trade-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid white;
+}
+
 .user-comm {
   padding: 20px;
   display: flex;
   flex-direction: column;
   max-width: 600px;
   width: 75vw;
-  min-width: 100%
+  min-width: 100%;
 }
 
 .user-textarea {
@@ -165,7 +176,7 @@
   color: $colorSecondary;
 }
 
-.trade-room-nav{
+.trade-room-nav {
   width: 100vw;
 }
 
@@ -195,7 +206,7 @@
   cursor: pointer;
 }
 
-.trademon-title-link-smaller{
+.trademon-title-link-smaller {
   cursor: pointer;
   max-width: 15vw;
   justify-self: flex-start;

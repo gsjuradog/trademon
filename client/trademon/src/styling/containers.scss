@@ -177,6 +177,13 @@
 
 .item-details-container {
   @extend .flex-column-center;
+  background-color: $colorGreyPop;
+  border-radius: 25px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  box-shadow: 0 0 8px 3px $colorPrimary;
 }
 
 .large-sprite-container-poke {

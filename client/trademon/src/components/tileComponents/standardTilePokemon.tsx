@@ -10,6 +10,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
   const history = useHistory();
   const userData = useSelector((state: RootState) => state.user.user);
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
+  const [sellerAvatarImgUrl, setSellerAvatarImgUrl] = useState<string>('');
   // const [toWatchList, setToWatchList ] = useState<boolean>(false)
 
   const tradeId = trade.id;
@@ -20,8 +21,51 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
   useEffect(() => {
     const appraisalURL: any = setAppraisalImage(trade.appraisal);
     setAppraisalImgUrl(appraisalURL);
+    hardCodeAvatarURLS();
   }, []);
   // Add  on click - Watchlist array on userData? -- Add onClick
+
+  const hardCodeAvatarURLS = () => {
+    switch (trade.seller) {
+      case 'Dan':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867591/jnipffsw7a3jh4u2vk6i.png',
+        );
+        break;
+      case 'DaltonK':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867732/umuentnls2jfif7xrhnw.png',
+        );
+        break;
+      case 'Adrian':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867717/f0d1g6lvojruibtlen2f.png',
+        );
+        break;
+      case 'Wlad':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867627/ncyipveh0cnlycbeuuu6.png',
+        );
+        break;
+      case 'Wilfredo':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867739/auvjx0ppqog7pptai6zo.png',
+        );
+        break;
+      case 'Santiago':
+        setSellerAvatarImgUrl(
+          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867615/ky0fvnkghak3uogjnr0s.png',
+        );
+        break;
+      case 'Bernat':
+        setSellerAvatarImgUrl('/assets/bernie.png');
+        break;
+      default:
+        setSellerAvatarImgUrl('/assets/avatarIcon.png');
+        break;
+    }
+  };
+
   return (
     <div
       className="standard-tile-container"
@@ -69,7 +113,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
         <div className="seller-info">
           <img
             className="standard-avatar"
-            src={'/assets/avatarIcon.png'}
+            src={sellerAvatarImgUrl}
             alt="avatar icon"
           ></img>
           <p className="seller-text">{trade.seller}</p>

@@ -1,6 +1,6 @@
 import '../../styling/temp_tradePage.scss';
 import imageBuyer from '../../assets/users/user1.png';
-import imageCard from '../../assets/mtgs/3.png';
+import imageCard from '../../assets/pokemons/6.png';
 import imageSeller from '../../assets/users/user2.png';
 import badge_n3 from '../../assets/badges/_n3.png';
 import badge_s2 from '../../assets/badges/_s2.png';
@@ -18,7 +18,7 @@ import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
-const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
+const socket = io('https://trademon.herokuapp.com' || 'http://localhost:4444');
 
 export default function TradePage() {
   const userData = useSelector((state: RootState) => state.user.user);
@@ -46,14 +46,17 @@ export default function TradePage() {
     myRef.current.scrollIntoView();
   };
 
-  const messagesListComponent = messagesList.map((message: Message, index: number) => (
-    <li
-      className="dm-list-tile"
-      style={{ listStyleType: 'none' }} 
-      key={index}>
-      {<DMChatTile {...message}></DMChatTile> }
-    </li>
-  ));
+  const messagesListComponent = messagesList.map(
+    (message: Message, index: number) => (
+      <li
+        className="dm-list-tile"
+        style={{ listStyleType: 'none' }}
+        key={index}
+      >
+        {<DMChatTile {...message}></DMChatTile>}
+      </li>
+    ),
+  );
 
   return (
     <div className="trading-container parent">
@@ -103,7 +106,14 @@ export default function TradePage() {
               </div>
             </div>
           </section>
-          <img className="trade-item-size" alt="" src={imageCard}></img>
+          <div className="traderoom-trade-details">
+            <img className="trade-item-size" alt="" src={imageCard}></img>
+            <div className="traderoom-trade-details-text">
+              <h3>Name</h3>
+              <p>Powers</p>
+              <p>Cost</p>
+            </div>
+          </div>
         </div>
         <main className="right-side">
           <div className="chat-container">
