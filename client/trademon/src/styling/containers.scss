@@ -179,6 +179,12 @@
   @extend .flex-column-center;
 }
 
+.large-sprite-container-poke {
+  @extend .flex-column-center;
+  margin-left: 20px;
+  animation: floatnoglow 4s ease-in-out infinite;
+}
+
 .large-sprite-container {
   @extend .flex-column-center;
   margin-left: 20px;

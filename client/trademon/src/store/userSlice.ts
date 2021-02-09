@@ -34,7 +34,6 @@ const userSlice = createSlice({
       return state;
     },
     updateUserUrl(state, { payload }: PayloadAction<User>) {
-      console.log('URL UPDATE, payload is:', payload);
       state.user.avatarUrl = payload;
     }
 

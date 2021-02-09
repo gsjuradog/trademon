@@ -10,30 +10,27 @@ import badge_t2 from '../../assets/badges/_t2.png';
 import badge_q2 from '../../assets/badges/_q2.png';
 import badge_q3 from '../../assets/badges/_q3.png';
 import badge_p2 from '../../assets/badges/_p2.png';
-import {Message} from '../../utils/interfaces';
+import { Message } from '../../utils/interfaces';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
 import React, { useEffect, useRef, useState } from 'react';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 import { io } from 'socket.io-client';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Chat from './trade_dmPage';
-const socket = io("https://trademon.herokuapp.com"||"http://localhost:4444");
-
-
+const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
 
 export default function TradePage() {
   const history = useHistory();
-  const myRef: any = useRef(null)
+  const myRef: any = useRef(null);
   const [messageContent, setMessageContent] = useState<string>('');
   const [messagesList, setMessagesList] = useState<Message[]>([]);
 
   useEffect(() => {
-    
-    socket.on('newMessage', (message: any)=> {
-      setMessagesList((messagesList) => [...messagesList, message] );
-      myRef.current.scrollIntoView() 
+    socket.on('newMessage', (message: any) => {
+      setMessagesList((messagesList) => [...messagesList, message]);
+      myRef.current.scrollIntoView();
       console.log('Messages List: ', messagesList);
-    })
+    });
   }, [socket]);
 
   const sendChatMessage = () => {
@@ -43,9 +40,10 @@ export default function TradePage() {
       createdAt: Date.now(),
       PrivateChatId: 1,
     };
-    socket.emit('chatMessage', mssgObj)
-    myRef.current.scrollIntoView() 
-  }
+    socket.emit('chatMessage', mssgObj);
+    myRef.current.scrollIntoView();
+  };
+
 
   const messagesListComponent = messagesList.map((message: Message, index: number) => (
     <li
@@ -58,10 +56,11 @@ export default function TradePage() {
 
   return (
     <div className="trading-container parent">
-      <div className='trade-room-nav'>
+      <div className="trade-room-nav">
         <div className="nav-container-smallerr">
-          <div className="logo-img-link-smaller" onClick={(): void =>
-            history.push(`/`)}
+          <div
+            className="logo-img-link-smaller"
+            onClick={(): void => history.push(`/`)}
           >
             <img
               className="logo-img-smaller"
@@ -80,7 +79,8 @@ export default function TradePage() {
           <section className="traders-container">
             <div className="trader-container">
               <img className="user_image" alt="" src={imageBuyer}></img>
-              <div className="user-text-topp">SANTIAGO
+              <div className="user-text-topp">
+                SANTIAGO
                 <div className="user-badges">
                   <img className="user-badge" alt="" src={badge_p2}></img>
                   <img className="user-badge" alt="" src={badge_s3}></img>
@@ -91,7 +91,8 @@ export default function TradePage() {
             </div>
             <div className="trader-container">
               <img className="user_image" alt="" src={imageSeller}></img>
-              <div className="user-text-topp">WLADIMIR
+              <div className="user-text-topp">
+                WLADIMIR
                 <div className="user-badges">
                   <img className="user-badge" alt="" src={badge_s2}></img>
                   <img className="user-badge" alt="" src={badge_t2}></img>
@@ -101,26 +102,28 @@ export default function TradePage() {
               </div>
             </div>
           </section>
-          <img className="trade-item-size"  alt="" src={imageCard}></img>
+          <img className="trade-item-size" alt="" src={imageCard}></img>
         </div>
         <main className="right-side">
           <div className="chat-container">
             <div className="dm-page">
-            <div className="dm-container" id="testID">
-              {messagesListComponent}
-              <div ref={myRef} ></div>
+              <div className="dm-container" id="testID">
+                {messagesListComponent}
+                <div ref={myRef}></div>
+              </div>
             </div>
-      </div>
           </div>
           <section className="user-comm">
             <textarea
               className="user-textarea"
               rows={3}
               placeholder="Send Message..."
-              onChange={(e : React.ChangeEvent<HTMLTextAreaElement>) => setMessageContent(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setMessageContent(e.target.value)
+              }
             ></textarea>
             <div className="trade-button-row">
-              <button 
+              <button
                 className="offer-trade-button dm-offer-buttons"
                 onClick={(): void => sendChatMessage()}
               >

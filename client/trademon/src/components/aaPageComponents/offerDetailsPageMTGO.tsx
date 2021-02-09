@@ -25,7 +25,7 @@ export default function OfferDetailsPage() {
   )
   
   const [ tradeDetails, setTradeDetails] = useState<MtgoTrades>(
-      {
+    {
       id:0,
       expirationDate:'',
       numViews:0,
@@ -45,9 +45,9 @@ export default function OfferDetailsPage() {
       listingType:'sell',
       buyer:null,
       buyersOfferItemId:null,
-      tradeComplete:false
+      tradeComplete:false,
+      setAcronym:'',
     }
-
   );
  
   useEffect(() => {

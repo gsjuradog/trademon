@@ -42,7 +42,7 @@ export default function ProfileBanner() {
     avatarFormOut();
     const url:any = await uploadAvatarCloud(userData.id, avatar); //<-- Need user from state here
     dispatch(updateUserUrl(url));
-    uploadAvatarServer(url);
+    uploadAvatarServer(userData.id, url);
   }
 
   const closeAvatar = () => {
