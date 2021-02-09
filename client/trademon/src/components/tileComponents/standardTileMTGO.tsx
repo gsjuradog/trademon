@@ -28,7 +28,7 @@ export default function StandardTileComponent(trade: StandardTileTrade) {
       </div>
       <div className="sprite-row">
         <img
-          className="standard-sprite"
+          className="standard-mtgo-cardImage"
           src={trade.image}
           alt={`${trade.name}`}
         ></img>
