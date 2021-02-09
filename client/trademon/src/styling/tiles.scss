@@ -24,6 +24,10 @@ p {
   background-color: $colorGreyHover;
   transform: scale(1.05);
 }
+.standard-mtgo-tile-container:hover {
+  background-color: $colorGreyHover;
+  transform: scale(1.05);
+}
 
 .title-row {
   display: flex;
@@ -107,6 +111,13 @@ p {
   min-width: 75px;
   min-height: 75px;
 }
+.standard-mtgo-cardImage {
+  width: 7.25vw;
+  height: 8.5vw;
+  min-width: 75px;
+  min-height: 75px;
+  border-radius: 10px;
+}
 
 .appraisal-box {
   display: flex;
@@ -186,7 +197,7 @@ p {
   height: 4.4vw;
   min-width: 36px;
   min-height: 56px;
-  border-radius: 13px;
+  border-radius: 10px;
 }
 
 .mini-tile-info-box {
