@@ -113,12 +113,14 @@ export interface MiniTiles {
   pokemons: MiniTileTrade[];
   mtgs: MiniTileTrade[];
   wows: MiniTileTrade[];
+  rocketLeagues: MiniTileTrade[];
 }
 
 export interface StandardTiles {
   pokemons: StandardTileTrade[];
   mtgs: StandardTileTrade[];
   wows: StandardTileTrade[];
+  rocketLeagues: StandardTileTrade[];
 }
 
 export interface InitialState {

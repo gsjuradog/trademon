@@ -13,11 +13,15 @@ import badge_p2 from '../../assets/badges/_p2.png';
 import { Message } from '../../utils/interfaces';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
+import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
 
 export default function TradePage() {
+  const userData = useSelector((state: RootState) => state.user.user);
   const history = useHistory();
   const myRef: any = useRef(null);
   const [messageContent, setMessageContent] = useState<string>('');
@@ -34,7 +38,7 @@ export default function TradePage() {
   const sendChatMessage = () => {
     const mssgObj = {
       content: messageContent,
-      sender: 1,
+      sender: userData.id,
       createdAt: Date.now(),
       PrivateChatId: 1,
     };
@@ -42,13 +46,12 @@ export default function TradePage() {
     myRef.current.scrollIntoView();
   };
 
-
   const messagesListComponent = messagesList.map((message: Message, index: number) => (
     <li
       className="dm-list-tile"
       style={{ listStyleType: 'none' }} 
       key={index}>
-      {/* <DMChatTile {...message}></DMChatTile> */}
+      {<DMChatTile {...message}></DMChatTile> }
     </li>
   ));
 
@@ -127,7 +130,7 @@ export default function TradePage() {
               >
                 Send Message
               </button>
-              <button className="dm-offer-buttons">Offer Deal</button>
+              <button className="dm-offer-buttons">Close Trade</button>
             </div>
           </section>
         </main>

@@ -11,7 +11,7 @@ export default function PokemonGoPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setWorld(['Pokemon']));
+    dispatch(setWorld(['Pokemon GO']));
   }, [dispatch]);
 
   dispatch(fetchTrades(worlds.toString()));
@@ -23,7 +23,7 @@ export default function PokemonGoPage() {
       </div>
       <div>
         <SearchResultsContainer
-          key={'Pokemon'}
+          key={'Pokemon GO'}
           world={worlds.toString()}
         ></SearchResultsContainer>
       </div>

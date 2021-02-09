@@ -244,8 +244,8 @@ p {
 
 .dm-summary-container {
   @extend .flex-center;
-  width: 100%;
-  margin: 5px 0px;
+  min-width: 85%;
+  margin: .5vh 2vw;
   background-color: $colorGreyPop80;
   border-radius: 25px;
   border: 1px solid $colorPrimary;
@@ -306,6 +306,7 @@ p {
 .dm-summary-text {
   @extend .dm-text-item;
   color: rgba(190, 190, 190, 0.856);
+  min-width: 60%;
 }
 
 .dm-timestamp {
@@ -336,4 +337,21 @@ p {
 
 .dm-list-tile {
   min-width: 90%;
+}
+
+.dm-summary-person-info {
+  align-self: flex-start;
+}
+
+.notification-wrapper {
+  display: flex;
+  min-width: 40%;
+  padding-left: 1vw;
+}
+
+.img-notification {
+  width: .5vw;
+  height: .5vw;
+  min-width: 12px;
+  min-height: 12px;
 }

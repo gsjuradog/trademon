@@ -31,7 +31,6 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
   }
 
   const backHandler = () => {
-    console.log(tradeDetails.id);
     tradeDetails.id < 100000 ? 
       history.push('/Pokemon Go') : 
       history.push('/MTGO');
@@ -76,7 +75,9 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
         <h1>Contact Seller</h1>
         {textAreaState()}
         <div className="contact-seller-btns">
+
           <button onClick={backHandler}>Listings</button>
+
           {
           sendStatus === 'DEFAULT' ?  
           <button onClick={chatHandler}>Send message</button> : null}

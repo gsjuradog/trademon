@@ -1,26 +1,36 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../../../styling/tiles.scss';
+import {DMSummary} from '../../../utils/interfaces'
 
-export default function DMSummaryTile() {
+export default function DMSummaryTile(props: DMSummary) {
   const history = useHistory();
   return (
     <>
       <div
         className="dm-summary-container"
-        onClick={() => history.push(`/chat/1234`)}
+        onClick={() => history.push(`/trade-room`)}
       >
-        <img
-          src={'/assets/avatarIcon.png'}
-          className="img-large"
-          alt="avatarIcon"
-        />
-        <div className="dm-summary-text-column">
-          <div className="dm-text">User54321</div>
-          <div className="dm-text-item">Bulbasaur</div>
-          <div className="dm-summary-text">
-            Hey man I was thinking we could plan on 12:30 CET Time?
+        <div className="notification-wrapper">
+          <div className="dm-summary-person-info">
+            <img
+              src={props.avatarUrl}
+              className="img-large"
+              alt="avatarIcon"
+            />
+            <div className="dm-summary-text-column">
+              <div className="dm-text">{props.user}</div>
+              <div className="dm-text-item">{props.itemName}</div>
+            </div>
           </div>
+          {props.hasNotification ? <img
+            src={'/assets/notificationIcon.png'}
+            className="img-notification"
+            alt="notificationIcon"
+          />: <></>}
+        </div>
+        <div className="dm-summary-text">
+          {props.content}
         </div>
       </div>
     </>

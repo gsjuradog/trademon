@@ -45,7 +45,7 @@ const App = () => {
           <Route path="/WoW" component={WorldOfWarcraftPage} />
           <Route path="/feedback" component={FeedBackForm} />
           <Route path="/demo-animation" component={DemoAnimation} />
-          <Route path="/test-component" component={TestComponent} />
+          <Route path="/trade-room" component={TestComponent} />
           <Redirect to="/" />
         </Switch>
       </div>

@@ -12,6 +12,7 @@ const initialState: StandardTiles = {
   pokemons: [],
   mtgs: [],
   wows: [],
+  rocketLeagues: [],
 };
 
 const standardTileSlice = createSlice({
@@ -42,6 +43,14 @@ const standardTileSlice = createSlice({
       console.log('state: ', payload);
       return state;
     },
+    getStandardTilesRoc(
+      state,
+      { payload }: PayloadAction<StandardTileTrade[]>,
+    ) {
+      state.wows = payload;
+      console.log('state: ', payload);
+      return state;
+    },
     getStandardTilesError(state, action: PayloadAction<string>) {
       return state;
     },
@@ -52,6 +61,7 @@ export const {
   getStandardTilesPoke,
   getStandardTilesMTG,
   getStandardTilesWoW,
+  getStandardTilesRoc,
   getStandardTilesError,
 } = standardTileSlice.actions;
 export default standardTileSlice.reducer;
@@ -62,7 +72,7 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
     let trades: StandardTileTrade[] = [];
 
     switch (world) {
-      case 'Pokemon':
+      case 'Pokemon GO':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         dispatch(getStandardTilesPoke(trades));
@@ -73,6 +83,11 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         dispatch(getStandardTilesMTG(trades));
         break;
       case 'WoW':
+        response = await getTrades();
+        trades = mapPokemonsToUtrade(response);
+        dispatch(getStandardTilesPoke(trades));
+        break;
+      case 'RocketLeague':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         dispatch(getStandardTilesPoke(trades));
@@ -97,8 +112,7 @@ export const filterTrade = (
     console.log('I am in FILTER ', searchInput, 'our world is: ', world);
 
     switch (world) {
-      
-      case 'Pokemon':
+      case 'Pokemon GO':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         filteredTrades = trades.filter((p: StandardTileTrade) =>
@@ -135,7 +149,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
       seller: trade.seller,
       appraisal: trade.appraisal,
       isShiny: trade.isShiny,
-      world: 'Pokemon',
+      world: 'Pokemon GO',
     };
   });
 };
