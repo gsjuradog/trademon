@@ -32,6 +32,7 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
 
   const backHandler = () => {
     history.push(`trade/${tradeDetails.tradeID}`);
+    //history.goBack();
     setMessageSeller(false);
   }
 
@@ -70,7 +71,7 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
         <h1>Contact Seller</h1>
         {textAreaState()}
         <div className="contact-seller-btns">
-          <button onClick={backHandler}>Back to trade</button>
+          <button onClick={backHandler}>Back to listings</button>
           {
           sendStatus === 'DEFAULT' ?  
           <button onClick={chatHandler}>Send message</button> : null}
