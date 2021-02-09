@@ -122,3 +122,11 @@ export interface Message {
   content: string;
   createdAt: string;
 }
+
+export interface DMSummary{
+  user: string;
+  itemName: string;
+  content:string;
+  avatarUrl: string;
+  hasNotification:boolean;
+}
