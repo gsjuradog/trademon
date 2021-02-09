@@ -34,7 +34,6 @@ export default function ProfileOverlay(this: any) {
           }
           alt="avatar Icon"
         />
-
       </div>
       <img
         onClick={toggleHamburger}

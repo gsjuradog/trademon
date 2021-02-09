@@ -2,7 +2,7 @@ export interface User {
   token: string;
   id: number;
   email: string;
-  avatarUrl: string;
+  avatarUrl: string | undefined;
   username: string;
   trainerID?: number;
   trainerName?: string;
@@ -10,7 +10,12 @@ export interface User {
   mtgoName?: string;
   buyerRating: number[];
   sellerRating: number[];
+  transactionSales: number[];
+  transactionPurchases: number[];
+  transactionTrades: number[];
   numOfStrikes: number;
+  watchList: number[];
+  activeOffers: number[];
   createdAt?: Date;
   updatedAt?: Date;
   error: React.SetStateAction<boolean>;
@@ -90,7 +95,7 @@ export interface MiniTileTrade {
   name: string;
   price: number;
   image: string;
-  world:string;
+  world: string;
 }
 
 export interface StandardTileTrade {

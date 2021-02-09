@@ -27,7 +27,7 @@ export default function LandingPage() {
           <PlatformContainer key={index} world={world}></PlatformContainer>
         ))}
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

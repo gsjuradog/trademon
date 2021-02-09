@@ -7,6 +7,7 @@ import { getOneMTGOTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
 import {calcRating} from '../../utils/helperFunctions'
 import Moment from 'react-moment';
+
 import ContactSeller from './contactSeller';
 //
 export default function OfferDetailsPage() { 
@@ -50,9 +51,11 @@ export default function OfferDetailsPage() {
     }
   );
  
+
   useEffect(() => {
     fetchTradeDetails();
-  }, []) 
+  }, []);
+
 
   async function fetchTradeDetails () {
     const tradeFetch = await getOneMTGOTrade(tradeID); 
@@ -87,12 +90,20 @@ export default function OfferDetailsPage() {
     <>
       <SearchBar></SearchBar>
       <div className="offer-details-container">
+
+
           <div className="large-mtgo-container">
+
           <div className="large-text">#</div>
-          <img className="large-MTGOCard" src={tradeDetails!.cardImage} alt="Mtgo Card"/>
+          <img
+            className="large-MTGOCard"
+            src={tradeDetails!.cardImage}
+            alt="Mtgo Card"
+          />
         </div>
         
         <div className="seller-details-container">
+
         <div className="flex-center">
             <img className="avatar-overlay-img" 
               src ={'/assets/avatarIcon.png'} 
@@ -127,16 +138,12 @@ export default function OfferDetailsPage() {
           
         </div>
       </div>
-      <div className="offer-details-container"> 
+      <div className="offer-details-container">
         <div className="interest-box">
           <div className="interest-stats">
-            <div className="standard-text">
-              Views: {tradeDetails!.numViews}
-            </div>
+            <div className="standard-text">Views: {tradeDetails!.numViews}</div>
             <div className="bar-spacer"> | </div>
-            <div className="standard-text">
-              3 Messaging Seller
-            </div>
+            <div className="standard-text">3 Messaging Seller</div>
             <div className="bar-spacer"> | </div>
             <div className="standard-text">
               Expires: <Moment fromNow>{tradeDetails!.expirationDate}</Moment>
@@ -146,5 +153,7 @@ export default function OfferDetailsPage() {
         </div>
       </div>
     </>
-  )
+
+  );
 }
+

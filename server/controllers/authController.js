@@ -77,15 +77,16 @@ exports.getPublicDetails = async (req, res) => {
         email: user.email,
         username: user.username,
         trainerID: user.trainerID,
-        trainerName:  user.trainerName,
-        mtgoID:  user.mtgoID,
-        mtgoName:  user.mtgoName,
-        buyerRating:  user.buyerRating,
-        sellerRating:  user.sellerRating,
+        trainerName: user.trainerName,
+        mtgoID: user.mtgoID,
+        mtgoName: user.mtgoName,
+        buyerRating: user.buyerRating,
+        sellerRating: user.sellerRating,
         sales: user.transactionSales.length,
-        purchases:user.transactionPurchases.length,
-        trades: user.transactionTrades.length
-      }
+        purchases: user.transactionPurchases.length,
+        trades: user.transactionTrades.length,
+        watchList: user.watchList,
+      };
     }
     res.status(200).send(reply);
   } catch (error) {
@@ -97,14 +98,17 @@ exports.getPublicDetails = async (req, res) => {
 exports.uploadAvatar = async (req, res) => {
   try {
     const { userId, avatarUrl } = req.body;
-    const reply = await db.UserData.update({avatarUrl:avatarUrl}, 
-      { where : {
-        id: userId
-      }
-    });
+    const reply = await db.UserData.update(
+      { avatarUrl: avatarUrl },
+      {
+        where: {
+          id: userId,
+        },
+      },
+    );
     res.status(201).send(reply);
   } catch (error) {
     console.log('AVATAR UPLOAD ERROR', error);
     res.status(500).send('AVATAR UPLOAD ERROR');
   }
-}
+};

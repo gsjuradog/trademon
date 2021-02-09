@@ -51,7 +51,7 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
     let trades: MiniTileTrade[] = [];
 
     switch (world) {
-      case 'Pokemon Go':
+      case 'Pokemon GO':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         dispatch(getMiniTilesP(trades));
@@ -90,7 +90,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): MiniTileTrade[] => {
       name: trade.pokeName,
       price: trade.price,
       image: trade.pokeSprite,
-      world: 'Pokemon Go',
+      world: 'Pokemon GO',
     };
   });
 };
