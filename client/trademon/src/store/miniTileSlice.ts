@@ -3,7 +3,12 @@ import { AppThunk } from './store';
 import { PokeTrade, MtgTrade, MiniTileTrade, MiniTiles } from './interfaces';
 import { getTrades, getMTGOTrades } from '../utils/rest';
 
-const initialState: MiniTiles = { pokemons: [], mtgs: [], wows: [] };
+const initialState: MiniTiles = {
+  pokemons: [],
+  mtgs: [],
+  wows: [],
+  rocketLeagues: [],
+};
 
 const miniTileSlice = createSlice({
   name: 'mini-tiles',
@@ -24,6 +29,11 @@ const miniTileSlice = createSlice({
       //console.log('state: ', payload);
       return state;
     },
+    getMiniTilesR(state, { payload }: PayloadAction<MiniTileTrade[]>) {
+      state.rocketLeagues = payload;
+      //console.log('state: ', payload);
+      return state;
+    },
     getMiniTilesError(state, action: PayloadAction<string>) {
       console.error('TRADE - Error Handling: ', action.payload);
       return state;
@@ -35,6 +45,7 @@ export const {
   getMiniTilesP,
   getMiniTilesM,
   getMiniTilesW,
+  getMiniTilesR,
   getMiniTilesError,
 } = miniTileSlice.actions;
 export default miniTileSlice.reducer;
@@ -62,6 +73,11 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
         dispatch(getMiniTilesM(trades));
         break;
       case 'WoW':
+        response = await getTrades();
+        trades = mapPokemonsToUtrade(response);
+        dispatch(getMiniTilesP(trades));
+        break;
+      case 'RocketLeague':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         dispatch(getMiniTilesP(trades));

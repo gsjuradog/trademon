@@ -11,7 +11,7 @@ export default function SearchBar() {
 
   const dispatch = useDispatch();
   // eslint-disable-next-line
-  const [world, setWorld] = useState('Pokemon');
+  const [world, setWorld] = useState('Pokemon GO');
 
   const worldFromState = useSelector(
     (state: RootState) => 'state.standardTrade.world', // unquoute to test
@@ -29,10 +29,7 @@ export default function SearchBar() {
 
   return (
     <div className="nav-container">
-      <div className="logo-img-link" onClick={(): void =>
-        history.push(`/`)
-        }
-      >
+      <div className="logo-img-link" onClick={(): void => history.push(`/`)}>
         <img
           className="logo-img"
           src={'/assets/trademon-logo.png'}
@@ -40,10 +37,9 @@ export default function SearchBar() {
         />
       </div>
       <div className="search-container-vertical">
-        <div className="trademon-title-link"
-          onClick={(): void =>
-          history.push(`/`)
-          }
+        <div
+          className="trademon-title-link"
+          onClick={(): void => history.push(`/`)}
         >
           <h1 className="platform-text">trademon.io</h1>
         </div>
@@ -54,7 +50,7 @@ export default function SearchBar() {
               changeWorldSelector(e.target.value)
             }
           >
-            <option value="Pokemon">Pokemon Go</option>
+            <option value="Pokemon GO">Pokemon Go</option>
             <option value="MTG">MTG: Online</option>
             <option value="WoW">Warcraft</option>
           </select>

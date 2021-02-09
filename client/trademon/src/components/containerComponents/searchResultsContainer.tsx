@@ -16,13 +16,14 @@ export default function SearchResultsContainer(props: IProps) {
   let standardTilesRender: React.ReactNode = <li></li>;
 
   switch (world) {
-    case 'Pokemon':
+    case 'Pokemon GO':
       standardTilesRender = standardTiles.pokemons.map(
         (standardTile: StandardTileTrade) => (
-          <li style={{ listStyleType: 'none' }}
+          <li
+            style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTilePokemon {...standardTile}/>
+            <StandardTilePokemon {...standardTile} />
           </li>
         ),
       );
@@ -30,10 +31,11 @@ export default function SearchResultsContainer(props: IProps) {
     case 'MTG':
       standardTilesRender = standardTiles.mtgs.map(
         (standardTile: StandardTileTrade) => (
-          <li style={{ listStyleType: 'none' }}
+          <li
+            style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <MTGstandardTileComponent {...standardTile}/>
+            <MTGstandardTileComponent {...standardTile} />
           </li>
         ),
       );
@@ -41,10 +43,11 @@ export default function SearchResultsContainer(props: IProps) {
     case 'WoW':
       standardTilesRender = standardTiles.mtgs.map(
         (standardTile: StandardTileTrade) => (
-          <li style={{ listStyleType: 'none' }}
+          <li
+            style={{ listStyleType: 'none' }}
             key={props.world + standardTile.id}
           >
-            <StandardTilePokemon {...standardTile}/>
+            <StandardTilePokemon {...standardTile} />
           </li>
         ),
       );
@@ -52,7 +55,5 @@ export default function SearchResultsContainer(props: IProps) {
     default:
       break;
   }
-  return (
-    <div className="search-results">{standardTilesRender}</div>
-  );
+  return <div className="search-results">{standardTilesRender}</div>;
 }

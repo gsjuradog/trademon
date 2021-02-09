@@ -41,6 +41,16 @@ export default function PlatformContainer(props: IProps) {
         </li>
       );
       break;
+    case 'RocketLeague':
+      miniTilesRender = (
+        <li style={{ listStyleType: 'none' }}>
+          <p style={{ fontSize: '1.5rem', textAlign: 'center' }}>
+            Rocket League! <br />
+            ... coming soon &#x1F929;
+          </p>
+        </li>
+      );
+      break;
     default:
       break;
   }
