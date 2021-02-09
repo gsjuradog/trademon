@@ -105,7 +105,7 @@ export const avatarFormOut = () => {
 }
 
 //Trade feedback animation
-export const tradeFeedback =() => {
+export const tradeFeedback = () => {
   gsap.to('.feedback-image', 2, {
     opacity: 1
   })
@@ -118,5 +118,18 @@ export const tradeFeedback =() => {
   gsap.from('.feedback-header', 2, {
     x: 400,
     ease: "back.out(1.7)"
+  })
+}
+
+//Feedback alert animation
+export const alertMessage = () => {
+  gsap.to('.submit-feedback-alert', 1, {
+    scale: 1.2,
+    opacity: 1
+  })
+  gsap.to('.submit-feedback-alert', 1, {
+    delay: 3,
+    scale: 1,
+    opacity: 0
   })
 }
