@@ -4,7 +4,7 @@ import { withRouter, useHistory } from 'react-router-dom';
 
 import LoginError from '../modal/loginError';
 
-import { createUser as createREST } from '../../utils/rest'
+import { createUser as createREST } from '../../utils/rest';
 import { Create, SignIn } from '../../utils/interfaces';
 
 import { panelRight, panelLeft, setUp } from '../../utils/animations';
@@ -16,116 +16,114 @@ import { RootState } from '../../store/store';
 import { User } from '../../store/interfaces';
 
 const Login = () => {
-
   const userState: User = useSelector((state: RootState) => state.user);
   const history = useHistory();
-  const initialCreate : Create = {
-    name : '',
+  const initialCreate: Create = {
+    name: '',
     email: '',
     password: '',
-  }
-  const initialSignIn : SignIn = {
+  };
+  const initialSignIn: SignIn = {
     email: '',
-    password: ''
-  }
+    password: '',
+  };
 
   const dispatch = useDispatch();
   const [create, setCreateState] = useState(initialCreate);
   const [signIn, setSignInState] = useState(initialSignIn);
   const [loginError, setError] = useState(false);
 
-  useEffect(() => {setUp();}, []);
-  useEffect(() => {setUp();}, [loginError]);
-  
+  useEffect(() => {
+    setUp();
+  }, []);
+  useEffect(() => {
+    setUp();
+  }, [loginError]);
+
   const createUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = await createREST(create);
-    console.log('TESSTING LOGIN RESULT  ', result);
-    
-    if ("token" in result) {
-      history.push('/')
-    } else if ("error" in result) {
-        setError(result.error);
+    console.log('LOGIN RESULT  ', result);
+    if ('token' in result) {
+      history.push('/');
+    } else if ('error' in result) {
+      setError(result.error);
     } else {
-        setError(true); 
-    } 
-  }
+      setError(true);
+    }
+  };
 
   const createState = (event: React.FormEvent<HTMLFormElement>) => {
     const target = event.target as HTMLInputElement;
     const name = target.name;
     const value = target.value;
-
-    let createCopy = {...create};
-
-    switch(name) {
+    let createCopy = { ...create };
+    switch (name) {
       case 'username':
         createCopy.name = value;
         break;
       case 'email':
-        createCopy.email = value;     
+        createCopy.email = value;
         break;
       case 'password':
         createCopy.password = value;
-      break;
-        default:
-        return 
-    }  
+        break;
+      default:
+        return;
+    }
     setCreateState(createCopy);
-  }
+  };
 
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await dispatch(fetchUser(signIn));
     if (userState.username !== '') {
-      history.push('/')
+      history.push('/');
     } else {
-      setError(true); 
+      setError(true);
     }
-  }
+  };
 
   const signInState = (event: React.FormEvent<HTMLFormElement>) => {
     const target = event.target as HTMLInputElement;
     const name = target.name;
     const value = target.value;
 
-    let signInCopy = {...signIn};
+    let signInCopy = { ...signIn };
 
-    switch(name) {
+    switch (name) {
       case 'email':
-        signInCopy.email = value;     //Because it's a number...
+        signInCopy.email = value; //Because it's a number...
         break;
       case 'password':
         signInCopy.password = value;
         break;
       default:
-        return
+        return;
     }
     setSignInState(signInCopy);
-  }
+  };
 
   const clearError = () => {
     setError(false);
-  }
+  };
 
   if (loginError) {
-    return (
-      <LoginError
-        clearError={clearError}
-      />
-    )
+    return <LoginError clearError={clearError} />;
   }
 
   return (
     <div className="login-container">
-
       <div className="login-banner">
-        <img className="login-trademon-logo" src={'/assets/trademon-logo.png'} alt="Trademon Logo"/>
+        <img
+          className="login-trademon-logo"
+          src={'/assets/trademon-logo.png'}
+          alt="Trademon Logo"
+        />
         <h1>Trademon.io</h1>
       </div>
-      
-      <div className="panel-container">
 
+      <div className="panel-container">
         <div className="form-container sign-up-container">
           <form onSubmit={createUser} onChange={createState}>
             <h1>create account</h1>
@@ -149,26 +147,22 @@ const Login = () => {
           </form>
         </div>
 
-      <div className="overlay-panel"></div>
+        <div className="overlay-panel"></div>
 
-      <div className="overlay-create">
-        <h2>Not a member?</h2>
-        <i className="fas fa-user-plus fa-3x"></i>
-        <button onClick={panelRight}>SIGN UP!</button>
+        <div className="overlay-create">
+          <h2>Not a member?</h2>
+          <i className="fas fa-user-plus fa-3x"></i>
+          <button onClick={panelRight}>SIGN UP!</button>
+        </div>
+
+        <div className="overlay-member">
+          <h2>Already a member?</h2>
+          <i className="fas fa-sign-in-alt fa-3x"></i>
+          <button onClick={panelLeft}>SIGN IN!</button>
+        </div>
       </div>
-
-      
-      <div className="overlay-member">
-        <h2>Already a member?</h2>
-        <i className="fas fa-sign-in-alt fa-3x"></i>
-        <button onClick={panelLeft}>SIGN IN!</button>
-      </div>
-
-  </div>
-
-  </div>
-  )
-  
-}
+    </div>
+  );
+};
 
 export default withRouter(Login);

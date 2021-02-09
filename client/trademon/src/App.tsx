@@ -4,7 +4,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import Login from './components/aaPageComponents/loginPage';
 import LandingPage from './components/aaPageComponents/landingPage';
@@ -21,19 +21,18 @@ import DemoAnimation from './components/aaPageComponents/demoAnimation';
 import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
 import TestComponent from './components/testComponent/testComponent';
 
-import Footer from './components/navComponents/footer';
-
-
 const App = () => {
-
   return (
     <Router>
       <div className="App">
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
-          <Route path="/trade/:tradeID" component={OfferDetailsPage} />
-          <Route path="/mtgotrade/:tradeID" component={OfferDetailsMTGOPage} />
+          <Route path="/Pokemon/:tradeID" component={OfferDetailsPage} />
+          <Route
+            path="/MagicTheGathering/:tradeID"
+            component={OfferDetailsMTGOPage}
+          />
           <Route path="/profile" component={MyProfile} />
           <Route path="/create-poke-trade" component={CreateListingForm} />
           <Route path="/messages" component={DMPage} />

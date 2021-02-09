@@ -41,20 +41,24 @@ export default function PlatformContainer(props: IProps) {
         </li>
       );
       break;
-      default:
+    default:
       break;
   }
 
   const history = useHistory();
-  const handleSelectWorld = () => history.push(`/${world}`);
+  // const handleSelectWorld = () => {
+  //   console.log('CLICK EVENT IN Platform Container');
+  // }; //history.push(`/${world}`);
+
+  const navigateME = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    history.push(`/${world}`);
+  };
 
   return (
     <div>
       <div
         className="platform-container"
-        onClick={(): void =>
-          handleSelectWorld()
-        }
+        onClick={(event) => navigateME(event)}
         style={{
           backgroundImage:
             "linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4) ), url('assets/bg_" +

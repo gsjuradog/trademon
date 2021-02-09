@@ -22,26 +22,26 @@ const initialState: any = {
     numOfStrikes: 0,
     watchList: [],
     activeOffers: [],
-    createdAt: null,
-    updatedAt: null,
+    createdAt: undefined,
+    updatedAt: undefined,
     error: false,
   },
 };
 
 const userSlice = createSlice({
-  name: 'userData',
+  name: 'user',
   initialState,
   reducers: {
     getUser(state, { payload }: PayloadAction<User>) {
       console.log('TRADE REDUCER, payload is: ', payload);
       state.user = payload;
     },
+    updateUserUrl(state, { payload }: PayloadAction<string | undefined>) {
+      state.avatarUrl = payload;
+    },
     getUserError(state, action: PayloadAction<string>) {
       console.error('TRADE - Error Handling: ', action.payload);
       return state;
-    },
-    updateUserUrl(state, { payload }: PayloadAction<User>) {
-      state.user.avatarUrl = payload;
     },
   },
 });

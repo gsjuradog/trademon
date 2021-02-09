@@ -15,7 +15,7 @@ export default function StandardTileComponent(trade: StandardTileTrade) {
   return (
     <div
       className="standard-mtgo-tile-container"
-      onClick={() => history.push(`/trade/${trade.id}`)}
+      onClick={() => history.push(`/MagicTheGathering/${trade.id}`)}
     >
       <div className="title-row">
         <span className="heart"></span>

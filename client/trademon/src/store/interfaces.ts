@@ -2,7 +2,7 @@ export interface User {
   token: string;
   id: number;
   email: string;
-  avatarUrl: string;
+  avatarUrl: string | undefined;
   username: string;
   trainerID?: number;
   trainerName?: string;
@@ -95,6 +95,7 @@ export interface MiniTileTrade {
   name: string;
   price: number;
   image: string;
+  world: string;
 }
 
 export interface StandardTileTrade {
