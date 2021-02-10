@@ -28,6 +28,7 @@ p {
 .standard-mtgo-tile-container:hover {
   background-color: $colorGreyHover;
   transform: scale(1.05);
+  box-shadow: 0 0 8px 3px $colorPrimary;
 }
 
 .title-row {
