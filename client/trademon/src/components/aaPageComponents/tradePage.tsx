@@ -110,6 +110,7 @@ export default function TradePage() {
           <div className="trade-room-details">
             <div className="trade-room-details-text">
               <h2>Name: Charmeleon</h2>
+              <p>Trade ID: 20</p>
               <p>CP: 985</p>
               <p>Cost: $150</p>
             </div>
