@@ -67,9 +67,11 @@ const ContactSeller = ({setMessageSeller, tradeDetails} : any) => {
       <div className="contact-seller-box contact-seller-trade">
         <h1>Trade Details</h1>
         <img src={tradeDetails.pokeSprite} alt={tradeDetails.pokeName}></img>
-        <p>Pokemon: {tradeDetails.pokeName}</p>
-        <p>Seller: {tradeDetails.seller}</p>
-        <p>Price: {tradeDetails.price}</p>
+        <h2>{tradeDetails.pokeName}</h2>
+        <div className="contact-seller-seller-details">
+          <p>Seller: {tradeDetails.seller}</p>
+          <p>Price: ${tradeDetails.price}</p>
+        </div>
       </div>
       <div className="contact-seller-box contact-seller-message">
         <h1>Contact Seller</h1>
