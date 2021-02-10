@@ -9,7 +9,7 @@ const initialState: any = {
     id: 0,
     email: '',
     avatarUrl: '/assets/avatarIcon.png',
-    username: '',
+    username: 'none',
     trainerID: 0,
     trainerName: '',
     mtgoID: 0,
@@ -72,6 +72,7 @@ export const fetchUser = (signin: SignIn): AppThunk => async (dispatch) => {
       dispatch(getUser(response));
     }
     console.log('USER THUNK fetchUser: I fetched: ', response);
+    return response;
   } catch (err) {
     dispatch(getUserError(err.toString()));
   }

@@ -16,27 +16,27 @@ const Drawer = ({toggleHamburger} :Props) => {
   const [exitIcon, setExitIcon] = useState<string>('/assets/exit-icon.png');
 
   useEffect(() => {
-    gsap.from('.hamburger-red-panel', 1, {
+    gsap.from('.hamburger-red-panel', 0.6, {
       x: 400
     })
-    gsap.to('.hamburger-red-panel', 1, {
+    gsap.to('.hamburger-red-panel', 0.6, {
       opacity: 1
     })
-    gsap.from('.hamburger-green-panel', 1, {
+    gsap.from('.hamburger-green-panel', 0.6, {
+      x: 400,
+      delay: 0.2
+    })
+    gsap.to('.hamburger-green-panel', 0.6, {
+      opacity: 1,
+      delay: 0.2
+    })
+    gsap.from('.hamburger-nav', 0.6, {
       x: 400,
       delay: 0.4
     })
-    gsap.to('.hamburger-green-panel', 1, {
+    gsap.to('.hamburger-nav', 0.6, {
       opacity: 1,
       delay: 0.4
-    })
-    gsap.from('.hamburger-nav', 1, {
-      x: 400,
-      delay: 0.8
-    })
-    gsap.to('.hamburger-nav', 1, {
-      opacity: 1,
-      delay: 0.8
     })
     handleMouseLeave();
   }, [])
@@ -63,7 +63,7 @@ const Drawer = ({toggleHamburger} :Props) => {
           <div onClick={() => history.push(`/messages`)} 
             className="hamburger-links"
           >
-            <button className="hamburger-button">Messages</button>
+            <button className="hamburger-button">My Trades</button>
           </div>
           <div onClick={() => history.push(`/create-poke-trade`)} className="hamburger-links">
             <button className="hamburger-button">Create Listing</button>

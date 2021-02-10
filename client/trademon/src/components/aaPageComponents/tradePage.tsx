@@ -12,7 +12,7 @@ import badge_q3 from '../../assets/badges/_q3.png';
 import badge_p2 from '../../assets/badges/_p2.png';
 import { Message } from '../../utils/interfaces';
 import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
@@ -31,19 +31,27 @@ export default function TradePage() {
     socket.on('newMessage', (message: any) => {
       setMessagesList((messagesList) => [...messagesList, message]);
       myRef.current.scrollIntoView();
-      console.log('Messages List: ', messagesList);
     });
   }, [socket]);
+  
+  const handleKeyPress = (event:any) => {
+    if(event.key === 'Enter') {
+      sendChatMessage();
+    }
+  }
 
   const sendChatMessage = () => {
+    console.log('send mssg ', messageContent);
     const mssgObj = {
       content: messageContent,
       sender: userData.id,
       createdAt: Date.now(),
       PrivateChatId: 1,
     };
+    console.log(mssgObj);
     socket.emit('chatMessage', mssgObj);
     myRef.current.scrollIntoView();
+    setMessageContent('');
   };
 
   const closeTradeHandler = () => {
@@ -109,12 +117,11 @@ export default function TradePage() {
           </section>
           <div className="trade-room-details">
             <div className="trade-room-details-text">
-              <h2>Name: Charmeleon</h2>
+              <h2>Name: Boros Reckoner</h2>
               <p>Trade ID: 20</p>
-              <p>CP: 985</p>
-              <p>Cost: $150</p>
+              <p>Cost: $15</p>
             </div>
-            <img className="trade-item-size" alt="" src={imageCard}></img>
+            <img className="trade-item-size" alt="" src={'assets/BOROSRECKONER.jpg'}></img>
           </div>
           
         </div>
@@ -129,12 +136,15 @@ export default function TradePage() {
           </div>
           <section className="user-comm">
             <textarea
+              name="textarea"
               className="user-textarea"
               rows={3}
+              value={messageContent}
               placeholder="Send Message..."
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setMessageContent(e.target.value)
               }
+              onKeyPress={handleKeyPress}
             ></textarea>
             <div className="trade-button-row">
               <button

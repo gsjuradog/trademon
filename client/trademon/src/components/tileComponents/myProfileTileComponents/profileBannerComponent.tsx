@@ -78,7 +78,7 @@ export default function ProfileBanner() {
           </button>
         </div>
         <div className="my-profile-text">
-          {userData.username ? userData.username : 'none'}
+          {userData.username ? userData.username : 'No user name...'}
         </div>
       </div>
       <div className="banner-container">
@@ -87,7 +87,7 @@ export default function ProfileBanner() {
           <div className="prof-banner-tiny-text">
             Based on {userData.sellerRating.length} reviews
           </div>
-          <div>{sellerRatingValue}/5</div>
+          <div>{sellerRatingValue ? sellerRatingValue : 0}/5</div>
         </div>
       </div>
       <div className="banner-container">
@@ -96,7 +96,7 @@ export default function ProfileBanner() {
           <div className="prof-banner-tiny-text">
             Based on {userData.buyerRating.length} reviews
           </div>
-          <div>{buyerRatingValue}/5</div>
+          <div>{buyerRatingValue ? buyerRatingValue : 0}/5</div>
         </div>
       </div>
       <div className="banner-container">

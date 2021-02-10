@@ -76,11 +76,11 @@ const Login = () => {
 
   const signInUser = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await dispatch(fetchUser(signIn));
-    if (userState.username !== '') {
-      history.push('/');
-    } else {
+    const result = await dispatch(fetchUser(signIn));
+    if ('error' in result ) {
       setError(true);
+    } else {
+      history.push('/');
     }
   };
 
