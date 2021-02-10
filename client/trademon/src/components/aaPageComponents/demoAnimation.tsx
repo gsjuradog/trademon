@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { withRouter, useHistory } from 'react-router-dom';
 
-import { demoHeadAnimation, demoArrowAnimation } from '../../utils/animations';
+import { demoHeaderAnimation, demoHeadAnimation, demoArrowAnimation, demoRedirectAnimation } from '../../utils/animations';
 
 import '../../styling/demo.scss';
 
@@ -11,9 +11,11 @@ const DemoAnimation = () => {
   const history = useHistory();
 
   useEffect(() => {
-    document.querySelector('.container-demo')!.addEventListener('click', ()=>{
+    document.querySelector('.container-demo')!.addEventListener('click', () => {
+      demoHeaderAnimation();
       demoHeadAnimation();
       demoArrowAnimation();
+      demoRedirectAnimation();
     })
   }, []);
   
@@ -23,9 +25,14 @@ const DemoAnimation = () => {
 
   return (
     <div className="container-demo">
+      <div className="cover-watermark-box"></div>
       <div className="demo-content">
 
-        <h1>trademon.io</h1>
+      <video className="my-vid" muted autoPlay loop>
+        <source src={'/assets/lightning-trim.mp4'} type="video/mp4"/>
+      </video>
+
+        <h1 className="demo-main-header">trademon.io</h1>
 
         <img className="demo-img-head" src={'/assets/head-t.png'} alt=''></img>
         <img className="demo-img-arrows" src={'/assets/arrows-t.png'} alt=''></img>
