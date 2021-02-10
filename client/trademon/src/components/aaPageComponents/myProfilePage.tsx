@@ -7,6 +7,8 @@ import Footer from '../navComponents/footer';
 import '../../styling/containers.scss'
 
 export default function MyProfile() {
+
+
   return (
     <div>
       <SearchBar></SearchBar>

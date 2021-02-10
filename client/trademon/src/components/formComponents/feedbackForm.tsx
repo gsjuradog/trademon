@@ -1,26 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import Footer from '../navComponents/footer';
+
+import imageCard from '../../assets/pokemons/2.png';
+
+import { tradeFeedback, alertMessage } from '../../utils/animations';
 
 import '../../styling/forms.scss';
 
 const FeedBackForm = () => {
+
+  const initialState = {
+    rating: 0
+  }
+
+  const history = useHistory();
+
+  const [rating, setRating] = useState(initialState);
+  const [submitButton, setSubmitButton] = useState(false);
+
+  useEffect(() => {
+    tradeFeedback();
+  }, []);
+
+  const ratingHandler = (appraisal:number) => {
+    const copy = rating;
+    copy.rating = appraisal;
+    setRating(copy);
+    setSubmitButton(true);
+  }
+
+  const feedbackHandler = () => {
+    if(!submitButton){
+      console.log('alert');
+      alertMessage();
+    } else {
+      history.push('/pokemon');
+    }
+  }
+
   return (
     <>
     <div className="feedback-container">
       <div className="feedback-trade-animation">
-        <h1>TRADE CLOSED!</h1>
+        <img className="feedback-image" src={'/assets/trademon-logo.png'} alt="trademon-logo"></img>
+        <h1 className="feedback-header">TRADE CLOSED!</h1>
       </div>
       <div className="feedback-trade-details">
-        <h2>Trade Feedback</h2>
-        <p>Trade ID</p>
-        <p>Trade Item</p>
+        <div className="feedback-trade-details-text">
+          <p>Trade ID: 20</p>
+          <p>Trade Item: Charmeleon</p>
+          <p>Trade Price: $150</p>
+        </div>
+        <img className="feedback-image" alt="feedback image" src={imageCard}></img>
       </div>
       <div className="feedback-trade-rating">
         <p>Please rate your trading experience:</p>
-        <UserRatingComponent></UserRatingComponent>
+        <UserRatingComponent
+          ratingHandler={ratingHandler}
+        />
       </div>
-        <button>Submit Feedback</button>
+      <div className="submit-feedback-container">
+        <p className="submit-feedback-alert">Please submit feedback!</p>
+        <button onClick={feedbackHandler}>Back to Listings</button>
+      </div>
+
 
     </div>
     <Footer></Footer>

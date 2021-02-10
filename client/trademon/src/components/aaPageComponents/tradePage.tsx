@@ -1,6 +1,6 @@
 import '../../styling/temp_tradePage.scss';
 import imageBuyer from '../../assets/users/user1.png';
-import imageCard from '../../assets/pokemons/6.png';
+import imageCard from '../../assets/pokemons/2.png';
 import imageSeller from '../../assets/users/user2.png';
 import badge_n3 from '../../assets/badges/_n3.png';
 import badge_s2 from '../../assets/badges/_s2.png';
@@ -46,17 +46,18 @@ export default function TradePage() {
     myRef.current.scrollIntoView();
   };
 
-  const messagesListComponent = messagesList.map(
-    (message: Message, index: number) => (
-      <li
-        className="dm-list-tile"
-        style={{ listStyleType: 'none' }}
-        key={index}
-      >
-        {<DMChatTile {...message}></DMChatTile>}
-      </li>
-    ),
-  );
+  const closeTradeHandler = () => {
+    history.push('./feedback');
+  }
+
+  const messagesListComponent = messagesList.map((message: Message, index: number) => (
+    <li
+      className="dm-list-tile"
+      style={{ listStyleType: 'none' }} 
+      key={index}>
+      {<DMChatTile {...message}></DMChatTile> }
+    </li>
+  ));
 
   return (
     <div className="trading-container parent">
@@ -106,14 +107,16 @@ export default function TradePage() {
               </div>
             </div>
           </section>
-          <div className="traderoom-trade-details">
-            <img className="trade-item-size" alt="" src={imageCard}></img>
-            <div className="traderoom-trade-details-text">
-              <h3>Name</h3>
-              <p>Powers</p>
-              <p>Cost</p>
+          <div className="trade-room-details">
+            <div className="trade-room-details-text">
+              <h2>Name: Charmeleon</h2>
+              <p>Trade ID: 20</p>
+              <p>CP: 985</p>
+              <p>Cost: $150</p>
             </div>
+            <img className="trade-item-size" alt="" src={imageCard}></img>
           </div>
+          
         </div>
         <main className="right-side">
           <div className="chat-container">
@@ -140,7 +143,9 @@ export default function TradePage() {
               >
                 Send Message
               </button>
-              <button className="dm-offer-buttons">Close Trade</button>
+              <button 
+                className="dm-offer-buttons"
+                onClick={closeTradeHandler}>Close Trade</button>
             </div>
           </section>
         </main>

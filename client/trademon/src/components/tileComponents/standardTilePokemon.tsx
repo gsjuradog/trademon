@@ -15,9 +15,13 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
 
   const tradeId = trade.id;
   const id = userData.id;
+  
   const sendToWatchlist = (id: any, tradeId: any) => {
     return addToWatchList(id, tradeId);
   };
+ 
+  
+  
   useEffect(() => {
     const appraisalURL: any = setAppraisalImage(trade.appraisal);
     setAppraisalImgUrl(appraisalURL);
@@ -79,7 +83,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
           className="heart"
           alt="Heart Icon"
           onClick={() => {
-            sendToWatchlist(tradeId, id);
+            sendToWatchlist(id,tradeId);
           }}
         ></img>
       </div>

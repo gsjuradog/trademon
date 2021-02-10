@@ -1,4 +1,5 @@
 @import './config';
+@import './animations';
 
 .form-spacer {
   max-width: 100%;
@@ -118,15 +119,37 @@
   width: 100%;
   height: 85vh;
   .feedback-trade-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
     height: 30%;
     margin-top: 2em;
-    border: 1px solid white;
+    img {
+      width: 15vw;
+      margin-right: 4em;
+      opacity: 0;
+    }
+    h1 {
+      font-size: 4em;
+      font-weight: 900;
+      color: $colorPrimary;
+      opacity: 0;
+    }
   }
   .feedback-trade-details {
-    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
     height: 30%;
-    border: 1px solid white;
+    .feedback-trade-details-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .feedback-image {
+      animation: floatnoglow 4s ease-in-out infinite;
+    }
   }
   .feedback-trade-rating {
     display: flex;
@@ -134,10 +157,33 @@
     align-items: center;
     width: 80%;
     height: 10%;
-    //border: 1px solid white;
     p {
       font-size: larger;
       margin-right: 2em;
+    }
+  }
+  .submit-feedback-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+      margin-bottom: 1em;
+      color: $colorSecondary;
+      opacity: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .feedback-trade-animation {
+    flex-direction: column;
+    .feedback-image {
+      margin: 0 !important;
+    }
+    .feedback-header {
+      font-size: 2em !important;
     }
   }
 }

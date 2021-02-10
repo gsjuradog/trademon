@@ -124,11 +124,26 @@
 }
 
 .trade-item-size {
-  width: 14vw;
-  height: 20vw;
+  width: 12vw;
+  height: 18vw;
   min-width: 180px;
   min-height: 250px;
   animation: floatnoglow 4s ease-in-out infinite;
+}
+
+.trade-room-details {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+  img {
+    margin-top: 1em;
+    animation: floatnoglow 4s ease-in-out infinite;
+  }
+  .trade-room-details-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 
 .trade-item-size-square {

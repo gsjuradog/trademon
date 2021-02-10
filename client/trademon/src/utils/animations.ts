@@ -103,3 +103,33 @@ export const avatarFormOut = () => {
     opacity: 0
   })
 }
+
+//Trade feedback animation
+export const tradeFeedback = () => {
+  gsap.to('.feedback-image', 2, {
+    opacity: 1
+  })
+  gsap.from('.feedback-image', 2, {
+    scale: 0.2
+  })
+  gsap.to('.feedback-header', 2, {
+    opacity: 1
+  })
+  gsap.from('.feedback-header', 2, {
+    x: 400,
+    ease: "back.out(1.7)"
+  })
+}
+
+//Feedback alert animation
+export const alertMessage = () => {
+  gsap.to('.submit-feedback-alert', 1, {
+    scale: 1.2,
+    opacity: 1
+  })
+  gsap.to('.submit-feedback-alert', 1, {
+    delay: 3,
+    scale: 1,
+    opacity: 0
+  })
+}
