@@ -35,6 +35,7 @@ const searchSlice = createSlice({
       const { Error } = payload;
     },
     searchQuery(state, action) {
+      state = action.payload;
       return state;
     },
     searchResults(state, action: PayloadAction<SearchResponseAction>) {

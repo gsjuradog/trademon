@@ -123,6 +123,11 @@ export interface StandardTiles {
   rocketLeagues: StandardTileTrade[];
 }
 
+export interface Trades {
+  pokeTrades: PokeTrade[];
+  mtgTrades: MtgTrade[];
+}
+
 export interface InitialState {
   trades: Trade[];
 }

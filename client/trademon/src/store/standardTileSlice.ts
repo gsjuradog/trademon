@@ -47,7 +47,7 @@ const standardTileSlice = createSlice({
       state,
       { payload }: PayloadAction<StandardTileTrade[]>,
     ) {
-      state.wows = payload;
+      state.rocketLeagues = payload;
       console.log('state: ', payload);
       return state;
     },
@@ -85,12 +85,12 @@ export const fetchTrades = (world: string): AppThunk => async (dispatch) => {
       case 'WoW':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
-        dispatch(getStandardTilesPoke(trades));
+        dispatch(getStandardTilesWoW(trades));
         break;
       case 'RocketLeague':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
-        dispatch(getStandardTilesPoke(trades));
+        dispatch(getStandardTilesRoc(trades));
         break;
       default:
         break;
@@ -105,26 +105,30 @@ export const filterTrade = (
   world: string,
 ): AppThunk => async (dispatch) => {
   try {
+    console.log('I reached the Slice: ', searchInput, world);
+
     let response: any[] = [];
     let trades: StandardTileTrade[] = [];
     let filteredTrades: StandardTileTrade[] = [];
 
     console.log('I am in FILTER ', searchInput, 'our world is: ', world);
+    searchInput = searchInput.toLowerCase();
 
     switch (world) {
       case 'Pokemon GO':
         response = await getTrades();
         trades = mapPokemonsToUtrade(response);
         filteredTrades = trades.filter((p: StandardTileTrade) =>
-          p.name.includes(searchInput),
+          p.name.toLowerCase().startsWith(searchInput),
         );
         dispatch(getStandardTilesPoke(filteredTrades));
+        console.log('3. I am in POKE- FILTER ', searchInput, filteredTrades);
         break;
       case 'MTG':
         response = await getMTGOTrades();
         trades = mapMtgsToUtrade(response);
         filteredTrades = trades.filter((p: StandardTileTrade) =>
-          p.name.includes(searchInput),
+          p.name.toLowerCase().startsWith(searchInput),
         );
         dispatch(getStandardTilesMTG(filteredTrades));
         break;

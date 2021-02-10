@@ -41,7 +41,7 @@ export default function SearchResultsContainer(props: IProps) {
       );
       break;
     case 'WoW':
-      standardTilesRender = standardTiles.mtgs.map(
+      standardTilesRender = standardTiles.wows.map(
         (standardTile: StandardTileTrade) => (
           <li
             style={{ listStyleType: 'none' }}

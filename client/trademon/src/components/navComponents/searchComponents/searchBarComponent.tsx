@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import '../../../styling/navs.scss';
 import ProfileOverlay from './profileOverlayComponent';
+import {
+  searchQuery,
+  fetchPokemon,
+  filterPokemon,
+} from '../../../store/searchSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../store/store';
 import { filterTrade } from '../../../store/standardTileSlice';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
   const history = useHistory();
 
-  const dispatch = useDispatch();
-  // eslint-disable-next-line
   const [world, setWorld] = useState('Pokemon GO');
 
-  const worldFromState = useSelector(
-    (state: RootState) => 'state.standardTrade.world', // unquoute to test
-  );
-
+  const tiles = useSelector((state: RootState) => state.trade);
   const handleSearchKeyPress = (searchString: string) => {
-    dispatch(filterTrade(searchString, worldFromState));
+    dispatch(filterTrade(searchString, world));
+    console.log('handleSearchKeyPress: I am invoked ... ', searchString, world);
   };
 
   const changeWorldSelector = (world: string) => {
     setWorld(world);
-    dispatch(setWorld(world));
-    console.log('world (set in SearchBar)', world);
+    console.log('world', world);
   };
 
   return (
@@ -50,7 +51,7 @@ export default function SearchBar() {
               changeWorldSelector(e.target.value)
             }
           >
-            <option value="Pokemon GO">Pokemon Go</option>
+            <option value="Pokemon">Pokemon Go</option>
             <option value="MTG">MTG: Online</option>
             <option value="WoW">Warcraft</option>
           </select>
@@ -59,8 +60,8 @@ export default function SearchBar() {
             placeholder="Search offers..."
             id="search-field"
             className="search-field"
-            onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>): void =>
-              handleSearchKeyPress(e.key)
+            onChange={(e: React.ChangeEvent<HTMLInputElement>): void =>
+              handleSearchKeyPress(e.target.value)
             }
           />
         </div>
