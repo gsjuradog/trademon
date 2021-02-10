@@ -18,7 +18,7 @@ import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
-const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
+const socket = io('https://trademon.herokuapp.com' || 'http://localhost:4444');
 
 export default function TradePage() {
   const userData = useSelector((state: RootState) => state.user.user);

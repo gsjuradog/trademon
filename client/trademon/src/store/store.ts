@@ -2,20 +2,20 @@ import { configureStore, Action } from '@reduxjs/toolkit';
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import WorldSlice from './worldSlice';
 import UserSlice from './userSlice';
-import SearchSlice, { searchEpic } from './searchSlice';
+// import SearchSlice, { searchEpic } from './EpicSearchSlice';
 import MiniTileSlice from './miniTileSlice';
 import StandardTileSlice from './standardTileSlice';
 import { ThunkAction } from 'redux-thunk';
 import thunk from 'redux-thunk';
 
 const epicMiddleware = createEpicMiddleware();
-export const rootEpic = combineEpics(searchEpic);
+// export const rootEpic = combineEpics(searchEpic);
 
 const store = configureStore({
   reducer: {
     world: WorldSlice,
     user: UserSlice,
-    search: SearchSlice,
+    // search: SearchSlice,
     trade: MiniTileSlice,
     standardTrade: StandardTileSlice,
   },
@@ -24,7 +24,7 @@ const store = configureStore({
   enhancers: [],
 });
 
-epicMiddleware.run(rootEpic);
+// epicMiddleware.run(rootEpic);
 
 export default store;
 

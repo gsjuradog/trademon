@@ -23,6 +23,7 @@ p {
 .standard-tile-container:hover {
   background-color: $colorGreyHover;
   transform: scale(1.05);
+  box-shadow: 0 0 8px 3px $colorPrimary;
 }
 .standard-mtgo-tile-container:hover {
   background-color: $colorGreyHover;
@@ -245,7 +246,7 @@ p {
 .dm-summary-container {
   @extend .flex-center;
   min-width: 85%;
-  margin: .5vh 2vw;
+  margin: 0.5vh 2vw;
   background-color: $colorGreyPop80;
   border-radius: 25px;
   border: 1px solid $colorPrimary;
@@ -350,8 +351,8 @@ p {
 }
 
 .img-notification {
-  width: .5vw;
-  height: .5vw;
+  width: 0.5vw;
+  height: 0.5vw;
   min-width: 12px;
   min-height: 12px;
 }
