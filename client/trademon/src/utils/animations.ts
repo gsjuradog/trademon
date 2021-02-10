@@ -58,17 +58,37 @@ export const loginErrorClear = () => {
 }
 
 //Demo Start Animation
+export const demoHeaderAnimation = () => {
+  gsap.from('.demo-main-header', 1, {
+    y: -200,
+  })
+  gsap.to('.demo-main-header', 1, {
+    opacity: 1
+  })
+}
 export const demoHeadAnimation = () => {
+  gsap.to('.demo-img-head', 2, 
+  {opacity: 1})
   gsap.to('.demo-img-head', 0.5,
-  { scale: 1.3, repeat: -1})
+  { delay: 2,
+    scale: 1.3, 
+    repeat: -1})
 }
 export const demoArrowAnimation = () => {
-  gsap.to('.demo-img-arrows', 0.5,
-  { scale: 1.3, repeat: -1})
   gsap.to('.demo-img-arrows', 2, {
-    delay: 1,
+    opacity: 1 })
+  gsap.to('.demo-img-arrows', 0.5,
+  { delay: 2, scale: 1.3, repeat: -1})
+  gsap.to('.demo-img-arrows', 2, {
+    delay: 3,
     rotation: -360,
     repeat: -1
+  })
+}
+export const demoRedirectAnimation = () => {
+  gsap.to('.demo-redirect', 2, {
+    delay: 3,
+    opacity: 1
   })
 }
 
