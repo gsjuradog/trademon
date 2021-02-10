@@ -110,6 +110,11 @@
     h1 {
       padding-top: 1em;
     }
+    .contact-seller-seller-details {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+    }
   }
 }
 
@@ -133,9 +138,12 @@
   }
   .contact-seller-btns {
     display: flex;
+    justify-content: center;
     margin-bottom: 1em;
+    width: 90%;
     button {
       margin: 1em;
+      width: 40%;
     }
   }
 }
@@ -177,13 +185,30 @@
 
 .item-details-container {
   @extend .flex-column-center;
+  justify-content: space-between;
+  width: 15%;
+  padding: 2vw;
   background-color: $colorGreyPop;
   border-radius: 25px;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  padding-left: 2vw;
-  padding-right: 2vw;
   box-shadow: 0 0 8px 3px $colorPrimary;
+}
+
+@media screen and (max-width: 900px) {
+  .item-details-container {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .item-details-container {
+    box-shadow: none;
+    .rating-tiny-text,
+    .rating-text {
+      display: none;
+    }
+  }
 }
 
 .large-sprite-container-poke {
@@ -291,7 +316,7 @@
 }
 
 .interest-box button {
-  width: 100%;
+  width: 60%;
 }
 
 .interest-stats {
