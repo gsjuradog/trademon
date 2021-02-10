@@ -181,6 +181,8 @@ export default function OfferDetailsPage() {
       <div className="offer-details-container">
         <div className="interest-box">
           <div className="interest-stats">
+            <div className="standard-text">$ {tradeDetails!.price}</div>
+            <div className="bar-spacer"> | </div>
             <div className="standard-text">Views: {tradeDetails!.numViews}</div>
             <div className="bar-spacer"> | </div>
             <div className="standard-text">3 Messaging Seller</div>

@@ -11,23 +11,27 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
   const userData = useSelector((state: RootState) => state.user.user);
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
   const [sellerAvatarImgUrl, setSellerAvatarImgUrl] = useState<string>('');
+  const [heartIcon, setHeartIcon] = useState<string>('/assets/FavIconEmpty.png');
   // const [toWatchList, setToWatchList ] = useState<boolean>(false)
 
   const tradeId = trade.id;
   const id = userData.id;
-  
-  const sendToWatchlist = (id: any, tradeId: any) => {
-    return addToWatchList(id, tradeId);
-  };
- 
-  
   
   useEffect(() => {
     const appraisalURL: any = setAppraisalImage(trade.appraisal);
     setAppraisalImgUrl(appraisalURL);
     hardCodeAvatarURLS();
   }, []);
-  // Add  on click - Watchlist array on userData? -- Add onClick
+  
+  const sendToWatchlist = (id: any, tradeId: any) => {
+    return addToWatchList(id, tradeId);
+  };
+
+  const handleHeartClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    if(heartIcon == '/assets/FavIconEmpty.png') setHeartIcon('/assets/FavIconFull.png');
+    else setHeartIcon('/assets/FavIconEmpty.png');
+ }
 
   const hardCodeAvatarURLS = () => {
     switch (trade.seller) {
@@ -79,11 +83,12 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
         <span className="heart"></span>
         <div className="std-tile-title-text">{trade.name}</div>
         <img
-          src={'/assets/FavIconEmpty.png'}
+          src={heartIcon}
           className="heart"
           alt="Heart Icon"
-          onClick={() => {
+          onClick={(event) => {
             sendToWatchlist(id,tradeId);
+            handleHeartClick(event);
           }}
         ></img>
       </div>
