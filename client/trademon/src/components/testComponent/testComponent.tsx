@@ -1,4 +1,4 @@
-import TradePage from '../aaPageComponents/tradePage';
+import VideoChat from '../../components/testComponents/videoChatComponent';
 import './testComponent.scss';
 
 import { getUser, getPrivateChats } from '../../utils/graphql';
@@ -17,7 +17,7 @@ const TestComponent = () => {
 
   return (
     <div>
-      <TradePage/>
+      <VideoChat />
     </div>
   );
 };

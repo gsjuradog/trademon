@@ -18,7 +18,7 @@ import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
-const socket = io("https://trademon.herokuapp.com" || "http://localhost:4444");
+const socket = io('http://localhost:4444');
 
 export default function TradePage() {
   const userData = useSelector((state: RootState) => state.user.user);
@@ -48,16 +48,19 @@ export default function TradePage() {
 
   const closeTradeHandler = () => {
     history.push('./feedback');
-  }
+  };
 
-  const messagesListComponent = messagesList.map((message: Message, index: number) => (
-    <li
-      className="dm-list-tile"
-      style={{ listStyleType: 'none' }} 
-      key={index}>
-      {<DMChatTile {...message}></DMChatTile> }
-    </li>
-  ));
+  const messagesListComponent = messagesList.map(
+    (message: Message, index: number) => (
+      <li
+        className="dm-list-tile"
+        style={{ listStyleType: 'none' }}
+        key={index}
+      >
+        {<DMChatTile {...message}></DMChatTile>}
+      </li>
+    ),
+  );
 
   return (
     <div className="trading-container parent">
@@ -115,7 +118,6 @@ export default function TradePage() {
             </div>
             <img className="trade-item-size" alt="" src={imageCard}></img>
           </div>
-          
         </div>
         <main className="right-side">
           <div className="chat-container">
@@ -142,9 +144,9 @@ export default function TradePage() {
               >
                 Send Message
               </button>
-              <button 
-                className="dm-offer-buttons"
-                onClick={closeTradeHandler}>Close Trade</button>
+              <button className="dm-offer-buttons" onClick={closeTradeHandler}>
+                Close Trade
+              </button>
             </div>
           </section>
         </main>
