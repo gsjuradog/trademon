@@ -1,36 +1,15 @@
 # Trademon
-A place designed for people who collect items in games. The platform will alloy anyone to post or browse items they are looking for, or looking to get rid of. 
+trademon.io is a marketplace with social features for trading virtual goods acquired in online games (e.g. Pokemons from Pokemon Go, Magic The Gathering Online cards).
+
+# How does it work?
+In the dashboard you find the different supported games, each one with a preview of the highest ranked items.
+After selecting a platform you get a list of all the available items for trade. You can browse or search by name for a particular item.
+At any moment, you can select an item to see it in detail. The detail view has a ***Trade*** button that initializes the transaction.
+The trading system has a video chat feature for arranging the details of the exchange p2p.
 
 
-
-Name Ideas:
-trademon.io X  G W
-Carddemon X
-eDemon W
-Gatherlite
-T-Ease
-Crowd
-Traory
-Traffic 
-digimon
-TradeMage
-TradeMG
-
-GH Profiles:
-https://github.com/Dalton-Klein
-https://github.com/WladimirAbdulayev
-https://github.com/adriandifelice
-https://github.com/obi-wil
-
-Useful Links:
-https://www.mockflow.com/
-https://excalidraw.com/#room=8df040e99e6f05e68360,Xw7Zc4anjbW5FKFzoaeOFw
-https://www.airbnb.com/
-https://pokemondatabase.azurewebsites.net/pokemon
-
-Colors:
-1c1c1e - background dark grey
-232026 - tile pop grey
-EEF4ED - mint cream
-075F59 - deep blue green
-BA3F1D - orange rust
+# Our collaborators:
+- **[Dalton Klein](https://github.com/Dalton-Klein)**
+- **[Wladimir Abdulayev](https://github.com/WladimirAbdulayev)**
+- **[Adrian Di Felice](https://github.com/adriandifelice)**
+- **[Wilfredo Campos](https://github.com/obi-wil)**
