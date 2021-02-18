@@ -34,13 +34,6 @@ The trading system has a video chat feature for arranging the details of the exc
 &nbsp;
 &nbsp;
 
-# Our collaborators:
-
-- **[Dalton Klein](https://github.com/Dalton-Klein)**
-- **[Wladimir Abdulayev](https://github.com/WladimirAbdulayev)**
-- **[Adrian Di Felice](https://github.com/adriandifelice)**
-- **[Wilfredo Campos](https://github.com/obi-wil)**
-- **[Gabriel Jurado](https://github.com/gsjuradog)**
 
 ## Contributors ✨
 
@@ -51,11 +44,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/DanB-Web"><img src="https://avatars.githubusercontent.com/u/57625118?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DanB-Web</b></sub></a><br /><a href="https://github.com/gsjuradog/trademon/commits?author=DanB-Web" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/DanB-Web"><img src="https://avatars.githubusercontent.com/u/57625118?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DanB-Web</b></sub></a><br /><a href="#content-DanB-Web" title="Content">🖋</a><a href="https://github.com/gsjuradog/trademon/commits?author=DanB-Web" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Dalton-Klein"><img src="https://avatars.githubusercontent.com/u/56521727?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dalton Klein</b></sub></a><br /><a href="#content-Dalton-Klein" title="Content">🖋</a> <a href="https://github.com/gsjuradog/trademon/commits?author=Dalton-Klein" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/obi-wil"><img src="https://avatars.githubusercontent.com/u/13344518?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wilfredo Campos</b></sub></a><br /><a href="#content-obi-wil" title="Content">🖋</a> <a href="https://github.com/gsjuradog/trademon/commits?author=obi-wil" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/adriandifelice/"><img src="https://avatars.githubusercontent.com/u/53629060?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrian Di Felice</b></sub></a><br /><a href="#content-adriandifelice" title="Content">🖋</a> <a href="https://github.com/gsjuradog/trademon/commits?author=adriandifelice" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/WladimirAbdulayev"><img src="https://avatars.githubusercontent.com/u/58371783?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wladimir Abdulayev</b></sub></a><br /><a href="https://github.com/gsjuradog/trademon/commits?author=WladimirAbdulayev" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/WladimirAbdulayev"><img src="https://avatars.githubusercontent.com/u/58371783?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Wladimir Abdulayev</b></sub></a><br /><a href="#content-WladimirAbdulayev" title="Content">🖋</a><a href="https://github.com/gsjuradog/trademon/commits?author=WladimirAbdulayev" title="Code">💻</a></td>
   </tr>
 </table>
 
