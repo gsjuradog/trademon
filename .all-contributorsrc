@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "DanB-Web",
+      "name": "DanB-Web",
+      "avatar_url": "https://avatars.githubusercontent.com/u/57625118?v=4",
+      "profile": "https://github.com/DanB-Web",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "trademon",
+  "projectOwner": "gsjuradog",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
