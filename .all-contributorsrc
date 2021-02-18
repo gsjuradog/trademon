@@ -43,6 +43,15 @@
         "content",
         "code"
       ]
+    },
+    {
+      "login": "WladimirAbdulayev",
+      "name": "Wladimir Abdulayev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58371783?v=4",
+      "profile": "https://github.com/WladimirAbdulayev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
