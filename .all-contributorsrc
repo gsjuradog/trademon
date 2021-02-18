@@ -23,6 +23,16 @@
         "content",
         "code"
       ]
+    },
+    {
+      "login": "obi-wil",
+      "name": "Wilfredo Campos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13344518?v=4",
+      "profile": "https://github.com/obi-wil",
+      "contributions": [
+        "content",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
