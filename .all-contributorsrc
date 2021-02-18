@@ -33,6 +33,16 @@
         "content",
         "code"
       ]
+    },
+    {
+      "login": "adriandifelice",
+      "name": "Adrian Di Felice",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53629060?v=4",
+      "profile": "https://www.linkedin.com/in/adriandifelice/",
+      "contributions": [
+        "content",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
