@@ -211,7 +211,7 @@ export const createTrade = async (trade: TradeData) => {
     },
     body: JSON.stringify({
       numViews: 0,
-      seller: 'DevTeam',
+      seller: 'Wlad',
       pokeNum: id,
       pokeName,
       pokeGen: generation,

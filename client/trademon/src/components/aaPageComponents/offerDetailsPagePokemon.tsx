@@ -1,13 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import '../../styling/containers.scss';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import ContactSeller from './contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOnePokeTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
 import setAppraisalImage, { calcRating } from '../../utils/helperFunctions';
 import { PuffLoader } from 'react-spinners';
-//
+import TabsComponent from '../navComponents/tabsComponent';
+    
 export default function OfferDetailsPage() {
   const { tradeID }: any = useParams();
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
@@ -18,6 +19,7 @@ export default function OfferDetailsPage() {
   const [userPublicDetails, setUserPublicDetails] = useState<any>({
     numberOfSales: 0,
   });
+  const [detailsTchatF, setdetailsTchatF] = useState<boolean>(true);
 
   const [tradeDetails, setTradeDetails] = useState<Trades>({
     id: 0,
@@ -124,7 +126,8 @@ export default function OfferDetailsPage() {
 
   return (
     <div className="offer-details-page">
-      <SearchBar></SearchBar>
+      <NavComponent></NavComponent>
+      <TabsComponent detailsTchatF={detailsTchatF}></TabsComponent>
       <div className="offer-details-container">
         <div className="item-details-container">
           <div className="small-text">ID: {tradeDetails!.id}</div>

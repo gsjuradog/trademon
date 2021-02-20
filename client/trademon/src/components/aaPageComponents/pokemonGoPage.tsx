@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTrades } from '../../store/standardTileSlice';
 import { setWorld } from '../../store/worldSlice';
 import { RootState } from '../../store/store';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
 
 export default function PokemonGoPage() {
@@ -18,15 +18,11 @@ export default function PokemonGoPage() {
 
   return (
     <>
-      <div>
-        <SearchBar></SearchBar>
-      </div>
-      <div>
-        <SearchResultsContainer
-          key={'Pokemon GO'}
-          world={worlds.toString()}
-        ></SearchResultsContainer>
-      </div>
+      <NavComponent></NavComponent>
+      <SearchResultsContainer
+        key={'Pokemon GO'}
+        world={worlds.toString()}
+      ></SearchResultsContainer>
     </>
   );
 }

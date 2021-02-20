@@ -19,7 +19,7 @@ import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
 const socket = io('https://trademon.herokuapp.com' || 'http://localhost:4444');
-
+//
 export default function TradePage() {
   const userData = useSelector((state: RootState) => state.user.user);
   const history = useHistory();
@@ -119,7 +119,7 @@ export default function TradePage() {
             <div className="trade-room-details-text">
               <h2>Name: Boros Reckoner</h2>
               <p>Trade ID: 20</p>
-              <p>Cost: $15</p>
+              <p>Cost: $150</p>
             </div>
             <img className="trade-item-size" alt="" src={'assets/BOROSRECKONER.jpg'}></img>
           </div>
