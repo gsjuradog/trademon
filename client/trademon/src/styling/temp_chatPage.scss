@@ -1,0 +1,53 @@
+@import './config';
+@import './animations';
+
+.right-side {
+  height: 90%;
+  width: 100vw;
+  min-width: 320px;
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.chat-container {
+  width: 90vw;
+  max-height: 50vh;
+  min-height: 50vh;
+  overflow-y: auto;
+  background-color: $colorGreyPop80;
+  border-radius: 25px;
+}
+
+.user-comm {
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  min-width: 300px;
+}
+
+.user-textarea {
+  background-color: $colorGreyPop80;
+  border-radius: 25px;
+}
+
+.trade-button-row {
+  display: flex;
+  margin-top: 2vh;
+}
+
+.offer-trade-button {
+  background-color: $colorSecondary;
+}
+
+.offer-trade-button:hover {
+  color: $colorSecondary;
+}
+
+.dm-offer-buttons {
+  width: 100%;
+  margin: 0vw 1vw;
+}

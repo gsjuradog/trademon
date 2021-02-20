@@ -27,12 +27,6 @@
   width: 100vw;
 }
 
-.trademon-title-link {
-  cursor: pointer;
-  width: 15vw;
-  min-width: 150px;
-}
-
 .platform-text {
   font-size: calc(12px + 1.5vw);
   font-weight: 400;
@@ -108,14 +102,6 @@
   max-height: 12px;
 }
 
-@media screen and (max-width: 1024px) {
-  .nav-container {
-    .logo-img-link {
-      display: none;
-    }
-  }
-}
-
 @media screen and (max-width: 900px) {
   .nav-container {
     .my-profile-overlay-link {
@@ -146,7 +132,7 @@
 
 .tabs-container {
   width: 100vw;
-  margin-top: 1vh;
+  margin-top: 3vh;
   display: flex;
   justify-content: stretch;
   align-items: center;
@@ -154,7 +140,8 @@
 }
 
 .tab-spacer-box {
-  width: 75vw;
+  width: 80vw;
+  max-width: 80vw;
   display: flex;
 }
 
@@ -166,7 +153,7 @@
   height: 5vh;
   background-color: $colorGreyPop;
   border-radius: 5px;
-  margin: 0 1.5vw;
+  margin: 0 2vw;
   transition: 150ms;
 }
 
@@ -185,5 +172,10 @@
 
 .tab-back {
   @extend .tab-box;
-  max-width: 10vw;
+  max-width: 15vw;
+}
+
+.tab-text {
+  padding: 0 2vw;
+  font-size: calc(8px + 0.8vw);
 }

@@ -5,6 +5,7 @@ import UserSlice from './userSlice';
 // import SearchSlice, { searchEpic } from './EpicSearchSlice';
 import MiniTileSlice from './miniTileSlice';
 import StandardTileSlice from './standardTileSlice';
+import PreferencesSlice from './preferencesSlice';
 import { ThunkAction } from 'redux-thunk';
 import thunk from 'redux-thunk';
 
@@ -18,6 +19,7 @@ const store = configureStore({
     // search: SearchSlice,
     trade: MiniTileSlice,
     standardTrade: StandardTileSlice,
+    preferences: PreferencesSlice,
   },
   middleware: [epicMiddleware, thunk],
   devTools: process.env.NODE_ENV !== 'production',
