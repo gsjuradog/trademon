@@ -262,6 +262,7 @@ export const getUserPublicDetails = async (id: number) => {
     .then((res) => res.json())
     .then((data) => (call = data))
     .catch((err) => console.log('GET USER ERROR', err));
+  console.log('in rest user public details!', call)
   return call;
 };
 

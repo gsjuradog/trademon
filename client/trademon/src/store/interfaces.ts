@@ -48,6 +48,7 @@ export interface Trade {
 export interface PokeTrade {
   id: number;
   numViews: number;
+  UserDatumId: number;
   seller: string;
   pokeNum: number;
   pokeName: string;
@@ -82,6 +83,7 @@ export interface MtgTrade {
   price: number;
   publishDate: Date;
   rarity: string;
+  UserDatumId: number;
   seller: string;
   set: string;
   setName: string;
@@ -106,7 +108,9 @@ export interface StandardTileTrade {
   level?: number;
   appraisal?: number;
   isShiny?: boolean;
+  UserDatumId: number;
   seller: string;
+  
 }
 
 export interface MiniTiles {
