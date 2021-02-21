@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTrades } from '../../store/standardTileSlice';
 import { setWorld } from '../../store/worldSlice';
 import { RootState } from '../../store/store';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
 
 export default function MagicTheGatheringPage() {
@@ -19,7 +19,7 @@ export default function MagicTheGatheringPage() {
   return (
     <>
       <div>
-        <SearchBar></SearchBar>
+        <NavComponent></NavComponent>
       </div>
       <div>
         <SearchResultsContainer

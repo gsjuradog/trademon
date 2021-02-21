@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchTrades } from '../../store/standardTileSlice';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
 
 export default function MagicTheGatheringPage() {
@@ -14,7 +14,7 @@ export default function MagicTheGatheringPage() {
   return (
     <>
       <div>
-        <SearchBar></SearchBar>
+        <NavComponent></NavComponent>
       </div>
       <div>
         <h1>{world}</h1>

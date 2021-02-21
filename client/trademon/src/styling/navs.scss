@@ -1,47 +1,39 @@
 @import './config';
 
 .nav-container {
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
-  max-height: 20vh;
-  padding-bottom: 1em;
-  margin-bottom: 1em;
+  max-height: 8vh;
+  margin-bottom: 1vh;
   border-bottom: 2px solid $colorPrimary;
   box-shadow: 0 0 10px 3px $colorPrimary;
 }
-.logo-img-link {
-  width: 6vw;
-  height: 6vw;
-  min-width: 50px;
-  min-height: 50px;
-  padding-left: 15px;
-  padding-top: 0px;
-}
+
 .logo-img {
-  width: 180%;
-  opacity: 90%;
+  margin-left: 15px;
+  width: 4.5vw;
+  height: 3.5vw;
   min-width: 50px;
   min-height: 50px;
+  opacity: 90%;
   cursor: pointer;
+  align-self: center;
 }
 
-.trademon-title-link {
-  cursor: pointer;
-}
-.search-container-vertical {
+.nav-trademon-text {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
 }
 
 .platform-text {
   font-size: calc(12px + 1.5vw);
   font-weight: 400;
   color: $colorText;
-  margin-left: 3vw;
+  margin-left: 2vw;
   margin-bottom: 0.3em;
-  padding-top: 2vh;
+  padding-top: 1.25vh;
   padding-left: 0.5em;
 }
 
@@ -69,11 +61,13 @@
 }
 
 .my-profile-overlay {
+  margin-top: 1vh;
   margin-left: 5px;
   margin-right: 20px;
   height: 40px;
   max-height: 40px;
-  width: 100px;
+  width: 15vw;
+  min-width: 140px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -108,14 +102,6 @@
   max-height: 12px;
 }
 
-@media screen and (max-width: 1024px) {
-  .nav-container {
-    .logo-img-link {
-      display: none;
-    }
-  }
-}
-
 @media screen and (max-width: 900px) {
   .nav-container {
     .my-profile-overlay-link {
@@ -142,4 +128,54 @@
       right: 0.1em;
     }
   }
+}
+
+.tabs-container {
+  width: 100vw;
+  margin-top: 3vh;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  height: 5vh;
+}
+
+.tab-spacer-box {
+  width: 80vw;
+  max-width: 80vw;
+  display: flex;
+}
+
+.tab-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  background-color: $colorGreyPop;
+  border-radius: 5px;
+  margin: 0 2vw;
+  transition: 150ms;
+}
+
+.tab-box-selected {
+  @extend .tab-box;
+  background-color: $colorGreyHover;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px 3px $colorPrimary;
+}
+
+.tab-box:hover {
+  background-color: $colorGreyHover;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px 3px $colorPrimary;
+}
+
+.tab-back {
+  @extend .tab-box;
+  max-width: 15vw;
+}
+
+.tab-text {
+  padding: 0 2vw;
+  font-size: calc(8px + 0.8vw);
 }

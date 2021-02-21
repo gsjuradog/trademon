@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../styling/containers.scss';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 import { MtgoTrades } from '../../utils/interfaces';
 import { getOneMTGOTrade, getUserPublicDetails } from '../../utils/rest';
@@ -88,7 +88,7 @@ export default function OfferDetailsPage() {
 
   return (
     <>
-      <SearchBar></SearchBar>
+      <NavComponent></NavComponent>
       <div className="offer-details-container">
 
 

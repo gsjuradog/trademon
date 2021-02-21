@@ -50,10 +50,10 @@ const FeedBackForm = () => {
       <div className="feedback-trade-details">
         <div className="feedback-trade-details-text">
           <p>Trade ID: 20</p>
-          <p>Trade Item: Charmeleon</p>
+          <p>Trade Item: Boros Reckoner</p>
           <p>Trade Price: $150</p>
         </div>
-        <img className="feedback-image" alt="feedback image" src={imageCard}></img>
+        <img className="feedback-image" alt="feedback image" src={'/assets/BOROSRECKONER.jpg'}></img>
       </div>
       <div className="feedback-trade-rating">
         <p>Please rate your trading experience:</p>

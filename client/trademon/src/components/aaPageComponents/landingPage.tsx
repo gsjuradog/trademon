@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PlatformContainer from '../containerComponents/platformContainer';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
+import NavComponent from '../navComponents/navComponent';
 import Footer from '../navComponents/footer';
 import { fetchTrades } from '../../store/miniTileSlice';
 import { setWorld } from '../../store/worldSlice';
@@ -20,7 +20,7 @@ export default function LandingPage() {
   return (
     <>
       <div>
-        <SearchBar></SearchBar>
+        <NavComponent></NavComponent>
       </div>
       <div className="platforms-container">
         {worlds.map((world, index) => (

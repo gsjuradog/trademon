@@ -1,4 +1,4 @@
-import TradePage from '../aaPageComponents/tradePage';
+import ChatPage from '../aaPageComponents/chatPage';
 import './testComponent.scss';
 
 import { getUser, getPrivateChats } from '../../utils/graphql';
@@ -17,7 +17,7 @@ const TestComponent = () => {
 
   return (
     <div>
-      <TradePage/>
+      <ChatPage/>
     </div>
   );
 };

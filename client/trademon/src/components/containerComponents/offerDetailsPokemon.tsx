@@ -1,14 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import '../../styling/containers.scss';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent';
-import ContactSeller from './contactSeller';
+import NavComponent from '../navComponents/navComponent';
+import ContactSeller from '../aaPageComponents/contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOnePokeTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
 import setAppraisalImage, { calcRating } from '../../utils/helperFunctions';
 import { PuffLoader } from 'react-spinners';
-//
-export default function OfferDetailsPage() {
+ 
+export default function OfferDetailsPoke() {
   const { tradeID }: any = useParams();
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
   const [sellerRatingValue, setNumSellerRatingValue] = useState<number>(0);
@@ -123,8 +123,7 @@ export default function OfferDetailsPage() {
   };
 
   return (
-    <div className="offer-details-page">
-      <SearchBar></SearchBar>
+    <div>
       <div className="offer-details-container">
         <div className="item-details-container">
           <div className="small-text">ID: {tradeDetails!.id}</div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBar from '../navComponents/searchComponents/searchBarComponent'
+import NavComponent from '../navComponents/navComponent'
 import '../../styling/containers.scss'
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile'
 import AddMessage from './addMessage';
@@ -8,7 +8,7 @@ export default function DMChatPage() {
   return (
     <div>
        <div>
-        <SearchBar></SearchBar>
+        <NavComponent></NavComponent>
       </div>
       <div className="dm-chat-title-box">
         <a href="/messages" className="dm-back-button">

@@ -12,7 +12,7 @@ import MyProfile from './components/aaPageComponents/myProfilePage';
 import PokemonGoPage from './components/aaPageComponents/pokemonGoPage';
 import MagicTheGatheringPage from './components/aaPageComponents/MagicTheGatheringPage';
 import WorldOfWarcraftPage from './components/aaPageComponents/WorldOfWarcraftPage';
-import OfferDetailsPage from './components/aaPageComponents/offerDetailsPagePokemon';
+import TradePage from './components/aaPageComponents/tradePage';
 import TestPage from './components/testComponent/testComponent';
 import DMPage from './components/aaPageComponents/dmPage';
 import DMChatPage from './components/aaPageComponents/dmChatPage';
@@ -29,7 +29,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/login" component={Login} />
-          <Route path="/Pokemon/:tradeID" component={OfferDetailsPage} />
+          <Route path="/Pokemon/:tradeID" component={TradePage} />
           <Route
             path="/MagicTheGathering/:tradeID"
             component={OfferDetailsMTGOPage}

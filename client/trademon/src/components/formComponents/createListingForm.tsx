@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory, withRouter } from 'react-router-dom';
-import SearchBar from '../navComponents/searchComponents/searchBarComponent'
+import NavComponent from '../navComponents/navComponent'
 import '../../styling/forms.scss'
 import UserRatingComponent from '../ratingComponents/userRatingComponent';
 
@@ -24,24 +24,23 @@ const CreateListingForm = () => {
 
   const [formState, setFormState] = useState <TradeData> (formData); 
 
-  const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  const formSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let stateCopy : TradeData = {...formState};
     stateCopy.listingType = handleSelect();
 
     //Fetch
-    createTrade(stateCopy).then(
-      (tradeSubmissionResult) => {
-        //check to make sure this is valid before continuing
-        if(tradeSubmissionResult.id) {
-          console.log('RESULT  ',tradeSubmissionResult);
-          history.push(`/trade/${tradeSubmissionResult.id}`);
-        } else {
-          //display error message to the user in this block
-        }
-      }
-    );
+    const tradeSubmissionResult= await createTrade(stateCopy);
+    //check to make sure this is valid before continuing
+    console.log('What is result ', tradeSubmissionResult);
+        
+    if(tradeSubmissionResult.id) {
+      console.log('RESULT  ',tradeSubmissionResult);
+      history.push(`/trade/${tradeSubmissionResult.id}`);
+    } else {
+      //display error message to the user in this block
+    }
  
     //ClearUp
     setFormState(formData);
@@ -99,7 +98,7 @@ const CreateListingForm = () => {
 
   return (
     <div>
-      <SearchBar></SearchBar>
+      <NavComponent></NavComponent>
       <div className="form-spacer">
         <form 
           className="form-container" onSubmit={formSubmitHandler} 
