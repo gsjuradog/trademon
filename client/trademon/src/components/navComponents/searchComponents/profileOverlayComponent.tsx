@@ -18,31 +18,42 @@ export default function ProfileOverlay(this: any) {
 
   return (
     <div className="my-profile-overlay">
-      <div
-        onClick={() => history.push(`/profile`)}
-        className="my-profile-overlay-link"
-      >
-        <div className="prof-overlay-text">{userData.username}</div>
-
-        <img
-          className="avatar-overlay-img"
-          src={
-            userData.avatarUrl !==
-            'https://res.cloudinary.com/dasb94yfb/image/upload/v1612801631/a6auhq4b9eblw0ketmlv.png'
-              ? userData.avatarUrl
-              : '/assets/avatarIcon.png'
-          }
-          alt="avatar Icon"
-        />
-      </div>
-      <img
-        onClick={toggleHamburger}
-        className="hamburger-img"
-        src={'/assets/HamburgerIcon.png'}
-        alt="menu Icon"
-      />
+      {userData.email === '' 
+        ? 
+        <div className="my-profile-overlay-link prof-overlay-text"
+            onClick={() => history.push(`/login`)}
+        >Log In | Sign Up
+        </div>
+        : 
+        
+        <div className="my-profile-overlay-wrapper">
+          <div className="my-profile-overlay-link">   
+            <div className="prof-overlay-text"
+              onClick={() => history.push(`/profile`)}
+            >{userData.username}</div>
+    
+            <img
+              className="nav-overlay-img"
+              onClick={() => history.push(`/profile`)}
+              src={userData.avatarUrl}
+              alt="avatar Icon"
+            />
+          </div>
+          <img
+            onClick={() => history.push(`/messages`)}
+            className="nav-overlay-img"
+            src={'/assets/ChatIcon.png'
+            }
+            alt="Chat Icon"
+          />
+          <img
+            onClick={toggleHamburger}
+            className="nav-overlay-img"
+            src={'/assets/HamburgerNew.png'}
+            alt="menu Icon"
+          /> 
+        </div>   
+      }
     </div>
   );
-}
-
-//{hamburgVis === true &&
+};
