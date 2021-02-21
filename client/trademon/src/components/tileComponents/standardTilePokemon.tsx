@@ -15,7 +15,6 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
     username: '',
     avatarUrl: '',
   });
-  // const [toWatchList, setToWatchList ] = useState<boolean>(false)
 
   const tradeId = trade.id;
   const id = userData.id;
@@ -37,8 +36,8 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
  }
 
   const hardCodeAvatarURLS = async () => {
-    await setSellerPublicDetails(getUserPublicDetails(trade.UserDatumId));
-    console.log('seller public Data !! ', sellerPublicDetails)
+    const grabbedData = await (getUserPublicDetails(trade.UserDatumId));
+    setSellerPublicDetails(grabbedData);
   };
 
   return (
