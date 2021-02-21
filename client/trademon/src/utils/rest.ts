@@ -3,8 +3,9 @@ import { TradeData, Create, SignIn, MtgoTrades } from './interfaces';
 const endpointURL: String =
   'https://trademon.herokuapp.com' || 'http://localhost:4444';
 
-const cloudName = 'dasb94yfb';
+const cloudName = 'techlog-cloud-key/image/upload';
 const avatarCloud = `https://api.cloudinary.com/v1_1/${cloudName}/`;
+
 
 export const createUser = async (user: Create) => {
   const { name, email, password } = user;
@@ -23,7 +24,6 @@ export const createUser = async (user: Create) => {
     .then((res) => res.json())
     .then((data) => data)
     .catch((err) => console.log('CREATE USER ERROR', err));
-
   return result;
 };
 
@@ -262,7 +262,6 @@ export const getUserPublicDetails = async (id: number) => {
     .then((res) => res.json())
     .then((data) => (call = data))
     .catch((err) => console.log('GET USER ERROR', err));
-
   return call;
 };
 

@@ -73,9 +73,11 @@ exports.getPublicDetails = async (req, res) => {
       const { id } = req.body;
       const filter = { where: { id: id } };
       let user = await db.UserData.findOne(filter);
+      console.log('I MADE IT HERE NICELY', db.UserData);
       reply = {
         email: user.email,
         username: user.username,
+        avatarUrl: user.avatarUrl,
         trainerID: user.trainerID,
         trainerName: user.trainerName,
         mtgoID: user.mtgoID,
