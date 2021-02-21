@@ -5,14 +5,16 @@ import { StandardTileTrade } from '../../store/interfaces';
 import { useHistory } from 'react-router-dom';
 import setAppraisalImage from '../../utils/helperFunctions';
 import { RootState } from '../../store/store';
-import { addToWatchList } from '../../utils/rest';
+import { addToWatchList, getUserPublicDetails } from '../../utils/rest';
 export default function StandardTilePokemon(trade: StandardTileTrade) {
   const history = useHistory();
   const userData = useSelector((state: RootState) => state.user.user);
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
-  const [sellerAvatarImgUrl, setSellerAvatarImgUrl] = useState<string>('');
   const [heartIcon, setHeartIcon] = useState<string>('/assets/FavIconEmpty.png');
-  // const [toWatchList, setToWatchList ] = useState<boolean>(false)
+  const [sellerPublicDetails, setSellerPublicDetails] = useState<any>({
+    username: '',
+    avatarUrl: '',
+  });
 
   const tradeId = trade.id;
   const id = userData.id;
@@ -33,45 +35,9 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
     else setHeartIcon('/assets/FavIconEmpty.png');
  }
 
-  const hardCodeAvatarURLS = () => {
-    switch (trade.seller) {
-      case 'Dan':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867591/jnipffsw7a3jh4u2vk6i.png',
-        );
-        break;
-      case 'DaltonK':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867732/umuentnls2jfif7xrhnw.png',
-        );
-        break;
-      case 'Adrian':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867717/f0d1g6lvojruibtlen2f.png',
-        );
-        break;
-      case 'Wlad':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867627/ncyipveh0cnlycbeuuu6.png',
-        );
-        break;
-      case 'Wilfredo':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867739/auvjx0ppqog7pptai6zo.png',
-        );
-        break;
-      case 'Santiago':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867615/ky0fvnkghak3uogjnr0s.png',
-        );
-        break;
-      case 'Bernat':
-        setSellerAvatarImgUrl('/assets/bernie.png');
-        break;
-      default:
-        setSellerAvatarImgUrl('/assets/avatarIcon.png');
-        break;
-    }
+  const hardCodeAvatarURLS = async () => {
+    const grabbedData = await (getUserPublicDetails(trade.UserDatumId));
+    setSellerPublicDetails(grabbedData);
   };
 
   return (
@@ -122,7 +88,7 @@ export default function StandardTilePokemon(trade: StandardTileTrade) {
         <div className="seller-info">
           <img
             className="standard-avatar"
-            src={sellerAvatarImgUrl}
+            src={sellerPublicDetails.avatarUrl}
             alt="avatar icon"
           ></img>
           <p className="seller-text">{trade.seller}</p>

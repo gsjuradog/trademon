@@ -150,6 +150,7 @@ const mapPokemonsToUtrade = (trades: PokeTrade[]): StandardTileTrade[] => {
       price: trade.price,
       image: trade.pokeSprite,
       level: trade.pokeLvl,
+      UserDatumId: trade.UserDatumId,
       seller: trade.seller,
       appraisal: trade.appraisal,
       isShiny: trade.isShiny,
@@ -165,6 +166,7 @@ const mapMtgsToUtrade = (trades: MtgTrade[]): StandardTileTrade[] => {
       name: trade.cardName,
       price: trade.price,
       image: trade.cardImage,
+      UserDatumId: trade.UserDatumId,
       seller: trade.seller,
       world: 'MTG',
     };

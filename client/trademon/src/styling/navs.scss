@@ -66,17 +66,24 @@
   margin-right: 20px;
   height: 40px;
   max-height: 40px;
-  width: 15vw;
-  min-width: 140px;
+  width: 50vw;
+  min-width: 160px;
+  max-width: 300px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
+.my-profile-overlay-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
 .my-profile-overlay-link {
   display: flex;
   align-items: center;
   transition: 150ms;
+  cursor: pointer;
 }
 
 .my-profile-overlay-link:hover {
@@ -89,14 +96,17 @@
   margin-right: 4px;
 }
 
-.avatar-overlay-img {
-  width: 3vw;
-  height: 3vw;
+.nav-overlay-img {
+  width: 2.5vw;
+  height: 2.5vw;
   min-width: 25px;
   min-height: 25px;
-  margin-right: 0.5vw;
+  transition: 150ms;
 }
 
+.nav-overlay-img:hover {
+  transform: scale(1.05);
+}
 .img-small {
   max-width: 12px;
   max-height: 12px;
@@ -104,28 +114,8 @@
 
 @media screen and (max-width: 900px) {
   .nav-container {
-    .my-profile-overlay-link {
-      display: none;
-    }
     .platform-text {
       margin-top: 0.5em;
-    }
-    .filters-box {
-      flex-direction: row;
-      align-items: flex-start;
-      margin-left: 0.5em;
-      .select-dropdown {
-        margin-bottom: 0.5em;
-      }
-      .search-field {
-        margin-left: 0.8em;
-        width: 100%;
-      }
-    }
-    .hamburger-img {
-      position: absolute;
-      top: 0.5em;
-      right: 0.1em;
     }
   }
 }
