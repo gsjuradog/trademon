@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-//import { filterTrade } from '../../../store/standardTileSlice';
-
+import { filterTrade } from '../../../store/standardTileSlice';
 
 export default function SearchComponent() {
   const [world, setWorld] = useState('Pokemon GO');
@@ -12,7 +11,7 @@ export default function SearchComponent() {
   };
 
   const handleSearchKeyPress = (searchString: string) => {
-    // dispatchEvent(filterTrade(searchString, world));
+    dispatch(filterTrade(searchString, world));
     console.log('handleSearchKeyPress: I am invoked ... ', searchString, world);
   };
 
@@ -38,5 +37,5 @@ export default function SearchComponent() {
         }
       />
     </div>
-  )
+  );
 }

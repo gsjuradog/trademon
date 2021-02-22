@@ -5,6 +5,7 @@ import { setWorld } from '../../store/worldSlice';
 import { RootState } from '../../store/store';
 import NavComponent from '../navComponents/navComponent';
 import SearchResultsContainer from '../containerComponents/searchResultsContainer';
+import SearchComponent from '../navComponents/searchComponents/searchComponent';
 
 export default function PokemonGoPage() {
   const worlds = useSelector((state: RootState) => state.world);
@@ -19,6 +20,7 @@ export default function PokemonGoPage() {
   return (
     <>
       <NavComponent></NavComponent>
+      <SearchComponent></SearchComponent>
       <SearchResultsContainer
         key={'Pokemon GO'}
         world={worlds.toString()}
