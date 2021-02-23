@@ -83,12 +83,13 @@ export const uploadAvatarServer = async (id: number, url: string) => {
 };
 
 export const createChat = async (
-  seller: Number,
-  buyer: Number,
+  seller: number,
+  buyer: number,
   message: string,
+  itemId: number
 ) => {
   let result;
-
+   
   await fetch(`${endpointURL}/createChat`, {
     method: 'POST',
     headers: {
@@ -98,6 +99,7 @@ export const createChat = async (
       seller,
       buyer,
       message,
+      itemId
     }),
   })
     .then((res) => res.json())
@@ -107,22 +109,40 @@ export const createChat = async (
   return result;
 };
 
-export const createMessage = (
-  from: String,
-  to: String,
-  content: String,
-  chatID: Number,
+export const getChatByItemId = async (
+  seller:number,
+  buyer:number,
+  itemId:number
 ) => {
-  fetch(`${endpointURL}/createMessage`, {
+  await fetch(`${endpointURL}/getChat`, {
+    method: 'GET',
+    body: JSON.stringify({
+      seller,
+      buyer,
+      itemId
+    }),
+  })
+  .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
+  .then((res) => res.json())
+  .catch((err) => {
+    console.log(`${err} while fetching chatByItemeId`);
+  })
+}
+
+export const sendMessage = (
+  sender: number,
+  content: string,
+  PrivateChatId: number,
+) => {
+  fetch(`${endpointURL}/sendMessage`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from,
-      to,
+      sender,
       content,
-      chatID,
+      PrivateChatId,
     }),
   })
     .then((res) => res.json)

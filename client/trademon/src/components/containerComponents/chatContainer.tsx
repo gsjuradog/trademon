@@ -1,26 +1,16 @@
 import '../../styling/temp_chatPage.scss';
-import imageBuyer from '../../assets/users/user1.png';
-import imageCard from '../../assets/pokemons/2.png';
-import imageSeller from '../../assets/users/user2.png';
-import badge_n3 from '../../assets/badges/_n3.png';
-import badge_s2 from '../../assets/badges/_s2.png';
-import badge_s3 from '../../assets/badges/_s3.png';
-import badge_t1 from '../../assets/badges/_t1.png';
-import badge_t2 from '../../assets/badges/_t2.png';
-import badge_q2 from '../../assets/badges/_q2.png';
-import badge_q3 from '../../assets/badges/_q3.png';
-import badge_p2 from '../../assets/badges/_p2.png';
 import { Message } from '../../utils/interfaces';
-import ProfileOverlay from '../navComponents/searchComponents/profileOverlayComponent';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { io } from 'socket.io-client';
 import { useHistory } from 'react-router-dom';
 import DMChatTile from '../tileComponents/myProfileTileComponents/dmChatTile';
+import { createChat, getChatByItemId } from '../../utils/rest';
+
 const socket = io('https://trademon.herokuapp.com' || 'http://localhost:4444');
 //
-export default function ChatPage() {
+export default function ChatContainer() {
   const userData = useSelector((state: RootState) => state.user.user);
   const history = useHistory();
   const myRef: any = useRef(null);
@@ -39,6 +29,16 @@ export default function ChatPage() {
       sendChatMessage();
     }
   }
+
+  // const chatHandler = async () => {
+  //   setSendStatus('SENDING');
+  //   const reply = await createChat(1, 2, textAreaValue);
+  //   if (!reply) {
+  //     setSendStatus('SEND ERROR');
+  //     return;
+  //   } 
+  //   setSendStatus('SEND SUCCESS');
+  // }
 
   const sendChatMessage = () => {
     console.log('send mssg ', messageContent);

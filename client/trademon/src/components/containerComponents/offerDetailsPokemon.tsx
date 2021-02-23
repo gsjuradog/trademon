@@ -1,14 +1,17 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import '../../styling/containers.scss';
-import NavComponent from '../navComponents/navComponent';
-import ContactSeller from '../aaPageComponents/contactSeller';
 import { Trades } from '../../utils/interfaces';
 import { getOnePokeTrade, getUserPublicDetails } from '../../utils/rest';
 import { useParams } from 'react-router';
 import setAppraisalImage, { calcRating } from '../../utils/helperFunctions';
 import { PuffLoader } from 'react-spinners';
- 
+import { RootState } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPreferences } from '../../store/preferencesSlice';
+
 export default function OfferDetailsPoke() {
+  const state = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
   const { tradeID }: any = useParams();
   const [appraisalImgUrl, setAppraisalImgUrl] = useState<string>('');
   const [sellerRatingValue, setNumSellerRatingValue] = useState<number>(0);
@@ -53,6 +56,12 @@ export default function OfferDetailsPoke() {
     const tradeFetch = await getOnePokeTrade(tradeID);
     if (tradeFetch) {
       setTradeDetails(tradeFetch);
+      dispatch(setPreferences({
+        detailOrChat: state.preferences.detailOrChat,
+        currentChatId: state.preferences.currentChatId,
+        currentChatItemId: tradeID,
+        currentChatOtherUserId: tradeFetch.UserDatumId,
+      }));
       const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal);
       setAppraisalImgUrl(foundSpriteURL);
       const sellerPublicData: any = await getUserPublicDetails(
@@ -69,15 +78,6 @@ export default function OfferDetailsPoke() {
   const messageHandler = () => {
     setMessageSeller(true);
   };
-
-  if (messageSeller) {
-    return (
-      <ContactSeller
-        tradeDetails={tradeDetails}
-        setMessageSeller={setMessageSeller}
-      />
-    );
-  }
 
   const hardCodeAvatarURLS = () => {
     console.log('WHAT ARE WE SWITCHING ON??', tradeDetails.seller);
@@ -113,7 +113,7 @@ export default function OfferDetailsPoke() {
           'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867615/ky0fvnkghak3uogjnr0s.png',
         );
         break;
-      case 'Bernat':
+      case 'Bernie':
         setSellerAvatarImgUrl('/assets/bernie.png');
         break;
       default:
@@ -163,7 +163,7 @@ export default function OfferDetailsPoke() {
         <div className="item-details-container">
           <div className="flex-center">
             <img
-              className="avatar-overlay-img"
+              className="seller-avatar-img"
               src={sellerAvatarImgUrl}
               alt="avatar Icon"
             />

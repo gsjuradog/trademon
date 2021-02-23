@@ -8,7 +8,6 @@ import { useParams } from 'react-router';
 import {calcRating} from '../../utils/helperFunctions'
 import Moment from 'react-moment';
 
-import ContactSeller from './contactSeller';
 //
 export default function OfferDetailsPage() { 
  
@@ -74,17 +73,6 @@ export default function OfferDetailsPage() {
   const messageHandler = () => {   
     setMessageSeller(true);
   };
-
-  if (messageSeller) {
-    return (
-      <ContactSeller
-        tradeDetails={tradeDetails}
-        setMessageSeller={setMessageSeller}/>
-    )
-  }
-
-
-
 
   return (
     <>

@@ -1,4 +1,4 @@
-import ChatPage from '../aaPageComponents/chatPage';
+import ChatContainer from '../containerComponents/chatContainer';
 import './testComponent.scss';
 
 import { getUser, getPrivateChats } from '../../utils/graphql';
@@ -17,7 +17,7 @@ const TestComponent = () => {
 
   return (
     <div>
-      <ChatPage/>
+      <ChatContainer/>
     </div>
   );
 };
