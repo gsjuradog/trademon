@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ARRAY(DataTypes.INTEGER), //user ids
       allowNull: false,
     },
+    itemId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
 
   privateChat.associate = (model) => {

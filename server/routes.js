@@ -17,12 +17,12 @@ router.post('/signin', userControllers.signin);
 router.post('/getPublicDetails', userControllers.getPublicDetails);
 
 //USER DETAILS
-router.put('/userAvatar', userControllers.uploadAvatar)
+router.put('/userAvatar', userControllers.uploadAvatar);
 
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
 router.post('/sendMessage', messageControllers.sendMessage);
-router.get('/getChat/:id', chatControllers.getChat);
+router.get('/getChat/', chatControllers.getChat);
 
 // Pokemon TRADE RELATED ROUTES
 router.post('/createPokeTrade', tradeControllers.createTrade);
@@ -43,9 +43,7 @@ router.delete('/deleteMTGOTrade', mtgotradeControllers.deleteMTGOTrade);
 // STATIC ITEM DATA RELATED ROUTES
 router.post('/fetchStaticPoke', staticPokeControllers.fetchStaticPoke);
 
-
 // ROUTE TO WATCHLIST
 router.post('/addToWatchlist', tradeControllers.addToWatchlist);
-
 
 module.exports = router;
