@@ -90,100 +90,6 @@
   justify-content: space-evenly;
 }
 
-.contact-seller-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  width: 80%;
-  height: 100vh;
-  opacity: 0;
-  .contact-seller-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 40%;
-    height: 60vh;
-    margin: 2em;
-    border: 1px solid $colorPrimary;
-    box-shadow: 0 0 10px 3px $colorPrimary;
-    h1 {
-      padding-top: 1em;
-    }
-    .contact-seller-seller-details {
-      display: flex;
-      justify-content: center;
-      width: 80%;
-    }
-  }
-}
-
-.contact-seller-message {
-  textarea {
-    width: 80%;
-    height: 40%;
-    resize: none;
-    background-color: $colorShadowLight;
-    color: $colorText;
-    padding: 1em;
-    font-size: 1.5em;
-    box-shadow: 0 0 10px 3px $colorPrimary;
-    border-style: none;
-  }
-  textarea:focus {
-    outline: none;
-  }
-  i {
-    color: $colorPrimary;
-  }
-  .contact-seller-btns {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1em;
-    width: 90%;
-    button {
-      margin: 1em;
-      width: 40%;
-    }
-  }
-}
-
-.contact-seller-trade {
-  img {
-    width: 40%;
-  }
-  p {
-    margin: 1em;
-  }
-}
-
-@media screen and (max-width: 840px) {
-  .contact-seller-container {
-    flex-direction: column;
-    height: auto;
-    .contact-seller-box {
-      width: 90%;
-    }
-    .contact-seller-message {
-      h1 {
-        margin-bottom: 1em;
-      }
-      textarea {
-        height: 60%;
-      }
-      .contact-seller-btns {
-        margin-top: 1em;
-      }
-    }
-  }
-  .large-MTGOCard:hover {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    transform: scale(1.7);
-  }
-}
-
 .item-details-container {
   @extend .flex-column-center;
   justify-content: space-between;
@@ -210,6 +116,14 @@
       display: none;
     }
   }
+}
+
+.seller-avatar-img {
+  width: 3vw;
+  height: 3vw;
+  min-width: 30px;
+  min-height: 30px;
+  margin-right: 1vw;
 }
 
 .large-sprite-container-poke {

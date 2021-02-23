@@ -23,7 +23,8 @@ const createChat = async (req, res) => {
 const getChat = async (req, res) => {
   try {
     const { itemId, buyer, seller } = req.body;
-    const foundChats = await db.PrivateChat.findAll({
+    let foundChats;
+    foundChats = await db.PrivateChat.findAll({
       where: {
         itemId,
       },
@@ -37,12 +38,15 @@ const getChat = async (req, res) => {
         chatIdFound = chat.dataValues.id;
       }
     });
-    const reply = await db.Message.findAll({
-      where: {
-        PrivateChatId: chatIdFound,
-      },
-    });
-    console.log('Resulting messages from getChat: ', reply);
+    let reply = 'NoMessages';
+    if (chatIdFound !== undefined) {
+      reply = await db.Message.findAll({
+        where: {
+          PrivateChatId: chatIdFound,
+        },
+      });
+    }
+
     res.status(200).send(reply);
   } catch (err) {
     console.log('GET ERROR', err);
