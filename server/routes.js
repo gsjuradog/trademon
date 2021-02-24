@@ -22,6 +22,7 @@ router.put('/userAvatar', userControllers.uploadAvatar);
 // DM RELATED ROUTES
 router.post('/createChat', chatControllers.createChat);
 router.post('/sendMessage', messageControllers.sendMessage);
+router.get('/getAllChatsForUser/', chatControllers.getAllChatsForUser);
 router.get('/getChat/', chatControllers.getChat);
 
 // Pokemon TRADE RELATED ROUTES

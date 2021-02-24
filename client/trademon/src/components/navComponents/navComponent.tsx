@@ -9,14 +9,14 @@ export default function NavComponent() {
   return (
     <div className="nav-container">
       <img
-        onClick={(): void => history.push(`/`)}
+        onClick={(): void => history.push(`/Pokemon Go`)}
         className="logo-img"
         src={'/assets/trademon-logo.png'}
         alt="trademon logo"
       />
       <div className="nav-trademon-text">
         <div className="trademon-title-link">
-          <h1 onClick={(): void => history.push(`/`)} 
+          <h1 onClick={(): void => history.push(`/Pokemon Go`)} 
             className="platform-text">trademon.io</h1
           >
         </div>

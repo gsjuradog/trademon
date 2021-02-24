@@ -31,7 +31,7 @@ const createTrade = async (req, res) => {
       
       reply = await db.PokeTradeData.create({
         numViews,
-        seller:sellerUserName.dataValues.username,
+        seller: sellerUserName.dataValues.username,
         pokeNum,
         pokeName,
         pokeGen,

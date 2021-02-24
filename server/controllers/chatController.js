@@ -1,4 +1,5 @@
 const db = require('../models/index');
+const { Op } = require('sequelize');
 //
 const createChat = async (req, res) => {
   try {
@@ -19,6 +20,22 @@ const createChat = async (req, res) => {
     res.status(500).send(`POST ERROR: ${err}`);
   }
 };
+
+const getAllChatsForUser = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const foundChats = await db.PrivateChat.findAll({
+      where: {
+        users: { [Op.contains]: [userId] }
+      },
+    });
+    console.log('Did we find the right chats? ',foundChats);
+    res.status(200).send(foundChats);
+  } catch (err){
+    console.log('GET ERROR', err);
+    res.status(500).send(`GET ERROR: ${err}`);
+  }
+}
 
 const getChat = async (req, res) => {
   try {
@@ -56,5 +73,6 @@ const getChat = async (req, res) => {
 
 module.exports = {
   createChat,
+  getAllChatsForUser,
   getChat,
 };
