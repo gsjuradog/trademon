@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styling/containers.scss';
 import NavComponent from '../navComponents/navComponent';
-import TabsComponent from '../navComponents/tabsComponent';
+import TradeDetailTitleBar from '../navComponents/tradeDetailTitleBar';
 import OfferDetailsPoke from '../containerComponents/offerDetailsPokemon'
 import ChatContainer from '../containerComponents/chatContainer'
 import { RootState } from '../../store/store';
@@ -13,9 +13,8 @@ export default function TradePage() {
   return (
     <div className="offer-details-page">
       <NavComponent></NavComponent>
-      <TabsComponent></TabsComponent>
-      {state.preferences.detailOrChat === true && <OfferDetailsPoke></OfferDetailsPoke>}
-      {state.preferences.detailOrChat === false &&<ChatContainer></ChatContainer>}
+      <TradeDetailTitleBar></TradeDetailTitleBar>
+      <OfferDetailsPoke></OfferDetailsPoke>
     </div>
   );
 }

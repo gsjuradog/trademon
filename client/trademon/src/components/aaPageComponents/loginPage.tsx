@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
-
 import { withRouter, useHistory } from 'react-router-dom';
-
 import LoginError from '../modal/loginError';
-
 import { createUser as createREST } from '../../utils/rest';
 import { Create, SignIn } from '../../utils/interfaces';
-
 import { panelRight, panelLeft, setUp } from '../../utils/animations';
 import '../../styling/login.scss';
-
 import { fetchUser } from '../../store/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store/store';
