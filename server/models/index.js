@@ -17,12 +17,12 @@ const sequelize = new Sequelize({
   database: DBNAME,
   username: USER,
   password: PASSWORD,
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 fs.readdirSync(__dirname)
