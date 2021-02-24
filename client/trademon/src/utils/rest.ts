@@ -109,6 +109,22 @@ export const createChat = async (
   return result;
 };
 
+export const getAllChatsForUser = async (userId:number) => {
+  console.log('I AM IN THE RIGHT PLACE');
+  
+  await fetch(`${endpointURL}/getAllChatsForUser`, {
+    method: 'GET',
+    body: JSON.stringify({
+      userId
+    }),
+  })
+  .then((res) => console.log('What is res  ',res.json() ))
+  .catch((err) => {
+    console.log(`${err} while fetching ALL CHATS`);
+  })
+}
+
+
 export const getChatByItemId = async (
   seller:number,
   buyer:number,
