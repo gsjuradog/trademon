@@ -124,7 +124,12 @@ export interface Message {
 }
 
 export interface DMSummary{
-  id: string;
+  id: number;
   itemId: number;
-  users: number[];
+  users: any;
+  otherUser: {
+    id: number,
+    avatarUrl: string,
+    name: string
+  }
 }

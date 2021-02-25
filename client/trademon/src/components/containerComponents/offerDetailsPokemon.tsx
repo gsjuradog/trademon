@@ -60,7 +60,12 @@ export default function OfferDetailsPoke() {
         conversationsOrChat: state.preferences.conversationsOrChat,
         currentChatId: state.preferences.currentChatId,
         currentChatItemId: tradeID,
-        currentChatOtherUserId: tradeFetch.UserDatumId,
+        currentChatOtherUser: {
+          id: tradeFetch.UserDatumId,
+          avatarUrl: state.preferences.currentChatOtherUser.avatarUrl,
+          username: state.preferences.currentChatOtherUser.username,
+        },
+        messages: !state.preferences.messages
       }));
       const foundSpriteURL: any = setAppraisalImage(tradeFetch.appraisal);
       setAppraisalImgUrl(foundSpriteURL);
@@ -80,7 +85,8 @@ export default function OfferDetailsPoke() {
       conversationsOrChat: false,
       currentChatId: state.preferences.currentChatId,
       currentChatItemId: state.preferences.currentChatItemId,
-      currentChatOtherUserId: state.preferences.currentChatOtherUserId,
+      currentChatOtherUser: state.preferences.currentChatOtherUser,
+      messages: !state.preferences.messages
     }));
     history.push('/messages');
   };

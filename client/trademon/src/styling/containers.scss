@@ -274,11 +274,14 @@
 }
 
 .conversation-title-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: calc(10px + 1vw);
   text-align: center;
-  width: 35vw;
-  margin-left: 12.5vw;
-  padding: 1vh 0;
+  width: 50vw;
+  margin-left: 5vw;
+  padding: 1vh 1.5vw;
   cursor: pointer;
   transition: 150ms;
   color: $colorText;
@@ -289,15 +292,23 @@
   transform: scale(1.05);
   box-shadow: 0 0 8px 3px $colorPrimary;
 }
+.dm-summary-box {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .menu-title {
   font-size: calc(12px + 1vw);
   width: 100%;
   text-align: center;
+  margin: 2vh 0;
 }
 
 .dm-page {
-  width: 100%;
+  width: 100vw;
 }
 
 .dm-container {
