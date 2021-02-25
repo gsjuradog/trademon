@@ -125,6 +125,6 @@ export interface Message {
 
 export interface DMSummary{
   id: string;
-  itemId: string;
+  itemId: number;
   users: number[];
 }

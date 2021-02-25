@@ -11,7 +11,8 @@ export default function DMSummaryTile(props: DMSummary) {
   const state = useSelector((state: RootState) => state);
   const [avatarUrl, setAvatarUrl] = useState<any>('');
   const [user, setUser] = useState<any>('');
-
+  const [itemName, setItemName] = useState<string>('');
+  
   useEffect(() => {
     setData();
   }, []);
@@ -20,8 +21,11 @@ export default function DMSummaryTile(props: DMSummary) {
     let otherUserId;
     if ( state.user.user.id === props.users[0] ) otherUserId = props.users[1]
     else otherUserId = props.users[0]
-    
     const otherUserData:any = await getUserPublicDetails(otherUserId)
+    
+    state.trade.pokemons.forEach(poke => {
+      if (poke.id === props.itemId) setItemName(poke.name);
+    });
     setAvatarUrl(otherUserData.avatarUrl)
     setUser(otherUserData.username)
   }
@@ -51,7 +55,7 @@ export default function DMSummaryTile(props: DMSummary) {
             />
             <div className="dm-summary-text-column">
               <div className="dm-text">{user}</div>
-              <div className="dm-text-item">{props.itemId}</div>
+              <div className="dm-text-item">{itemName}</div>
             </div>
           </div>
           {true ? <img

@@ -15,6 +15,7 @@ export default function DMPage() {
   //let dMRender: React.ReactNode = <div className="dm-container"></div>;
   const [dms, setdms] = useState<any[]>([]);
   const [dMRender, setdMRender] = useState<React.ReactNode>(<div></div>);
+  
   useEffect(() => {
     fetchDMs();
   }, []);
@@ -25,7 +26,6 @@ export default function DMPage() {
   const fetchDMs = async () => {
     const foundDMs = await getAllChatsForUser(state.user.user.id);
     await setdms(foundDMs);
-    console.log('Fetched DMs ', foundDMs)
   }
 
   const loopDMs = () => {
@@ -39,7 +39,6 @@ export default function DMPage() {
         ></DMSummaryTile>
       },
     ));
-    console.log('dMRender ', dMRender)
   }
 
   
