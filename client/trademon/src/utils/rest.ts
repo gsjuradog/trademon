@@ -105,20 +105,22 @@ export const createChat = async (
     .then((res) => res.json())
     .then((data) => (result = data))
     .catch((err) => console.log('CREATE CHAT ERROR', err));
-
   return result;
 };
 
 export const getAllChatsForUser = async (userId:number) => {
-  console.log('I AM IN THE RIGHT PLACE');
+  console.log('CALLING THE ID!!!  ', userId);
   
-  await fetch(`${endpointURL}/getAllChatsForUser`, {
-    method: 'GET',
+  return await fetch(`${endpointURL}/getAllChatsForUser`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       userId
     }),
   })
-  .then((res) => console.log('What is res  ',res.json() ))
+  .then((res) => res.json())
   .catch((err) => {
     console.log(`${err} while fetching ALL CHATS`);
   })
@@ -131,7 +133,7 @@ export const getChatByItemId = async (
   itemId:number
 ) => {
   await fetch(`${endpointURL}/getChat`, {
-    method: 'GET',
+    method: 'POST',
     body: JSON.stringify({
       seller,
       buyer,

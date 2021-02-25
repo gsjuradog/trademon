@@ -12,27 +12,34 @@ import { DMSummary } from '../../utils/interfaces';
 export default function DMPage() {
   const state = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
-  let dMConversationsRender: React.ReactNode = <li></li>;
-  const [dms, setdms] = useState<any>([]);
-
+  //let dMRender: React.ReactNode = <div className="dm-container"></div>;
+  const [dms, setdms] = useState<any[]>([]);
+  const [dMRender, setdMRender] = useState<React.ReactNode>(<div></div>);
   useEffect(() => {
     fetchDMs();
   }, []);
+  useEffect(() => {
+    loopDMs();
+  }, [dms]);
 
   const fetchDMs = async () => {
-    console.log('FWhat user am i calling with? ', state.user.user.id)
     const foundDMs = await getAllChatsForUser(state.user.user.id);
-    setdms(foundDMs);
+    await setdms(foundDMs);
     console.log('Fetched DMs ', foundDMs)
-    dMConversationsRender = dms.map((dmSummary: DMSummary) => (
-      <DMSummaryTile 
-        user={dmSummary.user}
-        itemName= {dmSummary.itemName}
-        content={dmSummary.content}
-        avatarUrl={dmSummary.avatarUrl}
-        hasNotification={false}
-      ></DMSummaryTile>
+  }
+
+  const loopDMs = () => {
+    setdMRender(dms.map(
+      (dmSummary: DMSummary, index:number) => {
+        return <DMSummaryTile 
+        key={index}
+        id={dmSummary.id}
+        users={dmSummary.users}
+        itemId= {dmSummary.itemId}
+        ></DMSummaryTile>
+      },
     ));
+    console.log('dMRender ', dMRender)
   }
 
   
@@ -46,16 +53,7 @@ export default function DMPage() {
           <div className="menu-title">
             Conversations
           </div>
-          <div className="dm-container">
-            <DMSummaryTile 
-              user={'Dalton'}
-              itemName= {'Charizard'}
-              content={'Hey do you think you will be able to meet up in the next 30 mins?'}
-              avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867732/umuentnls2jfif7xrhnw.png'}
-              hasNotification={true}
-            ></DMSummaryTile>
-            {dMConversationsRender}
-          </div>
+          {dMRender}
         </div>
         : 
         <ChatContainer></ChatContainer>
