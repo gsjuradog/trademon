@@ -1,57 +1,63 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavComponent from '../navComponents/navComponent'
 import DMSummaryTile from '../tileComponents/myProfileTileComponents/dmSummaryTile'
 import '../../styling/containers.scss'
-
-
+import { RootState } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import ChatContainer from '../containerComponents/chatContainer';
+import { getAllChatsForUser } from '../../utils/rest';
+import { DMSummary } from '../../utils/interfaces';
 
 
 export default function DMPage() {
+  const state = useSelector((state: RootState) => state);
+  const dispatch = useDispatch();
+  //let dMRender: React.ReactNode = <div className="dm-container"></div>;
+  const [dms, setdms] = useState<any[]>([]);
+  const [dMRender, setdMRender] = useState<React.ReactNode>(<div></div>);
+  useEffect(() => {
+    fetchDMs();
+  }, []);
+  useEffect(() => {
+    loopDMs();
+  }, [dms]);
+
+  const fetchDMs = async () => {
+    const foundDMs = await getAllChatsForUser(state.user.user.id);
+    await setdms(foundDMs);
+    console.log('Fetched DMs ', foundDMs)
+  }
+
+  const loopDMs = () => {
+    setdMRender(dms.map(
+      (dmSummary: DMSummary, index:number) => {
+        return <DMSummaryTile 
+        key={index}
+        id={dmSummary.id}
+        users={dmSummary.users}
+        itemId= {dmSummary.itemId}
+        ></DMSummaryTile>
+      },
+    ));
+    console.log('dMRender ', dMRender)
+  }
+
+  
   return (
     <div className="dm-page">
       <div>
         <NavComponent></NavComponent>
       </div>
-      <div className="menu-title">
-        My Trades
-      </div>
-      <div className="dm-container">
-        <DMSummaryTile 
-          user={'Dalton'}
-          itemName= {'Charizard'}
-          content={'Hey do you think you will be able to meet up in the next 30 mins?'}
-          avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867732/umuentnls2jfif7xrhnw.png'}
-          hasNotification={true}
-        ></DMSummaryTile>
-        <DMSummaryTile 
-          user={'Dan'}
-          itemName= {'Necropolis Fiend'}
-          content={'Hey there! Are you available to chat?'}
-          avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867591/jnipffsw7a3jh4u2vk6i.png'}
-          hasNotification={false}
-        ></DMSummaryTile>
-                <DMSummaryTile 
-          user={'Santiago'}
-          itemName= {'Mew'}
-          content={'No way man, Im not about that. Too expensive'}
-          avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867615/ky0fvnkghak3uogjnr0s.png'}
-          hasNotification={false}
-        ></DMSummaryTile>
-                <DMSummaryTile 
-          user={'Wilfredo'}
-          itemName= {'Blaziken'}
-          content={'No way thats actually really cool. I am very interested.'}
-          avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867739/auvjx0ppqog7pptai6zo.png'}
-          hasNotification={true}
-        ></DMSummaryTile>
-                <DMSummaryTile 
-          user={'Wlad'}
-          itemName= {'Yuriko, the Tigers Shadow (Commander)'}
-          content={'I am looking for this card for 2 years already!'}
-          avatarUrl={'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867627/ncyipveh0cnlycbeuuu6.png'}
-          hasNotification={false}
-        ></DMSummaryTile>
-      </div>
+      { state.preferences.conversationsOrChat ? 
+        <div>
+          <div className="menu-title">
+            Conversations
+          </div>
+          {dMRender}
+        </div>
+        : 
+        <ChatContainer></ChatContainer>
+      }
 
     </div>
   )

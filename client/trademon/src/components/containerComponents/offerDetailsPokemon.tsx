@@ -8,6 +8,7 @@ import { PuffLoader } from 'react-spinners';
 import { RootState } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPreferences } from '../../store/preferencesSlice';
+import { useHistory } from 'react-router-dom';
 
 export default function OfferDetailsPoke() {
   const state = useSelector((state: RootState) => state);
@@ -18,6 +19,7 @@ export default function OfferDetailsPoke() {
   const [numSellerSales, setNumSellerSales] = useState<number>(0);
   const [numSellerRatings, setNumSellerRatings] = useState<number>(0);
   const [sellerAvatarImgUrl, setSellerAvatarImgUrl] = useState<string>('');
+  const history = useHistory();
   const [userPublicDetails, setUserPublicDetails] = useState<any>({
     numberOfSales: 0,
   });
@@ -40,8 +42,6 @@ export default function OfferDetailsPoke() {
     tax: 0,
   });
 
-  const [messageSeller, setMessageSeller] = useState(false);
-
   const color = '#075f59'; //Spinner colour
 
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function OfferDetailsPoke() {
   }, []);
 
   useEffect(() => {
-    hardCodeAvatarURLS();
+    //hardCodeAvatarURLS();
   }, [tradeDetails]);
 
   async function fetchTradeDetails() {
@@ -57,7 +57,7 @@ export default function OfferDetailsPoke() {
     if (tradeFetch) {
       setTradeDetails(tradeFetch);
       dispatch(setPreferences({
-        detailOrChat: state.preferences.detailOrChat,
+        conversationsOrChat: state.preferences.conversationsOrChat,
         currentChatId: state.preferences.currentChatId,
         currentChatItemId: tradeID,
         currentChatOtherUserId: tradeFetch.UserDatumId,
@@ -75,51 +75,14 @@ export default function OfferDetailsPoke() {
     }
   }
 
-  const messageHandler = () => {
-    setMessageSeller(true);
-  };
-
-  const hardCodeAvatarURLS = () => {
-    console.log('WHAT ARE WE SWITCHING ON??', tradeDetails.seller);
-
-    switch (tradeDetails.seller) {
-      case 'Dan':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867591/jnipffsw7a3jh4u2vk6i.png',
-        );
-        break;
-      case 'DaltonK':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867732/umuentnls2jfif7xrhnw.png',
-        );
-        break;
-      case 'Adrian':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867717/f0d1g6lvojruibtlen2f.png',
-        );
-        break;
-      case 'Wlad':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867627/ncyipveh0cnlycbeuuu6.png',
-        );
-        break;
-      case 'Wilfredo':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867739/auvjx0ppqog7pptai6zo.png',
-        );
-        break;
-      case 'Santiago':
-        setSellerAvatarImgUrl(
-          'https://res.cloudinary.com/dasb94yfb/image/upload/v1612867615/ky0fvnkghak3uogjnr0s.png',
-        );
-        break;
-      case 'Bernie':
-        setSellerAvatarImgUrl('/assets/bernie.png');
-        break;
-      default:
-        setSellerAvatarImgUrl('/assets/avatarIcon.png');
-        break;
-    }
+  const goToMessages = () => {
+    dispatch(setPreferences({
+      conversationsOrChat: false,
+      currentChatId: state.preferences.currentChatId,
+      currentChatItemId: state.preferences.currentChatItemId,
+      currentChatOtherUserId: state.preferences.currentChatOtherUserId,
+    }));
+    history.push('/messages');
   };
 
   return (
@@ -188,7 +151,7 @@ export default function OfferDetailsPoke() {
             <div className="bar-spacer"> | </div>
             <div className="standard-text">2h 16m left</div>
           </div>
-          <button onClick={messageHandler}>Message Seller</button>
+          <button onClick={goToMessages}>Message Seller</button>
         </div>
       </div>
     </div>

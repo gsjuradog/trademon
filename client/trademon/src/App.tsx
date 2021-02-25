@@ -1,4 +1,3 @@
-import React from 'react';
 import './App.scss';
 import {
   Route,
@@ -15,7 +14,6 @@ import WorldOfWarcraftPage from './components/aaPageComponents/WorldOfWarcraftPa
 import TradePage from './components/aaPageComponents/tradePage';
 import TestPage from './components/testComponent/testComponent';
 import DMPage from './components/aaPageComponents/dmPage';
-import DMChatPage from './components/aaPageComponents/dmChatPage';
 import CreateListingForm from './components/formComponents/createListingForm';
 import DemoAnimation from './components/aaPageComponents/demoAnimation';
 import OfferDetailsMTGOPage from './components/aaPageComponents/offerDetailsPageMTGO';
@@ -37,14 +35,12 @@ const App = () => {
           <Route path="/profile" component={MyProfile} />
           <Route path="/create-poke-trade" component={CreateListingForm} />
           <Route path="/messages" component={DMPage} />
-          <Route path="/chat/1234" component={DMChatPage} />
           <Route path="/test" component={TestPage} />
           <Route path="/Pokemon Go" component={PokemonGoPage} />
           <Route path="/MTGO" component={MagicTheGatheringPage} />
           <Route path="/WoW" component={WorldOfWarcraftPage} />
           <Route path="/feedback" component={FeedBackForm} />
           <Route path="/demo-animation" component={DemoAnimation} />
-          <Route path="/trade-room" component={TestComponent} />
           <Redirect to="/" />
         </Switch>
       </div>

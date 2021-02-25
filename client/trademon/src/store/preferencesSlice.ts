@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: {
-  detailOrChat: boolean,
+  conversationsOrChat: boolean,
   currentChatId: number,
   currentChatItemId: number,
   currentChatOtherUserId: number,
 } = {
-  detailOrChat: true,
+  conversationsOrChat: true,
   currentChatId: 0,
   currentChatItemId: 0,
   currentChatOtherUserId: 0,
@@ -17,7 +17,7 @@ const preferencesSlice = createSlice({
   initialState,
   reducers: {
     setPreferences(state, { payload }: PayloadAction<{
-      detailOrChat: boolean,
+      conversationsOrChat: boolean,
       currentChatId: number,
       currentChatItemId: number,
       currentChatOtherUserId: number,
@@ -28,7 +28,7 @@ const preferencesSlice = createSlice({
     },
     resetPreferences(state) {
       state = {
-        detailOrChat: true,
+        conversationsOrChat: true,
         currentChatId: 0,
         currentChatItemId: 0,
         currentChatOtherUserId: 0,

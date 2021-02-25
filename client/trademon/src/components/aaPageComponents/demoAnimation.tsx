@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-
+import { useEffect } from 'react';
 import { withRouter, useHistory } from 'react-router-dom';
-
 import { demoHeaderAnimation, demoHeadAnimation, demoArrowAnimation, demoRedirectAnimation } from '../../utils/animations';
-
 import '../../styling/demo.scss';
 
 const DemoAnimation = () => {

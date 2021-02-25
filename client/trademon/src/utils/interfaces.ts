@@ -124,9 +124,7 @@ export interface Message {
 }
 
 export interface DMSummary{
-  user: string;
-  itemName: string;
-  content:string;
-  avatarUrl: string;
-  hasNotification:boolean;
+  id: string;
+  itemId: string;
+  users: number[];
 }
