@@ -41,13 +41,11 @@ const getChat = async (req, res) => {
   try {
     const { chatId } = req.body;
     let reply = 'NoMessages';
-    if (chatIdFound !== undefined) {
-      reply = await db.Message.findAll({
-        where: {
-          PrivateChatId: chatId,
-        },
-      });
-    }
+    reply = await db.Message.findAll({
+      where: {
+        PrivateChatId: chatId,
+      },
+    });
     res.status(200).send(reply);
   } catch (err) {
     console.log('GET ERROR', err);
