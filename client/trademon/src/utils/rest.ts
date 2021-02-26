@@ -108,9 +108,7 @@ export const createChat = async (
   return result;
 };
 
-export const getAllChatsForUser = async (userId:number) => {
-  console.log('CALLING THE ID!!!  ', userId);
-  
+export const getAllChatsForUser = async (userId:number) => {  
   return await fetch(`${endpointURL}/getAllChatsForUser`, {
     method: 'POST',
     headers: {
@@ -127,20 +125,16 @@ export const getAllChatsForUser = async (userId:number) => {
 }
 
 
-export const getChatByItemId = async (
-  seller:number,
-  buyer:number,
-  itemId:number
-) => {
-  await fetch(`${endpointURL}/getChat`, {
+export const getChatById = async (chatId:number) => {
+  return await fetch(`${endpointURL}/getChat`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      seller,
-      buyer,
-      itemId
+      chatId: chatId
     }),
   })
-  .then((res) => (res.status <= 400 ? res : Promise.reject(res)))
   .then((res) => res.json())
   .catch((err) => {
     console.log(`${err} while fetching chatByItemeId`);

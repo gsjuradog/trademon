@@ -4,34 +4,38 @@ import { RootState } from '../../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPreferences } from '../../../store/preferencesSlice';
 import { useEffect, useState } from 'react';
-import { getUserPublicDetails } from '../../../utils/rest';
+import { getChatById, getUserPublicDetails } from '../../../utils/rest';
   
 export default function DMSummaryTile(props: DMSummary) {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
-  const [avatarUrl, setAvatarUrl] = useState<any>('');
-  const [user, setUser] = useState<any>('');
+  const [itemName, setItemName] = useState<string>('');
+  const [messages, setMessages] = useState<any>([]);
 
   useEffect(() => {
     setData();
   }, []);
 
   const setData = async () => {
-    let otherUserId;
-    if ( state.user.user.id === props.users[0] ) otherUserId = props.users[1]
-    else otherUserId = props.users[0]
-    
-    const otherUserData:any = await getUserPublicDetails(otherUserId)
-    setAvatarUrl(otherUserData.avatarUrl)
-    setUser(otherUserData.username)
+    state.trade.pokemons.forEach(poke => {
+      if (poke.id === props.itemId) setItemName(poke.name);
+    });
+    let foundMessages = await getChatById(props.id);
+    setMessages(foundMessages)
   }
 
   const toggleConversationsOrChat = () => {
+    console.log('SetOtherUserState: ', props.otherUser.id ,'  ', props.otherUser.name);
     dispatch(setPreferences({
       conversationsOrChat: !state.preferences.conversationsOrChat,
-      currentChatId: state.preferences.currentChatId,
-      currentChatItemId: state.preferences.currentChatItemId,
-      currentChatOtherUserId: state.preferences.currentChatId,
+      currentChatId: props.id,
+      currentChatItemId: props.itemId,
+      currentChatOtherUser: {
+        id: props.otherUser.id,
+        avatarUrl: props.otherUser.avatarUrl,
+        username: props.otherUser.name,
+      },
+      messages: messages,
     }));
   }
 
@@ -45,13 +49,13 @@ export default function DMSummaryTile(props: DMSummary) {
         <div className="notification-wrapper">
           <div className="dm-summary-person-info">
             <img
-              src={avatarUrl}
+              src={props.otherUser.avatarUrl}
               className="img-large"
               alt="avatarIcon"
             />
             <div className="dm-summary-text-column">
-              <div className="dm-text">{user}</div>
-              <div className="dm-text-item">{props.itemId}</div>
+              <div className="dm-text">{props.otherUser.name}</div>
+              <div className="dm-text-item">{itemName}</div>
             </div>
           </div>
           {true ? <img

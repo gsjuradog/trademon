@@ -4,12 +4,22 @@ const initialState: {
   conversationsOrChat: boolean,
   currentChatId: number,
   currentChatItemId: number,
-  currentChatOtherUserId: number,
+  currentChatOtherUser: {
+    id: number,
+    avatarUrl: string,
+    username: string
+  },
+  messages: any,
 } = {
   conversationsOrChat: true,
   currentChatId: 0,
   currentChatItemId: 0,
-  currentChatOtherUserId: 0,
+  currentChatOtherUser: {
+    id: 0,
+    avatarUrl: '',
+    username: ''
+  },
+  messages: [],
 };
 
 const preferencesSlice = createSlice({
@@ -20,7 +30,12 @@ const preferencesSlice = createSlice({
       conversationsOrChat: boolean,
       currentChatId: number,
       currentChatItemId: number,
-      currentChatOtherUserId: number,
+      currentChatOtherUser: {
+        id: number,
+        avatarUrl: string,
+        username: string
+      },
+      messages: any,
     }>) {
       state = payload;
       console.log('What is preferred state?  ', state);
@@ -31,7 +46,12 @@ const preferencesSlice = createSlice({
         conversationsOrChat: true,
         currentChatId: 0,
         currentChatItemId: 0,
-        currentChatOtherUserId: 0,
+        currentChatOtherUser: {
+          id: 0,
+          avatarUrl: '',
+          username: ''
+        },
+        messages: [],
       };
       return state;
     },

@@ -246,7 +246,8 @@ p {
 
 .dm-summary-container {
   @extend .flex-center;
-  min-width: 85%;
+  width: 90vw;
+  min-width: 300px;
   margin: 0.5vh 2vw;
   background-color: $colorGreyPop80;
   border-radius: 25px;
@@ -262,10 +263,18 @@ p {
   transform: scale(1.05);
 }
 
+.dm-summary-person-info {
+  align-self: flex-start;
+  margin-right: 3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .dm-summary-text-column {
   display: flex;
   flex-direction: column;
-  margin-left: 8px;
 }
 
 .dm-chat-container {
@@ -277,14 +286,20 @@ p {
   width: 100%;
 }
 
+.dm-list-tile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /*MESSAGE STYLES*/
 .message {
-  min-width: 20%;
-  max-width: 60%;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  width: 90%;
+  min-width: 225px;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
   border-radius: 10px;
-  padding: 15px;
+  padding: 1.5vw;
   box-shadow: -1px -1px 5px $colorShadowLight, 1px 1px 5px $colorShadowDark;
   transition-duration: 150ms;
   display: flex;
@@ -293,8 +308,14 @@ p {
 }
 
 .message:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
+
+.dm-chat-content-box {
+  display: flex;
+  align-items: center;
+}
+
 .dm-text {
   font-size: calc(12px + 0.5vw);
   font-weight: 100;
@@ -319,8 +340,7 @@ p {
 .right {
   background-color: $colorGreyPop;
   border: 1px solid $colorPrimary;
-  margin-left: 4vw;
-  min-width: 80%;
+  margin-left: 5vw;
 }
 
 .right:hover {
@@ -329,20 +349,7 @@ p {
 
 .left {
   background-color: $colorPrimary;
-  margin-right: 4vw;
-  min-width: 80%;
-}
-
-.left:hover {
-  opacity: 0.9;
-}
-
-.dm-list-tile {
-  min-width: 90%;
-}
-
-.dm-summary-person-info {
-  align-self: flex-start;
+  margin-right: 5vw;
 }
 
 .notification-wrapper {

@@ -13,6 +13,7 @@ import { setPreferences } from '../../store/preferencesSlice';
 const socket = io('https://trademon.herokuapp.com' || 'http://localhost:4444');
 //
 export default function ChatContainer() {
+  const [itemName, setItemName] = useState<string>('');
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state);
   const history = useHistory();
@@ -21,16 +22,37 @@ export default function ChatContainer() {
   const [messagesList, setMessagesList] = useState<Message[]>([]);
 
   useEffect(() => {
+    loadMessages();
+  }, []);
+  useEffect(() => {
     socket.on('newMessage', (message: any) => {
       setMessagesList((messagesList) => [...messagesList, message]);
-      myRef.current.scrollIntoView();
     });
   }, [socket]);
+
+  useEffect(() => {
+    onMessageAdd();
+  }, [messagesList]);
+
+  const onMessageAdd = () => {
+    myRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "start"
+    });
+  }
+
+  const  loadMessages = () => {
+    state.trade.pokemons.forEach(poke => {
+      if (poke.id === state.preferences.currentChatItemId) setItemName(poke.name);
+    });
+    setMessagesList(state.preferences.messages)
+  }
   
   const handleKeyPress = (event:any) => {
     if(event.key === 'Enter') {
       sendChatMessage();
-    }
+    } 
   }
 
   // const chatHandler = async () => {
@@ -52,8 +74,7 @@ export default function ChatContainer() {
       PrivateChatId: 1,
     };
     console.log(mssgObj);
-    socket.emit('chatMessage', mssgObj);
-    myRef.current.scrollIntoView();
+    socket.emit('chatMessage', mssgObj)
     setMessageContent('');
   };
 
@@ -66,38 +87,43 @@ export default function ChatContainer() {
       conversationsOrChat: !state.preferences.conversationsOrChat,
       currentChatId: state.preferences.currentChatId,
       currentChatItemId: state.preferences.currentChatItemId,
-      currentChatOtherUserId: state.preferences.currentChatId,
+      currentChatOtherUser: state.preferences.currentChatOtherUser,
+      messages: !state.preferences.messages
     }));
   }
 
   const messagesListComponent = messagesList.map((message: Message, index: number) => (
-    <li
+    <div
       className="dm-list-tile"
       style={{ listStyleType: 'none' }} 
       key={index}>
       {<DMChatTile {...message}></DMChatTile> }
-    </li>
+    </div>
   ));
 
   return (
     <>
       <div className="conversation-title-box">
         <div onClick={toggleConversationsOrChat} className="dm-back-button">
-          <i className="fas fa-angle-left fa-2x"></i>
+          <img className="detail-title-back-img"
+            src="/assets/backIcon.png"
+          ></img>
           <div>back</div>
         </div>
         <div className="conversation-title-text"
           onClick={() => {history.push(`/Pokemon/${state.preferences.currentChatItemId}`);}}
-        >BulbasaurOrWhatev</div>
+        >
+          <img className="detail-title-back-img"
+            src="/assets/backIcon.png"
+          ></img>
+          <div>{itemName}</div>
+          <div></div>
+        </div>
       </div>
       <main className="right-side">
-        <div className="chat-container">
-          <div className="dm-page">
-            <div className="dm-container" id="testID">
-              {messagesListComponent}
-              <div ref={myRef}></div>
-            </div>
-          </div>
+        <div className="chat-container" id="testID">
+          {messagesListComponent}
+          <div ref={myRef}></div>
         </div>
         <section className="user-comm">
           <textarea
